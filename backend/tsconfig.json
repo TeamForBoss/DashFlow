@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    /* 프로젝트 관련 */
+    "outDir": "./dist",         //  컴파일된 JS 파일이 저장될 폴더
+    "rootDir": "./src",         //  소스 코드 폴더
+    "moduleResolution": "NodeNext", //  Node.js ES 모듈 해석 방식 적용
+
+    /* 언어 및 환경 */
+    "target": "ES2020",         //  최신 Node.js (LTS 기준)와 호환되는 JavaScript 버전
+    "module": "NodeNext",       //  ES 모듈(`import/export`) 사용하도록 변경
+    "strict": true,             //  엄격한 타입 검사 활성화
+    "esModuleInterop": true,    //  CommonJS 모듈을 ES 모듈에서 쉽게 사용
+    "forceConsistentCasingInFileNames": true, //  대소문자 일관성 유지
+    "skipLibCheck": true,       //  라이브러리 타입 검사 생략 (속도 향상)
+    "allowJs": true,            //  JS 파일도 TypeScript 프로젝트에서 사용 가능
+    "declaration": true,        //  `.d.ts` 타입 정의 파일 생성
+    "declarationDir": "./dist/types", //  `.d.ts` 파일을 따로 저장 (오버라이트 방지)
+    "sourceMap": true,          //  디버깅을 위한 소스맵 생성
+
+    /* JSON 및 기타 파일 임포트 허용 */
+    "resolveJsonModule": true,  //  JSON 파일 import 가능
+    "allowSyntheticDefaultImports": true, //  CommonJS 모듈에서도 `import x from '...'` 가능
+    "isolatedModules": true,     //  개별 모듈로 변환하여 빠른 빌드 가능
+
+    /* 코드 품질 향상 설정 */
+    "noImplicitAny": true,      //  `any` 타입 사용 시 경고 (안정성 강화)
+    "noUnusedLocals": true,     //  사용하지 않는 지역 변수 경고
+    "noUnusedParameters": true, //  사용하지 않는 매개변수 경고
+    "noImplicitReturns": false,  // 
+    "noFallthroughCasesInSwitch": true, //  switch 문에서 누락된 case 방지
+    "noUncheckedIndexedAccess": true  //  배열이나 객체에서 존재하지 않는 속성 접근 방지
+  },
+  "include": ["src"],   //  `src/` 폴더 내의 모든 파일 포함
+  "exclude": ["node_modules", "dist"] //  `dist/` 폴더 제외 (오류 방지)
+}

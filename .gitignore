@@ -1,0 +1,19 @@
+# 백엔드 API 키 파일 무시
+backend/src/config/apiKeys.ts
+
+# Node.js 패키지 폴더 무시 (프론트엔드 & 백엔드 모두 포함)
+node_modules/
+
+# TypeScript 빌드 결과물
+frontend/dist/
+backend/dist/
+
+
+# IDE 관련 불필요한 파일들
+.vscode/
+.idea/
+*.swp
+
+#OS에서 자동 생성되는 파일 방지
+.DS_Store
+Thumbs.db

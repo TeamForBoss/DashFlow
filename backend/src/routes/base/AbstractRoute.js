@@ -1,3 +1,6 @@
+// 추상클래스
+// 인터페이스 설계
+
 class AbstractRoute {
     constructor(id = "") {
         this.id = id;
@@ -6,11 +9,19 @@ class AbstractRoute {
 
     initSetting() {
         this.router = require("express").Router();
-        console.log(`[AbstractRoute] ${this.id} 라우트`);
+        console.log(`[AbstractClass] ${this.id} 라우트`);
     }
 
     defineRoutes() {
-        throw new Error(`[AbstractRoute] ${this.id} - defineRoutes_method 구현 필요`);
+        console.error(`[AbstractClass] ${this.id} - defineRoutes_method 구현 필요!`);
+    }
+
+    get getRoute(){
+        if (!this.router) {
+            console.error(`[AbstractClass] ${this.id} - router가 초기화되지 않았음!`);
+            return null;
+        }
+        return this.router;
     }
 
     run() {

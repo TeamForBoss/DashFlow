@@ -9,20 +9,20 @@ class DashDaemon{
     settings(){
         this.express = require("express");
         this.app = this.express();
+        
+        // path
+        this.path = require("path");
 
-        //cors
+        // cors
         this.cors = require("cors");
         this.app.use(this.cors());
 
         // static
         this.app.use(this.express.static("assets"));
 
-        //json ( == bodyParser)
+        // json ( == bodyParser)
         this.app.use(this.express.json());
         this.app.use(this.express.urlencoded({extended:false}));
-
-        //path
-        this.path = require("path");
     }
     startServer(){
         const serverConfig = require(this.path.join(__dirname,"../config/server.config"));

@@ -1,12 +1,13 @@
 :root {
     --fontN: 'NanumSquareNeo';
 
-    --mainColor: ;
-    --pointColor: #F5EDED;
+    --mainBgColor: linear-gradient(#fff,#eee);
+    --pointColor: 
 
-    --primaryColor: #7FA1C3;
-    --secondaryColor: #d6dce2;
-    --secoryColor: #c3c624;
+    // 범죄,사고,날씨 페이지 bgColor
+    --crimebgColor: #F9AFAF;
+    --accidentbgColor: #F3E796;
+    --weatherbgColor: #A7EEDA;
 
     --black: #000;
     --black100: #111;
@@ -22,12 +23,14 @@
     --white400: #bbb;
     --white500: #aaa;
 
-    --allHeight : 38.75rem;
-    --allWidth : 50.75rem;
+    // --allHeight : 100vh;
+    // --allWidth : 100vw;
+    --commonPadding: 120px 20px 20px 20px;
+    
 
     /* 폰트 셋팅 */
     font-family: var(--numfont), var(--fontN);
-    font-size: 16px;
+    font-size: 10px;
     line-height: 1.5;
     font-weight: 400;
 

@@ -1,0 +1,45 @@
+:root {
+    --fontN: 'NanumSquareNeo';
+
+    --mainColor: ;
+    --pointColor: #F5EDED;
+
+    --primaryColor: #7FA1C3;
+    --secondaryColor: #d6dce2;
+    --secoryColor: #c3c624;
+
+    --black: #000;
+    --black100: #111;
+    --black200: #222;
+    --black300: #333;
+    --black400: #444;
+    --black500: #555;
+
+    --white: #fff;
+    --white100: #eee;
+    --white200: #ddd;
+    --white300: #ccc;
+    --white400: #bbb;
+    --white500: #aaa;
+
+    --allHeight : 38.75rem;
+    --allWidth : 50.75rem;
+
+    /* 폰트 셋팅 */
+    font-family: var(--numfont), var(--fontN);
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+
+    /* 폰트 최적화 */
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+    @media (max-width: 800px) {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}

@@ -18,8 +18,13 @@
     --borderColor: #dedede;
     --headerPointColor: #d9d9d9;
     
+
+    /////////////////글씨 색상 ///////////////
     --headerFontColor: #AEAEAE; // header
     --defaultBlack: #121212; // content
+    /////////////////글씨 색상 ///////////////
+    
+
     
     --black: #000;
     --black100: #111;
@@ -46,7 +51,7 @@
     
 
 
-    
+
     /* 폰트 셋팅 */
     font-family: var(--numfont), var(--fontN);
     font-size: 10px;

@@ -1,0 +1,157 @@
+{
+    "goyang": {
+        "id": "1",
+        "latitude": 37.6648,
+        "longitude": 126.8357
+    },
+    "guri": {
+        "id": "2",
+        "latitude": 37.6139,
+        "longitude": 127.1286
+    },
+    "namyangju": {
+        "id": "3",
+        "latitude": 37.6365,
+        "longitude": 127.2117
+    },
+    "dongducheon": {
+        "id": "4",
+        "latitude": 37.8761,
+        "longitude": 127.0572
+    },
+    "yangju": {
+        "id": "5",
+        "latitude": 37.8388,
+        "longitude": 127.0781
+    },
+    "yeoncheon": {
+        "id": "6",
+        "latitude": 38.1386,
+        "longitude": 127.4511
+    },
+    "uijeongbu": {
+        "id": "7",
+        "latitude": 37.7393,
+        "longitude": 127.0488
+    },
+    "paju": {
+        "id": "8",
+        "latitude": 37.7598,
+        "longitude": 126.7777
+    },
+    "pocheon": {
+        "id": "9",
+        "latitude": 37.9028,
+        "longitude": 127.1786
+    },
+    "gapyeong": {
+        "id": "10",
+        "latitude": 37.8333,
+        "longitude": 127.5222
+    },
+    "gwacheon": {
+        "id": "11",
+        "latitude": 37.4283,
+        "longitude": 126.9872
+    },
+    "gwangmyeong": {
+        "id": "12",
+        "latitude": 37.4772,
+        "longitude": 126.8778
+    },
+    "gwangju": {
+        "id": "13",
+        "latitude": 37.4178,
+        "longitude": 127.2572
+    },
+    "gunpo": {
+        "id": "14",
+        "latitude": 37.3599,
+        "longitude": 126.8977
+    },
+    "gimpo": {
+        "id": "15",
+        "latitude": 37.6333,
+        "longitude": 126.7056
+    },
+    "bucheon": {
+        "id": "16",
+        "latitude": 37.5034,
+        "longitude": 126.7660
+    },
+    "seongnam": {
+        "id": "17",
+        "latitude": 37.4396,
+        "longitude": 127.1295
+    },
+    "suwon": {
+        "id": "18",
+        "latitude": 37.2636,
+        "longitude": 127.0286
+    },
+    "siheung": {
+        "id": "19",
+        "latitude": 37.3983,
+        "longitude": 126.7723
+    },
+    "ansan": {
+        "id": "20",
+        "latitude": 37.3223,
+        "longitude": 126.8283
+    },
+    "anseong": {
+        "id": "21",
+        "latitude": 37.0172,
+        "longitude": 127.2742
+    },
+    "anyang": {
+        "id": "22",
+        "latitude": 37.3947,
+        "longitude": 126.9256
+    },
+    "yangpyeong": {
+        "id": "23",
+        "latitude": 37.4986,
+        "longitude": 127.4981
+    },
+    "yeoju": {
+        "id": "24",
+        "latitude": 37.3215,
+        "longitude": 127.6361
+    },
+    "osan": {
+        "id": "25",
+        "latitude": 37.1500,
+        "longitude": 127.0667
+    },
+    "yongin": {
+        "id": "26",
+        "latitude": 37.2416,
+        "longitude": 127.1788
+    },
+    "uiwang": {
+        "id": "27",
+        "latitude": 37.2833,
+        "longitude": 127.0406
+    },
+    "icheon": {
+        "id": "28",
+        "latitude": 37.2811,
+        "longitude": 127.4467
+    },
+    "pyeongtaek": {
+        "id": "29",
+        "latitude": 37.0774,
+        "longitude": 127.1117
+    },
+    "hanam": {
+        "id": "30",
+        "latitude": 37.5373,
+        "longitude": 127.2042
+    },
+    "hwaseong": {
+        "id": "31",
+        "latitude": 37.2283,
+        "longitude": 126.8369
+    }
+}

@@ -1,5 +1,6 @@
-# 백엔드 API 키 파일 무시
+# 백엔드 API 키, db 파일 무시
 backend/src/config/api.config.js
+backend/src/config/db.config.js
 
 # Node.js 패키지 폴더 무시 (프론트엔드 & 백엔드 모두 포함)
 node_modules/

@@ -1,0 +1,1270 @@
+[
+    {
+        "coord": {
+            "lon": 127.0781,
+            "lat": 37.8388
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 267.04,
+            "feels_like": 261.07,
+            "temp_min": 267.04,
+            "temp_max": 267.04,
+            "pressure": 1027,
+            "humidity": 43,
+            "sea_level": 1027,
+            "grnd_level": 1007
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 4.36,
+            "deg": 296,
+            "gust": 7.91
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 5510,
+            "country": "KR",
+            "sunrise": 1739917032,
+            "sunset": 1739956452
+        },
+        "timezone": 32400,
+        "id": 1832847,
+        "name": "Yangju",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 126.8977,
+            "lat": 37.3599
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 266.04,
+            "feels_like": 259.04,
+            "temp_min": 266.03,
+            "temp_max": 267.93,
+            "pressure": 1028,
+            "humidity": 40,
+            "sea_level": 1028,
+            "grnd_level": 1021
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 5.52,
+            "deg": 307,
+            "gust": 9.01
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8096,
+            "country": "KR",
+            "sunrise": 1739917040,
+            "sunset": 1739956531
+        },
+        "timezone": 32400,
+        "id": 1842030,
+        "name": "Gunpo",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.0667,
+            "lat": 37.15
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 269.09,
+            "feels_like": 264.68,
+            "temp_min": 269.09,
+            "temp_max": 270.03,
+            "pressure": 1028,
+            "humidity": 50,
+            "sea_level": 1028,
+            "grnd_level": 1019
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 3.09,
+            "deg": 310
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8099,
+            "country": "KR",
+            "sunrise": 1739916984,
+            "sunset": 1739956506
+        },
+        "timezone": 32400,
+        "id": 1839652,
+        "name": "Osan",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 126.8778,
+            "lat": 37.4772
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 268.17,
+            "feels_like": 268.17,
+            "temp_min": 268.17,
+            "temp_max": 268.19,
+            "pressure": 1028,
+            "humidity": 54,
+            "sea_level": 1028,
+            "grnd_level": 1022
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 1.03,
+            "deg": 260
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8105,
+            "country": "KR",
+            "sunrise": 1739917054,
+            "sunset": 1739956527
+        },
+        "timezone": 32400,
+        "id": 1948005,
+        "name": "Kwangmyŏng",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 126.7723,
+            "lat": 37.3983
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 268.24,
+            "feels_like": 268.24,
+            "temp_min": 268.24,
+            "temp_max": 269.18,
+            "pressure": 1028,
+            "humidity": 54,
+            "sea_level": 1028,
+            "grnd_level": 1024
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 1.03,
+            "deg": 260
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8105,
+            "country": "KR",
+            "sunrise": 1739917073,
+            "sunset": 1739956558
+        },
+        "timezone": 32400,
+        "id": 1843564,
+        "name": "Incheon",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 126.7056,
+            "lat": 37.6333
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 268.2,
+            "feels_like": 268.2,
+            "temp_min": 268.2,
+            "temp_max": 269.14,
+            "pressure": 1028,
+            "humidity": 54,
+            "sea_level": 1028,
+            "grnd_level": 1024
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 1.03,
+            "deg": 260
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8105,
+            "country": "KR",
+            "sunrise": 1739917106,
+            "sunset": 1739956557
+        },
+        "timezone": 32400,
+        "id": 1842936,
+        "name": "Gimpo-si",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.0286,
+            "lat": 37.2636
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 269.36,
+            "feels_like": 265.01,
+            "temp_min": 267.96,
+            "temp_max": 269.84,
+            "pressure": 1028,
+            "humidity": 46,
+            "sea_level": 1028,
+            "grnd_level": 1017
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 3.09,
+            "deg": 310
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893358,
+        "sys": {
+            "type": 1,
+            "id": 8099,
+            "country": "KR",
+            "sunrise": 1739917002,
+            "sunset": 1739956506
+        },
+        "timezone": 32400,
+        "id": 6573030,
+        "name": "Namhyang-dong",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 126.8283,
+            "lat": 37.3223
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 268.15,
+            "feels_like": 261.15,
+            "temp_min": 268.15,
+            "temp_max": 268.17,
+            "pressure": 1028,
+            "humidity": 43,
+            "sea_level": 1028,
+            "grnd_level": 1023
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 6.43,
+            "deg": 312,
+            "gust": 9.44
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8105,
+            "country": "KR",
+            "sunrise": 1739917054,
+            "sunset": 1739956550
+        },
+        "timezone": 32400,
+        "id": 1846918,
+        "name": "Ansan-si",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.0488,
+            "lat": 37.7393
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 268.97,
+            "feels_like": 263.12,
+            "temp_min": 268.97,
+            "temp_max": 268.97,
+            "pressure": 1027,
+            "humidity": 40,
+            "sea_level": 1027,
+            "grnd_level": 1006
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 4.83,
+            "deg": 296,
+            "gust": 8.38
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "country": "KR",
+            "sunrise": 1739917032,
+            "sunset": 1739956467
+        },
+        "timezone": 32400,
+        "id": 1833788,
+        "name": "Uijeongbu-si",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 126.8357,
+            "lat": 37.6648
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 268.01,
+            "feels_like": 268.01,
+            "temp_min": 268.01,
+            "temp_max": 268.01,
+            "pressure": 1028,
+            "humidity": 54,
+            "sea_level": 1028,
+            "grnd_level": 1020
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 1.03,
+            "deg": 260
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8105,
+            "country": "KR",
+            "sunrise": 1739917078,
+            "sunset": 1739956523
+        },
+        "timezone": 32400,
+        "id": 1842485,
+        "name": "Goyang-si",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.1286,
+            "lat": 37.6139
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 267.94,
+            "feels_like": 267.94,
+            "temp_min": 267.94,
+            "temp_max": 269.82,
+            "pressure": 1028,
+            "humidity": 46,
+            "sea_level": 1028,
+            "grnd_level": 1009
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 1.03,
+            "deg": 320
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8096,
+            "country": "KR",
+            "sunrise": 1739917004,
+            "sunset": 1739956457
+        },
+        "timezone": 32400,
+        "id": 1841988,
+        "name": "Guri-si",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.0572,
+            "lat": 37.8761
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 267.24,
+            "feels_like": 261.43,
+            "temp_min": 267.24,
+            "temp_max": 267.24,
+            "pressure": 1027,
+            "humidity": 44,
+            "sea_level": 1027,
+            "grnd_level": 1008
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 4.21,
+            "deg": 295,
+            "gust": 7.75
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 5510,
+            "country": "KR",
+            "sunrise": 1739917040,
+            "sunset": 1739956454
+        },
+        "timezone": 32400,
+        "id": 6799737,
+        "name": "Hwangmae",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 126.9256,
+            "lat": 37.3947
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 268.03,
+            "feels_like": 268.03,
+            "temp_min": 268.01,
+            "temp_max": 269.92,
+            "pressure": 1028,
+            "humidity": 46,
+            "sea_level": 1028,
+            "grnd_level": 1020
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 1.03,
+            "deg": 320
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8096,
+            "country": "KR",
+            "sunrise": 1739917036,
+            "sunset": 1739956522
+        },
+        "timezone": 32400,
+        "id": 1846898,
+        "name": "Anyang-si",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.4981,
+            "lat": 37.4986
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 266.53,
+            "feels_like": 266.53,
+            "temp_min": 266.53,
+            "temp_max": 269.77,
+            "pressure": 1027,
+            "humidity": 49,
+            "sea_level": 1027,
+            "grnd_level": 1000
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 0.51,
+            "deg": 190
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 5513,
+            "country": "KR",
+            "sunrise": 1739916907,
+            "sunset": 1739956376
+        },
+        "timezone": 32400,
+        "id": 1832830,
+        "name": "Yangp'yŏng",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.1788,
+            "lat": 37.2416
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 269.26,
+            "feels_like": 269.26,
+            "temp_min": 267.42,
+            "temp_max": 269.3,
+            "pressure": 1028,
+            "humidity": 42,
+            "sea_level": 1028,
+            "grnd_level": 1010
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 1.03,
+            "deg": 160
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 5509,
+            "country": "KR",
+            "sunrise": 1739916964,
+            "sunset": 1739956472
+        },
+        "timezone": 32400,
+        "id": 6575866,
+        "name": "Samga-dong",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.2742,
+            "lat": 37.0172
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 268.68,
+            "feels_like": 262.61,
+            "temp_min": 268.67,
+            "temp_max": 268.68,
+            "pressure": 1028,
+            "humidity": 45,
+            "sea_level": 1028,
+            "grnd_level": 1015
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 5.05,
+            "deg": 296,
+            "gust": 9.19
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8090,
+            "country": "KR",
+            "sunrise": 1739916925,
+            "sunset": 1739956465
+        },
+        "timezone": 32400,
+        "id": 1846912,
+        "name": "Anseong",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.4511,
+            "lat": 38.1386
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 263.65,
+            "feels_like": 263.65,
+            "temp_min": 263.65,
+            "temp_max": 263.65,
+            "pressure": 1027,
+            "humidity": 57,
+            "sea_level": 1027,
+            "grnd_level": 970
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 1.03,
+            "deg": 270
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 5510,
+            "country": "KR",
+            "sunrise": 1739916965,
+            "sunset": 1739956340
+        },
+        "timezone": 32400,
+        "id": 6367618,
+        "name": "Myŏngwŏli-ri",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.6361,
+            "lat": 37.3215
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 266.6,
+            "feels_like": 266.6,
+            "temp_min": 266.6,
+            "temp_max": 266.6,
+            "pressure": 1027,
+            "humidity": 49,
+            "sea_level": 1027,
+            "grnd_level": 1011
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 0.51,
+            "deg": 190
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 5513,
+            "country": "KR",
+            "sunrise": 1739916860,
+            "sunset": 1739956356
+        },
+        "timezone": 32400,
+        "id": 1832743,
+        "name": "Yeoju",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.0428,
+            "lat": 37.2779
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 269.61,
+            "feels_like": 269.61,
+            "temp_min": 267.92,
+            "temp_max": 269.8,
+            "pressure": 1028,
+            "humidity": 43,
+            "sea_level": 1028,
+            "grnd_level": 1017
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 1.03,
+            "deg": 320
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893067,
+        "sys": {
+            "type": 1,
+            "id": 5509,
+            "country": "KR",
+            "sunrise": 1739916999,
+            "sunset": 1739956502
+        },
+        "timezone": 32400,
+        "id": 6573030,
+        "name": "Namhyang-dong",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 126.7777,
+            "lat": 37.7598
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 268.08,
+            "feels_like": 261.8,
+            "temp_min": 268.08,
+            "temp_max": 268.08,
+            "pressure": 1028,
+            "humidity": 41,
+            "sea_level": 1028,
+            "grnd_level": 1021
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 5.14,
+            "deg": 295,
+            "gust": 9.34
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8105,
+            "country": "KR",
+            "sunrise": 1739917099,
+            "sunset": 1739956530
+        },
+        "timezone": 32400,
+        "id": 1840898,
+        "name": "Paju",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.2042,
+            "lat": 37.5373
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 268.07,
+            "feels_like": 268.07,
+            "temp_min": 268.07,
+            "temp_max": 269.95,
+            "pressure": 1028,
+            "humidity": 46,
+            "sea_level": 1028,
+            "grnd_level": 1010
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 1.03,
+            "deg": 320
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8096,
+            "country": "KR",
+            "sunrise": 1739916980,
+            "sunset": 1739956444
+        },
+        "timezone": 32400,
+        "id": 1897007,
+        "name": "Hanam",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.2117,
+            "lat": 37.6365
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 267.84,
+            "feels_like": 261.87,
+            "temp_min": 267.84,
+            "temp_max": 267.84,
+            "pressure": 1027,
+            "humidity": 41,
+            "sea_level": 1027,
+            "grnd_level": 1005
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 4.61,
+            "deg": 296,
+            "gust": 8
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8096,
+            "country": "KR",
+            "sunrise": 1739916985,
+            "sunset": 1739956435
+        },
+        "timezone": 32400,
+        "id": 1897122,
+        "name": "Namyangju",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.1295,
+            "lat": 37.4396
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 268.01,
+            "feels_like": 268.01,
+            "temp_min": 268.01,
+            "temp_max": 269.9,
+            "pressure": 1028,
+            "humidity": 46,
+            "sea_level": 1028,
+            "grnd_level": 1014
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 1.03,
+            "deg": 320
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8096,
+            "country": "KR",
+            "sunrise": 1739916991,
+            "sunset": 1739956469
+        },
+        "timezone": 32400,
+        "id": 1897000,
+        "name": "Seongnam-si",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.5222,
+            "lat": 37.8333
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 267,
+            "feels_like": 262.78,
+            "temp_min": 267,
+            "temp_max": 267,
+            "pressure": 1027,
+            "humidity": 54,
+            "sea_level": 1027,
+            "grnd_level": 987
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 2.55,
+            "deg": 275,
+            "gust": 6.23
+        },
+        "clouds": {
+            "all": 1
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 5510,
+            "country": "KR",
+            "sunrise": 1739916926,
+            "sunset": 1739956346
+        },
+        "timezone": 32400,
+        "id": 1843082,
+        "name": "Gapyeong County",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.4467,
+            "lat": 37.2811
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 266.49,
+            "feels_like": 266.49,
+            "temp_min": 266.49,
+            "temp_max": 269.73,
+            "pressure": 1028,
+            "humidity": 49,
+            "sea_level": 1028,
+            "grnd_level": 1011
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 0.51,
+            "deg": 190
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 5513,
+            "country": "KR",
+            "sunrise": 1739916903,
+            "sunset": 1739956405
+        },
+        "timezone": 32400,
+        "id": 1843702,
+        "name": "Icheon-si",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 126.8369,
+            "lat": 37.2283
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 268.75,
+            "feels_like": 261.75,
+            "temp_min": 268.75,
+            "temp_max": 268.75,
+            "pressure": 1028,
+            "humidity": 45,
+            "sea_level": 1028,
+            "grnd_level": 1024
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 7.28,
+            "deg": 315,
+            "gust": 9.74
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8099,
+            "country": "KR",
+            "sunrise": 1739917045,
+            "sunset": 1739956555
+        },
+        "timezone": 32400,
+        "id": 1840377,
+        "name": "Namyang",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.1786,
+            "lat": 37.9028
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 265.93,
+            "feels_like": 265.93,
+            "temp_min": 265.93,
+            "temp_max": 265.93,
+            "pressure": 1027,
+            "humidity": 57,
+            "sea_level": 1027,
+            "grnd_level": 1003
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 1.03,
+            "deg": 270
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 5510,
+            "country": "KR",
+            "sunrise": 1739917013,
+            "sunset": 1739956423
+        },
+        "timezone": 32400,
+        "id": 6799737,
+        "name": "Hwangmae",
+        "cod": 200
+    },
+    {
+        "coord": {
+            "lon": 127.1117,
+            "lat": 37.0774
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 268.75,
+            "feels_like": 263.37,
+            "temp_min": 268.75,
+            "temp_max": 268.77,
+            "pressure": 1028,
+            "humidity": 50,
+            "sea_level": 1028,
+            "grnd_level": 1021
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 4.12,
+            "deg": 310
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1739893531,
+        "sys": {
+            "type": 1,
+            "id": 8099,
+            "country": "KR",
+            "sunrise": 1739916968,
+            "sunset": 1739956500
+        },
+        "timezone": 32400,
+        "id": 6575423,
+        "name": "Haejeong",
+        "cod": 200
+    }
+]

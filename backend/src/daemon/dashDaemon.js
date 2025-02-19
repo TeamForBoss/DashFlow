@@ -34,8 +34,9 @@ class DashDaemon{
         //  * @description 유진_ home 라우트
         this.app.use("/",require(this.path.join(__dirname,"../routes/pages/homeRoute")));
         
-        //  * @description 유진_ 어쩌구 페이지 라우트
-
+        //  * @description 유진_ weather_api 라우트
+        this.app.use("/weather",require(this.path.join(__dirname,"../routes/pages/weatherRoute")));
+        
         //  * @description 정임_ 어쩌구 페이지 라우트
 
         //  * @description 진아_ 어쩌구 페이지 라우트
@@ -53,6 +54,6 @@ module.exports = dashDaemon;
 <history>
 
 25.02.15_ 유진 기본 세팅
-
+25.02.19_ 유진 weather api 라우팅
 
 */ ///////////////////////////////////

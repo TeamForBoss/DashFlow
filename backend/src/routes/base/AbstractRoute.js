@@ -16,21 +16,8 @@ class AbstractRoute {
         console.log(`[AbstractClass] ${this.id} 라우트`);
     }
 
-    defineRoutes() {
-        console.error(`[AbstractClass] ${this.id} - defineRoutes_method 구현 필요!`);
-    }
-
-    get getRoute(){
-        if (!this.router) {
-            console.error(`[AbstractClass] ${this.id} - router가 초기화되지 않았음!`);
-            return null;
-        }
-        return this.router;
-    }
-
     run() {
         this.initSetting();
-        this.defineRoutes();
     }
 }
 

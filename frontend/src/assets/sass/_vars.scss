@@ -1,5 +1,12 @@
 :root {
+    ////////////////////폰트 설정/////////////////
     --fontN: 'NanumSquareNeo';
+    --bigFontSize : 25px;
+    --middleFontSize: 20px;
+    --smallFontSize : 15px;
+    --tinySize : 13px ;
+    ////////////////////폰트 설정/////////////////
+
 
     --mainBgColor: to bottom,#fff,blue;
     // --pointColor: 
@@ -9,9 +16,11 @@
     --accidentbgColor:to bottom, #fff, #F3E796;
     --weatherbgColor: #A7EEDA;
     --borderColor: #dedede;
-    --headerFontColor: #AEAEAE;
     --headerPointColor: #d9d9d9;
-
+    
+    --headerFontColor: #AEAEAE; // header
+    --defaultBlack: #121212; // content
+    
     --black: #000;
     --black100: #111;
     --black200: #222;
@@ -28,9 +37,16 @@
 
     // --allHeight : 100vh;
     // --allWidth : 100vw;
-    --commonPadding: 120px 40px 40px 40px;
+
+    //////////패딩 설정////////////
+    --commonPadding: 120px 40px 40px 40px; // 섹션 패딩
+    --boxPadding: 10px; // 박스 패딩
+    --gapSize : 10px; // 플렉스 갭 
+    //////////패딩 설정////////////
     
 
+
+    
     /* 폰트 셋팅 */
     font-family: var(--numfont), var(--fontN);
     font-size: 10px;

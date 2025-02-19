@@ -1,0 +1,38 @@
+#accident {
+    background: linear-gradient(var(--accidentbgColor));
+    padding: var(--commonPadding);
+    height: 100vh;
+    .accGraphWrap {
+        @include flexSet;
+        .acViewYear {
+            border: 1px solid var(--borderColor);
+            border-radius: 10px;
+            padding: 15px;
+            background-color: var(--white);
+            .acYearTitle {
+                background-color: rgba(217, 217, 217, 0.14);
+                border: 1px solid var(--borderColor);
+                border-radius: 10px 10px 0 0;
+                margin-bottom: 15px;
+                p {
+                    text-align: center;
+                    font-size: 30px;
+                    color: var(--headerFontColor);
+                }
+            }
+            .acYearGraph {
+                border: 1px solid var(--borderColor);
+                width: 1000px;
+                height: 300px;
+            }
+        }
+        .acTraffic {
+            .TrafficTitle {}
+        }
+
+    }
+
+    .accChartWrap {
+
+    }
+}

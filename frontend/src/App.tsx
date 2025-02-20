@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // === 공통 컴포넌트 === 
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 
 // === 페이지 === 
 import Home from "./pages/Home";
@@ -23,7 +22,6 @@ const App = () => {
           <Route path="/accident-status" element={<AccidentStatusPage />} />
         </Routes>
       </main>
-      <Footer />
     </Router>
   );
 };

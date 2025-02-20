@@ -43,15 +43,10 @@
     // --allHeight : 100vh;
     // --allWidth : 100vw;
 
+    --boxPadding: 15px; // 박스 패딩
+    --gapSize: 10px; // 플렉스 갭 
     //////////패딩 설정////////////
     --commonPadding: 120px 40px 40px 40px; // 섹션 패딩
-<<<<<<< HEAD
-    --boxPadding: 15px; // 박스 패딩
-    --gapSize : 10px; // 플렉스 갭 
-=======
-    --boxPadding: 10px; // 박스 패딩
-    --gapSize: 10px; // 플렉스 갭 
->>>>>>> 93de3690756f70271b3bddcf448066ecaf45ea56
     //////////패딩 설정////////////
 
 
@@ -73,7 +68,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
+    // -webkit-text-size-adjust: 100%; // 여기만 계속 빨간줄 떠서 일단 주석 (02.20 20:23_유진)
 
     @media (max-width: 800px) {
         font-size: 14px;

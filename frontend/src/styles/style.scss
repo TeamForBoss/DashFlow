@@ -1,0 +1,220 @@
+@use "./variables" as *;
+@use "./common";
+
+// ===============================
+//  메인 컨테이너 (전체 레이아웃 - 좌우 정렬)
+// ===============================
+
+.overallWrapper {
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+.overallLayout{
+    display: flex;
+    flex-direction: row; // 좌우 배치    
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px; // 전체 너비 확대
+    margin: 78px auto 0;
+}
+// ===============================
+//  체크박스 버튼 그룹 (왼쪽 배치)
+// ===============================
+
+.allCheckbox {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%; // 전체의 50% 사용
+    margin-right: 50px;
+
+
+    .northernGyeonggidoBtn, .southernGyeonggidoBtn {
+        display: flex;
+        flex-wrap: wrap;
+        color: $text-color2;
+        justify-content: center;
+        padding-bottom: 50px;
+        width: 100%;
+
+        .titleNorthernGyeonggido, .titleSouthernGyeonggido {
+            background-color:$secondary-bg4;
+            box-shadow: $button-shadow;
+            border-radius: $border-radius2;
+            line-height: 50px;
+            height: 50px;
+            width: 100%;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .checkbox {
+            background-color: $button-bg;
+            border: 1px solid $button-border;
+            color: $text-color2;
+            width: 80px;
+            height: 41px;
+            margin: 3.5px 5px 3.5px 5px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            box-shadow: $button-shadow;
+            text-shadow: $text-shadow-default;
+            transition: 1.2s;
+
+            &:hover {
+                background-color: $button-hover-bg;
+                text-shadow: $text-shadow-hover;
+                transition: 1.2s;
+            }
+
+            &:active {
+                background-color: darken($button-hover-bg, 10%);
+                color: $text-color3;
+                transition: 1.2s;
+            }
+        }
+    }
+}
+
+//  확인 버튼 (왼쪽 아래 배치)
+.checkboxStart {
+    width: 100%;
+    background-color:$secondary-bg;
+    color: $text-color2;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    box-shadow: $button-shadow;
+    transition: 1.2s;
+
+    &:hover {
+        background-color: $button-hover-bg;
+        transition: 1.2s;
+    }
+    &:active {
+        background-color: darken($button-hover-bg, 10%);
+        color: $text-color3;
+        transition: 1.2s;
+    }
+}
+
+
+// ===============================
+// 평균 데이터 표시 + 물과 애니메이션
+// ===============================
+
+.averageData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    position: relative;
+    margin-left: 50px;
+    transition: 2s;
+
+    &:hover .averageDataTitleTop,
+    &:hover .averageDataTitleBottom {
+        transition: 2s;
+        background-color: $button-hover-bg;
+    }
+
+    .averageDataMini {
+        width: 100%;
+        height: 180px;
+        background-color: $secondary-bg;
+        box-shadow: 0 2px 4px $shadow-color;
+        border-radius: 8px;
+        text-align: center;
+        padding: 10px;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        position: relative;
+        overflow: hidden; // 물과가 박스 받으므로 나가지 않도록 설정
+
+        //   애니메이션 (포인트 형태)
+        .wave {
+            position: absolute;
+            top: -96%;
+            left: 50%;
+            width: 860px;
+            height: 750px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            transform-origin: center;
+            animation: wave-rotate 7s infinite linear;
+        }
+
+        .wave.-two {
+            background: rgba(255, 255, 255, 0.3);
+            animation-duration: 8s;
+        }
+
+        .wave.-three {
+            background: rgba(255, 255, 255, 0.2);
+            animation-duration: 10s;
+        }
+    }
+
+    // 개별 박스 색상 조정
+    .weather {
+        background-color: #ffeb3b75;
+        color: #333;
+ 
+    }
+
+    .accident {
+        background-color: #f4433675;
+        color: #fff;
+ 
+    }
+
+    .crime {
+        background-color: #03a9f475;
+        color: #fff;
+
+    }
+}
+
+//  애니메이션 후보
+@keyframes wave-rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.averageDataTitleTop{
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    color: #333;
+    top:0;
+    left:0;
+    box-shadow: $button-hover-shadow;
+    background-color: $button-bg;
+    transition: 2s;
+
+
+}
+.averageDataTitleBottom{
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    bottom:0;
+    left:0;
+    box-shadow: $button-hover-shadow;
+    color: #333;
+    line-height: 40px;
+    background-color: $button-bg;
+    transition: 2s;
+}

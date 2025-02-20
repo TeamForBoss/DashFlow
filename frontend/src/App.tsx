@@ -1,19 +1,20 @@
-import React from "react"
+import React from "react";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import AccidentStatusPage from "./pages/AccidentStatusPage";
+// import AccidentStatusPage from "./pages/AccidentStatusPage";
+import CrimeReportPage from "./pages/CrimeReportPage";
 
 const App = () => {
-    return (
+  return (
     <>
-        <Header />
-        <main id="main">
-            <AccidentStatusPage />
-        </main>
-        <Footer />
+      <Header />
+      <main id="main">
+        <CrimeReportPage />
+      </main>
+      <Footer />
     </>
-  )
-}
+  );
+};
 
 export default App;

@@ -1,31 +1,31 @@
 :root {
     ////////////////////폰트 설정/////////////////
     --fontN: 'NanumSquareNeo';
-    --bigFontSize : 25px;
+    --bigFontSize: 25px;
     --middleFontSize: 20px;
-    --smallFontSize : 15px;
-    --tinySize : 13px ;
+    --smallFontSize: 15px;
+    --tinySize: 13px;
     ////////////////////폰트 설정/////////////////
 
 
-    --mainBgColor: to bottom,#fff,blue;
+    --mainBgColor: to bottom, #fff, blue;
     // --pointColor: 
 
     // 범죄,사고,날씨 페이지 bgColor
-    --crimebgColor: #F9AFAF;
-    --accidentbgColor:to bottom, #fff, #F3E796;
+    --crimebgColor: linear-gradient(to bottom, #fff, #f3d7d7);
+    --accidentbgColor: to bottom, #fff, #F3E796;
     --weatherbgColor: #A7EEDA;
     --borderColor: #dedede;
     --headerPointColor: #d9d9d9;
-    
+
 
     /////////////////글씨 색상 ///////////////
     --headerFontColor: #AEAEAE; // header
     --defaultBlack: #121212; // content
     /////////////////글씨 색상 ///////////////
-    
 
-    
+
+
     --black: #000;
     --black100: #111;
     --black200: #222;
@@ -46,11 +46,16 @@
     //////////패딩 설정////////////
     --commonPadding: 120px 40px 40px 40px; // 섹션 패딩
     --boxPadding: 10px; // 박스 패딩
-    --gapSize : 10px; // 플렉스 갭 
+    --gapSize: 10px; // 플렉스 갭 
     //////////패딩 설정////////////
-    
 
 
+    ////////보더 래디우스 ///////
+    --borderRadius: 5px 5px 0 0; // text 박스 보더
+    --boxBorder: 5px; // 일반 박스 보더
+
+    ///////////background Crime /////////
+    --mayacBack: #f7f0ed;
 
     /* 폰트 셋팅 */
     font-family: var(--numfont), var(--fontN);

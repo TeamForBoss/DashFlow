@@ -5,18 +5,24 @@ class WeatherRoute extends AbstractRoute {
     constructor(id = "") {
         super(id);
     }
-    applyMiddleware() {
+    fetchWeatherData() {
         const [fs, path, axios] = [require("fs"), require("path"), require('axios')];
+
         const apiUrl = (latitude, longitude) => {
-            return `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${ApiKey["open_weather"]}`;
+            return `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${ApiKey["open_weather"]}&units=metric`;
         }
+        
         fs.readFile(path.join(__dirname, "../../data/weather/TodayDate_data.json"), (err, data) => {
             if (err) throw err;
             const today = new Date();
             const formattedDate = today.toISOString().split('T')[0];
 
             if ((data == "") || (JSON.parse(data)["today"] !== formattedDate)) {
+<<<<<<< HEAD
                 // console.log("weatherData_다시 작성!");
+=======
+                console.log(`[Weather] <${formattedDate}> - JSON_DATA 다시 작성!`);
+>>>>>>> 93de3690756f70271b3bddcf448066ecaf45ea56
                 fs.writeFile(path.join(__dirname, "../../data/weather/TodayDate_data.json"), JSON.stringify({ "today": formattedDate }), (err) => {
                     if (err) throw err;
                 });
@@ -28,16 +34,19 @@ class WeatherRoute extends AbstractRoute {
                     const promises = []; // 요청을 저장할 배열
 
                     for (const city in coordinates) {
-                        const { latitude, longitude , id} = coordinates[city];
+                        const { latitude, longitude, id} = coordinates[city];
 
                         // == axios 요청 ==
                         const promise = axios.get(apiUrl(latitude,longitude))
                             .then((response) => {
+<<<<<<< HEAD
                                 // console.log({id: id, city: city, data: response["data"]});
+=======
+>>>>>>> 93de3690756f70271b3bddcf448066ecaf45ea56
                                 weatherDataArray.push({id: id, city: city, data: response["data"]});
                             })
                             .catch((err) => {
-                                console.log("weather_fetch: " + err);
+                                console.log("[Weather] <Fetch_Error> " + err);
                             });
                         promises.push(promise); // 배열에 추가
                     }
@@ -47,11 +56,15 @@ class WeatherRoute extends AbstractRoute {
                         .then(() => {
                             fs.writeFile(path.join(__dirname, "../../data/weather/weather_data.json"), JSON.stringify(weatherDataArray), (err) => {
                                 if (err) throw err;
+<<<<<<< HEAD
                                 // console.log("WeatherDataArray: WriteFile_Done!");
+=======
+                                console.log("[Weather] WriteFile_Done!");
+>>>>>>> 93de3690756f70271b3bddcf448066ecaf45ea56
                             });
                         })
                         .catch((err) => {
-                            console.log("Error weather data: " + err);
+                            console.log("[Weather] <FS_Promise_Error> " + err);
                         });
                 });
             }
@@ -60,10 +73,10 @@ class WeatherRoute extends AbstractRoute {
 
     defineRoutes() {
         this.router.route("/")
-            .post((req, res) => {
-                const { cities } = req.body;
-                res.send(cities);
-                console.log("WEATHER ROUTE");
+            .post((_req, res) => {
+                console.log("[Weather] ROUTE 요청들어옴!");
+                res.send("DONE");
+                this.fetchWeatherData();
             });
     }
 
@@ -73,7 +86,6 @@ class WeatherRoute extends AbstractRoute {
 
     run() {
         super.run();
-        this.applyMiddleware();
         this.defineRoutes();
     }
 }

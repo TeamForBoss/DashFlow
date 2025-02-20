@@ -35,10 +35,18 @@ class DashDaemon{
         this.app.use("/",require(this.path.join(__dirname,"../routes/pages/homeRoute")));
         
         //  * @description 유진_ weather_api 라우트
+        //  - api data 전체 가져오기
         this.app.use("/weather",require(this.path.join(__dirname,"../routes/pages/weatherRoute")));
         
+        //  * @description 유진_ weather_city 라우트
+        //  - 선택된 지역의 날씨 data 가져오기
+        // this.app.use("/weather/city",require(this.path.join(__dirname,"../routes/pages/weatherCitiesRoute")));
+
+        // ==========================================================
         //  * @description 정임_ 어쩌구 페이지 라우트
 
+
+        // ==========================================================
         //  * @description 진아_ 어쩌구 페이지 라우트
         this.app.use("/accident",require(this.path.join(__dirname,"../routes/pages/accidentRoute")));
     }

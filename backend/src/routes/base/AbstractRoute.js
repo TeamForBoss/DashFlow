@@ -13,7 +13,10 @@ class AbstractRoute {
         this.express = require("express");
         this.app = this.express();
         this.router = this.express.Router();
-        console.log(`[AbstractClass] ${this.id} 라우트`);
+    }
+
+    defineRoutes(){
+        console.log("라우트 지정 추상 메서드");
     }
 
     run() {

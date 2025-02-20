@@ -7,6 +7,7 @@ class HomeRoute extends AbstractRoute{
     defineRoutes(){
         this.router.route("/")
         .get((_req,res)=>{
+            console.log("[Home] ROUTE 요청들어옴!")
             res.send("🚀 Welcome aboard! This is the home page. 🏡");
         });
     }

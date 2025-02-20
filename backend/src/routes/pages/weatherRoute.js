@@ -16,7 +16,7 @@ class WeatherRoute extends AbstractRoute {
             const formattedDate = today.toISOString().split('T')[0];
 
             if ((data == "") || (JSON.parse(data)["today"] !== formattedDate)) {
-                console.log("weatherData_다시 작성!");
+                // console.log("weatherData_다시 작성!");
                 fs.writeFile(path.join(__dirname, "../../data/weather/TodayDate_data.json"), JSON.stringify({ "today": formattedDate }), (err) => {
                     if (err) throw err;
                 });
@@ -33,7 +33,7 @@ class WeatherRoute extends AbstractRoute {
                         // == axios 요청 ==
                         const promise = axios.get(apiUrl(latitude,longitude))
                             .then((response) => {
-                                console.log({id: id, city: city, data: response["data"]});
+                                // console.log({id: id, city: city, data: response["data"]});
                                 weatherDataArray.push({id: id, city: city, data: response["data"]});
                             })
                             .catch((err) => {
@@ -47,7 +47,7 @@ class WeatherRoute extends AbstractRoute {
                         .then(() => {
                             fs.writeFile(path.join(__dirname, "../../data/weather/weather_data.json"), JSON.stringify(weatherDataArray), (err) => {
                                 if (err) throw err;
-                                console.log("WeatherDataArray: WriteFile_Done!");
+                                // console.log("WeatherDataArray: WriteFile_Done!");
                             });
                         })
                         .catch((err) => {

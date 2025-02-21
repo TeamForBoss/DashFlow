@@ -7,6 +7,8 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import CrimeReportPage from "./pages/CrimeReportPage";
 import AccidentStatusPage from "./pages/AccidentStatusPage";
+import WeatherInfoPage from "./pages/WeatherInfoPage";
+
 const App = () => {
   return (
     <Router>
@@ -16,6 +18,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
           <Route path="/crime-report" element={<CrimeReportPage />} />
           <Route path="/accident-status" element={<AccidentStatusPage />} />
+          <Route path="/weather-info" element={<WeatherInfoPage />} />
         </Routes>
       </main>
     </Router>

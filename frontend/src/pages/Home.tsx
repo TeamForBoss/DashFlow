@@ -9,13 +9,19 @@ const Home = () => {
         onClick={() => navigate("/accident-status")}
         style={styles.button}
       >
-        Accident_DashBoard
+      진아's Accident_DashBoard
       </button>
       <button
         onClick={() => navigate("/crime-report")}
         style={styles.button}
       >
-        Crime_DashBoard
+      정임's Crime_DashBoard
+      </button>
+      <button
+        onClick={() => navigate("/weather-info")}
+        style={styles.button}
+      >
+      유진's Weather_DashBoard
       </button>
     </div>
   );

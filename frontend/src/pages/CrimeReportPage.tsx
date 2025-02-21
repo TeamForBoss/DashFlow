@@ -1,4 +1,7 @@
 const CrimeReportPage = () => {
+  const testData = "../tempData/crime_data.json";
+  console.log(testData);
+
   return (
     <section id="crMainArea" className="crMainArea crGrayBorder">
       <div className="crInnerMainArea">

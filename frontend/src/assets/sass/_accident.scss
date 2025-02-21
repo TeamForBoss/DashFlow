@@ -1,4 +1,4 @@
-@use "./mixin" as *;
+@use "./mixin"as *;
 
 @mixin titleHead() {
     border: 1px solid var(--borderColor);
@@ -9,7 +9,7 @@
 
 .accident {
     //background: linear-gradient(var(--accidentbgColor));
-    max-width: 120rem;
+    max-width: 150rem;
     margin: 0 auto;
     padding-top: 10rem;
     height: 100vh;

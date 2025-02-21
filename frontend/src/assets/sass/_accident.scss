@@ -1,4 +1,4 @@
-@use "mixin" as *;
+@use "./mixin" as *;
 
 @mixin titleHead() {
     border: 1px solid var(--borderColor);
@@ -8,16 +8,14 @@
 }
 
 .accident {
-    // width: 100vw;
-    // height: 100vh;
-    // padding-top: 10rem;
-    @include flexSet;
+    //background: linear-gradient(var(--accidentbgColor));
+    max-width: 120rem;
     margin: 0 auto;
-    width: 100vw;
+    padding-top: 10rem;
     height: 100vh;
+    @include flexSet;
     flex-direction: row;
     gap: var(--gapSize);
-    padding: var(--commonPadding);
 
     .accGraphWrap {
         @include flexSet;
@@ -26,12 +24,13 @@
         height: 100%;
         padding: 5rem 0;
 
-        .acYearBox, .acTrafficBox {
+        .acYearBox {
             @include titleHead();
             width: 100%;
-            flex:1;
+            // min-height: 40vh;
+            flex: 1;
 
-            .acYearTitle, .TrafficTitle {
+            .acYearTitle {
                 background-color: rgba(217, 217, 217, 0.14);
                 border: 1px solid var(--borderColor);
                 border-radius: 10px 10px 0 0;
@@ -44,10 +43,39 @@
                 }
             }
 
-            .acYearGraph, .TrafficGraph {
+            .acYearGraph {
                 border: 1px solid var(--borderColor);
+                // width: 80rem;
+                // height: 25rem;
             }
         }
+
+        .acTrafficBox {
+            @include titleHead();
+            width: 100%;
+            flex: 1;
+
+            // height: 40vh;
+            .TrafficTitle {
+                background-color: rgba(217, 217, 217, 0.14);
+                border: 1px solid var(--borderColor);
+                border-radius: 10px 10px 0 0;
+                margin-bottom: 10px;
+
+                p {
+                    text-align: center;
+                    font-size: var(--bigFontSize);
+                    color: var(--headerFontColor);
+                }
+            }
+
+            .TrafficGraph {
+                border: 1px solid var(--borderColor);
+                // width: 80rem;
+                // height: 25rem;
+            }
+        }
+
     }
 
     .accChartWrap {
@@ -65,11 +93,11 @@
             gap: var(--gapSize);
             flex: 1;
 
-            .numOfDeathBox, .numOfAccBox {
+            .numOfDeathBox {
                 @include titleHead();
                 flex: 1;
 
-                .acDeathTitle, .acAccTitle {
+                .acDeathTitle {
                     background-color: rgba(217, 217, 217, 0.14);
                     border: 1px solid var(--borderColor);
                     border-radius: 10px 10px 0 0;
@@ -83,25 +111,49 @@
                     }
                 }
 
-                .numOfDeath, .numOfAcc {
+                .numOfDeath {
+                    text-align: center;
+                    font-size: var(--bigFontSize);
+                }
+            }
+
+            .numOfAccBox {
+                @include titleHead();
+                flex: 1;
+
+                .acAccTitle {
+                    background-color: rgba(217, 217, 217, 0.14);
+                    border: 1px solid var(--borderColor);
+                    border-radius: 10px 10px 0 0;
+                    margin-bottom: 10px;
+
+                    p {
+                        text-align: center;
+                        font-size: var(--middleFontSize);
+                        color: var(--headerFontColor);
+                        padding: 5px 20px;
+                    }
+                }
+
+                .numOfAcc {
                     text-align: center;
                     font-size: var(--bigFontSize);
                 }
             }
         }
 
-        .accidentType, .LawViolation {
+        .accidentType {
             width: 100%;
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: stretch;
 
-            .acTypeBox, .acLawBox {
+            .acTypeBox {
                 flex: 1;
                 @include titleHead();
 
-                .acTypeTitle, .acLawTitle {
+                .acTypeTitle {
                     background-color: rgba(217, 217, 217, 0.14);
                     border: 1px solid var(--borderColor);
                     border-radius: 10px 10px 0 0;
@@ -115,8 +167,43 @@
                     }
                 }
 
-                .acTypeGraph, .acLawGraph {
+                .acTypeGraph {
                     border: 1px solid var(--borderColor);
+                    // width: 32.5rem;
+                    // height: 15rem;
+                }
+            }
+        }
+
+        .LawViolation {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+
+            .acLawBox {
+                @include titleHead();
+                flex: 1;
+
+                .acLawTitle {
+                    background-color: rgba(217, 217, 217, 0.14);
+                    border: 1px solid var(--borderColor);
+                    border-radius: 10px 10px 0 0;
+                    margin-bottom: 10px;
+
+                    p {
+                        text-align: center;
+                        font-size: var(--middleFontSize);
+                        color: var(--headerFontColor);
+                        padding: 5px 20px;
+                    }
+                }
+
+                .acLawGraph {
+                    border: 1px solid var(--borderColor);
+                    // width: 32.5rem;
+                    // height: 15rem;
                 }
             }
         }

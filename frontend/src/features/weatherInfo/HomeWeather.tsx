@@ -1,16 +1,36 @@
 import sunny from '../../assets/images/icons/weather/sun.png';
 import { useEffect , useState } from 'react';
+
+
 import { useRecoilValue } from "recoil"; 
+
+
 import { hostState } from "../../state/hostAtom.js"; 
+import { selectedRegionState } from "../../state/atom.js"; 
 
 const HomeWeather = () => {
-    // const host = useRecoilValue(hostState);
+    const host = useRecoilValue(hostState);
+    const region = useRecoilValue(selectedRegionState);
+
+    // useEffect(()=>{
+    //     fetch(`${host}/weather/city`,{
+    //         method: "POST",
+    //         headers: {"Content-Type" : "application/json"},
+    //         body: JSON.stringify({city: region})
+    //     })
+    //     .then(res=>res.json())
+    //     .then((data)=>{
+    //         console.log(data)
+    //     });
+    // }, [host]);
+
+
     // const [weatherData , setWeatherData] = useState([]);
     // useEffect(()=>{
     //     fetch(`${host}/weather`,{
     //         method: "POST",
     //         headers: {
-    //             "Content-Type" : "application.json"
+    //             "Content-Type" : "application/json"
     //         }
     //     })
     //     .then(res=>res.json())
@@ -19,6 +39,9 @@ const HomeWeather = () => {
     //         setWeatherData(data);
     //     });
     // }, [host]);
+
+
+
 
     return (
     <div className="averageWrap">

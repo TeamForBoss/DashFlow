@@ -5,6 +5,8 @@ import DonutChart from "../features/accidentStatus/DonutChart";
 import CircularChart from "../features/accidentStatus/CircularChart";
 import BarChart from "../features/accidentStatus/BarChart";
 
+import Header from "../components/Header";
+
 interface totalAccident {
     [key: string]: string[] | undefined;
 
@@ -169,6 +171,8 @@ const AccidentStatusPage = () => {
     // console.log(violOfLaw);
 
     return (
+        <>
+        <Header page={"accident"}/>
         <section id="accident" className="accident">
             <div className="accWrap">
                 <div className="accGraphWrap">
@@ -228,6 +232,7 @@ const AccidentStatusPage = () => {
                 </div>
             </div>
         </section>
+        </>
     )
 }
 

@@ -1,11 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {RecoilRoot} from 'recoil';
 
-// === 공통 컴포넌트 === 
-import Header from "./components/Header";
 
 // === 페이지 === 
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
 import HomePage from "./pages/HomePage";
 
 
@@ -19,8 +17,7 @@ const App = () => {
       <Router>
         <main id="main">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/crime-report" element={<CrimeReportPage />} />
             <Route path="/accident-status" element={<AccidentStatusPage />} />
             <Route path="/weather-info" element={<WeatherInfoPage />} />

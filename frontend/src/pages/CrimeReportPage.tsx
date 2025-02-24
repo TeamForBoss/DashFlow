@@ -8,6 +8,8 @@ import useCrimeData from "../features/crimeReport/useCrimeData";
 import knifeImg from "../assets/images/icons/crime/knife_gray.png";
 import handImg from "../assets/images/icons/crime/boom_hand.png";
 
+import Header from "../components/Header";
+
 const CrimeReportPage = () => {
   // // console.log(strongDataToGraph);
   // const { strongCrimeData } = useCrimeData();
@@ -52,6 +54,8 @@ const CrimeReportPage = () => {
     }
   }, [strongCrimeData]);
   return (
+    <>
+    <Header page={"crime"}/>
     <section id="crMainArea" className="crMainArea crGrayBorder">
       <div className="crInnerMainArea">
         <div className="crUpsideArea crGrayBorder">
@@ -104,6 +108,7 @@ const CrimeReportPage = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

@@ -5,12 +5,6 @@ import DonutChart from "../features/accidentStatus/DonutChart";
 import CircularChart from "../features/accidentStatus/CircularChart";
 import BarChart from "../features/accidentStatus/BarChart";
 
-import Header from "../components/Header";
-
-///
-import accidentData from "../assets/tempData/accident_data.json";
-///
-
 interface totalAccident {
     [key: string]: string[] | undefined;
 
@@ -64,16 +58,15 @@ const AccidentStatusPage = () => {
     // const canvasWrap = useRef<HTMLCanvasElement>(null);
     const [allData, setAllData] = useState<{ year: number; data: totalAccident[] }[]>([]);
     const [acData, setAcData] = useState<totalAccident[]>([]);
-    const [gugun, setGugun] = useState("icheon");
+    const [gugun, setGugun] = useState("pocheon");
     const [byAccType, setByAccType] = useState<ByAccTypeData[]>([]);
     const [cntPeople, setCntPeople] = useState<number[]>([]);
     const [carCar, setCarCar] = useState<ByCarTypeData[]>([]);
     const [violOfLaw, setViolOfLaw] = useState<ByCarTypeData[]>([]);
-    const [byYearType, setbyYearType] = useState<ByYearTypeData[]>([]);
+    const [byYearType, setByYearType] = useState<ByYearTypeData[]>([]);
     // console.log(allData);
     useEffect(() => {
-        /*
-        fetch('/tempData/accident_data.json')
+        fetch('/tempData/accident_data_2023.json')
             .then(response => response.json())
             .then((data: Array<{ [key: string]: { item: [] } }>) => {
                 // console.log(data)
@@ -90,17 +83,6 @@ const AccidentStatusPage = () => {
                 console.log(err);
             });
 
-        */
-        accidentData["data"]["item"].forEach((obj) => {
-            for (let key in obj) {
-                if (gugun == key) {
-                    let { item: dataArr } = obj[key];
-                    setAcData(dataArr);
-                }
-            }
-        });
-        console.log(accidentData);
-
         const yearArr = [];
         let year = new Date().getFullYear() - 2;
         for (let i = 0; i < 14; i++) {
@@ -110,9 +92,10 @@ const AccidentStatusPage = () => {
         const travel = (data: Array<{ [key: string]: { item: [] } }>, year: number) => {
             data.forEach((obj) => {
                 for (let key in obj) {
+                    // console.log(obj[key])
                     if (gugun == key) {
                         let { item: dataArr } = obj[key];
-                        // console.log(dataArr)    
+                        console.log(allData)
                         // const allAccData= dataArr;
                         setAllData(prev => [...prev, { year: year, data: dataArr }]);
                     }
@@ -142,7 +125,8 @@ const AccidentStatusPage = () => {
                 inj: Number(allAc.data[0].injpsn_cnt[0]),
             };
         }); // end of map
-        setbyYearType(selectedData);
+        console.log(selectedData)
+            setByYearType(selectedData);
     }, [allData]);
 
     useEffect(() => {
@@ -183,9 +167,8 @@ const AccidentStatusPage = () => {
     // console.log(violOfLaw);
 
     return (
-        <>
-            <Header page={"accident"}/>
-            <section id="accident" className="accidentlayoutWrapper">
+        <section id="accident" className="accident">
+            <div className="accWrap">
             <div className="accGraphWrap">
                 <div className="acYearBox">
                     <div className="acYearTitle">
@@ -240,9 +223,9 @@ const AccidentStatusPage = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
+                </div>
         </section>
-        </>
     )
 }
 

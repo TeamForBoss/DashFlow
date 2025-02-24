@@ -109,6 +109,7 @@ class AccidentRoute extends AbstractRoute {
     run() {
         super.run();
         this.defineRoutes();
+        // this.fetchAccidentData();
     }
 }
 

@@ -1,22 +1,34 @@
 import * as d3 from "d3";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ByAccTypeData } from "../../pages/AccidentStatusPage";
 
 interface PropsType { 
     accData: ByAccTypeData[];
 }
-const BarChart = (accData : PropsType) => {
+const BarChart = (accData: PropsType) => {
+    const [width, setWidth] = useState<any>(0);
+    const [height, setHeight] = useState<any>(0);
     const svgRef = useRef(null);
-    // 데이터 정의 (객체가 아닌 배열로 변경)
     let { accData: accArr } = accData;
     // console.log(accArr);
-
+    const handleResize = () => {
+        const width = document.querySelector(".acYearGraph")?.clientWidth;
+        const height = document.querySelector(".acYearGraph")?.clientHeight;
+        setWidth(width);
+        setHeight(height);
+    };
+    useEffect(() => {
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => {
+            // cleanup
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
     // 그래프 크기 및 마진 설정
-    const width = 1200;
-    const height = 300;
-    const marginTop = 20;
-    const marginRight = 30;
-    const marginBottom = 30;
+    const marginTop = 40;
+    const marginRight = 40;
+    const marginBottom = 40;
     const marginLeft = 40;
 
     // x축 (type 스케일) 설정
@@ -46,7 +58,7 @@ const BarChart = (accData : PropsType) => {
             .y(d => y(d.death)) // y축 좌표 설정
     const line1 = d3
         .line<ByAccTypeData>()
-        .x(d => x(d.type)!+52) // x축 좌표 설정
+        .x(d => x(d.type)!+marginRight-10) // x축 좌표 설정
         .y(d => y1(d.acc)) // 두 번째 y축 좌표 설정 (acc)
         // .curve(d3.curveMonotoneX); // 부드러운 곡선 적용
 
@@ -123,7 +135,7 @@ const BarChart = (accData : PropsType) => {
             .data(accArr)
             .enter()
             .append("circle")
-            .attr("cx", d => x(d.type)! + 52)  
+            .attr("cx", d => x(d.type)! +marginRight-10)  
             .attr("cy", d => y1(d.acc))         
             .attr("r", 4)                       
             .attr("fill", "#fff")            

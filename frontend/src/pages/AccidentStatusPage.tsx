@@ -58,7 +58,7 @@ const AccidentStatusPage = () => {
     // const canvasWrap = useRef<HTMLCanvasElement>(null);
     const [allData, setAllData] = useState<{ year: number; data: totalAccident[] }[]>([]);
     const [acData, setAcData] = useState<totalAccident[]>([]);
-    const [gugun, setGugun] = useState("pocheon");
+    const [gugun, setGugun] = useState("ansan");
     const [byAccType, setByAccType] = useState<ByAccTypeData[]>([]);
     const [cntPeople, setCntPeople] = useState<number[]>([]);
     const [carCar, setCarCar] = useState<ByCarTypeData[]>([]);
@@ -118,6 +118,7 @@ const AccidentStatusPage = () => {
 
     useEffect(() => {
         const selectedData = allData.map((allAc) => {
+            // console.log(allAc)
             return {
                 year: (allAc.year).toString(),
                 acc: Number(allAc.data[0].acc_cnt[0]),
@@ -125,8 +126,9 @@ const AccidentStatusPage = () => {
                 inj: Number(allAc.data[0].injpsn_cnt[0]),
             };
         }); // end of map
-        console.log(selectedData)
-            setByYearType(selectedData);
+        selectedData.sort((a, b) => a.year < b.year? -1 : a.year > b.year ? 1:0);
+        // console.log(sortArr);
+        setByYearType(selectedData);
     }, [allData]);
 
     useEffect(() => {
@@ -134,7 +136,7 @@ const AccidentStatusPage = () => {
             // 사고종류별 사망, 사고
             const typeData = [];
             for (let obj of acData) {
-                if (obj.acc_cl_nm[0] != "전체사고") {
+                if (obj.acc_cl_nm[0] != "전체사고" && obj.acc_cl_nm[0] != "개인형이동수단(PM)사고" && obj.acc_cl_nm[0] != "스쿨존내어린이사고") {
                     typeData.push({
                         type: obj.acc_cl_nm[0],
                         death: Number(obj.acc_cnt[0]),
@@ -169,62 +171,62 @@ const AccidentStatusPage = () => {
     return (
         <section id="accident" className="accident">
             <div className="accWrap">
-            <div className="accGraphWrap">
-                <div className="acYearBox">
-                    <div className="acYearTitle">
-                        <p>조회년도별 사망, 사고</p>
+                <div className="accGraphWrap">
+                    <div className="acYearBox">
+                        <div className="acYearTitle">
+                            <p>조회년도별 사망, 사고</p>
+                        </div>
+                        <div className="acYearGraph">
+                            <LineChart yearData={byYearType} />
+                        </div>
                     </div>
-                    <div className="acYearGraph">
-                        <LineChart yearData={ byYearType } />
+                    <div className="acTrafficBox">
+                        <div className="TrafficTitle">
+                            <p>사고분류별 사망, 사고</p>
+                        </div>
+                        <div className="TrafficGraph">
+                            <BarChart accData={byAccType} />
+                        </div>
                     </div>
                 </div>
-                <div className="acTrafficBox">
-                    <div className="TrafficTitle">
-                        <p>사고분류별 사망, 사고</p>
+
+                <div className="accChartWrap">
+                    <div className="acCount">
+                        <div className="numOfAccBox">
+                            <div className="acAccTitle">
+                                <p>사고건수</p>
+                            </div>
+                            <div className="numOfAcc">{cntPeople[0]}</div>
+                        </div>
+                        <div className="numOfDeathBox">
+                            <div className="acDeathTitle">
+                                <p>사망자수</p>
+                            </div>
+                            <div className="numOfDeath">{cntPeople[1]}</div>
+                        </div>
                     </div>
-                    <div className="TrafficGraph">
-                        <BarChart accData={byAccType} />
+                    <div className="accidentType">
+                        <div className="acTypeBox">
+                            <div className="acTypeTitle">
+                                <p>사고유형별 사고건수</p>
+                            </div>
+                            <div className="acTypeGraph">
+                                <DonutChart carData={carCar} />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="LawViolation">
+                        <div className="acLawBox">
+                            <div className="acLawTitle">
+                                <p>법규위반 사고건수</p>
+                            </div>
+                            <div className="acLawGraph">
+                                <CircularChart lawData={violOfLaw} />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div className="accChartWrap">
-                <div className="acCount">
-                    <div className="numOfAccBox">
-                        <div className="acAccTitle">
-                            <p>사고건수</p>
-                        </div>
-                        <div className="numOfAcc">{cntPeople[0]}</div>
-                    </div>
-                    <div className="numOfDeathBox">
-                        <div className="acDeathTitle">
-                            <p>사망자수</p>
-                        </div>
-                        <div className="numOfDeath">{cntPeople[1]}</div>
-                    </div>
-                </div>
-                <div className="accidentType">
-                    <div className="acTypeBox">
-                        <div className="acTypeTitle">
-                            <p>사고유형별 사고건수</p>
-                        </div>
-                        <div className="acTypeGraph">
-                            <DonutChart carData={carCar} />
-                        </div>
-                    </div>
-                </div>
-                <div className="LawViolation">
-                    <div className="acLawBox">
-                        <div className="acLawTitle">
-                            <p>법규위반 사고건수</p>
-                        </div>
-                        <div className="acLawGraph">
-                            <CircularChart lawData={violOfLaw} />
-                        </div>
-                    </div>
-                </div>
-                </div>
-                </div>
         </section>
     )
 }

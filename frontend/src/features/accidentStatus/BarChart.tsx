@@ -50,7 +50,7 @@ const BarChart = (accData: PropsType) => {
         .domain([0, d3.max(accArr, d => d.acc) ?? 0]) 
         .nice()
         .range([height - marginBottom, marginTop]);
-
+    // console.log(width/100+2)
     // 선(line) 생성 함수 정의
     const line = d3
             .line<ByAccTypeData>()
@@ -58,7 +58,7 @@ const BarChart = (accData: PropsType) => {
             .y(d => y(d.death)) // y축 좌표 설정
     const line1 = d3
         .line<ByAccTypeData>()
-        .x(d => x(d.type)!+marginRight-10) // x축 좌표 설정
+        .x(d => x(d.type)!+width/22) // x축 좌표 설정
         .y(d => y1(d.acc)) // 두 번째 y축 좌표 설정 (acc)
         // .curve(d3.curveMonotoneX); // 부드러운 곡선 적용
 
@@ -135,7 +135,7 @@ const BarChart = (accData: PropsType) => {
             .data(accArr)
             .enter()
             .append("circle")
-            .attr("cx", d => x(d.type)! +marginRight-10)  
+            .attr("cx", d => x(d.type)! + width / 22)  
             .attr("cy", d => y1(d.acc))         
             .attr("r", 4)                       
             .attr("fill", "#fff")            

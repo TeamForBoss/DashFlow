@@ -64,15 +64,15 @@ const LineChart = (yearData: PropsType) => {
     // 선(line) 생성 함수 정의
     const line = d3
         .line<ByYearTypeData>()
-        .x(d => x(d.year)! + marginRight) // x축 좌표 설정
+        .x(d => x(d.year)! + width/31) // x축 좌표 설정
         .y(d => y(d.inj)) // y축 좌표 설정
     const lineAcc = d3
         .line<ByYearTypeData>()
-        .x(d => x(d.year)! + marginRight) // x축 좌표 설정
+        .x(d => x(d.year)! + width/31) // x축 좌표 설정
         .y(d => y1(d.acc)) // 두 번째 y축 좌표 설정 (acc)
     const lineDth = d3
         .line<ByYearTypeData>()
-        .x(d => x(d.year)! + marginRight) // x축 좌표 설정
+        .x(d => x(d.year)! + width/31) // x축 좌표 설정
         .y(d => y2(d.death)) // 두 번째 y축 좌표 설정 (acc)
 
     useEffect(() => {
@@ -154,9 +154,9 @@ const LineChart = (yearData: PropsType) => {
             .data(accArr)
             .enter()
             .append("circle")
-            .attr("cx", d => x(d.year)! + marginRight)
+            .attr("cx", d => x(d.year)! + width/31)
             .attr("cy", d => y1(d.inj))
-            .attr("r", 10)
+            .attr("r", 8)
             .attr("fill", "#fff")
             .attr("stroke", "#FFF2A5")
             .attr("stroke-width", 7);
@@ -166,9 +166,9 @@ const LineChart = (yearData: PropsType) => {
             .data(accArr)
             .enter()
             .append("circle")
-            .attr("cx", d => x(d.year)! + marginRight)
+            .attr("cx", d => x(d.year)! +width/31)
             .attr("cy", d => y1(d.acc))
-            .attr("r", 10)
+            .attr("r", 8)
             .attr("fill", "#fff")
             .attr("stroke", "#FBC02D")
             .attr("stroke-width", 7);
@@ -178,9 +178,9 @@ const LineChart = (yearData: PropsType) => {
             .data(accArr)
             .enter()
             .append("circle")
-            .attr("cx", d => x(d.year)! + marginRight)
+            .attr("cx", d => x(d.year)! +width/31)
             .attr("cy", d => y1(d.death))
-            .attr("r", 10)
+            .attr("r", 8)
             .attr("fill", "#fff")
             .attr("stroke", "#FAFD8D")
             .attr("stroke-width", 7);
@@ -207,7 +207,7 @@ const LineChart = (yearData: PropsType) => {
         //             .attr("y", 9.5)
         //             .attr("dy", "0.32em")
         //             .text(d => d);
-        const nameArr = ["사고건수", "사망자", "부상자"];
+        const nameArr = ["부상자", "사고건수", "사망자"];
         const colorArr = ["#FFFFD5", "#FBC02D", "#FAFD8D"];
 
         const legend = svg.append("g")
@@ -217,7 +217,7 @@ const LineChart = (yearData: PropsType) => {
             .data(nameArr)
             .enter()
             .append("g")
-            .attr("transform", (_d, i) => `translate(0, ${i * (height / 3.5)})`)
+            .attr("transform", (_d, i) => `translate(0, ${i * (height / 3.3)})`)
             .each((d, i, arr) => {
                 const group = d3.select(arr[i]);
 

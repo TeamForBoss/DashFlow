@@ -36,7 +36,6 @@ const allButtons: ButtonConfig[] = [
 const Header: React.FC<HeaderProps> = ({ page }) => {
   const selectedRegion = useRecoilValue(selectedRegionState);
 
-  // 지역명이 있다면 Gyeonggido 객체에서 한글 이름을 읽어서 헤더 텍스트 앞에 붙임
   const Gyeonggido: Record<string, string> = {
     gapyeong: "가평군",
     goyang: "고양시",
@@ -79,7 +78,7 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
       : textConfig[page].text;
 
   return (
-    <header className={`header-container ${page === "home" ? "header-home" : ""}`}>
+    <header className={`header-container ${page === "home" ? "header-home" : "header-etc"}`}>
       <div className="header-logo">
         <NavLink to={textConfig.home.nav}>
           <img src={logo} alt="안전신호등 로고" className="header-logo-img" />
@@ -93,7 +92,6 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
           <div className="header-buttons">
             {allButtons.map((btn, index) =>
               btn.page === page ? (
-                // 현재 페이지에 해당하는 버튼은 <span>으로 렌더링하여 클릭되지 않게 함
                 <span key={index} className="header-btn active">
                   {btn.text}
                 </span>

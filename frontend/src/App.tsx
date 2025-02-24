@@ -3,10 +3,7 @@ import {RecoilRoot} from 'recoil';
 
 
 // === 페이지 === 
-// import Home from "./pages/Home";
 import HomePage from "./pages/HomePage";
-
-
 import CrimeReportPage from "./pages/CrimeReportPage";
 import AccidentStatusPage from "./pages/AccidentStatusPage";
 import WeatherInfoPage from "./pages/WeatherInfoPage";

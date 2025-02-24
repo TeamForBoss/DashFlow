@@ -1,6 +1,25 @@
 import sunny from '../../assets/images/icons/weather/sun.png';
+import { useEffect , useState } from 'react';
+import { useRecoilValue } from "recoil"; 
+import { hostState } from "../../state/hostAtom.js"; 
 
 const HomeWeather = () => {
+    // const host = useRecoilValue(hostState);
+    // const [weatherData , setWeatherData] = useState([]);
+    // useEffect(()=>{
+    //     fetch(`${host}/weather`,{
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type" : "application.json"
+    //         }
+    //     })
+    //     .then(res=>res.json())
+    //     .then((data)=>{
+    //         console.log(data)
+    //         setWeatherData(data);
+    //     });
+    // }, [host]);
+
     return (
     <div className="averageWrap">
         <div className="waveContainer waveWeather">

@@ -3,7 +3,6 @@ import crimeData from "../../assets/tempData/crime_data.json";
 import crimeDataAll from "../../assets/tempData/crime_api_data.json";
 
 const useCrimeData = () => {
-
   const [strongCrimeData, setStrongCrimeData] = useState<
     { data: number; 범죄대분류: string; 범죄중분류: string }[]
   >([]);
@@ -13,7 +12,9 @@ const useCrimeData = () => {
   const [intelligenceCrimeData, setIntelligenceCrimeData] = useState<
     { data: number; 범죄대분류: string; 범죄중분류: string }[]
   >([]);
-  const [allCrimeData, setAllCrimeData] = useState(null);
+  const [allCrimeData, setAllCrimeData] = useState<
+    { data: number; 범죄대분류: string; 범죄중분류: string }[]
+  >([]);
 
   useEffect(() => {
     const crimeArray = crimeData["crimeData"];
@@ -42,26 +43,37 @@ const useCrimeData = () => {
       return false;
     });
 
-    // ================================== 이부분 오류 떠서 일단 주석 처리 했어요 (유진) ==================================
-    /*
     const allAvgData = crimeDataAll.filter((value: any) => {
       for (let key in value) {
         if (typeof value[key] === "string" && value[key].includes("지능")) {
-          const arr: [] = [];
-          value.forEach((v, i, a) => {});
-          return { data: 0, 범죄대분류: "지능범죄", 범죄중분류: "하이" };
+          return true;
         }
       }
       return false;
     });
+    let avgData = allAvgData.map((value) => {
+      let total = 0;
+      let count = 0;
 
-    console.log(allAvgData);
+      for (let key in value) {
+        if (key.includes("경기도")) {
+          total += (value as Record<string, number | string>)[key] as number;
+          count++;
+        }
+      }
+      return {
+        data: count > 0 ? Math.ceil(total / count) : 0,
+        범죄대분류: value["범죄대분류"],
+        범죄중분류: value["범죄중분류"],
+      };
+    });
+
+    // console.log(avgData);
+    // console.log(intelligenceData);
     // 경기도 전체 지역 지능 범죄~~~
-    setAllCrimeData(allAvgData);
-    console.log(intelligenceData);
-
-    */
-    // ================================== 이부분 오류 떠서 일단 주석 처리 했어요 (유진) ==================================
+    // console.log(allAvgData);
+    setAllCrimeData(avgData);
+    // console.log(intelligenceData);
 
     setStrongCrimeData(strongData);
     setViolenceCrimeData(violenceData);

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import useCrimeData from "../../features/crimeReport/useCrimeData";
 
@@ -7,64 +7,76 @@ interface CrimeData {
   data: number;
 }
 
-interface ViolenceCrimePieChartProps {
-  width?: number;
-  height?: number;
-}
-
-const ViolenceCrimePieChart: React.FC<ViolenceCrimePieChartProps> = ({
-  width = 320, // 차트 가로 크기
-  height = 320, // 차트 세로 크기
-}) => {
+const ViolenceCrimePieChart: React.FC = () => {
   const { violenceCrimeData } = useCrimeData();
   const svgRef = useRef<SVGSVGElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [dimensions, setDimensions] = useState({ width: 300, height: 300 });
+
+  //   부모 크기에 맞춰 차트 크기 설정 (반응형 적용)
+  useEffect(() => {
+    const updateSize = () => {
+      if (containerRef.current) {
+        setDimensions({
+          width: containerRef.current.clientWidth,
+          height: containerRef.current.clientHeight,
+        });
+      }
+    };
+
+    updateSize(); // 처음 마운트될 때 크기 설정
+    window.addEventListener("resize", updateSize); // 창 크기 변경 감지
+
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
 
   useEffect(() => {
     if (!violenceCrimeData || violenceCrimeData.length === 0) return;
 
-    const pieWidth = width * 0.6; // 차트의 실제 너비
-    const radius = Math.min(pieWidth, height) / 2 - 20; // 원형 차트의 반지름
-    const total = d3.sum(violenceCrimeData, (d) => d.data); // 전체 데이터 합계
-    const maxData = Math.max(...violenceCrimeData.map((d) => d.data)); // 최대값 구하기
+    const { width, height } = dimensions;
+    const pieWidth = width * 0.5; //   원을 왼쪽에 배치하기 위해 너비 조정
+    const radius = Math.min(pieWidth, height) / 2 - 20;
+    const total = d3.sum(violenceCrimeData, (d) => d.data);
+    const maxData = Math.max(...violenceCrimeData.map((d) => d.data));
 
-    // ✅ 데이터 내림차순 정렬 (가장 큰 값이 맨 위에 오도록!)
+    //   데이터 내림차순 정렬
     const sortedData = [...violenceCrimeData].sort((a, b) => b.data - a.data);
 
-    // ✅ 색상 설정 (데이터 크기에 따라 색상 변경)
+    //   색상 설정
     const colorScale = d3
       .scaleLinear<string>()
       .domain([0, maxData])
-      .range(["#FFC0CB", "#FF1493"]); // 원하는 색상으로 변경 가능
+      .range(["#FFC0CB", "#FF1493"]);
 
-    // ✅ D3 파이 차트 설정
     const pie = d3.pie<CrimeData>().value((d) => d.data);
     const arc = d3
       .arc<d3.PieArcDatum<CrimeData>>()
       .innerRadius(0)
       .outerRadius(radius);
 
-    const svg = d3
-      .select(svgRef.current)
-      .attr("width", width + 100) // 전체 SVG 크기 설정
-      .attr("height", height);
+    //   기존 SVG 내용 삭제 후 새로 그리기
+    const svg = d3.select(svgRef.current);
+    svg.selectAll("*").remove();
+    svg.attr("width", width).attr("height", height);
 
-    // ✅ 차트 위치 조정 (오른쪽으로 20px, 위로 60px 이동)
-    const g = svg
-      .append("g")
-      .attr("transform", `translate(${pieWidth / 2 + 20}, ${height / 2 - 60})`);
+    //   파이 차트 그룹 (왼쪽 배치)
+    const g = svg.append("g").attr(
+      "transform",
+      `translate(${width / 3}, ${height / 2})` //   왼쪽 정렬
+    );
 
     const arcs = g
       .selectAll(".arc")
-      .data(pie(sortedData)) // ✅ 내림차순 정렬된 데이터 적용!
+      .data(pie(sortedData))
       .enter()
       .append("g")
       .attr("class", "arc");
 
-    // ✅ 차트 조각(파이) 생성 및 애니메이션 적용
+    //   차트 조각 애니메이션 적용
     arcs
       .append("path")
-      .attr("fill", (d) => colorScale(d.data.data)) // 데이터 크기에 따른 색상 설정
-      .style("stroke", "#fff") // 테두리 색상
+      .attr("fill", (d) => colorScale(d.data.data))
+      .style("stroke", "#fff")
       .style("stroke-width", "2px")
       .transition()
       .duration(1000)
@@ -75,40 +87,74 @@ const ViolenceCrimePieChart: React.FC<ViolenceCrimePieChartProps> = ({
         };
       });
 
-    // ✅ 범례 위치 조정 (오른쪽으로 80px, 위로 60px 이동)
-    const legend = svg
-      .append("g")
-      .attr("transform", `translate(${pieWidth + 80}, ${height / 4 - 60})`);
+    ///////////////////////////////// 원 데이터 안에 글자 넣기!  !!!!!!///////////////////////
+    //  데이터 내림차순 정렬 후 상위 3개 가져오기
+    const top3Data = [...violenceCrimeData]
+      .sort((a, b) => b.data - a.data)
+      .slice(0, 3);
+    arcs
+      .filter((d) =>
+        top3Data.some((item) => item.범죄중분류 === d.data.범죄중분류)
+      ) //  TOP 3만 필터링
+      .append("text")
+      .attr("transform", (d) => `translate(${arc.centroid(d)})`) //   중심 좌표 계산
+      .attr("text-anchor", "middle")
+      .style("font-size", "12px")
+      .style("fill", "#fff") //   글씨 색
+      .style("font-weight", "bold")
+      .text((d) => d.data.범죄중분류);
+    ///////////////////////////////// 원 데이터 안에 글자 넣기!  !!!!!!///////////////////////
 
-    // ✅ 범례 추가 (퍼센트 포함 + 내림차순 정렬)
-    legend
+    //   범례 그룹 생성 (오른쪽 & 수직 정렬)
+    const legendContainer = svg
+      .append("g")
+      .attr(
+        "transform",
+        `translate(${width * 0.7}, ${
+          height / 2 - (sortedData.length * 12) / 1.2
+        })`
+      );
+    legendContainer
       .selectAll(".legend-item")
-      .data(sortedData) // ✅ 내림차순 정렬된 데이터 적용!
+      .data(sortedData)
       .enter()
       .append("g")
       .attr("class", "legend-item")
       .attr("transform", (d, i) => `translate(0, ${i * 20})`)
       .each(function (d) {
-        const percent = ((d.data / total) * 100).toFixed(1); // ✅ 퍼센트 계산
+        const percent = ((d.data / total) * 100).toFixed(1);
 
         d3.select(this)
           .append("circle")
           .attr("cx", 10)
           .attr("cy", 10)
           .attr("r", 5)
-          .style("fill", colorScale(d.data)); // 범례 색상
+          .style("fill", colorScale(d.data));
 
         d3.select(this)
           .append("text")
-          .attr("x", 22)
+          .attr("x", 23)
           .attr("y", 14)
-          .style("font-size", "10px")
+          .style("font-size", "12px") // 범례 글씨 크기
           .style("fill", "#333")
-          .text(`${d.범죄중분류} - ${percent}%`); // ✅ 범례에 퍼센트 포함!
+          .text(`${d.범죄중분류} - ${percent}%`);
       });
-  }, [violenceCrimeData, width, height]);
+  }, [violenceCrimeData, dimensions]);
 
-  return <svg ref={svgRef}></svg>;
+  return (
+    <div
+      ref={containerRef}
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <svg ref={svgRef}></svg>
+    </div>
+  );
 };
 
 export default ViolenceCrimePieChart;

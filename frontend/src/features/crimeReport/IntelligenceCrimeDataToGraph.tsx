@@ -1,13 +1,14 @@
 import useCrimeData from "../../features/crimeReport/useCrimeData";
-import IntelligenceCrimeBarChart from "../../features/crimeReport/IntelligenceCrimeLineChart"; // 막대 그래프 컴포넌트
+import IntelligenceCrimeLineChart from "../../features/crimeReport/IntelligenceCrimeLineChart"; // 라인 차트 컴포넌트
 
 const IntelligenceCrimeDataToGraph = () => {
-  const { intelligenceCrimeData } = useCrimeData();
+  const { intelligenceCrimeData, allCrimeData } = useCrimeData();
 
   return (
-    <div>
-      <IntelligenceCrimeBarChart data={intelligenceCrimeData} />
-    </div>
+    <IntelligenceCrimeLineChart
+      data1={intelligenceCrimeData}
+      data2={allCrimeData}
+    />
   );
 };
 

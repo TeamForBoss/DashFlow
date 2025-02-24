@@ -24,7 +24,6 @@
 
 // 제일 큰 박스! 다 감싸는 박스
 .crMainArea {
-    padding: var(--commonPadding);
     height: 100vh;
     margin: auto;
     max-width: 150rem;
@@ -35,39 +34,38 @@
     //패딩 적용 후 남은 영역(2번째 제일 큰 박스)
     .crInnerMainArea {
         width: 100%;
-        height: 100%;
+        height: 85%;
+        position: relative;
+        top: 11.5%;
 
         // border: 1px solid red;
         // 위쪽 부분!! 
         .crUpsideArea {
             height: 70%;
             width: 100%;
-            // background-color: aqua;
             display: flex;
-            padding: var(--boxPadding);
 
             //위쪽 부분 중에 왼쪽 부분
             .crUpLeftSideArea {
                 width: 60%;
-                // padding: var(--boxPadding);
                 height: 100%;
 
                 //위쪽 부분에서 왼쪽의 위 부분. 2개를 감싸는 부분
                 .crUpLeftSide2Area {
-                    // background-color: yellow;
                     height: 20%;
                     display: flex;
-                    // padding: var(--boxPadding);
                     margin-bottom: 1rem;
 
                     .crUp2Area1 {
                         background-color: var(--white);
                         display: flex;
+                        align-items: center;
                     }
 
                     .crUp2Area2 {
                         background-color: var(--white);
                         display: flex;
+                        align-items: center;
                         margin-left: 1rem;
                     }
 
@@ -76,21 +74,22 @@
                 // 위쪽 부분 왼쪽에서 아래 부분 . 강력범죄 부분
                 .crStrongCrimeArea {
                     background-color: var(--white);
-                    height: 75%;
+                    height: 76%;
                     padding: var(--boxPadding);
                     border-radius: var(--boxBorder);
                     -moz-border-radius: var(--boxBorder);
                     -ms-border-radius: var(--boxBorder);
                     -o-border-radius: var(--boxBorder);
                     -webkit-border-radius: var(--boxBorder);
-                    //margin-bottom: 1rem;
 
                     p {
-                        width: 100%;
-                        height: 3rem;
                         @include textBox();
                         text-align: center;
-                        padding: 4px;
+                        height: 4rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 2rem;
                     }
 
                     // 강력범죄 차트 그래프 영역 ///
@@ -107,7 +106,7 @@
             .crUpRightSideArea {
                 margin-left: 1rem;
                 width: 40%;
-                height: 97%;
+                height: 98%;
                 background-color: var(--white);
                 padding: var(--boxPadding);
                 border-radius: var(--boxBorder);
@@ -119,14 +118,22 @@
                 p {
                     @include textBox();
                     text-align: center;
-                    height: 3rem;
-                    padding: 4px;
+                    height: 4rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 2rem;
                 }
 
                 .crUpRightGraph {
-                    margin: 1rem;
+                    border-radius: var(--boxBorder);
+                    margin: 1rem 0;
                     border: 1px solid gray;
-                    height: 87%;
+                    height: 90%;
+                    -webkit-border-radius: var(--boxBorder);
+                    -moz-border-radius: var(--boxBorder);
+                    -ms-border-radius: var(--boxBorder);
+                    -o-border-radius: var(--boxBorder);
                 }
             }
 
@@ -136,13 +143,11 @@
 
         //아래쪽 부분!!///////////////////
         .crDownSideArea {
-            height: 30%;
-            width: 98.5%;
-            margin-left: 1rem;
+            height: 32%;
+            width: 100%;
             padding: var(--boxPadding);
             background-color: var(--white);
             border-radius: var(--boxBorder);
-            //margin: 1rem;
             -webkit-border-radius: var(--boxBorder);
             -moz-border-radius: var(--boxBorder);
             -ms-border-radius: var(--boxBorder);
@@ -155,15 +160,21 @@
                 .crDownSideBoxText {
                     @include textBox();
                     text-align: center;
-                    height: 3rem;
-                    padding: 4px;
+                    height: 4rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    span {
+                        font-size: 2rem;
+                    }
                 }
 
                 // 그래프 넣는 박스
                 .crDownSideAreaGraphBox {
                     display: flex;
                     margin-top: 1%;
-                    height: 70%;
+                    height: 80%;
 
                     // 해당지역 , 경기도 텍스트넣는 박스
                     .crDownSideBoxTextP {
@@ -181,9 +192,10 @@
                         }
                     }
 
-                    // 마약범죄 그래프
+                    // 지능범죄 그래프
                     .crDownSideAreaGraph {
                         width: 100%;
+                        height: 70%;
                         border-radius: var(--boxBorder);
                         border: 1px solid gray;
                         -webkit-border-radius: var(--boxBorder);
@@ -205,13 +217,17 @@
 
 // 살인, 폭행 P 태그
 .crUp2AreaP {
-    // font-family: var(--numfont), var(--fontN);
     width: 40%;
-    text-align: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding-right: 10px;
     color: var(--black300);
     font-size: var(--smallFontSize);
-    // border: 1px solid yellow;
+
+    span {
+        font-size: 2rem;
+    }
 }
 
 //위쪽 부분 2개 박스의 공통 클래스
@@ -230,12 +246,39 @@
 // 살인, 폭행 div
 .crUp2AreaSmall {
     width: 55%;
-    height: 4rem;
-    // line-height: 4rem;
-    margin-top: -2%;
-    // text-align: center;
+    height: 100%;
     margin-left: 1rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     @include textBox();
+
+    p {
+        font-size: 2rem;
+    }
+}
+
+.mainImg {
+    width: 6rem;
+    height: 6rem;
+    // border: 1px solid red;
+    // text-align: center;
+    margin-left: 3rem;
+}
+
+
+
+
+
+// 미디어 쿼리 부분
+@media (max-width : 1400px) {
+    .crMainArea {
+        max-width: 120rem;
+
+        // height: 10%;
+        .crInnerMainArea {
+            height: 80%;
+            top: 17%;
+        }
+    }
 }

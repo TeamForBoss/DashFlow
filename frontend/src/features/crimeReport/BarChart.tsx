@@ -20,7 +20,7 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
     const containerWidth = containerRef.current.clientWidth;
     const containerHeight = containerRef.current.clientHeight;
 
-    const margin = { top: 20, right: -10, bottom: 10, left: -10 };
+    const margin = { top: 30, right: -10, bottom: 10, left: -10 };
     const width = containerWidth - margin.left - margin.right;
     const height = containerHeight - margin.top - margin.bottom;
 
@@ -83,6 +83,8 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
       .attr("transform", `translate(0, ${height})`)
       .call(d3.axisBottom(xScale))
       .selectAll("text")
+      .style("font-size", "12px")
+      .attr("fill", "#333")
       .attr("text-anchor", "middle");
 
     //   .attr("transform", "rotate(-45)")

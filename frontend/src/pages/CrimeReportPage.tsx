@@ -5,8 +5,9 @@ import StrongDataToGraph from "../features/crimeReport/StrongDataToGraph";
 import ViolenceCrimeDataToGraph from "../features/crimeReport/ViolenceCrimeDataToGraph";
 import IntelligenceCrimeDataToGraph from "../features/crimeReport/IntelligenceCrimeDataToGraph";
 import useCrimeData from "../features/crimeReport/useCrimeData";
+import knifeImg from "../assets/images/icons/crime/knife_gray.png";
+import handImg from "../assets/images/icons/crime/boom_hand.png";
 
-import Header from "../components/Header";
 const CrimeReportPage = () => {
   // // console.log(strongDataToGraph);
   // const { strongCrimeData } = useCrimeData();
@@ -51,20 +52,28 @@ const CrimeReportPage = () => {
     }
   }, [strongCrimeData]);
   return (
-    <>
-    <Header page={"crime"}/>
     <section id="crMainArea" className="crMainArea crGrayBorder">
       <div className="crInnerMainArea">
         <div className="crUpsideArea crGrayBorder">
           <div className="crUpLeftSideArea crGrayBorder">
             <div className="crUpLeftSide2Area crGrayBorder">
               <div className="crUp2Area1 crUp2Area">
-                <p className="crUp2AreaP">살인</p>
-                <div className="crUp2AreaSmall">{strongNum}</div>
+                <img className="mainImg" src={knifeImg}></img>
+                <p className="crUp2AreaP">
+                  <span>살인</span>
+                </p>
+                <div className="crUp2AreaSmall">
+                  <p>{strongNum}</p>
+                </div>
               </div>
               <div className="crUp2Area2 crUp2Area">
-                <p className="crUp2AreaP">폭행</p>
-                <div className="crUp2AreaSmall">{violenceNum}</div>
+                <img className="mainImg" src={handImg}></img>
+                <p className="crUp2AreaP">
+                  <span>폭행</span>
+                </p>
+                <div className="crUp2AreaSmall">
+                  <p>{violenceNum}</p>
+                </div>
               </div>
             </div>
             <div className="crStrongCrimeArea crGrayBorder">
@@ -83,12 +92,10 @@ const CrimeReportPage = () => {
         </div>
         <div className="crDownSideArea crGrayBorder">
           <div className="crDownSideBox">
-            <p className="crDownSideBoxText">지능범죄 차트</p>
+            <p className="crDownSideBoxText">
+              <span>지능범죄 차트</span>
+            </p>
             <div className="crDownSideAreaGraphBox">
-              <div className="crDownSideBoxTextP">
-                <p>해당지역</p>
-                <p>경기도</p>
-              </div>
               <div className="crDownSideAreaGraph">
                 <IntelligenceCrimeDataToGraph />
               </div>
@@ -97,7 +104,6 @@ const CrimeReportPage = () => {
         </div>
       </div>
     </section>
-    </>
   );
 };
 

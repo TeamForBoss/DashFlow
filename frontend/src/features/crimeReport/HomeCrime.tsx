@@ -9,7 +9,7 @@ const HomeCrime = () => {
         <div className="wave wave3"></div>
         </div>
         <div className="item homeCrimeItem">
-        <div className="title">경기도 사고</div>
+        <div className="title">경기도 범죄</div>
         <div className="contents">
             <div className="content">
             <img src={sunny} alt="맑음" />

@@ -136,3 +136,10 @@ select {
     text-indent: -9999px;
     white-space: nowrap;
 }
+
+// ======== 임시 방편 (유진 0223) ==========
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}

@@ -1,12 +1,61 @@
-#header {
+/* 헤더 전체 컨테이너 */
+.header-container {
     width: 100vw;
-    position: absolute;
+    position: fixed;
     top: 1.875rem;
-    padding: 20px;
+    padding: 15px 20px;
     border: 1px solid #bbb;
-    text-align: center;
-    font-size: var(--bigFontSize);
     background-color: var(--white);
-    // display: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
-//2025-02-19 헤더 임시
+
+/* 홈 페이지 전용 스타일 */
+.header-home {
+    justify-content: center; /* 중앙 정렬 */
+}
+
+/* 로고 스타일 */
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo-img {
+    height: 40px; /* 로고 크기 조절 (필요에 따라 변경) */
+}
+
+/* 서브 타이틀 공통 스타일 */
+.header-subtitle {
+    font-size: var(--bigFontSize);
+    font-weight: bold;
+}
+
+/* 서브 타이틀 색상 */
+.header-text-accident { color: red; }       /* 사고 발생 현황 */
+.header-text-crime { color: blue; }         /* 범죄 발생 현황 */
+.header-text-weather { color: green; }      /* 날씨 정보 */
+.header-text-select { color: purple; }      /* 카테고리 선택 */
+
+/* 버튼 컨테이너 */
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* 버튼 스타일 */
+.header-btn {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.header-btn:hover {
+    background-color: #ddd;
+}

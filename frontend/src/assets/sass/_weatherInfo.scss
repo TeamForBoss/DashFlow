@@ -1,0 +1,179 @@
+@use "./mixin" as *;
+
+@mixin titleHead() {
+  border: 1px solid var(--borderColor);
+  border-radius: 10px;
+  padding: var(--boxPadding);
+  background-color: var(--white);
+}
+
+@mixin weatherTitleStyle() {
+  background: #eff5f5;
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: inset 0px 3px 3px #dadada;
+}
+
+$weatherTopSection-height: 50%;
+$weatherTrend-height: calc(100% - $weatherTopSection-height);
+$weather-backgroundColor: linear-gradient(#fff, #c6f0e4);
+
+.weatherPage {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  gap: var(--gapSize);
+  padding: var(--commonPadding);
+  background: $weather-backgroundColor;
+
+  .weatherLayOutArea {
+    max-width: 150rem;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .weatherTopSection {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--gapSize);
+    height: $weatherTopSection-height;
+
+    .weatherSummaryWrap {
+      width: 20%;
+      gap: var(--gapSize);
+      height: 100%;
+
+      .weatherStatBox {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-between;
+        height: 100%;
+
+        .weatherStat {
+          @include titleHead();
+          font-size: var(--middleFontSize);
+          text-align: center;
+          height: calc(33.3333% - 0.6rem);
+        }
+      }
+    }
+  }
+
+  .weatherGraphWrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 3;
+    gap: var(--gapSize);
+    height: 100%;
+
+    .weatherInfoListBox {
+      @include titleHead();
+      width: 60%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      p {
+        text-align: center;
+        font-size: var(--bigFontSize);
+        color: var(--headerFontColor);
+        margin-bottom: 0.8rem;
+        @include weatherTitleStyle();
+      }
+
+      .weatherInfoTableWrapper {
+        flex: 1;      // 남은 공간을 모두 사용
+        overflow-y: auto;
+
+        /* 스크롤바 커스텀 (WebKit 기반 브라우저용) */
+        &::-webkit-scrollbar {
+          width: 10px;               /* 스크롤바 너비 */
+          background-color: #f1f1f1; /* 스크롤바 트랙 배경 */
+        }
+        &::-webkit-scrollbar-track {
+          background-color: #f1f1f1; /* 트랙 배경 (같은 값으로 통일) */
+        }
+        &::-webkit-scrollbar-thumb {
+          background: #b2dfdb;       /* 민트 계열 thumb */
+          border-radius: 10px;       /* 둥근 모서리 */
+          border: 2px solid #f1f1f1; /* thumb과 트랙 사이 간격 */
+        }
+        &::-webkit-scrollbar-thumb:hover {
+          background: #80cbc4;       /* hover 시 좀 더 진한 색 */
+        }
+      }
+
+      .weatherInfoTable {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: var(--smallFontSize);
+        color: #333;
+
+        thead {
+          position: sticky;
+          top: 0;
+          background: #f9f9f9;
+          z-index: 1;
+        }
+
+        th,
+        td {
+          padding: 0.5rem;
+          text-align: left;
+          border-bottom: 1px dashed #ddd;
+        }
+
+        th {
+          background: #f9f9f9;
+        }
+      }
+    }
+
+    .weatherWindRadarSection {
+      @include titleHead();
+      width: 40%;
+      height: 100%;
+
+      p {
+        text-align: center;
+        font-size: var(--bigFontSize);
+        color: var(--headerFontColor);
+        margin-bottom: 0.8rem;
+        @include weatherTitleStyle();
+      }
+    }
+
+    .weatherWindRadarBox {
+      width: 80%;
+      height: 80%;
+      margin: 2.5rem auto;
+    }
+  }
+
+  .weatherTrendWrap {
+    width: 100%;
+    margin-top: var(--gapSize);
+    height: calc($weatherTrend-height - var(--gapSize));
+
+    .weatherTrendBox {
+      @include titleHead();
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+
+      p {
+        text-align: center;
+        font-size: var(--bigFontSize);
+        color: var(--headerFontColor);
+        margin-bottom: 0.8rem;
+        @include weatherTitleStyle();
+      }
+    }
+
+    .weatherTrendGraph {
+      height: 80%;
+    }
+  }
+}

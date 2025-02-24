@@ -1,29 +1,43 @@
 import { useNavigate } from "react-router-dom";
-
+import Header from "../components/Header";
 const Home = () => {
   const navigate = useNavigate(); // useNavigate 훅 사용
 
   return (
-    <div style={styles.container}>
-      <button
-        onClick={() => navigate("/accident-status")}
-        style={styles.button}
-      >
-      진아's Accident_DashBoard
-      </button>
-      <button
-        onClick={() => navigate("/crime-report")}
-        style={styles.button}
-      >
-      정임's Crime_DashBoard
-      </button>
-      <button
-        onClick={() => navigate("/weather-info")}
-        style={styles.button}
-      >
-      유진's Weather_DashBoard
-      </button>
-    </div>
+    <>
+      <div style={styles.container}>
+        <Header page={"weather"}/>
+        {/* <Header page={"crime"}/>
+        <Header page={"select"}/> */}
+        
+
+        <button
+          onClick={() => navigate("/home")}
+          style={styles.button}
+        >
+        🏠HomePage🏠
+        </button>
+
+        <button
+          onClick={() => navigate("/accident-status")}
+          style={styles.button}
+        >
+        진아's Accident_DashBoard
+        </button>
+        <button
+          onClick={() => navigate("/crime-report")}
+          style={styles.button}
+        >
+        정임's Crime_DashBoard
+        </button>
+        <button
+          onClick={() => navigate("/weather-info")}
+          style={styles.button}
+        >
+        유진's Weather_DashBoard
+        </button>
+      </div>
+    </>
   );
 };
 

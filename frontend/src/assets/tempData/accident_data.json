@@ -1,0 +1,541 @@
+{
+    "city": "gapyeong",
+    "data": {
+      "item": [
+        {
+          "std_year": [
+            "2023"
+          ],
+          "acc_cl_nm": [
+            "전체사고"
+          ],
+          "sido_sgg_nm": [
+            "경기도 가평군"
+          ],
+          "acc_cnt": [
+            "357"
+          ],
+          "acc_cnt_cmrt": [
+            "0.18"
+          ],
+          "dth_dnv_cnt": [
+            "10"
+          ],
+          "dth_dnv_cnt_cmrt": [
+            "0.39"
+          ],
+          "ftlt_rate": [
+            "2.80"
+          ],
+          "injpsn_cnt": [
+            "593"
+          ],
+          "injpsn_cnt_cmrt": [
+            "0.21"
+          ],
+          "tot_acc_cnt": [
+            "198296"
+          ],
+          "tot_dth_dnv_cnt": [
+            "2551"
+          ],
+          "tot_injpsn_cnt": [
+            "283799"
+          ],
+          "pop_100k": [
+            "562.31"
+          ],
+          "car_10k": [
+            "94.76"
+          ],
+          "cnt_027_01": [
+            "0"
+          ],
+          "cnt_027_02": [
+            "37"
+          ],
+          "cnt_027_03": [
+            "22"
+          ],
+          "cnt_027_04": [
+            "31"
+          ],
+          "cnt_027_05": [
+            "212"
+          ],
+          "cnt_027_06": [
+            "19"
+          ],
+          "cnt_027_07": [
+            "6"
+          ],
+          "cnt_027_99": [
+            "30"
+          ],
+          "cnt_014_01": [
+            "52"
+          ],
+          "cnt_014_02": [
+            "284"
+          ],
+          "cnt_014_03": [
+            "21"
+          ],
+          "cnt_014_04": [
+            "0"
+          ]
+        },
+        {
+          "std_year": [
+            "2023"
+          ],
+          "acc_cl_nm": [
+            "어린이사고"
+          ],
+          "sido_sgg_nm": [
+            "경기도 가평군"
+          ],
+          "acc_cnt": [
+            "24"
+          ],
+          "acc_cnt_cmrt": [
+            "0.27"
+          ],
+          "dth_dnv_cnt": [
+            "0"
+          ],
+          "dth_dnv_cnt_cmrt": [
+            "0.00"
+          ],
+          "ftlt_rate": [
+            "0.00"
+          ],
+          "injpsn_cnt": [
+            "32"
+          ],
+          "injpsn_cnt_cmrt": [
+            "0.29"
+          ],
+          "tot_acc_cnt": [
+            "8753"
+          ],
+          "tot_dth_dnv_cnt": [
+            "14"
+          ],
+          "tot_injpsn_cnt": [
+            "10910"
+          ]
+        },
+        {
+          "std_year": [
+            "2023"
+          ],
+          "acc_cl_nm": [
+            "고령자사고"
+          ],
+          "sido_sgg_nm": [
+            "경기도 가평군"
+          ],
+          "acc_cnt": [
+            "94"
+          ],
+          "acc_cnt_cmrt": [
+            "0.24"
+          ],
+          "dth_dnv_cnt": [
+            "8"
+          ],
+          "dth_dnv_cnt_cmrt": [
+            "0.65"
+          ],
+          "ftlt_rate": [
+            "8.51"
+          ],
+          "injpsn_cnt": [
+            "105"
+          ],
+          "injpsn_cnt_cmrt": [
+            "0.24"
+          ],
+          "tot_acc_cnt": [
+            "38960"
+          ],
+          "tot_dth_dnv_cnt": [
+            "1240"
+          ],
+          "tot_injpsn_cnt": [
+            "43005"
+          ]
+        },
+        {
+          "std_year": [
+            "2023"
+          ],
+          "acc_cl_nm": [
+            "보행자사고"
+          ],
+          "sido_sgg_nm": [
+            "경기도 가평군"
+          ],
+          "acc_cnt": [
+            "54"
+          ],
+          "acc_cnt_cmrt": [
+            "0.14"
+          ],
+          "dth_dnv_cnt": [
+            "2"
+          ],
+          "dth_dnv_cnt_cmrt": [
+            "0.23"
+          ],
+          "ftlt_rate": [
+            "3.70"
+          ],
+          "injpsn_cnt": [
+            "57"
+          ],
+          "injpsn_cnt_cmrt": [
+            "0.15"
+          ],
+          "tot_acc_cnt": [
+            "37324"
+          ],
+          "tot_dth_dnv_cnt": [
+            "886"
+          ],
+          "tot_injpsn_cnt": [
+            "37899"
+          ]
+        },
+        {
+          "std_year": [
+            "2023"
+          ],
+          "acc_cl_nm": [
+            "자전거사고"
+          ],
+          "sido_sgg_nm": [
+            "경기도 가평군"
+          ],
+          "acc_cnt": [
+            "12"
+          ],
+          "acc_cnt_cmrt": [
+            "0.23"
+          ],
+          "dth_dnv_cnt": [
+            "0"
+          ],
+          "dth_dnv_cnt_cmrt": [
+            "0.00"
+          ],
+          "ftlt_rate": [
+            "0.00"
+          ],
+          "injpsn_cnt": [
+            "14"
+          ],
+          "injpsn_cnt_cmrt": [
+            "0.25"
+          ],
+          "tot_acc_cnt": [
+            "5146"
+          ],
+          "tot_dth_dnv_cnt": [
+            "64"
+          ],
+          "tot_injpsn_cnt": [
+            "5604"
+          ]
+        },
+        {
+          "std_year": [
+            "2023"
+          ],
+          "acc_cl_nm": [
+            "야간사고"
+          ],
+          "sido_sgg_nm": [
+            "경기도 가평군"
+          ],
+          "acc_cnt": [
+            "78"
+          ],
+          "acc_cnt_cmrt": [
+            "0.11"
+          ],
+          "dth_dnv_cnt": [
+            "4"
+          ],
+          "dth_dnv_cnt_cmrt": [
+            "0.35"
+          ],
+          "ftlt_rate": [
+            "5.13"
+          ],
+          "injpsn_cnt": [
+            "109"
+          ],
+          "injpsn_cnt_cmrt": [
+            "0.11"
+          ],
+          "tot_acc_cnt": [
+            "71809"
+          ],
+          "tot_dth_dnv_cnt": [
+            "1149"
+          ],
+          "tot_injpsn_cnt": [
+            "101523"
+          ]
+        },
+        {
+          "std_year": [
+            "2023"
+          ],
+          "acc_cl_nm": [
+            "어린이보행사고"
+          ],
+          "sido_sgg_nm": [
+            "경기도 가평군"
+          ],
+          "acc_cnt": [
+            "6"
+          ],
+          "acc_cnt_cmrt": [
+            "0.23"
+          ],
+          "dth_dnv_cnt": [
+            "0"
+          ],
+          "dth_dnv_cnt_cmrt": [
+            "0.00"
+          ],
+          "ftlt_rate": [
+            "0.00"
+          ],
+          "injpsn_cnt": [
+            "9"
+          ],
+          "injpsn_cnt_cmrt": [
+            "0.33"
+          ],
+          "tot_acc_cnt": [
+            "2624"
+          ],
+          "tot_dth_dnv_cnt": [
+            "12"
+          ],
+          "tot_injpsn_cnt": [
+            "2694"
+          ]
+        },
+        {
+          "std_year": [
+            "2023"
+          ],
+          "acc_cl_nm": [
+            "고령운전자사고"
+          ],
+          "sido_sgg_nm": [
+            "경기도 가평군"
+          ],
+          "acc_cnt": [
+            "88"
+          ],
+          "acc_cnt_cmrt": [
+            "0.22"
+          ],
+          "dth_dnv_cnt": [
+            "7"
+          ],
+          "dth_dnv_cnt_cmrt": [
+            "0.94"
+          ],
+          "ftlt_rate": [
+            "7.95"
+          ],
+          "injpsn_cnt": [
+            "130"
+          ],
+          "injpsn_cnt_cmrt": [
+            "0.23"
+          ],
+          "tot_acc_cnt": [
+            "39614"
+          ],
+          "tot_dth_dnv_cnt": [
+            "745"
+          ],
+          "tot_injpsn_cnt": [
+            "56067"
+          ]
+        },
+        {
+          "std_year": [
+            "2023"
+          ],
+          "acc_cl_nm": [
+            "고령보행자사고"
+          ],
+          "sido_sgg_nm": [
+            "경기도 가평군"
+          ],
+          "acc_cnt": [
+            "18"
+          ],
+          "acc_cnt_cmrt": [
+            "0.16"
+          ],
+          "dth_dnv_cnt": [
+            "1"
+          ],
+          "dth_dnv_cnt_cmrt": [
+            "0.18"
+          ],
+          "ftlt_rate": [
+            "5.56"
+          ],
+          "injpsn_cnt": [
+            "17"
+          ],
+          "injpsn_cnt_cmrt": [
+            "0.16"
+          ],
+          "tot_acc_cnt": [
+            "10921"
+          ],
+          "tot_dth_dnv_cnt": [
+            "550"
+          ],
+          "tot_injpsn_cnt": [
+            "10529"
+          ]
+        },
+        {
+          "std_year": [
+            "2023"
+          ],
+          "acc_cl_nm": [
+            "개인형이동수단(PM)사고"
+          ],
+          "sido_sgg_nm": [
+            "경기도 가평군"
+          ],
+          "acc_cnt": [
+            "1"
+          ],
+          "acc_cnt_cmrt": [
+            "0.04"
+          ],
+          "dth_dnv_cnt": [
+            "0"
+          ],
+          "dth_dnv_cnt_cmrt": [
+            "0.00"
+          ],
+          "ftlt_rate": [
+            "0.00"
+          ],
+          "injpsn_cnt": [
+            "1"
+          ],
+          "injpsn_cnt_cmrt": [
+            "0.04"
+          ],
+          "tot_acc_cnt": [
+            "2389"
+          ],
+          "tot_dth_dnv_cnt": [
+            "24"
+          ],
+          "tot_injpsn_cnt": [
+            "2622"
+          ]
+        },
+        {
+          "std_year": [
+            "2023"
+          ],
+          "acc_cl_nm": [
+            "뺑소니사고"
+          ],
+          "sido_sgg_nm": [
+            "경기도 가평군"
+          ],
+          "acc_cnt": [
+            "9"
+          ],
+          "acc_cnt_cmrt": [
+            "0.13"
+          ],
+          "dth_dnv_cnt": [
+            "2"
+          ],
+          "dth_dnv_cnt_cmrt": [
+            "3.13"
+          ],
+          "ftlt_rate": [
+            "22.22"
+          ],
+          "injpsn_cnt": [
+            "16"
+          ],
+          "injpsn_cnt_cmrt": [
+            "0.18"
+          ],
+          "tot_acc_cnt": [
+            "6677"
+          ],
+          "tot_dth_dnv_cnt": [
+            "64"
+          ],
+          "tot_injpsn_cnt": [
+            "9084"
+          ]
+        },
+        {
+          "std_year": [
+            "2023"
+          ],
+          "acc_cl_nm": [
+            "무면허사고"
+          ],
+          "sido_sgg_nm": [
+            "경기도 가평군"
+          ],
+          "acc_cnt": [
+            "8"
+          ],
+          "acc_cnt_cmrt": [
+            "0.15"
+          ],
+          "dth_dnv_cnt": [
+            "0"
+          ],
+          "dth_dnv_cnt_cmrt": [
+            "0.00"
+          ],
+          "ftlt_rate": [
+            "0.00"
+          ],
+          "injpsn_cnt": [
+            "11"
+          ],
+          "injpsn_cnt_cmrt": [
+            "0.16"
+          ],
+          "tot_acc_cnt": [
+            "5165"
+          ],
+          "tot_dth_dnv_cnt": [
+            "122"
+          ],
+          "tot_injpsn_cnt": [
+            "6897"
+          ]
+        }
+      ]
+    }
+  }

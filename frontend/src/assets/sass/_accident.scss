@@ -7,17 +7,19 @@
     background-color: var(--white);
 }
 
-.accident {
-    //background: linear-gradient(var(--accidentbgColor));
-    max-width: 150rem;
+.accidentlayoutWrapper {
+    background: linear-gradient(var(--accidentbgColor));
     margin: 0 auto;
     padding-top: 10rem;
+    width: 100vw;
     height: 100vh;
     @include flexSet;
     flex-direction: row;
     gap: var(--gapSize);
-
+    padding: var(--commonPadding);
+    
     .accGraphWrap {
+        max-width: 150rem;
         @include flexSet;
         gap: var(--gapSize);
         flex: 2.4;
@@ -113,7 +115,7 @@
 
                 .numOfDeath {
                     text-align: center;
-                    font-size: var(--bigFontSize);
+                    font-size: 50px;
                 }
             }
 
@@ -137,7 +139,7 @@
 
                 .numOfAcc {
                     text-align: center;
-                    font-size: var(--bigFontSize);
+                    font-size: 50px;
                 }
             }
         }

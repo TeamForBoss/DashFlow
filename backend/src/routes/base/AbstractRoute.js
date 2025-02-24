@@ -4,15 +4,11 @@
 class AbstractRoute {
     constructor(id = "") {
         this.id = id;
-        this.express = null;
-        this.app = null;
         this.router = null;
     }
 
     initSetting() {
-        this.express = require("express");
-        this.app = this.express();
-        this.router = this.express.Router();
+        this.router = require("express").Router();
     }
 
     defineRoutes(){

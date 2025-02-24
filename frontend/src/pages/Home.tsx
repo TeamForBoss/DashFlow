@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <div style={styles.container}>
-        <Header page={"weather"}/>
+        <Header page={"home"}/>
         {/* <Header page={"crime"}/>
         <Header page={"select"}/> */}
         

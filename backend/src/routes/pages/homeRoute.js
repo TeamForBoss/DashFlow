@@ -1,20 +1,20 @@
 const AbstractRoute = require("../base/AbstractRoute");
 
-class HomeRoute extends AbstractRoute{
-    constructor(id = ""){
+class HomeRoute extends AbstractRoute {
+    constructor(id = "") {
         super(id);
     }
-    defineRoutes(){
+    defineRoutes() {
         this.router.route("/")
-        .get((_req,res)=>{
-            console.log("[Home] ROUTE 요청들어옴!")
-            res.send("🚀 Welcome aboard! This is the home page. 🏡");
-        });
+            .get((_req, res) => {
+                console.log("[Home] ROUTE 요청들어옴!")
+                res.send("🚀 Welcome aboard! This is the home page. 🏡");
+            });
     }
     get getRoute() {
         return this.router;
     }
-    run(){
+    run() {
         super.run();
         this.defineRoutes();
     }

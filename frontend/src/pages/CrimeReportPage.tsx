@@ -6,6 +6,7 @@ import ViolenceCrimeDataToGraph from "../features/crimeReport/ViolenceCrimeDataT
 import IntelligenceCrimeDataToGraph from "../features/crimeReport/IntelligenceCrimeDataToGraph";
 import useCrimeData from "../features/crimeReport/useCrimeData";
 
+import Header from "../components/Header";
 const CrimeReportPage = () => {
   // // console.log(strongDataToGraph);
   // const { strongCrimeData } = useCrimeData();
@@ -50,6 +51,8 @@ const CrimeReportPage = () => {
     }
   }, [strongCrimeData]);
   return (
+    <>
+    <Header page={"crime"}/>
     <section id="crMainArea" className="crMainArea crGrayBorder">
       <div className="crInnerMainArea">
         <div className="crUpsideArea crGrayBorder">
@@ -94,6 +97,7 @@ const CrimeReportPage = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

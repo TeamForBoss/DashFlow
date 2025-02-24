@@ -3,9 +3,7 @@ import * as d3 from "d3";
 
 interface WeatherData {
   dt_txt: string;
-  main: {
-    temp: number;
-  };
+  main: { temp: number; };
 }
 
 const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
@@ -14,7 +12,6 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
   useEffect(() => {
     if (!data || data.length === 0) return;
 
-    // 1) 데이터 파싱
     const parsedData = data
       .map(d => ({
         date: d3.timeParse("%Y-%m-%d %H:%M:%S")(d.dt_txt),
@@ -25,16 +22,13 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       temp: number;
     }[];
 
-    // 2) SVG 크기 및 마진 설정
     const parent = d3.select(svgRef.current).node()?.parentElement as HTMLElement;
     const width = parent?.clientWidth || 800;
     const height = parent?.clientHeight || 500;
     const margin = { top: 20, right: 80, bottom: 40, left: 60 };
 
-    // 기존 SVG 내용 삭제
     d3.select(svgRef.current).selectAll("*").remove();
 
-    // 3) SVG 생성
     const svg = d3.select(svgRef.current)
       .attr("width", "100%")
       .attr("height", "100%")
@@ -42,7 +36,6 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .attr("preserveAspectRatio", "xMidYMid meet")
       .style("overflow", "visible");
 
-    // 4) 스케일 설정
     const xDomain = d3.extent(parsedData, d => d.date) as [Date, Date];
     const overallMin = d3.min(parsedData, d => d.temp)!;
     const overallMax = d3.max(parsedData, d => d.temp)!;
@@ -58,8 +51,7 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .domain([domainMin, domainMax])
       .range([height - margin.bottom, margin.top]);
 
-    // 5) 축 그리기
-    // X축
+    // X축 (글씨를 가로로 배치)
     svg.append("g")
       .attr("transform", `translate(0, ${height - margin.bottom})`)
       .call(
@@ -71,8 +63,9 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .selectAll("text")
       .style("font-size", "12px")
       .style("fill", "#666")
-      .attr("transform", "rotate(-30)")
-      .style("text-anchor", "end");
+      // 회전 효과 제거, 텍스트 앵커 중앙 정렬
+      .attr("transform", null)
+      .style("text-anchor", "middle");
 
     // Y축
     svg.append("g")
@@ -83,7 +76,6 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .style("font-size", "14px")
       .style("fill", "#444");
 
-    // 그리드 라인
     svg.append("g")
       .attr("transform", `translate(${margin.left}, 0)`)
       .call(
@@ -94,14 +86,12 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .attr("stroke", "#ccc")
       .attr("opacity", 0.4);
 
-    // 6) 영역(선 그래프 ~ X축) 채우기: 위로 갈수록 투명
     const areaGen = d3.area<{ date: Date; temp: number }>()
       .x(d => xScale(d.date))
       .y0(height - margin.bottom)   // X축
       .y1(d => yScale(d.temp))      // 선 그래프
       .curve(d3.curveMonotoneX);
 
-    // 그라데이션 정의 (상단 투명, 하단 진한)
     const defs = svg.append("defs");
     const gradient = defs.append("linearGradient")
       .attr("id", "areaGradient")
@@ -109,24 +99,22 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .attr("y1", "0%")
       .attr("x2", "0%")
       .attr("y2", "100%");
-    // 상단(0%)은 완전 투명
+
     gradient.append("stop")
       .attr("offset", "0%")
       .attr("stop-color", "#B2DFDB") 
       .attr("stop-opacity", 0);
-    // 하단(100%)은 불투명 민트
+
     gradient.append("stop")
       .attr("offset", "100%")
       .attr("stop-color", "#B2DFDB")
       .attr("stop-opacity", 0.8);
 
-    // 영역 경로 생성
     svg.append("path")
       .datum(parsedData)
       .attr("fill", "url(#areaGradient)")
       .attr("d", areaGen as any);
 
-    // 7) 선 그래프
     const line = d3.line<{ date: Date; temp: number }>()
       .x(d => xScale(d.date))
       .y(d => yScale(d.temp))
@@ -139,7 +127,7 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .attr("stroke-width", 3)
       .attr("d", line as any);
 
-    // 8) 데이터 포인트
+    // 그래프 원(dot)에 보더 추가
     svg.selectAll(".dot")
       .data(parsedData)
       .enter()
@@ -148,9 +136,10 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .attr("cx", d => xScale(d.date))
       .attr("cy", d => yScale(d.temp))
       .attr("r", 4)
-      .attr("fill", "#AAF0D1");
+      .attr("fill", "#AAF0D1")
+      .attr("stroke", "#80cfa9")   // 보더 색 (너무 진하지 않음)
+      .attr("stroke-width", 1);
 
-    // 데이터 포인트 위에 온도 텍스트 레이블
     svg.selectAll(".label-temp")
       .data(parsedData)
       .enter()
@@ -163,7 +152,6 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .style("fill", "#00796B")
       .text(d => `${d.temp.toFixed(1)}°C`);
 
-    // 9) 툴팁
     const tooltip = d3.select("body")
       .append("div")
       .attr("class", "tooltip")
@@ -183,8 +171,8 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .on("mouseover", (event, d) => {
         tooltip.transition().duration(200).style("opacity", 1);
         tooltip.html(
-          `<strong>${d3.timeFormat("%m-%d %H:%M")(d.date)}</strong><br/>
-           Temp: ${d.temp}°C`
+          `<strong>${d3.timeFormat("📅 %m/%d일 %H시")(d.date)}</strong><br/>
+          🌍 평균 기온: ${d.temp}°C`
         )
           .style("left", (event.pageX + 10) + "px")
           .style("top", (event.pageY - 28) + "px");

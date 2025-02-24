@@ -6,32 +6,27 @@ const WindRadarChart = ({ data }: { data: any }) => {
 
   useEffect(() => {
     if (!data) return;
-
-    // 데이터가 배열이면 첫 번째 요소를 사용
     const windInfo = Array.isArray(data) ? data[0] : data;
 
-    // 기존 SVG 내용 초기화
+    // 기존 내용 초기화
     d3.select(svgRef.current).selectAll("*").remove();
 
-    // 부모 요소의 크기 측정
     const parent = d3.select(svgRef.current).node()?.parentElement as HTMLElement;
     const width = parent?.clientWidth || 400;
     const height = parent?.clientHeight || 400;
     const radius = Math.min(width, height) / 2 - 40;
 
-    // SVG 설정
     const svg = d3.select(svgRef.current)
       .attr("width", width)
       .attr("height", height)
       .attr("viewBox", `0 0 ${width} ${height}`)
       .attr("preserveAspectRatio", "xMidYMid meet")
-      .style("overflow", "visible");
+      .style("overflow", "hidden");
 
-    // 중앙 그룹 생성
     const g = svg.append("g")
       .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
-    // 십자선 (수평, 수직 축) 그리기
+    // 중앙 기준의 수평, 수직 선
     g.append("line")
       .attr("x1", -radius)
       .attr("y1", 0)
@@ -48,14 +43,14 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .attr("stroke", "#aaa")
       .attr("stroke-dasharray", "2,2");
 
-    // 각 축의 각도 레이블 추가
+    // 동서남북 텍스트
     g.append("text")
       .attr("x", 0)
       .attr("y", -radius - 10)
       .attr("text-anchor", "middle")
       .attr("font-size", "12px")
       .attr("fill", "#555")
-      .text("0°");
+      .text("북");
 
     g.append("text")
       .attr("x", radius + 10)
@@ -63,7 +58,7 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .attr("text-anchor", "start")
       .attr("font-size", "12px")
       .attr("fill", "#555")
-      .text("90°");
+      .text("동");
 
     g.append("text")
       .attr("x", 0)
@@ -71,7 +66,7 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .attr("text-anchor", "middle")
       .attr("font-size", "12px")
       .attr("fill", "#555")
-      .text("180°");
+      .text("남");
 
     g.append("text")
       .attr("x", -radius - 10)
@@ -79,23 +74,20 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .attr("text-anchor", "end")
       .attr("font-size", "12px")
       .attr("fill", "#555")
-      .text("270°");
+      .text("서");
 
-    // 풍향, 풍속 데이터 추출
     const windSpeed = windInfo.wind.speed;
     const windDeg = windInfo.wind.deg;
 
-    // 각도 스케일: 0~360° → 0~2π
     const angleScale = d3.scaleLinear()
       .domain([0, 360])
       .range([0, 2 * Math.PI]);
 
-    // 풍속 스케일: 0~windSpeed를 0~radius로 매핑
     const speedScale = d3.scaleLinear()
       .domain([0, windSpeed])
       .range([0, radius]);
 
-    // 방사형 그리드: 풍속에 따라 3단계 원 그리기
+    // 내부 그리드 원
     const gridSteps = d3.range(0, windSpeed + 1, Math.max(windSpeed / 3, 0.5));
     g.selectAll(".grid-line")
       .data(gridSteps)
@@ -107,17 +99,20 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .attr("stroke", "#ddd")
       .attr("stroke-dasharray", "3,3");
 
-    // 풍향 및 풍속을 나타내는 화살표 그리기
+    // 바람의 방향을 나타내는 화살표  
+    // (원점이 아닌, 바깥쪽에서 중심으로 선을 그림)
+    const xOuter = speedScale(windSpeed) * Math.cos(angleScale(windDeg) - Math.PI / 2);
+    const yOuter = speedScale(windSpeed) * Math.sin(angleScale(windDeg) - Math.PI / 2);
+
     g.append("line")
-      .attr("x1", 0)
-      .attr("y1", 0)
-      .attr("x2", speedScale(windSpeed) * Math.cos(angleScale(windDeg) - Math.PI / 2))
-      .attr("y2", speedScale(windSpeed) * Math.sin(angleScale(windDeg) - Math.PI / 2))
+      .attr("x1", xOuter)
+      .attr("y1", yOuter)
+      .attr("x2", 0)
+      .attr("y2", 0)
       .attr("stroke", "#4CAF50")
       .attr("stroke-width", 2)
       .attr("marker-end", "url(#arrow)");
 
-    // 화살표 마커 정의
     svg.append("defs")
       .append("marker")
       .attr("id", "arrow")
@@ -131,7 +126,7 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .attr("d", "M 0 0 L 10 5 L 0 10 z")
       .attr("fill", "#4CAF50");
 
-    // 풍향 및 풍속 정보를 텍스트로 표시 (기존 정보)
+    // 바람 속도와 방향 텍스트
     g.append("text")
       .attr("x", 0)
       .attr("y", -radius - 25)

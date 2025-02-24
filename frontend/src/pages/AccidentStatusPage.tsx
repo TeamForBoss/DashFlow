@@ -5,6 +5,7 @@ import DonutChart from "../features/accidentStatus/DonutChart";
 import CircularChart from "../features/accidentStatus/CircularChart";
 import BarChart from "../features/accidentStatus/BarChart";
 
+import Header from "../components/Header";
 
 ///
 import accidentData from "../assets/tempData/accident_data.json";
@@ -182,7 +183,9 @@ const AccidentStatusPage = () => {
     // console.log(violOfLaw);
 
     return (
-        <section id="accident" className="accidentlayoutWrapper">
+        <>
+            <Header page={"accident"}/>
+            <section id="accident" className="accidentlayoutWrapper">
             <div className="accGraphWrap">
                 <div className="acYearBox">
                     <div className="acYearTitle">
@@ -239,6 +242,7 @@ const AccidentStatusPage = () => {
                 </div>
             </div>
         </section>
+        </>
     )
 }
 

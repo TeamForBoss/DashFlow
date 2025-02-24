@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import WeatherTrendGraph from "../features/weatherInfo/WeatherTrendGraph";
 import WindRadarChart from "../features/weatherInfo/WindRadarChart";
 import weatherFetchData from "../assets/tempData/weather_data.json";
-
+import Header from "../components/Header";
 const WeatherInfoPage = () => {
   const [weatherData, setWeatherData] = useState<any[]>([]);
   const [weekData, setWeekData] = useState<any[]>([]);
@@ -62,6 +62,8 @@ const WeatherInfoPage = () => {
   };
 
   return (
+    <>
+    <Header page={"weather"}/>
     <section className="weatherPage">
       <section className="weatherLayOutArea">
         <article className="weatherTopSection">
@@ -93,7 +95,7 @@ const WeatherInfoPage = () => {
                     <tr>
                       <th>시간</th>
                       <th>기온 (°C)</th>
-                      <th>날씨</th>
+                      <th>가시거리</th>
                       <th>습도 (%)</th>
                     </tr>
                   </thead>
@@ -132,6 +134,7 @@ const WeatherInfoPage = () => {
         </div>
       </section>
     </section>
+    </>
   );
 };
 

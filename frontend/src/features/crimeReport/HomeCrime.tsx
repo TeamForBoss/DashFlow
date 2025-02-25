@@ -1,135 +1,111 @@
-import React, { useEffect, useRef, useState } from "react";
-import * as d3 from "d3";
+import { useEffect, useState } from "react";
+import knifeImg from "../../assets/images/icons/crime/knife_gray.png";
+import handImg from "../../assets/images/icons/crime/boom_hand.png";
+///////////////////////////////////////////////////////
+/// 라우팅 걸어가지고 json 가져오자미~
+import { useRecoilValue } from "recoil";
+import { hostState } from "../../state/hostAtom.js";
 
-interface CrimeData {
-  범죄중분류: string;
-  data: number;
-}
+///////////////////////////////////////////////////////
+const HomeCrime = () => {
+  const host = useRecoilValue(hostState);
+  const [data, setData] = useState<any>([]);
+  const [killNum, setKillNum] = useState(0);
+  const [StrongNum, setStrongNum] = useState(0);
 
-interface BarChartProps {
-  data: CrimeData[];
-}
-
-const BarChart: React.FC<BarChartProps> = ({ data }) => {
-  const svgRef = useRef<SVGSVGElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  //  화면 크기 감지 (노트북 크기 체크)
   useEffect(() => {
-    const updateSize = () => {
-      if (containerRef.current) {
-        setDimensions({
-          width: containerRef.current.clientWidth,
-          height: containerRef.current.clientHeight,
-        });
+    fetch(`${host}/crime`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("API 요청 오류!!!:", error));
+  }, [host]);
+
+  useEffect(() => {
+    const killData = data.filter((value: any) => {
+      for (let key in value) {
+        if (typeof value[key] === "string" && value[key].includes("살인기수")) {
+          //   console.log(value);
+          return true;
+        }
       }
-      setWindowWidth(window.innerWidth);
-    };
+      return false;
+    });
+    const strongData = data.filter((value: any) => {
+      for (let key in value) {
+        if (typeof value[key] === "string" && value[key].includes("폭행")) {
+          //   console.log(value);
+          return true;
+        }
+      }
+      return false;
+    });
+    // console.log(killData);
+    ////////// 경기도 평균 살인 /////////////////
+    killData.forEach((value: any) => {
+      let sum = 0;
+      let avg = 0;
+      //   console.log(value);
+      for (let key in value) {
+        // console.log(value[key]);
+        if (typeof value[key] == "number") {
+          avg++;
+          sum += Number(value[key]);
+        }
+      }
+      setKillNum(Math.round(sum / avg));
+      //   console.log(killNum);
+    });
 
-    updateSize(); //  최초 실행
-    window.addEventListener("resize", updateSize); //  화면 크기 변경 감지
-
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-
-  useEffect(() => {
-    if (!data.length || !svgRef.current || !containerRef.current) return;
-
-    const { width, height } = dimensions;
-    if (width === 0 || height === 0) return; //  초기값 방지
-
-    //  노트북이랑 큰 화면이랑 마진 다르게 설정
-    const margin =
-      windowWidth <= 1400
-        ? { top: 0, right: 0, bottom: 15, left: 0 }
-        : { top: 0, right: 0, bottom: 20, left: 0 };
-    const chartWidth = width - margin.left - margin.right;
-    const chartHeight = height - margin.top - margin.bottom;
-
-    //  기존 그래프 초기화 후 다시 그리기
-    const svg = d3.select(svgRef.current);
-    svg.selectAll("*").remove();
-    svg
-      .attr("width", width)
-      .attr("height", height)
-      .append("g")
-      .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-    const xDomain = data.map((d) =>
-      windowWidth <= 650 && d.범죄중분류.length > 5
-        ? d.범죄중분류.slice(0, 5)
-        : d.범죄중분류
-    );
-
-    const xScale = d3
-      .scaleBand()
-      .domain(xDomain)
-      .range([0, chartWidth])
-      .padding(0.5);
-
-    //  작은 화면에서는 yScale의 최대값을 더 크게 설정
-    const maxY = d3.max(data, (d) => d.data) || 0;
-    const yScale = d3
-      .scaleLinear()
-      .domain([0, windowWidth <= 1400 ? maxY * 1.4 : maxY * 1.2]) //  노트북에서 최대값 증가
-      .nice()
-      .range([chartHeight, 0]);
-
-    //  막대 그래프 그리기
-    svg
-      .selectAll(".bar")
-      .data(data)
-      .enter()
-      .append("rect")
-      .attr("class", "bar")
-      .attr("x", (d, i) => xScale(xDomain[i])!) //  xDomain과 일치하도록 수정
-      .attr("y", chartHeight)
-      .attr("width", xScale.bandwidth())
-      .attr("height", 0)
-      .attr("fill", "#FF689F")
-      .transition()
-      .duration(1000)
-      .attr("y", (d) => yScale(d.data))
-      .attr("height", (d) => chartHeight - yScale(d.data));
-
-    //  막대 위에 숫자 추가 (모바일에서는 폰트 작게 조정)
-    const fontSize = windowWidth <= 650 ? "9px" : "13px"; //  반응형 폰트 줄이기
-    svg
-      .selectAll(".label")
-      .data(data)
-      .enter()
-      .append("text")
-      .attr("class", "label")
-      .attr("x", (d, i) => xScale(xDomain[i])! + xScale.bandwidth() / 2)
-      .attr("y", (d) => yScale(d.data) - (windowWidth <= 1400 ? 5 : 10)) //  노트북에서는 숫자 위치 조정
-      .attr("text-anchor", "middle")
-      .style("font-size", fontSize)
-      .style("fill", "#444")
-      .text((d) => d.data)
-      .attr("opacity", 0)
-      .transition()
-      .delay((_, i) => i * 100)
-      .duration(500)
-      .attr("opacity", 1);
-
-    //  X축 추가 (모바일에서는 폰트 작게 조정)
-    svg
-      .append("g")
-      .attr("class", "x-axis")
-      .attr("transform", `translate(0, ${chartHeight})`)
-      .call(d3.axisBottom(xScale).tickSize(0))
-      .selectAll("text")
-      .style("font-size", fontSize) //  모바일에서 X축 폰트 크기 조정
-      .style("fill", "#444");
-  }, [data, dimensions, windowWidth]); //  windowWidth가 변경될 때마다 다시 그리기
+    ////////// 경기도 평균 폭행사건 /////////////////
+    strongData.forEach((value: any) => {
+      let sum = 0;
+      let avg = 0;
+      //   console.log(value);
+      for (let key in value) {
+        // console.log(value[key]);
+        if (typeof value[key] === "number") {
+          avg++;
+          sum += Number(value[key]);
+        }
+      }
+      setStrongNum(Math.round(sum / avg));
+      //   console.log(StrongNum);
+    });
+  }, [data]);
 
   return (
-    <div ref={containerRef} style={{ width: "100%", height: "100%" }}>
-      <svg ref={svgRef}></svg>
+    <div className="averageWrap">
+      <div className="waveContainer waveCrime">
+        <div className="wave wave1"></div>
+        <div className="wave wave2"></div>
+        <div className="wave wave3"></div>
+      </div>
+      <div className="item homeCrimeItem">
+        <div className="title">경기도 범죄 연평균</div>
+        <div className="contents">
+          <div className="content">
+            <img src={knifeImg} alt="맑음" />
+            <div className="info">
+              <span className="value">살인사건</span>
+              <span className="text">{killNum} 건</span>
+            </div>
+          </div>
+          <div className="content">
+            <img src={handImg} alt="습도" />
+            <div className="info">
+              <span className="value">폭행사건</span>
+              <span className="text">{StrongNum} 건</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default BarChart;
+export default HomeCrime;

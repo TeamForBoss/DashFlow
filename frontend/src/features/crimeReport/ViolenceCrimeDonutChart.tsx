@@ -110,7 +110,7 @@ const ViolenceCrimePieChart: React.FC = () => {
       .append("g")
       .attr(
         "transform",
-        `translate(${width * 0.7}, ${
+        `translate(${width * 0.65}, ${
           height / 2 - (sortedData.length * 12) / 1.2
         })`
       );

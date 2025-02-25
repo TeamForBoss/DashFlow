@@ -46,7 +46,7 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
     // ✅ 반응형 margin 설정
     const margin =
       windowWidth <= 1400
-        ? { top: 0, right: 50, bottom: 10, left: 20 } // 노트북
+        ? { top: 0, right: 150, bottom: 35, left: 20 } // 노트북
         : { top: 20, right: 20, bottom: 40, left: 20 }; // 일반 화면
 
     const svg = d3.select(svgRef.current);

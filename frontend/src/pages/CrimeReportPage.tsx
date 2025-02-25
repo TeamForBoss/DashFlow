@@ -7,24 +7,9 @@ import IntelligenceCrimeDataToGraph from "../features/crimeReport/IntelligenceCr
 import useCrimeData from "../features/crimeReport/useCrimeData";
 import knifeImg from "../assets/images/icons/crime/knife_gray.png";
 import handImg from "../assets/images/icons/crime/boom_hand.png";
-
 import Header from "../components/Header";
 
 const CrimeReportPage = () => {
-  // // console.log(strongDataToGraph);
-  // const { strongCrimeData } = useCrimeData();
-  // // console.log(strongCrimeData);
-  // const killPersonData = strongCrimeData.filter((value: any) => {
-  //   for (let key in value) {
-  //     if (typeof value[key] === "string" && value[key].includes("살인기수")) {
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // });
-  // const num = killPersonData[0].data;
-  // // console.log(num);
-
   const { strongCrimeData, violenceCrimeData } = useCrimeData();
   const [strongNum, setStrongNum] = useState<number | null>(null);
   const [violenceNum, setViolenceNum] = useState<number | null>(null);
@@ -55,59 +40,59 @@ const CrimeReportPage = () => {
   }, [strongCrimeData]);
   return (
     <>
-    <Header page={"crime"}/>
-    <section id="crMainArea" className="crMainArea crGrayBorder">
-      <div className="crInnerMainArea">
-        <div className="crUpsideArea crGrayBorder">
-          <div className="crUpLeftSideArea crGrayBorder">
-            <div className="crUpLeftSide2Area crGrayBorder">
-              <div className="crUp2Area1 crUp2Area">
-                <img className="mainImg" src={knifeImg}></img>
-                <p className="crUp2AreaP">
-                  <span>살인</span>
-                </p>
-                <div className="crUp2AreaSmall">
-                  <p>{strongNum}</p>
+      <Header page={"crime"} />
+      <section id="crMainArea" className="crMainArea crGrayBorder">
+        <div className="crInnerMainArea">
+          <div className="crUpsideArea crGrayBorder">
+            <div className="crUpLeftSideArea crGrayBorder">
+              <div className="crUpLeftSide2Area crGrayBorder">
+                <div className="crUp2Area1 crUp2Area">
+                  <img className="mainImg" src={knifeImg}></img>
+                  <p className="crUp2AreaP">
+                    <span>살인</span>
+                  </p>
+                  <div className="crUp2AreaSmall">
+                    <p>{strongNum}</p>
+                  </div>
+                </div>
+                <div className="crUp2Area2 crUp2Area">
+                  <img className="mainImg" src={handImg}></img>
+                  <p className="crUp2AreaP">
+                    <span>폭행</span>
+                  </p>
+                  <div className="crUp2AreaSmall">
+                    <p>{violenceNum}</p>
+                  </div>
                 </div>
               </div>
-              <div className="crUp2Area2 crUp2Area">
-                <img className="mainImg" src={handImg}></img>
-                <p className="crUp2AreaP">
-                  <span>폭행</span>
-                </p>
-                <div className="crUp2AreaSmall">
-                  <p>{violenceNum}</p>
+              <div className="crStrongCrimeArea crGrayBorder">
+                <p>강력범죄 차트</p>
+                <div className="crStrongCrimeGraph">
+                  <StrongDataToGraph />
                 </div>
               </div>
             </div>
-            <div className="crStrongCrimeArea crGrayBorder">
-              <p>강력범죄 차트</p>
-              <div className="crStrongCrimeGraph">
-                <StrongDataToGraph />
+            <div className="crUpRightSideArea crGrayBorder">
+              <p>폭력범죄 차트</p>
+              <div className="crUpRightGraph">
+                <ViolenceCrimeDataToGraph />
               </div>
             </div>
           </div>
-          <div className="crUpRightSideArea crGrayBorder">
-            <p>폭력범죄 차트</p>
-            <div className="crUpRightGraph">
-              <ViolenceCrimeDataToGraph />
+          <div className="crDownSideArea crGrayBorder">
+            <div className="crDownSideBox">
+              <p className="crDownSideBoxText">
+                <span>지능범죄 차트</span>
+              </p>
+              <div className="crDownSideAreaGraphBox">
+                <div className="crDownSideAreaGraph">
+                  <IntelligenceCrimeDataToGraph />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="crDownSideArea crGrayBorder">
-          <div className="crDownSideBox">
-            <p className="crDownSideBoxText">
-              <span>지능범죄 차트</span>
-            </p>
-            <div className="crDownSideAreaGraphBox">
-              <div className="crDownSideAreaGraph">
-                <IntelligenceCrimeDataToGraph />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 };

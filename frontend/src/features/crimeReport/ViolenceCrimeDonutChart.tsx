@@ -39,7 +39,6 @@ const ViolenceCrimePieChart: React.FC = () => {
     const total = d3.sum(violenceCrimeData, (d) => d.data);
     const maxData = Math.max(...violenceCrimeData.map((d) => d.data));
 
-    // ✅ 데이터 개수 제한 (상위 6개만 표시, 순서 유지)
     const limitedData = violenceCrimeData.slice(0, 6);
 
     const colorScale = d3
@@ -63,7 +62,7 @@ const ViolenceCrimePieChart: React.FC = () => {
 
     const arcs = g
       .selectAll(".arc")
-      .data(pie(limitedData)) // ✅ 제한된 데이터만 적용
+      .data(pie(limitedData))
       .enter()
       .append("g")
       .attr("class", "arc");
@@ -96,8 +95,9 @@ const ViolenceCrimePieChart: React.FC = () => {
       .style("font-weight", "bold")
       .text((d) => d.data.범죄중분류);
 
+    // ✅ 범례 위치 수직 중앙 정렬
     const legendX = windowWidth > 650 ? width * 0.65 : width * 0.57;
-    const legendY = windowWidth > 650 ? height / 15 : height / 5;
+    const legendY = height / 2 - limitedData.length * 10; // ✅ 데이터 개수에 따라 범례 중앙 정렬
 
     const legendContainer = svg
       .append("g")
@@ -105,7 +105,7 @@ const ViolenceCrimePieChart: React.FC = () => {
 
     legendContainer
       .selectAll(".legend-item")
-      .data(limitedData) // ✅ 제한된 데이터만 범례에 적용
+      .data(limitedData)
       .enter()
       .append("g")
       .attr("class", "legend-item")

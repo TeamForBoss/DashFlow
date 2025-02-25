@@ -17,7 +17,7 @@ const BarChart = (accData: PropsType) => {
         const height = document.querySelector(".acYearGraph")?.clientHeight;
         setWidth(width);
         setHeight(height);
-        if (window.innerWidth < 600) {
+        if (window.innerWidth < 900) {
             setFontSize("6px");
         } else {     
             setFontSize("11px");

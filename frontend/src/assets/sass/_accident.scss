@@ -1,4 +1,4 @@
-@use "./mixin" as *;
+@use "./mixin"as *;
 
 
 @mixin titleHead() {
@@ -25,65 +25,52 @@
     padding: 5px 20px; 
 }
 .accident {
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
     background: linear-gradient(var(--accidentbgColor));
     padding: var(--commonPadding);
-    height: 100vh;
-    overflow: auto;
-    
     .accWrap{
         margin: 0 auto;
+        height: 100%;
         max-width: 150rem;
-        width: 100%;
-        // height: 100%;
         display: flex;
-        flex-direction: row;
-        // justify-content: center;
         gap: var(--gapSize);
-
-  
+        // overflow: hidden;
         .accGraphWrap {
-            @include flexSet;
+            width: 70%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
             gap: var(--gapSize);
-            flex:2;
-            // height: 100%;
-            min-width: 300px;
+            //  min-width: 500px;
 
             .acYearBox {
-                @include titleHead();
-                width: 100%;
-                // min-height: 40vh;
-                height:50%;
-
+                 @include titleHead();
+                 height: 50%;
                 .acYearTitle {
-                    border: 1px solid var(--borderColor);
+                   border: 1px solid var(--borderColor);
                     margin-bottom: 10px;
                     @include titleStyle();
                     p {
-                        @include textStyle();
+                    @include textStyle();
                     }
                 }
 
                 .acYearGraph {
                     border: 1px solid var(--borderColor);
-                    width: 100%;
-                    height: 83%;
-                    // width: 80rem;
-                    // height: 25rem;
+                    height: 83%; 
                 }
             }
 
             .acTrafficBox {
-                @include titleHead();
-                width: 100%;
-                height: 50%;
+                 @include titleHead();
+                 height: 50%;
 
-                // height: 40vh;
                 .TrafficTitle {
-                    border: 1px solid var(--borderColor);
+                  border: 1px solid var(--borderColor);
                     margin-bottom: 10px;
-                    @include titleStyle();
-
+                    @include titleStyle(); 
                     p {
                         @include textStyle();
                     }
@@ -91,45 +78,35 @@
 
                 .TrafficGraph {
                     border: 1px solid var(--borderColor);
-                    width: 100%;
-                    height: 83%;
-                    // width: 80rem;
-                    // height: 25rem;
+                    height: 83%; 
                 }
             }
 
         }
 
         .accChartWrap {
-            @include flexSet;
+            width: 30%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
             gap: var(--gapSize);
-            // height: 100%;
-            flex:1;
             .acCount {
-                width: 100%;
+                height: 20%;
                 display: flex;
-                flex-direction: row;
                 justify-content: space-between;
                 gap: var(--gapSize);
-                height: 20%;
-
                 .numOfDeathBox {
                     @include titleHead();
-                    height: 100%;
                     flex: 1;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
 
                     .acDeathTitle {
-                        @include flexSet();
-                        flex-direction: row; 
-                        margin-bottom: 0.5rem;
+                        display: flex;
+                        align-items: center;
                         .deathImg {
-                            width: 3rem;
-                            margin:0 10px;
-                            filter: drop-shadow(1.7px 1.7px 1.2px #3333337e);
-                        }
+                                width: 3rem;
+                                margin:0 10px;
+                                filter: drop-shadow(1.7px 1.7px 1.2px #3333337e);
+                            }
                         p {
                             @include textStyle();
                             font-size: 2rem;
@@ -148,46 +125,40 @@
                             }
                         }
                     }
-                    .deathCont {
+                    .deathCont{
                         border: 1px solid var(--borderColor);
                         border-radius: 1rem;
                         background: #eff5f5;
                         box-shadow: inset 0px 3px 3px #dadada;
-
-                        .numOfDeath {
-                            text-align: center;
-                            font-size: 2rem;
-                        }
+                    .numOfDeath {
+                       text-align: center;
+                        font-size: 2rem; 
+                    }
                     }
                 }
 
                 .numOfAccBox {
                     @include titleHead();
-                    height: 100%;
                     flex: 1;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
 
                     .acAccTitle {
-                        @include flexSet();
-                        flex-direction: row;
-                        margin-bottom: 0.625rem;
+                        display: flex;
+                        align-items: center; 
                         .accImg {
-                            width: 3rem;
-                            margin:0 10px;
-                            filter: drop-shadow(1.7px 1.7px 1.2px #3333337e);
-                        }
+                                width: 3rem;
+                                margin:0 10px;
+                                filter: drop-shadow(1.7px 1.7px 1.2px #3333337e);
+                            }
                         p {
                             @include textStyle();
                             font-size: 2rem;
-                             @media(max-width:1500px) {
+                            @media(max-width:1500px) {
                                 font-size: 1.5rem;
                             }
                             @media(max-width:1400px) {
                                 font-size: 1.1rem;
                             }
-                             @media(max-width:1024px) {
+                            @media(max-width:1024px) {
                                 font-size: 2rem;
                             }
                              @media(max-width:600px) {
@@ -201,31 +172,24 @@
                         border-radius: 1rem;
                         background: #eff5f5;
                         box-shadow: inset 0px 3px 3px #dadada;
-                        .numOfAcc {
-                            text-align: center;
-                            font-size: 2rem;
-                        }
-                    }   
+                    .numOfAcc {
+                        text-align: center;
+                        font-size: 2rem;
+                    }
+                    }
                 }
             }
-            
-            .accidentType {
-                width: 100%;
-                height: 40%;
-                display: flex;
-                justify-content: center;
-                align-items: stretch;
 
+            .accidentType {
+                height: 40%;
                 .acTypeBox {
-                    width: 100%;
                     height: 100%;
                     @include titleHead();
 
                     .acTypeTitle {
-                        border: 1px solid var(--borderColor);
+                          border: 1px solid var(--borderColor);
                         margin-bottom: 10px;
                         @include titleStyle();
-
                         p {
                             @include textStyle();
                         }
@@ -233,34 +197,23 @@
 
                     .acTypeGraph {
                         border: 1px solid var(--borderColor);
-                        width: 100%;
                         height: 77%;
-                        // @include flexSet();
-                        // overflow-y: scroll;
-                        // width: 32.5rem;
-                        // height: 15rem;
                     }
                 }
             }
 
             .LawViolation {
-                width: 100%;
                 height: 40%;
-                display: flex;
-                justify-content: center;
-                align-items: stretch;
 
                 .acLawBox {
                     @include titleHead();
-                     width: 100%;
-                    height: 100%;
                     // flex: 1;
+                    height: 100%;
 
                     .acLawTitle {
                         border: 1px solid var(--borderColor);
                         margin-bottom: 10px;
                         @include titleStyle();
-
                         p {
                             @include textStyle();
                         }
@@ -268,23 +221,11 @@
 
                     .acLawGraph {
                         border: 1px solid var(--borderColor);
-                        width: 100%;
-                        height: 77%;
-                        // width: 32.5rem;
-                        // height: 15rem;
+                        height: 77%; 
                     }
                 }
             }
-        }
-        @media(max-width:1024px) {
-            flex-direction: column;
-            align-items: normal;
-            margin: 50px 0;
-        }      
-        @media(max-width:850px) { 
-            flex-direction: column;
-            align-items: normal;
-            margin: 50px 0;
+            
         }
     }
 }

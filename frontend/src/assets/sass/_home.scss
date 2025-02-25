@@ -16,7 +16,16 @@
   height: 100%;
   margin: 0 auto;
 }
-
+///////// 날씨 추가 //////
+.acAvgInfoText {
+    position: absolute;
+    top: 4.5rem;
+    right: 1rem;
+    width: 100%;
+    text-align: right;
+    font-size: var(--smallFontSize);
+    padding: 0.5rem; 
+}
 /////////////////////// 이거 추가했어요 !!!!!!! 2024 기준 평균 데이터 textInfo! //////////////
 /// //////////////
 .crAvgInfoText {

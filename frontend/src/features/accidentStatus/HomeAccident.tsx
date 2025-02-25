@@ -42,7 +42,7 @@ const HomeAccident = () => {
         </div>
         <div className="item homeAccidentItem">
         <div className="title">경기 사고 연평균</div>
-
+        <div className="acAvgInfoText">2023년 기준 평균 데이터</div>
         <div className="contents">
             <div className="content">
             <img src={warning} alt="사고" />

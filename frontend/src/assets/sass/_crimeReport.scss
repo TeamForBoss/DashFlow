@@ -313,8 +313,7 @@
 
 
 // 미디어 쿼리 부분   ---- 노트북 
-@media (max-width : 1500px) {
-
+@media (max-width : 1600px) {
     .crMainWrapper {
         .crMainArea {
             max-width: 120rem;
@@ -347,9 +346,10 @@
     }
 
     .crChartName {
-        font-size: var(--smallFontSize) !important;
+        font-size: var(--middleFontSize) !important;
         height: 3rem !important;
         line-height: 3rem !important;
+        color: var(--black300);
     }
 
     .crUp2AreaSmall {
@@ -408,9 +408,7 @@
 @media (max-width : 650px) {
 
     .crMainWrapper {
-        padding-left: 2rem;
-        padding-right: 2rem;
-        padding-bottom: 0;
+        padding: 7.7rem 1rem 1rem;
 
         .crMainArea {
             overflow: scroll !important;
@@ -425,12 +423,12 @@
     // 강력범죄 차트 그래프 영역
     .crStrongCrimeGraph {
         width: 100% !important;
-        height: 75% !important;
+        height: 65% !important;
     }
 
-    // 폴력범죄 차트 그래프 영역
+    // 폭력범죄 차트 그래프 영역
     .crUpRightGraph {
-        height: 83% !important;
+        height: 80% !important;
     }
 
     // 지능범죄 차트 그래프 영역
@@ -445,14 +443,14 @@
         margin-left: 0 !important;
         height: 100%;
         width: 100% !important;
-        margin-top: 0.5rem;
+        margin-top: 0.65rem;
         margin-bottom: 2rem;
     }
 
 
     .crStrongCrimeArea {
         font-size: var(--smallFontSize);
-        width: 87vw !important;
+        width: 92.8vw !important;
         height: 70%;
         margin-top: 0.5rem;
 
@@ -464,6 +462,7 @@
     // 아래
     .crDownSideArea {
         height: 17rem !important;
+
     }
 
 
@@ -472,12 +471,13 @@
     /// 
     .crUpsideArea {
         flex-direction: column;
-        height: 50rem !important;
+        height: 45rem !important;
+        margin-bottom: 0rem !important;
     }
 
     .crUpLeftSide2Area {
         padding: 0;
-        width: 87vw;
+        width: 92.7vw;
 
         .crUp2Area1 {
             width: 50% !important;
@@ -500,7 +500,7 @@
             span {
                 text-align: right;
                 width: 2.5rem;
-                font-size: var(--tinySize);
+                font-size: var(--smallFontSize);
                 // border: 1px solid red;
             }
 

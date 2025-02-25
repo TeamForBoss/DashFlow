@@ -27,8 +27,13 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // ✅ 모바일에서는 데이터 개수만 6개로 제한 (순서 유지)
+  const filteredData1 = windowWidth <= 650 ? data1.slice(0, 6) : data1;
+  const filteredData2 = windowWidth <= 650 ? data2.slice(0, 6) : data2;
+
   useEffect(() => {
-    if (!data1.length || !data2.length || !containerRef.current) return;
+    if (!filteredData1.length || !filteredData2.length || !containerRef.current)
+      return;
 
     const containerWidth = containerRef.current.clientWidth;
     const containerHeight = containerRef.current.clientHeight;
@@ -37,7 +42,7 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
 
     const margin =
       windowWidth <= 650
-        ? { top: 10, right: 20, bottom: 50, left: 10 } //   x축 범죄 유형 추가하려면 bottom 공간 늘려야 함!
+        ? { top: 10, right: 20, bottom: 50, left: 10 }
         : { top: 20, right: 20, bottom: 50, left: 20 };
 
     const svg = d3.select(svgRef.current);
@@ -51,13 +56,13 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
 
     const xScale = d3
       .scalePoint()
-      .domain(data1.map((crime) => crime.범죄중분류))
+      .domain(filteredData1.map((crime) => crime.범죄중분류))
       .range([0, width - margin.left - margin.right])
       .padding(0.2);
 
     const maxY = Math.max(
-      d3.max(data1, (d) => d.data) || 0,
-      d3.max(data2, (d) => d.data) || 0
+      d3.max(filteredData1, (d) => d.data) || 0,
+      d3.max(filteredData2, (d) => d.data) || 0
     );
 
     const yScale = d3
@@ -69,19 +74,8 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
       .append("g")
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-    const avg1 = d3.mean(data1, (d) => d.data) || 0;
-    const avg2 = d3.mean(data2, (d) => d.data) || 0;
-
-    if (avg1 < avg2) {
-      setColor1("#FFA500");
-      setColor2("#FF1493");
-    } else {
-      setColor1("#FF1493");
-      setColor2("#FFA500");
-    }
-
     const isData1Higher = (index: number) =>
-      data1[index].data >= data2[index].data;
+      filteredData1[index].data >= filteredData2[index].data;
 
     const createLine = (
       data: CrimeData[],
@@ -111,7 +105,7 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
         .ease(d3.easeLinear)
         .attr("stroke-dashoffset", 0);
 
-      //   동글맹이 (circle) 다시 추가
+      // ✅ 동글맹이 (circle) 유지
       chartGroup
         .selectAll(`.dot-${color}`)
         .data(data)
@@ -128,7 +122,7 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
         .duration(500)
         .attr("opacity", 1);
 
-      //   숫자 위치 조정
+      // ✅ 숫자 유지
       chartGroup
         .selectAll(`.label-${color}`)
         .data(data)
@@ -151,41 +145,39 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
         .attr("opacity", 1);
     };
 
-    createLine(data1, color1, isData1Higher);
-    createLine(data2, color2, (index) => !isData1Higher(index));
+    createLine(filteredData1, color1, isData1Higher);
+    createLine(filteredData2, color2, (index) => !isData1Higher(index));
 
-    //   x축 범죄 유형(범죄중분류) 추가
+    // ✅ x축 범죄 유형(범죄중분류) 다시 추가
     chartGroup
       .selectAll(".x-label")
-      .data(data1)
+      .data(filteredData1)
       .enter()
       .append("text")
       .attr("class", "x-label")
       .attr("x", (d) => xScale(d.범죄중분류)!)
-      .attr("y", height - margin.bottom + 20) //   x축 아래쪽에 위치
+      .attr("y", height - margin.bottom + 20) // ✅ x축 아래쪽에 위치
       .attr("text-anchor", "middle")
       .style("font-size", "12px")
       .style("fill", "#333")
       .text((d) => d.범죄중분류);
-  }, [data1, data2, windowWidth, color1, color2]);
+  }, [filteredData1, filteredData2, windowWidth, color1, color2]);
 
   return (
     <div
       ref={containerRef}
       style={{ width: "100%", height: "100%", position: "relative" }}
     >
-      {/*   범례 색상과 글자 색상 적용 */}
+      {/* ✅ 범례 위치를 PC에서는 오른쪽 위, 모바일에서는 왼쪽 위로 변경 */}
       <div
         style={{
           position: "absolute",
-          top: windowWidth <= 650 ? "5px" : "10px",
-          right: windowWidth <= 650 ? "190px" : "50px",
-          background: "rgba(255,255,255,0.7)",
-          padding: "5px 10px",
-          borderRadius: "5px",
-          fontSize: "13px",
+          top: "12px",
+          right: windowWidth <= 650 ? "auto" : "10px",
+          left: windowWidth <= 650 ? "10px" : "auto",
+          fontSize: "12px",
           zIndex: 10,
-          color: "#333", //   범례 글자 색상 적용
+          color: "#333",
         }}
       >
         <div

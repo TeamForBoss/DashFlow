@@ -18,36 +18,27 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
   const svgRef = useRef<SVGSVGElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [color1, setColor1] = useState("#FF1493");
+  const [color2, setColor2] = useState("#FFA500");
 
-  // ✅ 화면 크기 감지 (14인치 이하에서 margin 수정)
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
-    if (
-      !data1 ||
-      data1.length === 0 ||
-      !data2 ||
-      data2.length === 0 ||
-      !containerRef.current
-    )
-      return;
+    if (!data1.length || !data2.length || !containerRef.current) return;
 
     const containerWidth = containerRef.current.clientWidth;
     const containerHeight = containerRef.current.clientHeight;
-
     const width = containerWidth;
     const height = containerHeight;
 
-    // ✅ 반응형 margin 설정
     const margin =
-      windowWidth <= 1400
-        ? { top: 0, right: 150, bottom: 35, left: 20 } // 노트북
-        : { top: 20, right: 20, bottom: 40, left: 20 }; // 일반 화면
+      windowWidth <= 650
+        ? { top: 10, right: 20, bottom: 50, left: 10 } //   x축 범죄 유형 추가하려면 bottom 공간 늘려야 함!
+        : { top: 20, right: 20, bottom: 50, left: 20 };
 
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove();
@@ -78,11 +69,24 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
       .append("g")
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-    // ✅ 선 생성 함수
+    const avg1 = d3.mean(data1, (d) => d.data) || 0;
+    const avg2 = d3.mean(data2, (d) => d.data) || 0;
+
+    if (avg1 < avg2) {
+      setColor1("#FFA500");
+      setColor2("#FF1493");
+    } else {
+      setColor1("#FF1493");
+      setColor2("#FFA500");
+    }
+
+    const isData1Higher = (index: number) =>
+      data1[index].data >= data2[index].data;
+
     const createLine = (
       data: CrimeData[],
       color: string,
-      labelPosition: "top" | "bottom"
+      isHigher: (index: number) => boolean
     ) => {
       const line = d3
         .line<CrimeData>()
@@ -107,7 +111,7 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
         .ease(d3.easeLinear)
         .attr("stroke-dashoffset", 0);
 
-      // ✅ 동그라미 추가 (데이터 포인트)
+      //   동글맹이 (circle) 다시 추가
       chartGroup
         .selectAll(`.dot-${color}`)
         .data(data)
@@ -124,7 +128,7 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
         .duration(500)
         .attr("opacity", 1);
 
-      // ✅ 숫자 추가 (labelPosition에 따라 위/아래 구분)
+      //   숫자 위치 조정
       chartGroup
         .selectAll(`.label-${color}`)
         .data(data)
@@ -132,11 +136,9 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
         .append("text")
         .attr("class", `label-${color}`)
         .attr("x", (d) => xScale(d.범죄중분류)!)
-        .attr("y", (d) => {
-          return labelPosition === "top"
-            ? yScale(d.data) - 10
-            : yScale(d.data) + 15;
-        })
+        .attr("y", (d, i) =>
+          isHigher(i) ? yScale(d.data) - 10 : yScale(d.data) + 15
+        )
         .attr("text-anchor", "middle")
         .style("font-size", "12px")
         .style("fill", "#333")
@@ -149,61 +151,71 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
         .attr("opacity", 1);
     };
 
-    // ✅ 두 개의 선 추가 (겹쳐서 그리기 + 숫자 위/아래 구분)
-    createLine(data1, "#FF1493", "top"); // 첫 번째 데이터 (진한 핑크, 숫자 위)
-    createLine(data2, "#FFA500", "bottom"); // 두 번째 데이터 (오렌지, 숫자 아래)
+    createLine(data1, color1, isData1Higher);
+    createLine(data2, color2, (index) => !isData1Higher(index));
 
-    // ✅ X축 추가 (눈금 제거)
+    //   x축 범죄 유형(범죄중분류) 추가
     chartGroup
-      .append("g")
-      .attr(
-        "transform",
-        `translate(0, ${height - margin.top - margin.bottom + 20})`
-      )
-      .call(d3.axisBottom(xScale).tickSize(0))
-      .selectAll("text")
+      .selectAll(".x-label")
+      .data(data1)
+      .enter()
+      .append("text")
+      .attr("class", "x-label")
+      .attr("x", (d) => xScale(d.범죄중분류)!)
+      .attr("y", height - margin.bottom + 20) //   x축 아래쪽에 위치
+      .attr("text-anchor", "middle")
       .style("font-size", "12px")
-      .style("fill", "#333");
-
-    // ✅ Y축 제거 (검은색 선 삭제)
-    chartGroup.selectAll("g .domain").remove();
-
-    // ✅ 범례 추가
-    const legend = svg
-      .append("g")
-      .attr("transform", `translate(${width - 110}, 10)`);
-
-    legend
-      .append("circle")
-      .attr("cx", 10)
-      .attr("cy", 10)
-      .attr("r", 5)
-      .style("fill", "#FF1493");
-
-    legend
-      .append("text")
-      .attr("x", 20)
-      .attr("y", 14)
-      .text("해당 지역")
-      .style("font-size", "12px");
-
-    legend
-      .append("circle")
-      .attr("cx", 10)
-      .attr("cy", 30)
-      .attr("r", 5)
-      .style("fill", "#FFA500");
-
-    legend
-      .append("text")
-      .attr("x", 20)
-      .attr("y", 34)
-      .text("경기도 평균")
-      .style("font-size", "12px");
-  }, [data1, data2, windowWidth]);
+      .style("fill", "#333")
+      .text((d) => d.범죄중분류);
+  }, [data1, data2, windowWidth, color1, color2]);
 
   return (
-    <div ref={containerRef} style={{ width: "100%", height: "100%" }}>
+    <div
+      ref={containerRef}
+      style={{ width: "100%", height: "100%", position: "relative" }}
+    >
+      {/*   범례 색상과 글자 색상 적용 */}
+      <div
+        style={{
+          position: "absolute",
+          top: windowWidth <= 650 ? "5px" : "10px",
+          right: windowWidth <= 650 ? "190px" : "50px",
+          background: "rgba(255,255,255,0.7)",
+          padding: "5px 10px",
+          borderRadius: "5px",
+          fontSize: "13px",
+          zIndex: 10,
+          color: "#333", //   범례 글자 색상 적용
+        }}
+      >
+        <div
+          style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}
+        >
+          <div
+            style={{
+              width: "10px",
+              height: "10px",
+              backgroundColor: color1,
+              borderRadius: "50%",
+              marginRight: "5px",
+            }}
+          ></div>
+          해당 지역
+        </div>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div
+            style={{
+              width: "10px",
+              height: "10px",
+              backgroundColor: color2,
+              borderRadius: "50%",
+              marginRight: "5px",
+            }}
+          ></div>
+          경기도 평균
+        </div>
+      </div>
+
       <svg ref={svgRef}></svg>
     </div>
   );

@@ -12,10 +12,12 @@ const ViolenceCrimePieChart: React.FC = () => {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [dimensions, setDimensions] = useState({ width: 300, height: 300 });
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  //   부모 크기에 맞춰 차트 크기 설정 (반응형 적용)
+  //   화면 크기 감지
   useEffect(() => {
-    const updateSize = () => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
       if (containerRef.current) {
         setDimensions({
           width: containerRef.current.clientWidth,
@@ -24,17 +26,16 @@ const ViolenceCrimePieChart: React.FC = () => {
       }
     };
 
-    updateSize(); // 처음 마운트될 때 크기 설정
-    window.addEventListener("resize", updateSize); // 창 크기 변경 감지
-
-    return () => window.removeEventListener("resize", updateSize);
+    handleResize(); //   최초 실행
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
     if (!violenceCrimeData || violenceCrimeData.length === 0) return;
 
     const { width, height } = dimensions;
-    const pieWidth = width * 0.5; //   원을 왼쪽에 배치하기 위해 너비 조정
+    const pieWidth = width * 0.5;
     const radius = Math.min(pieWidth, height) / 2 - 20;
     const total = d3.sum(violenceCrimeData, (d) => d.data);
     const maxData = Math.max(...violenceCrimeData.map((d) => d.data));
@@ -60,10 +61,9 @@ const ViolenceCrimePieChart: React.FC = () => {
     svg.attr("width", width).attr("height", height);
 
     //   파이 차트 그룹 (왼쪽 배치)
-    const g = svg.append("g").attr(
-      "transform",
-      `translate(${width / 3}, ${height / 2})` //   왼쪽 정렬
-    );
+    const g = svg
+      .append("g")
+      .attr("transform", `translate(${width / 3}, ${height / 2})`);
 
     const arcs = g
       .selectAll(".arc")
@@ -87,33 +87,31 @@ const ViolenceCrimePieChart: React.FC = () => {
         };
       });
 
-    ///////////////////////////////// 원 데이터 안에 글자 넣기!  !!!!!!///////////////////////
-    //  데이터 내림차순 정렬 후 상위 3개 가져오기
+    //   원 데이터 안에 상위 3개 글자 넣기
     const top3Data = [...violenceCrimeData]
       .sort((a, b) => b.data - a.data)
       .slice(0, 3);
     arcs
       .filter((d) =>
         top3Data.some((item) => item.범죄중분류 === d.data.범죄중분류)
-      ) //  TOP 3만 필터링
+      )
       .append("text")
-      .attr("transform", (d) => `translate(${arc.centroid(d)})`) //   중심 좌표 계산
+      .attr("transform", (d) => `translate(${arc.centroid(d)})`)
       .attr("text-anchor", "middle")
       .style("font-size", "12px")
-      .style("fill", "#fff") //   글씨 색
+      .style("fill", "#fff")
       .style("font-weight", "bold")
       .text((d) => d.data.범죄중분류);
-    ///////////////////////////////// 원 데이터 안에 글자 넣기!  !!!!!!///////////////////////
 
-    //   범례 그룹 생성 (오른쪽 & 수직 정렬)
+    //   범례 위치 조정 (모바일에서만 왼쪽 + 위로 올리기)
+    const legendX = windowWidth > 650 ? width * 0.65 : width * 0.57;
+    const legendY = windowWidth > 650 ? height / 4 : height / 5; //   모바일에서는 위로 올림
+
+    //   범례 그룹 생성
     const legendContainer = svg
       .append("g")
-      .attr(
-        "transform",
-        `translate(${width * 0.65}, ${
-          height / 2 - (sortedData.length * 12) / 1.2
-        })`
-      );
+      .attr("transform", `translate(${legendX}, ${legendY})`);
+
     legendContainer
       .selectAll(".legend-item")
       .data(sortedData)
@@ -135,11 +133,11 @@ const ViolenceCrimePieChart: React.FC = () => {
           .append("text")
           .attr("x", 23)
           .attr("y", 14)
-          .style("font-size", "12px") // 범례 글씨 크기
+          .style("font-size", "13px")
           .style("fill", "#333")
           .text(`${d.범죄중분류} - ${percent}%`);
       });
-  }, [violenceCrimeData, dimensions]);
+  }, [violenceCrimeData, dimensions, windowWidth]);
 
   return (
     <div

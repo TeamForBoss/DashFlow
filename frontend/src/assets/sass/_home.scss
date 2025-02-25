@@ -1,21 +1,22 @@
-@use "./mixin" as *;
+@use "./mixin"as *;
 
 .homeArea {
   height: 100vh;
   width: 100vw;
-  padding: 13rem 4rem 4rem;
+  padding: 13rem 5vw 4rem;
   box-sizing: border-box;
   overflow: hidden;
   background: linear-gradient(#fff, #eee);
 }
 
-.homeContentslayout{
+.homeContentslayout {
   display: flex;
   max-width: 180rem;
   gap: 7rem;
   height: 100%;
   margin: 0 auto;
 }
+
 .regionArea {
   position: relative;
   display: flex;
@@ -34,18 +35,21 @@
 
     .regionCategory {
       width: 100%;
+      margin-bottom: 0.5rem;
       height: 6vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #F7F7F7;
-      border: 1px solid #E0E0E0;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background: #dbdbdbda;
+      border: 0.5px solid #eaeaea;
+      border-radius: 7px;
+      box-shadow: inset 2px 2.2px rgba(0, 0, 0, 0.1), inset -1px -1px 0.8px rgba(0, 0, 0, 0.029);
 
       p {
-        font-size: var(--bigFontSize);
-        color: #707070;
+        font-size: 25px;
+        color: #ffffff;
+        text-shadow: 1px 1px 3px rgba(157, 157, 157, 0.826),
+          0px 0px 0.7px rgba(0, 0, 0, 0.826);
       }
     }
 
@@ -53,7 +57,7 @@
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.8rem;
       width: 100%;
 
       .city {
@@ -61,18 +65,20 @@
         justify-content: center;
         align-items: center;
         width: calc(20% - 1rem);
-        font-size: var(--middleFontSize);
-        color: #707070;
+        font-size: 15px;
+        color: #c5c5c5;
+        text-shadow: 1px 1px 1.5px rgba(163, 163, 163, 0.564);
         background: #FFFFFF;
         border: 1px solid #E0E0E0;
-        border-radius: 8px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 7px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1),
+          inset 0 0 2px rgba(115, 115, 115, 0.255);
         height: 5.5vh;
         cursor: pointer;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
 
         &:hover {
-          transform: translateY(-2px);
+          transform: translateY(-1.3px);
           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
         }
 
@@ -82,10 +88,11 @@
         }
 
         &.checked {
-          background: #D3D3D3; 
-          color: #3D3D3D; 
-          border: 1px solid #9E9E9E;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+          background: #D3D3D3;
+          color: #828282c9;
+          text-shadow: 0px 0px 3px rgba(89, 89, 89, 0.43);
+          border: 1px solid #9e9e9e56;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.181);
         }
       }
     }
@@ -95,17 +102,19 @@
       width: 100%;
       font-size: var(--middleFontSize);
       height: 6vh;
-      color: #5C5C5C; 
+      color: #5C5C5C;
+      text-shadow: 1px 1px 2px #C0C0C0;
       background: #E5E5E5;
       border: 1px solid #C0C0C0;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      border-radius: 7px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 -0.5px 4px rgba(0, 0, 0, 0.08);
       transition: all 0.2s ease-in-out;
     }
 
     .confirmBtn.active {
       background: #D3D3D3;
-      color: #3D3D3D; 
+      color: #ffffff;
+      text-shadow: 0 0 3px rgba(255, 255, 255, 0.653);
       font-weight: 500;
       border: 1px solid #9E9E9E;
     }
@@ -116,7 +125,7 @@
     }
 
     .confirmBtn.active:active {
-      background: #A8A8A8; 
+      background: #A8A8A8;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
 
@@ -133,7 +142,7 @@
 }
 
 .averageArea {
-  width: 40%;
+  width: 45%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -142,7 +151,7 @@
   .averageWrap {
     height: calc(100% / 3.2);
     position: relative;
-    border-radius: 10px;
+    border-radius: 7px;
   }
 
   .item {
@@ -154,7 +163,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    border-radius: 10px;
+    border-radius: 7px;
     height: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: transparent;
@@ -162,16 +171,24 @@
     &.homeWeatherItem {
       .title {
         background-color: #EBF7F1;
+        text-shadow: 0.8px 0.8px 4px rgb(34, 98, 85),
+          0 0 0.5px rgb(255, 255, 255);
       }
     }
+
     &.homeAccidentItem {
       .title {
         background-color: #F9F5E0;
+        text-shadow: 0.8px 0.8px 4px rgb(143, 97, 17),
+          0 0 0.5px rgb(255, 255, 255);
       }
     }
+
     &.homeCrimeItem {
       .title {
         background-color: #FFF0F5;
+        text-shadow: 0.8px 0.8px 4px rgb(120, 48, 94),
+          0 0 0.5px rgb(255, 255, 255);
       }
     }
 
@@ -180,11 +197,12 @@
       justify-content: center;
       align-items: center;
       width: 100%;
-      color: #707070;
-      font-size: var(--bigFontSize);
+      color: #ffffff;
+      font-size: 20px;
+      padding: 0.35vh 0 0.35vh 0;
       position: relative;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+      border-top-left-radius: 7px;
+      border-top-right-radius: 7px;
       box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 
       &:after {
@@ -194,11 +212,9 @@
         left: 0;
         width: 100%;
         height: 10px;
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.1) 0%,
-          rgba(0, 0, 0, 0) 100%
-        );
+        background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.1) 0%,
+            rgba(0, 0, 0, 0) 100%);
       }
     }
 
@@ -247,7 +263,7 @@
   bottom: 0;
   flex: 1;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 7px;
   overflow: hidden;
   background-color: #fff;
   z-index: 0;
@@ -256,100 +272,82 @@
     position: absolute;
     bottom: 0;
     width: 200%;
-    height: 100%;
+    height: 80%;
     opacity: 0.5;
 
     &.wave1 {
       clip-path: ellipse(60% 85% at 50% 100%);
-      height: 50%;
-      opacity: 0.45;
+      height: 42%;
+      opacity: 0.75;
       animation: waveMove 12s ease-in-out infinite alternate;
     }
 
     &.wave2 {
       clip-path: ellipse(55% 90% at 50% 100%);
-      height: 45%;
-      opacity: 0.35;
+      height: 32%;
+      opacity: 0.25;
       animation: waveMove 16s ease-in-out infinite alternate-reverse;
     }
 
     &.wave3 {
       clip-path: ellipse(50% 100% at 50% 100%);
-      height: 33%;
-      opacity: 0.4;
+      height: 20%;
+      opacity: 0.3;
       animation: waveMove 20s ease-in-out infinite alternate;
     }
   }
 
   &.waveWeather .wave {
-    background: linear-gradient(
-      to top,
-      rgba(207, 246, 228, 0.45) 50%,
-      rgba(207, 246, 228, 0.45) 100%
-    );
+    background: linear-gradient(to top,
+        rgba(207, 246, 228, 0.45) 50%,
+        rgba(207, 246, 228, 0.45) 100%);
 
     &.wave2 {
-      background: linear-gradient(
-        to top,
-        rgba(140, 210, 180, 0.6) 50%,
-        rgba(140, 210, 180, 0.6) 100%
-      );
+      background: linear-gradient(to top,
+          rgba(140, 210, 180, 0.6) 50%,
+          rgba(140, 210, 180, 0.6) 100%);
     }
 
     &.wave3 {
-      background: linear-gradient(
-        to top,
-        rgba(170, 230, 200, 0.55) 50%,
-        rgba(170, 230, 200, 0.55) 100%
-      );
+      background: linear-gradient(to top,
+          rgba(170, 230, 200, 0.55) 50%,
+          rgba(170, 230, 200, 0.55) 100%);
     }
   }
 
   &.waveAccident .wave {
-    background: linear-gradient(
-      to top,
-      rgba(255, 245, 200, 0.5) 50%,
-      rgba(255, 245, 200, 0.5) 100%
-    );
+    background: linear-gradient(to top,
+        rgba(255, 245, 200, 0.5) 50%,
+        rgba(255, 245, 200, 0.5) 100%);
 
     &.wave2 {
-      background: linear-gradient(
-        to top,
-        rgba(250, 220, 160, 0.6) 50%,
-        rgba(250, 220, 160, 0.6) 100%
-      );
+      background: linear-gradient(to top,
+          rgba(250, 220, 160, 0.6) 50%,
+          rgba(250, 220, 160, 0.6) 100%);
     }
 
     &.wave3 {
-      background: linear-gradient(
-        to top,
-        rgba(255, 230, 180, 0.55) 50%,
-        rgba(255, 230, 180, 0.55) 100%
-      );
+      background: linear-gradient(to top,
+          rgba(255, 230, 180, 0.55) 50%,
+          rgba(255, 230, 180, 0.55) 100%);
     }
   }
 
   &.waveCrime .wave {
-    background: linear-gradient(
-      to top,
-      rgba(255, 220, 220, 0.45) 50%,
-      rgba(255, 230, 230, 0.45) 100%
-    );
+    background: linear-gradient(to top,
+        rgba(255, 220, 220, 0.45) 50%,
+        rgba(255, 230, 230, 0.45) 100%);
 
     &.wave2 {
-      background: linear-gradient(
-        to top,
-        rgba(240, 160, 160, 0.6) 50%,
-        rgba(240, 160, 160, 0.6) 100%
-      );
+      background: linear-gradient(to top,
+          rgba(240, 160, 160, 0.6) 50%,
+          rgba(240, 160, 160, 0.6) 100%);
     }
 
     &.wave3 {
-      background: linear-gradient(
-        to top,
-        rgba(250, 180, 180, 0.55) 50%,
-        rgba(250, 180, 180, 0.55) 100%
-      );
+      background: linear-gradient(to top,
+          rgba(250, 180, 180, 0.55) 50%,
+          rgba(250, 180, 180, 0.55) 100%);
     }
   }
 }
@@ -358,7 +356,94 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
+  }
+}
+
+
+///////////////////////
+////모바일 500기준 /////
+///////////////////////
+@media (max-width: 500px) {
+  .homeArea {
+    width: 100vw;
+    height: 100vh;
+    bottom: 0;
+    padding-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 50vh;
+    align-items: center;
+  }
+
+  .regionSubCategory {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    width: 100%;
+  }
+
+  .homeContentslayout {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+  }
+
+  .averageArea {
+    display: none;
+  }
+
+  .regionArea {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .regionArea .item {
+    width: 100%;
+    gap: 0.2rem;
+  }
+
+  .regionArea .regionCategory {
+    height: 5vh;
+  }
+
+  .regionArea .regionCategory p {
+    font-size: 4vw;
+  }
+
+  .regionArea .regionSubCategory .city {
+    width: calc(50% - 1rem);
+    font-size: 4vw;
+    height: 5vh;
+  }
+
+  .averageArea .averageWrap {
+    height: auto;
+    margin-bottom: 2rem;
+  }
+
+  .averageArea .item {
+    position: relative;
+    height: auto;
+    width: 100%;
+  }
+
+  .averageArea .item .title {
+    font-size: 4vw;
+    padding: 1vh 0;
+  }
+
+  .averageArea .item .contents {
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+
+  .waveContainer {
+    border-radius: 5px;
   }
 }

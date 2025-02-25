@@ -1,10 +1,9 @@
 @import url("./_vars.scss");
 
 $header-logo-height : 4rem;
-$header-text-accident : #f1b317; 
-$header-text-crime :#eb7474; 
-$header-text-weather : #69ca93; 
-$header-text-select : purple; 
+$header-text-accident : #fde3a0;
+$header-text-crime :#ffd9e6eb;
+$header-text-weather : #a7dac6e3;
 
 /* 헤더 전체 컨테이너 */
 .header-container {
@@ -12,21 +11,23 @@ $header-text-select : purple;
     position: fixed;
     top: 1.875rem;
     padding: 15px 20px;
-    border: 1px solid #bbb;
+    border: 1px solid #e0e0e0c7;
     background-color: var(--white);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05), 0px -4px 4px rgba(0, 0, 0, 0.05);
     z-index: 1000;
 }
 
 //  ==== 홈만 해당 =====
 .header-home {
     width: 100%;
-    .header-logo{
+
+    .header-logo {
         justify-content: center;
-        align-items: center;;
+        align-items: center;
+        ;
         text-align: center;
         margin: 0 auto;
     }
@@ -39,30 +40,45 @@ $header-text-select : purple;
 }
 
 //  ==== 홈 제외 =====
-.header-etc{
+.header-etc {
     .header-logo {
         width: 33.3333%;
         display: flex;
         align-items: center;
     }
-    
+
     .header-subtitle {
         text-align: center;
         width: 33.3333%;
         font-size: var(--bigFontSize);
         font-weight: bold;
     }
-    
-    .header-text-accident { color: $header-text-accident; }
-    .header-text-crime { color:$header-text-crime; }
-    .header-text-weather { color: $header-text-weather; }
-    
+
+    .header-text-accident {
+        color: $header-text-accident;
+        text-shadow: 1px 1px 2.5px rgba(197, 164, 103, 0.829),
+            0 0 0.7px rgb(255, 255, 255);
+    }
+
+    .header-text-crime {
+        color: $header-text-crime;
+        text-shadow: 1px 1px 2.5px rgba(177, 102, 158, 0.829),
+            0 0 0.7px rgb(255, 255, 255);
+    }
+
+    .header-text-weather {
+        color: $header-text-weather;
+        text-shadow: 1px 1px 2.5px rgba(72, 155, 93, 0.829),
+            0 0 0.7px rgb(255, 255, 255);
+    }
+
     .header-buttons {
         display: flex;
         justify-content: end;
         gap: 10px;
         width: 33.3333%;
     }
+
     .header-btn {
         display: inline-block;
         background: linear-gradient(135deg, #e0e0e0, #c7c7c7);
@@ -76,24 +92,24 @@ $header-text-select : purple;
         transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    
+
     .header-btn:hover {
         background: linear-gradient(135deg, #c7c7c7, #a9a9a9);
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     }
-    
+
     .header-btn:active {
         transform: translateY(0);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    
+
     .header-btn:focus {
         outline: none;
         box-shadow: 0 0 0 3px rgba(100, 100, 100, 0.5);
     }
-    
-    
+
+
     .header-btn {
         display: inline-block;
         background: linear-gradient(135deg, #e0e0e0, #c7c7c7);
@@ -102,25 +118,27 @@ $header-text-select : purple;
         border-radius: 12px;
         font-size: 1.5rem;
         text-decoration: none;
-        color: #333;
+        color: #333333a8;
         cursor: pointer;
         transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    
+
     .header-btn:hover {
         background: linear-gradient(135deg, #c7c7c7, #a9a9a9);
-        transform: translateY(-2px);
+        transform: translateY(-1px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     }
-    
+
     .header-btn.active {
         background: linear-gradient(135deg, #8c8c8c, #a9a9a9);
+        color: #fffffffa;
+        text-shadow: 0 0 3px white;
         cursor: default;
         pointer-events: none;
-        transform: translateY(2px);
+        transform: translateY(1px);
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
     }
-    
+
 
 }

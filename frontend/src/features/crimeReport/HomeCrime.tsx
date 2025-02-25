@@ -86,20 +86,20 @@ const HomeCrime = () => {
         <div className="wave wave3"></div>
       </div>
       <div className="item homeCrimeItem">
-        <div className="title">경기도 범죄</div>
+        <div className="title">경기 범죄 통계 평균</div>
         <div className="contents">
           <div className="content">
             <img src={knifeImg} alt="맑음" />
             <div className="info">
               <span className="value">살인사건</span>
-              <span className="text">평균 {killNum} 건</span>
+              <span className="text">{killNum} 건</span>
             </div>
           </div>
           <div className="content">
             <img src={handImg} alt="습도" />
             <div className="info">
               <span className="value">폭행사건</span>
-              <span className="text">평균 {StrongNum} 건</span>
+              <span className="text">{StrongNum} 건</span>
             </div>
           </div>
         </div>

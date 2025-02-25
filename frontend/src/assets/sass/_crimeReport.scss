@@ -285,8 +285,8 @@
     justify-content: center;
     //@includetextBox():;
     @include crimeTitleStyle();
-    //////////////////////////////////////
 
+    //////////////////////////////////////
     p {
         font-size: 2rem;
     }
@@ -328,8 +328,11 @@
 
     // 살인, 폭행 P 태그
     .crUp2AreaP {
+        height: 3rem;
+
         span {
             font-size: var(--smallFontSize);
+
         }
     }
 

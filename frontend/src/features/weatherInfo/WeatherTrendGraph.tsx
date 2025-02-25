@@ -33,7 +33,6 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
 
     const { width, height } = dimensions;
     const isMobile = width < 700;
-    // 모바일일 경우 margin 모두 5, 그렇지 않으면 기존 margin 사용
     const margin = isMobile
       ? { top: 20, right: 20, bottom: 15, left: 18 }
       : { top: 25, right: 50, bottom: 25, left: 60 };
@@ -138,7 +137,6 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .duration(2000)
       .attr("opacity", 1);
 
-    // 선(line) 생성 및 애니메이션 효과
     const line = d3.line<{ date: Date; temp: number }>()
       .x(d => xScale(d.date))
       .y(d => yScale(d.temp))
@@ -160,7 +158,6 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .ease(d3.easeLinear)
       .attr("stroke-dashoffset", 0);
 
-    // 데이터 포인트(dot) 애니메이션
     svg.selectAll(".dot")
       .data(parsedData)
       .enter()
@@ -177,7 +174,6 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .duration(500)
       .attr("r", 4);
 
-    // 온도 라벨 애니메이션
     svg.selectAll(".label-temp")
       .data(parsedData)
       .enter()

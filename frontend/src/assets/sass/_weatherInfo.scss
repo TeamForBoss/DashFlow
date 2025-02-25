@@ -86,13 +86,14 @@ $weather-backgroundColor: linear-gradient(#fff, #c6f0e4);
   width: 40%;
   object-fit: contain;
   margin-left: 1rem;
+  filter: drop-shadow(1.7px 1.7px 1.2px #3333337e);
 }
 .weatherPage .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatValue {
   width: 50%;
   height: 100%;
   /* weatherTitleStyle mixin */
   background: #eff5f5;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px;
   box-shadow: inset 0px 3px 3px #dadada;
   color: var(--black300);
   /* 추가 스타일 */
@@ -102,7 +103,7 @@ $weather-backgroundColor: linear-gradient(#fff, #c6f0e4);
   align-items: center;
 }
 
-/* 그래프 영역 (정보 목록 + 풍향/풍속 레이더) */
+/* 그래프 영역 ( 날씨리스트 + 풍향/풍속 레이더) */
 .weatherPage .weatherGraphWrap {
   display: flex;
   flex-direction: row;
@@ -247,7 +248,7 @@ $weather-backgroundColor: linear-gradient(#fff, #c6f0e4);
 // =====================================================================
 // == 반응형 (max-width: 1300px) ==
 
-$mediaTitlePadding : 12rem;
+$mediaTitlePadding : 11rem;
 
 @media (max-width: 1300px) {
   .weatherPage {
@@ -272,8 +273,8 @@ $mediaTitlePadding : 12rem;
     width: 100%;
     height: auto;
     gap: var(--gapSize);
-
   }
+
   .weatherPage .weatherTopSection .weatherSummaryWrap .weatherStatBox {
     flex-direction: row; 
     width: 100%;
@@ -290,7 +291,6 @@ $mediaTitlePadding : 12rem;
   .weatherPage .weatherGraphWrap .weatherInfoListBox{
     // border: 1px solid red;
     width: 100%;
-
   }
 
   .weatherPage .weatherGraphWrap  {
@@ -311,7 +311,9 @@ $mediaTitlePadding : 12rem;
     font-size: 1.5rem;
   }
   .weatherPage .weatherGraphWrap .weatherWindRadarSection{
-    display: none;
+    // display: none;
+    width: 100%;
+    height: auto;
   }
   .weatherPage .weatherTrendWrap{
     margin-top: var(--gapSize);
@@ -320,17 +322,30 @@ $mediaTitlePadding : 12rem;
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 800px){
   .weatherPage {
     overflow-y: scroll;
     height: auto;
-    padding: 11rem 1rem 1rem;
+    padding: 9rem 1rem 1rem;
   }
+}
+
+@media (max-width: 700px) {
   .weatherPage .weatherTopSection .weatherSummaryWrap .weatherStatBox .directionStat{
     display: none;
   }
-
+  .weatherPage .weatherGraphWrap .weatherInfoListBox .weatherInfoTable .weatherDesIcon {
+    width: 2rem;
+  }
   .weatherForecast{
     display: none !important;
   }
+}
+
+@media (max-width: 500px) {
+
+  .weatherPage {
+    padding: 7.7rem 1rem 1rem;
+  }
+
 }

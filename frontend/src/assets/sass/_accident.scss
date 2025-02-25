@@ -18,6 +18,12 @@
     border-radius: 1rem 1rem 0 0;
     box-shadow: inset 0px 3px 3px #dadada;
 }
+@mixin textStyle() {
+    text-align: center;
+    font-size: var(--middleFontSize);
+    color: var(--black300);
+    padding: 5px 20px; 
+}
 .accident {
     width: 100vw;
     background: linear-gradient(var(--accidentbgColor));
@@ -35,7 +41,7 @@
         gap: var(--gapSize);
 
         @media(max-width:900px) {
-            
+
         }
         .accGraphWrap {
             @include flexSet;
@@ -54,9 +60,7 @@
                     margin-bottom: 10px;
                     @include titleStyle();
                     p {
-                        text-align: center;
-                        font-size: var(--bigFontSize);
-                        color: var(--headerFontColor);
+                        @include textStyle();
                     }
                 }
 
@@ -81,9 +85,7 @@
                     @include titleStyle();
 
                     p {
-                        text-align: center;
-                        font-size: var(--bigFontSize);
-                        color: var(--headerFontColor);
+                        @include textStyle();
                     }
                 }
 
@@ -121,10 +123,7 @@
                         margin-bottom: 10px;
                         @include titleStyle();
                         p {
-                            text-align: center;
-                            font-size: var(--middleFontSize);
-                            color: var(--headerFontColor);
-                            padding: 5px 20px;
+                            @include textStyle();
                         }
                     }
 
@@ -145,10 +144,7 @@
                         @include titleStyle();
 
                         p {
-                            text-align: center;
-                            font-size: var(--middleFontSize);
-                            color: var(--headerFontColor);
-                            padding: 5px 20px;
+                            @include textStyle();
                         }
                     }
 
@@ -177,10 +173,7 @@
                         @include titleStyle();
 
                         p {
-                            text-align: center;
-                            font-size: var(--middleFontSize);
-                            color: var(--headerFontColor);
-                            padding: 5px 20px;
+                            @include textStyle();
                         }
                     }
 
@@ -211,10 +204,7 @@
                         @include titleStyle();
 
                         p {
-                            text-align: center;
-                            font-size: var(--middleFontSize);
-                            color: var(--headerFontColor);
-                            padding: 5px 20px;
+                            @include textStyle();
                         }
                     }
 

@@ -1,5 +1,6 @@
 import { useRecoilValue } from 'recoil';
-import sunny from '../../assets/images/icons/weather/sun.png';
+import ambulance from '../../assets/images/icons/accident/ambulance.png';
+import warning from '../../assets/images/icons/accident/warning.png';
 
 import { hostState } from "../../state/hostAtom";
 import { selectedRegionState } from "../../state/atom"; 
@@ -18,13 +19,19 @@ const HomeAccident = () => {
         })
         .then(res=>res.json())
             .then((data) => {
-                const [{ city: _city, data: { item: arr } }] = data;
-                // console.log(arr[0].tot_acc_cnt[0])
-                const acc = Math.round(Number(arr[0].tot_acc_cnt[0])/31);
-                const dth = Math.round(Number(arr[0].tot_dth_dnv_cnt[0]) / 31);
-                setData([ acc, dth ])
-        });
+                for (let key in data) {
+                    if (key == "2023") { 
+                        // console.log(data[key]);
+                        const [{ city: _city, data: { item: arr } }] = data[key];
+                        console.log(arr)
+                        const acc = Math.round(Number(arr[0].tot_acc_cnt[0])/31);
+                        const dth = Math.round(Number(arr[0].tot_dth_dnv_cnt[0]) / 31);
+                        setData([ acc, dth ])
+                    }
+                }
+            });
     }, [host]);
+    console.log(data)
 
     return (
     <div className="averageWrap">
@@ -34,20 +41,21 @@ const HomeAccident = () => {
         <div className="wave wave3"></div>
         </div>
         <div className="item homeAccidentItem">
-        <div className="title">경기도 범죄</div>
+        <div className="title">경기 사고 통계 평균</div>
+
         <div className="contents">
             <div className="content">
-            <img src={sunny} alt="맑음" />
+            <img src={warning} alt="사고" />
             <div className="info">
-                            <span className="value">{ data[0]+"명"}</span>
                 <span className="text">사고</span>
+                            <span className="value">{ data[0]+"명"}</span>
             </div>
             </div>
             <div className="content">
-            <img src={sunny} alt="습도" />
+            <img src={ambulance} alt="사망" />
             <div className="info">
-                            <span className="value">{ data[1]+"명"}</span>
                 <span className="text">사망</span>
+                            <span className="value">{ data[1]+"명"}</span>
             </div>
             </div>
         </div>

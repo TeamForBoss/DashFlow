@@ -119,7 +119,7 @@ const BarChart = (accData: PropsType) => {
             .attr("x", (d) => x(d.type) ?? 0)
             .attr("y", height-marginBottom) 
             .attr("height", 0) 
-            .attr("width", x.bandwidth())  
+            .attr("width", x.bandwidth()-marginLeft)  
             .transition() 
             .duration(1000) 
             .attr("y", (d) => y(d.death)) 

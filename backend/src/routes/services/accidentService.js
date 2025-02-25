@@ -9,7 +9,7 @@ class AccidentServiceRoute extends AbstractRoute {
         const fs = require("fs").promises;
         const path = require("path");
         
-        const searchYear = [ 2023 ];
+        const searchYear = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
 
         let allFilteredData = [];
 

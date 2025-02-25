@@ -6,6 +6,9 @@ import CircularChart from "../features/accidentStatus/CircularChart";
 import BarChart from "../features/accidentStatus/BarChart";
 import Header from "../components/Header";
 
+import car_front_fillcolor from "../assets/images/icons/accident/car_front_fillcolor.png";
+import heartbeat from "../assets/images/icons/accident/heartbeat.png";
+
 import { selectedRegionState } from "../state/atom";
 import { useRecoilValue } from "recoil";
 
@@ -210,15 +213,22 @@ const AccidentStatusPage = () => {
                     <div className="acCount">
                         <div className="numOfAccBox">
                             <div className="acAccTitle">
+                                <img className="accImg" src={ car_front_fillcolor } />
                                 <p>사고건수</p>
                             </div>
+                                <div className="accCont">
+
                             <div className="numOfAcc">{cntPeople[0]}</div>
+                                </div>
                         </div>
                         <div className="numOfDeathBox">
                             <div className="acDeathTitle">
+                                <img className="deathImg" src={ heartbeat } />
                                 <p>사망자수</p>
                             </div>
-                            <div className="numOfDeath">{cntPeople[1]}</div>
+                            <div className="deathCont">
+                                <div className="numOfDeath">{cntPeople[1]}</div>
+                            </div>
                         </div>
                     </div>
                     <div className="accidentType">

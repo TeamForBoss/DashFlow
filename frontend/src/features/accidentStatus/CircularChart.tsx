@@ -12,8 +12,8 @@ const CircularChart = (lawData: PropsType) => {
     let { lawData: carArr } = lawData;
     // console.log(carArr);
     const handleResize = () => {
-        const width = document.querySelector(".acYearGraph")?.clientWidth ?? 300;
-        const height = document.querySelector(".acYearGraph")?.clientHeight ?? 300;
+        const width = document.querySelector(".acLawGraph")?.clientWidth ?? 300;
+        const height = document.querySelector(".acLawGraph")?.clientHeight ?? 300;
         const minVal = Math.min(width, height);
         setWidth(width);
         setHeight(minVal);
@@ -26,60 +26,63 @@ const CircularChart = (lawData: PropsType) => {
         };
     }, []);
 
-    // const width = 200;
-    // const height = Math.min(width, 200);
-    const radius = Math.min(width, height) / 2;
-    const margin = 30;
+    // const radius = Math.min(width, height) / 2;
    
-    const arc = d3.arc<any>()
-        .innerRadius(radius * 0)
-        .outerRadius(radius - 1)
+    // const arc = d3.arc<any>()
+    //     .innerRadius(radius * 0)
+    //     .outerRadius(radius - 1)
         
-    const pie = d3.pie<ByCarTypeData>()
-        .padAngle(4 / radius)
-        .sort(null)
-        .value(d => d.value);
+    // const pie = d3.pie<ByCarTypeData>()
+    //     .padAngle(4 / radius)
+    //     .sort(null)
+    //     .value(d => d.value);
     
-    const color = d3.scaleOrdinal<string>([
-        "#FFFFD5",
-        "#FFFF96",
-        "#F9E3AF",
-        "#FFEB3B", 
-        "#FFCC80", 
-        "#FF9800", 
-        "#FFA726", 
-        "#FBC02D"  
-    ]);
+    // const color = d3.scaleOrdinal<string>([
+    //     "#fffbbc", "#fff672", "#FFE066", "#ffee00", "#ffd900", "#ffc62a", "#ffa51e", "#ff9100"
+    // ]);
     // console.log(width)
     useEffect(() => {
-    // SVG 요소 선택
-        const svg = d3.select(svgRef.current);
 
-    // 기존 그래프 초기화
+    const pieWidth = width * 0.5; 
+    const radius = Math.min(pieWidth, height) / 2 - 20;
+
+    //   데이터 내림차순 정렬
+    const sortedData = [...carArr].sort((a, b) => a.data - b.data);
+
+    //   색상 설정
+    const color = d3.scaleOrdinal<string>([
+        "#fffbbc", "#fff672", "#FFE066", "#ffee00", "#ffd900", "#ffc62a", "#ffa51e", "#ff9100"
+    ]);
+
+    const pie = d3.pie<ByCarTypeData>().value((d) => d.value);
+    const arc = d3
+      .arc<d3.PieArcDatum<ByCarTypeData>>()
+      .innerRadius(0)
+      .outerRadius(radius);
+
+    //   기존 SVG 내용 삭제 후 새로 그리기
+    const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove();
-        
-    // SVG 크기 및 뷰박스 설정
-    svg             
-        .attr("width", width/2.6)
-        .attr("height", height)
-        .attr("viewBox", [
-            -width / 10,
-            -height / 2,
-            width / 2.6,
-            height
-        ])
-        .attr("style", "max-width: 200%; max-height: 100%;")
-        // 애니메이션이 있는 pie chart path 추가
-    
+    svg.attr("width", width).attr("height", height);
 
-    svg.append("g")
-        .selectAll()
-        .data(pie(carArr))
-        .join("path")
-        // .attr("fill", d => color(d.data.name))
-        .attr("fill",(_d,i)=> color(String(i)))
-            .attr("d", arc)
-         .style("stroke", "#fff")
+    //   파이 차트 그룹 (왼쪽 배치)
+    const g = svg.append("g").attr(
+      "transform",
+      `translate(${width / 3}, ${height / 2})` 
+    );
+
+    const arcs = g
+      .selectAll(".arc")
+      .data(pie(sortedData))
+      .enter()
+      .append("g")
+      .attr("class", "arc");
+
+    //   차트 조각 애니메이션 적용
+    arcs
+      .append("path")
+      .attr("fill", (_d, i) => color(String(i)))
+      .style("stroke", "#fff")
       .style("stroke-width", "2px")
       .transition()
       .duration(1000)
@@ -89,50 +92,31 @@ const CircularChart = (lawData: PropsType) => {
           return arc(i(t)) as string;
         };
       });
-        // .append("title")
-        //     .text(d => `${d.data.name}: ${d.value.toLocaleString()}`)
-    
-    svg
-        .append("g")
-        .attr("font-family", "sans-serif")
-        .attr("font-size", 14)
+        
+    arcs
+        .attr("font-size", "10px")
+        .attr("font-family","GowunDodum-Regular")
         .attr("text-anchor", "middle")
         .selectAll()
         .data(pie(carArr))
         .join("text")
-        .text(d => d.value.toLocaleString("en-US"))
+        // .text(d => d.value.toLocaleString("en-US"))
         .attr("transform", (d) => `translate(${arc.centroid(d)})`)
         .attr("fill", "#333")
-        .style("font-weight", "bold")
-        .text((d) => d.data.value != 0 ? d.data.value : "")
+        .text((d) => d.data.value > 100 ? d.data.value : "")
         .attr("opacity", 0)
         .transition()
         .duration(1000)
         .delay(1000)
         .attr("opacity", 1)
         
-        
-    // svg.append("g")
-    //     .attr("font-family", "sans-serif")
-    //     .attr("font-size", 16)
-    //     .attr("text-anchor", "middle")
-    //     .selectAll()
-    //     .data(pie(carArr))
-    //     .join("text")
-    //     .attr("transform", d => `translate(${arc.centroid(d)})`)
-    //     //   .call(text => text.append("tspan")
-    //     //       .attr("x", 0)
-    //     //       .attr("y", "-0.7em")
-    //     //       .attr("font-weight", "bold")
-    //     //       .text(d => d.data.name))
-    //     .call(text => text.filter(d => (d.endAngle - d.startAngle) > 0.1).append("tspan")
-    //         .attr("x", 0)
-    //         .attr("y", "0.3em")
-    //         .attr("fill-opacity", 0.7)
-    //         .text(d => d.value.toLocaleString("en-US")));
-        
         const legend = svg.append("g")
-            .attr("transform", `translate(${width / 2.6 -(width/100)},${-height / 2 + (height/10)})`)
+            .attr(
+                "transform",
+                `translate(${width * 0.8}, ${
+                height / 2 - (height/2.5)
+                })`
+            )
             .attr("text-anchor", "start")
             .selectAll("g")
             .data(carArr)
@@ -141,17 +125,98 @@ const CircularChart = (lawData: PropsType) => {
             .attr("transform", (_d, i) => `translate(0, ${i * (height/10)})`);
 
         legend.append("rect")
-            .attr("x", -width /4.5)
+            .attr("x", -width / 4.5)
             .attr("width", height/10)
             .attr("height", height/10)
             .attr("fill", (_d, i) => color(String(i)));
 
         legend.append("text")
-            .attr("x", -width/5.3)
+            .attr("x", -width/6.3)
             .attr("y", height/15)
             .attr("dy", "0.32em")
             .text(d => d.name)
-            .attr("font-size", 14)
+            .attr("font-size", "1.2rem")
+
+    // SVG 요소 선택
+    //     const svg = d3.select(svgRef.current);
+
+    // // 기존 그래프 초기화
+    // svg.selectAll("*").remove();
+        
+    // // SVG 크기 및 뷰박스 설정
+    // svg             
+    //     .attr("width", width)
+    //     .attr("height", height)
+    //     .attr("viewBox", [
+    //         -width / 10,
+    //         -height / 2,
+    //         width / 1.8,
+    //         height
+    //     ])
+    //     .attr("style", "max-width: 100%; max-height: auto;")
+    //     // 애니메이션이 있는 pie chart path 추가
+    
+
+    // svg.append("g")
+    //     .selectAll()
+    //     .data(pie(carArr))
+    //     .join("path")
+    //     // .attr("fill", d => color(d.data.name))
+    //     .attr("fill",(_d,i)=> color(String(i)))
+    //         .attr("d", arc)
+    //      .style("stroke", "#fff")
+    //   .style("stroke-width", "2px")
+    //   .transition()
+    //   .duration(1000)
+    //   .attrTween("d", function (d) {
+    //     const i = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+    //     return function (t) {
+    //       return arc(i(t)) as string;
+    //     };
+    //   });
+    //     // .append("title")
+    //     //     .text(d => `${d.data.name}: ${d.value.toLocaleString()}`)
+    
+    // svg
+    //     .append("g")
+    //     .attr("font-family", "sans-serif")
+    //     .attr("font-size", "1.2rem")
+    //     .attr("text-anchor", "middle")
+    //     .selectAll()
+    //     .data(pie(carArr))
+    //     .join("text")
+    //     .text(d => d.value.toLocaleString("en-US"))
+    //     .attr("transform", (d) => `translate(${arc.centroid(d)})`)
+    //     .attr("fill", "#333")
+    //     .style("font-weight", "bold")
+    //     .text((d) => d.data.value != 0 ? d.data.value : "")
+    //     .attr("opacity", 0)
+    //     .transition()
+    //     .duration(1000)
+    //     .delay(1000)
+    //     .attr("opacity", 1)
+        
+    //     const legend = svg.append("g")
+    //         .attr("transform", `translate(${width/2},${-height / 2 + (height/10)})`)
+    //         .attr("text-anchor", "start")
+    //         .selectAll("g")
+    //         .data(carArr)
+    //         .enter()
+    //         .append("g")
+    //         .attr("transform", (_d, i) => `translate(0, ${i * (height/10)})`);
+
+    //     legend.append("rect")
+    //         .attr("x", -width /4.5)
+    //         .attr("width", height/10)
+    //         .attr("height", height/10)
+    //         .attr("fill", (_d, i) => color(String(i)));
+
+    //     legend.append("text")
+    //         .attr("x", -width/6.3)
+    //         .attr("y", height/15)
+    //         .attr("dy", "0.32em")
+    //         .text(d => d.name)
+    //         .attr("font-size", "1.2rem")
 
     
   }, [carArr, width, height]);

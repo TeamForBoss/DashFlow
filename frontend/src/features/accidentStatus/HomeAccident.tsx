@@ -41,7 +41,7 @@ const HomeAccident = () => {
         <div className="wave wave3"></div>
         </div>
         <div className="item homeAccidentItem">
-        <div className="title">경기 사고 통계 평균</div>
+        <div className="title">경기 사고 연평균</div>
 
         <div className="contents">
             <div className="content">

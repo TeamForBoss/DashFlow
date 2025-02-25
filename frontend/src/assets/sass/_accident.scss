@@ -25,29 +25,29 @@
     padding: 5px 20px; 
 }
 .accident {
-    width: 100vw;
+    width: 100%;
     background: linear-gradient(var(--accidentbgColor));
     padding: var(--commonPadding);
     height: 100vh;
-    overflow: hidden;
+    overflow: auto;
     
     .accWrap{
         margin: 0 auto;
         max-width: 150rem;
         width: 100%;
-        height: 100%;
-        @include flexSet;
+        // height: 100%;
+        display: flex;
         flex-direction: row;
+        // justify-content: center;
         gap: var(--gapSize);
 
-        @media(max-width:900px) {
-
-        }
+  
         .accGraphWrap {
             @include flexSet;
             gap: var(--gapSize);
-            flex: 1;
-            height: 100%;
+            flex:2;
+            // height: 100%;
+            min-width: 300px;
 
             .acYearBox {
                 @include titleHead();
@@ -103,8 +103,8 @@
         .accChartWrap {
             @include flexSet;
             gap: var(--gapSize);
-            height: 100%;
-            flex: 0.4;
+            // height: 100%;
+            flex:1;
             .acCount {
                 width: 100%;
                 display: flex;
@@ -117,19 +117,47 @@
                     @include titleHead();
                     height: 100%;
                     flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
 
                     .acDeathTitle {
-                        border: 1px solid var(--borderColor);
-                        margin-bottom: 10px;
-                        @include titleStyle();
+                        @include flexSet();
+                        flex-direction: row; 
+                        margin-bottom: 0.5rem;
+                        .deathImg {
+                            width: 3rem;
+                            margin:0 10px;
+                            filter: drop-shadow(1.7px 1.7px 1.2px #3333337e);
+                        }
                         p {
                             @include textStyle();
+                            font-size: 2rem;
+                            @media(max-width:1500px) {
+                                font-size: 1.5rem;
+                            }
+                            @media(max-width:1400px) {
+                                font-size: 1.1rem;
+                            }
+                            @media(max-width:1024px) {
+                                font-size: 2rem;
+                            }
+                             @media(max-width:600px) {
+                                font-size: 1.1em;
+                                padding: 0;
+                            }
                         }
                     }
+                    .deathCont {
+                        border: 1px solid var(--borderColor);
+                        border-radius: 1rem;
+                        background: #eff5f5;
+                        box-shadow: inset 0px 3px 3px #dadada;
 
-                    .numOfDeath {
-                        text-align: center;
-                        font-size: 2rem;
+                        .numOfDeath {
+                            text-align: center;
+                            font-size: 2rem;
+                        }
                     }
                 }
 
@@ -137,24 +165,50 @@
                     @include titleHead();
                     height: 100%;
                     flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
 
                     .acAccTitle {
-                        border: 1px solid var(--borderColor);
-                        margin-bottom: 10px;
-                        @include titleStyle();
-
+                        @include flexSet();
+                        flex-direction: row;
+                        margin-bottom: 0.625rem;
+                        .accImg {
+                            width: 3rem;
+                            margin:0 10px;
+                            filter: drop-shadow(1.7px 1.7px 1.2px #3333337e);
+                        }
                         p {
                             @include textStyle();
+                            font-size: 2rem;
+                             @media(max-width:1500px) {
+                                font-size: 1.5rem;
+                            }
+                            @media(max-width:1400px) {
+                                font-size: 1.1rem;
+                            }
+                             @media(max-width:1024px) {
+                                font-size: 2rem;
+                            }
+                             @media(max-width:600px) {
+                                font-size: 1.1em;
+                                padding: 0;
+                            }
                         }
                     }
-
-                    .numOfAcc {
-                        text-align: center;
-                        font-size: 2rem;
-                    }
+                    .accCont{
+                        border: 1px solid var(--borderColor);
+                        border-radius: 1rem;
+                        background: #eff5f5;
+                        box-shadow: inset 0px 3px 3px #dadada;
+                        .numOfAcc {
+                            text-align: center;
+                            font-size: 2rem;
+                        }
+                    }   
                 }
             }
-
+            
             .accidentType {
                 width: 100%;
                 height: 40%;
@@ -181,6 +235,8 @@
                         border: 1px solid var(--borderColor);
                         width: 100%;
                         height: 77%;
+                        // @include flexSet();
+                        // overflow-y: scroll;
                         // width: 32.5rem;
                         // height: 15rem;
                     }
@@ -196,7 +252,9 @@
 
                 .acLawBox {
                     @include titleHead();
-                    flex: 1;
+                     width: 100%;
+                    height: 100%;
+                    // flex: 1;
 
                     .acLawTitle {
                         border: 1px solid var(--borderColor);
@@ -217,6 +275,16 @@
                     }
                 }
             }
+        }
+        @media(max-width:1024px) {
+            flex-direction: column;
+            align-items: normal;
+            margin: 50px 0;
+        }      
+        @media(max-width:850px) { 
+            flex-direction: column;
+            align-items: normal;
+            margin: 50px 0;
         }
     }
 }

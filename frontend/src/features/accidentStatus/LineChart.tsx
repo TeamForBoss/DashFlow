@@ -161,9 +161,10 @@ const LineChart = (yearData: PropsType) => {
             .attr("opacity", 1); 
         };
 
-        drawLine(line, "#FFF2A5", "inj");    // 부상자 (inj)
-        drawLine(lineAcc, "#FBC02D","acc"); // 사고건수 (acc)
-        drawLine(lineDth, "#FAFD8D","death"); // 사망자 (death)
+        drawLine(line, "#ff9100", "inj");    // 부상자 (inj)
+        drawLine(lineAcc, "#ffd900","acc"); // 사고건수 (acc)
+        drawLine(lineDth, "#fff672","death"); // 사망자 (death)
+
 
         // svg.append("g")
         //     .selectAll("circle")
@@ -222,7 +223,7 @@ const LineChart = (yearData: PropsType) => {
         //             .attr("dy", "0.32em")
         //             .text(d => d);
         const nameArr = ["부상자", "사고건수", "사망자"];
-        const colorArr = ["#FFFFD5", "#FBC02D", "#FAFD8D"];
+        const colorArr = ["#ff9100", "#ffd900", "#fff672"];
 
         const legend = svg.append("g")
             .attr("transform", `translate(${marginLeft - (width / 10)}, 0)`);

@@ -125,7 +125,7 @@
     .confirmBtn {
       font-family: 'GowunDodum-Regular'; //폰트 얘만 적용 안되서 따로로 추가 해줬어요.
       width: 100%;
-      font-size: var(--middleFontSize);
+      font-size: 23px;
       height: 6vh;
       color: #5C5C5C;
       text-shadow: 1px 1px 2px #C0C0C0;
@@ -311,21 +311,21 @@
       clip-path: ellipse(60% 85% at 50% 100%);
       height: 42%;
       opacity: 0.75;
-      animation: waveMove 12s ease-in-out infinite alternate;
+      animation: waveMove 7s ease-in-out infinite alternate;
     }
 
     &.wave2 {
       clip-path: ellipse(55% 90% at 50% 100%);
       height: 32%;
       opacity: 0.25;
-      animation: waveMove 16s ease-in-out infinite alternate-reverse;
+      animation: waveMove 5s ease-in-out infinite alternate-reverse;
     }
 
     &.wave3 {
       clip-path: ellipse(50% 100% at 50% 100%);
       height: 20%;
       opacity: 0.3;
-      animation: waveMove 20s ease-in-out infinite alternate;
+      animation: waveMove 3s ease-in-out infinite alternate;
     }
   }
 

@@ -201,54 +201,31 @@
                 .crDownSideBox {
                     height: 100%;
 
-                    .crDownSideBoxText {
+                    p {
+                        @include crimeTitleStyle();
                         text-align: center;
                         height: 4rem;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        @include crimeTitleStyle();
-
-                        span {
-                            font-size: var(--middleFontSize);
-
-                        }
+                        font-size: var(--middleFontSize);
+                        margin-bottom: 1.2rem;
                     }
+                }
 
-                    // 그래프 넣는 박스
-                    .crDownSideAreaGraphBox {
-                        display: flex;
-                        margin-top: 1%;
-                        height: 100%;
-
-                        // 해당지역 , 경기도 텍스트넣는 박스
-                        .crDownSideBoxTextP {
-                            width: 8rem;
-                            // border: 1px solid red;
-                            height: 100%;
-                            // line-height: 3rem;
-
-                            p {
-                                height: 50%;
-                                // border: 1px dodgerblue solid;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                            }
-                        }
-
-                        // 지능범죄 그래프
-                        .crDownSideAreaGraph {
-                            width: 100%;
-                            height: 85%;
-                            @include graphBorder();
-                        }
-                    }
+                // 지능범죄 그래프
+                .crDownSideAreaGraph {
+                    width: 100%;
+                    padding: 0.01rem;
+                    height: 85%;
+                    @include graphBorder();
                 }
             }
         }
     }
+
 }
+
 
 
 
@@ -406,13 +383,32 @@
 
 // 미디어 쿼리 부분  ---- 스마트폰 
 @media (max-width : 650px) {
+    $crBackColorMobile: #fff;
+    $crBoxColorMobile: #fff2f2;
+    $crTextBoxColorMobile: #fff9f9;
 
     .crMainWrapper {
-        padding: 7.7rem 1rem 1rem;
+        background: var(--white);
+    }
+
+    .crUp2Area,
+    .crStrongCrimeArea,
+    .crUpRightSideArea,
+    .crDownSideArea {
+        background-color: $crBoxColorMobile !important;
+    }
+
+    .crUp2AreaSmall,
+    .crChartName {
+        background-color: $crTextBoxColorMobile !important;
+    }
+
+    .crMainWrapper {
+        padding: 8.5rem 1rem 1rem;
 
         .crMainArea {
             overflow: scroll !important;
-            padding: 0;
+            padding-top: 2.7rem;
         }
     }
 

@@ -82,13 +82,9 @@ const CrimeReportPage = () => {
             </div>
             <div className="crDownSideArea crGrayBorder">
               <div className="crDownSideBox">
-                <p className="crDownSideBoxText crChartName">
-                  <span className="crChartName">지능범죄 차트</span>
-                </p>
-                <div className="crDownSideAreaGraphBox">
-                  <div className="crDownSideAreaGraph">
-                    <IntelligenceCrimeDataToGraph />
-                  </div>
+                <p className="crChartName">지능범죄 차트</p>
+                <div className="crDownSideAreaGraph">
+                  <IntelligenceCrimeDataToGraph />
                 </div>
               </div>
             </div>

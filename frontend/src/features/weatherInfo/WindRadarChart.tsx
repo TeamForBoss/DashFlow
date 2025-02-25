@@ -1,19 +1,32 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
-const WindRadarChart = ({ data }: { data: any }) => {
+const WindRadarChart = ({ data }) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
+  const [dimensions, setDimensions] = useState({ width: 400, height: 400 });
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      const parent = d3.select(svgRef.current).node()?.parentElement as HTMLElement;
+      if (parent) {
+        setDimensions({
+          width: parent.clientWidth,
+          height: parent.clientHeight,
+        });
+      }
+    };
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
 
   useEffect(() => {
     if (!data) return;
     const windInfo = Array.isArray(data) ? data[0] : data;
 
-    // 기존 내용 초기화
     d3.select(svgRef.current).selectAll("*").remove();
 
-    const parent = d3.select(svgRef.current).node()?.parentElement as HTMLElement;
-    const width = parent?.clientWidth || 400;
-    const height = parent?.clientHeight || 400;
+    const { width, height } = dimensions;
     const radius = Math.min(width, height) / 2 - 40;
 
     const svg = d3.select(svgRef.current)
@@ -23,16 +36,15 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .attr("preserveAspectRatio", "xMidYMid meet")
       .style("overflow", "hidden");
 
-    const g = svg.append("g")
+      const g = svg.append("g")
       .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
-    // 중앙 기준의 수평, 수직 선
     g.append("line")
       .attr("x1", -radius)
       .attr("y1", 0)
       .attr("x2", radius)
       .attr("y2", 0)
-      .attr("stroke", "#aaa")
+      .attr("stroke", "#777")
       .attr("stroke-dasharray", "2,2");
 
     g.append("line")
@@ -40,16 +52,15 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .attr("y1", -radius)
       .attr("x2", 0)
       .attr("y2", radius)
-      .attr("stroke", "#aaa")
+      .attr("stroke", "#777")
       .attr("stroke-dasharray", "2,2");
 
-    // 동서남북 텍스트
     g.append("text")
       .attr("x", 0)
       .attr("y", -radius - 10)
       .attr("text-anchor", "middle")
       .attr("font-size", "12px")
-      .attr("fill", "#555")
+      .attr("fill", "#333")
       .text("북");
 
     g.append("text")
@@ -57,7 +68,7 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .attr("y", 5)
       .attr("text-anchor", "start")
       .attr("font-size", "12px")
-      .attr("fill", "#555")
+      .attr("fill", "#333")
       .text("동");
 
     g.append("text")
@@ -65,7 +76,7 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .attr("y", radius + 20)
       .attr("text-anchor", "middle")
       .attr("font-size", "12px")
-      .attr("fill", "#555")
+      .attr("fill", "#333")
       .text("남");
 
     g.append("text")
@@ -73,7 +84,7 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .attr("y", 5)
       .attr("text-anchor", "end")
       .attr("font-size", "12px")
-      .attr("fill", "#555")
+      .attr("fill", "#333")
       .text("서");
 
     const windSpeed = windInfo.wind.speed;
@@ -87,7 +98,6 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .domain([0, windSpeed])
       .range([0, radius]);
 
-    // 내부 그리드 원
     const gridSteps = d3.range(0, windSpeed + 1, Math.max(windSpeed / 3, 0.5));
     g.selectAll(".grid-line")
       .data(gridSteps)
@@ -96,11 +106,9 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .attr("class", "grid-line")
       .attr("r", d => speedScale(d))
       .attr("fill", "none")
-      .attr("stroke", "#ddd")
+      .attr("stroke", "#ccc")
       .attr("stroke-dasharray", "3,3");
 
-    // 바람의 방향을 나타내는 화살표  
-    // (원점이 아닌, 바깥쪽에서 중심으로 선을 그림)
     const xOuter = speedScale(windSpeed) * Math.cos(angleScale(windDeg) - Math.PI / 2);
     const yOuter = speedScale(windSpeed) * Math.sin(angleScale(windDeg) - Math.PI / 2);
 
@@ -109,7 +117,7 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .attr("y1", yOuter)
       .attr("x2", 0)
       .attr("y2", 0)
-      .attr("stroke", "#4CAF50")
+      .attr("stroke", "#388E3C")
       .attr("stroke-width", 2)
       .attr("marker-end", "url(#arrow)");
 
@@ -124,18 +132,17 @@ const WindRadarChart = ({ data }: { data: any }) => {
       .attr("orient", "auto-start-reverse")
       .append("path")
       .attr("d", "M 0 0 L 10 5 L 0 10 z")
-      .attr("fill", "#4CAF50");
+      .attr("fill", "#388E3C");
 
-    // 바람 속도와 방향 텍스트
     g.append("text")
       .attr("x", 0)
       .attr("y", -radius - 25)
       .attr("text-anchor", "middle")
       .attr("font-size", "12px")
-      .attr("fill", "#555")
+      .attr("fill", "#333")
       .text(`${windSpeed} m/s, ${windDeg}°`);
 
-  }, [data]);
+  }, [data, dimensions]);
 
   return (
     <div style={{ width: "100%", height: "100%" }}>

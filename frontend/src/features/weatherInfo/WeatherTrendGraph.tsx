@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
 interface WeatherData {
@@ -8,25 +8,44 @@ interface WeatherData {
 
 const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
+  const [dimensions, setDimensions] = useState({ width: 800, height: 500 });
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      const parent = d3.select(svgRef.current).node()?.parentElement as HTMLElement;
+      if (parent) {
+        setDimensions({
+          width: parent.clientWidth,
+          height: parent.clientHeight,
+        });
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+    };
+  }, []);
 
   useEffect(() => {
     if (!data || data.length === 0) return;
+
+    const { width, height } = dimensions;
+    const isMobile = width < 700;
+    // 모바일일 경우 margin 모두 5, 그렇지 않으면 기존 margin 사용
+    const margin = isMobile
+      ? { top: 20, right: 20, bottom: 15, left: 18 }
+      : { top: 25, right: 50, bottom: 25, left: 60 };
 
     const parsedData = data
       .map(d => ({
         date: d3.timeParse("%Y-%m-%d %H:%M:%S")(d.dt_txt),
         temp: d.main.temp,
       }))
-      .filter(d => d.date !== null) as {
-      date: Date;
-      temp: number;
-    }[];
+      .filter(d => d.date !== null) as { date: Date; temp: number }[];
 
-    const parent = d3.select(svgRef.current).node()?.parentElement as HTMLElement;
-    const width = parent?.clientWidth || 800;
-    const height = parent?.clientHeight || 500;
-    const margin = { top: 20, right: 80, bottom: 40, left: 60 };
-
+    // SVG 초기화
     d3.select(svgRef.current).selectAll("*").remove();
 
     const svg = d3.select(svgRef.current)
@@ -51,19 +70,18 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .domain([domainMin, domainMax])
       .range([height - margin.bottom, margin.top]);
 
-    // X축 (글씨를 가로로 배치)
+    // X축 (글씨 가로 배치)
     svg.append("g")
       .attr("transform", `translate(0, ${height - margin.bottom})`)
       .call(
         d3.axisBottom(xScale)
           .ticks(d3.timeHour.every(6))
-          .tickFormat(d3.timeFormat("%m-%d %H:%M")!)
+          .tickFormat(d3.timeFormat("%m-%d %H시")!)
       )
       .attr("class", "x-axis")
       .selectAll("text")
       .style("font-size", "12px")
       .style("fill", "#666")
-      // 회전 효과 제거, 텍스트 앵커 중앙 정렬
       .attr("transform", null)
       .style("text-anchor", "middle");
 
@@ -86,10 +104,11 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .attr("stroke", "#ccc")
       .attr("opacity", 0.4);
 
+    // 영역(area) 생성 및 애니메이션
     const areaGen = d3.area<{ date: Date; temp: number }>()
       .x(d => xScale(d.date))
-      .y0(height - margin.bottom)   // X축
-      .y1(d => yScale(d.temp))      // 선 그래프
+      .y0(height - margin.bottom)
+      .y1(d => yScale(d.temp))
       .curve(d3.curveMonotoneX);
 
     const defs = svg.append("defs");
@@ -102,7 +121,7 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
 
     gradient.append("stop")
       .attr("offset", "0%")
-      .attr("stop-color", "#B2DFDB") 
+      .attr("stop-color", "#B2DFDB")
       .attr("stop-opacity", 0);
 
     gradient.append("stop")
@@ -113,21 +132,35 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
     svg.append("path")
       .datum(parsedData)
       .attr("fill", "url(#areaGradient)")
-      .attr("d", areaGen as any);
+      .attr("d", areaGen as any)
+      .attr("opacity", 0)
+      .transition()
+      .duration(2000)
+      .attr("opacity", 1);
 
+    // 선(line) 생성 및 애니메이션 효과
     const line = d3.line<{ date: Date; temp: number }>()
       .x(d => xScale(d.date))
       .y(d => yScale(d.temp))
       .curve(d3.curveMonotoneX);
 
-    svg.append("path")
+    const linePath = svg.append("path")
       .datum(parsedData)
       .attr("fill", "none")
-      .attr("stroke", "#AAF0D1") 
+      .attr("stroke", "#AAF0D1")
       .attr("stroke-width", 3)
       .attr("d", line as any);
 
-    // 그래프 원(dot)에 보더 추가
+    const totalLength = (linePath.node() as SVGPathElement).getTotalLength();
+    linePath
+      .attr("stroke-dasharray", totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .transition()
+      .duration(2000)
+      .ease(d3.easeLinear)
+      .attr("stroke-dashoffset", 0);
+
+    // 데이터 포인트(dot) 애니메이션
     svg.selectAll(".dot")
       .data(parsedData)
       .enter()
@@ -135,11 +168,16 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .attr("class", "dot")
       .attr("cx", d => xScale(d.date))
       .attr("cy", d => yScale(d.temp))
-      .attr("r", 4)
+      .attr("r", 0) // 초기 반지름 0
       .attr("fill", "#AAF0D1")
-      .attr("stroke", "#80cfa9")   // 보더 색 (너무 진하지 않음)
-      .attr("stroke-width", 1);
+      .attr("stroke", "#80cfa9")
+      .attr("stroke-width", 1)
+      .transition()
+      .delay((d, i) => i * 100)
+      .duration(500)
+      .attr("r", 4);
 
+    // 온도 라벨 애니메이션
     svg.selectAll(".label-temp")
       .data(parsedData)
       .enter()
@@ -150,8 +188,14 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .attr("text-anchor", "middle")
       .style("font-size", "12px")
       .style("fill", "#00796B")
-      .text(d => `${d.temp.toFixed(1)}°C`);
+      .style("opacity", 0)
+      .text(d => `${d.temp.toFixed(1)}°C`)
+      .transition()
+      .delay(2000)
+      .duration(500)
+      .style("opacity", 1);
 
+    // 툴팁
     const tooltip = d3.select("body")
       .append("div")
       .attr("class", "tooltip")
@@ -170,9 +214,14 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
     svg.selectAll(".dot")
       .on("mouseover", (event, d) => {
         tooltip.transition().duration(200).style("opacity", 1);
+        const formattedDate = d3.timeFormat("%m/%d일")(d.date);
+        const hours = d.date.getHours();
+        const displayHour = hours % 12 === 0 ? 12 : hours % 12;
+        const period = hours >= 12 ? "오후" : "오전";
+        const formattedTime = `${period} ${displayHour}시`;
         tooltip.html(
-          `<strong>${d3.timeFormat("📅 %m/%d일 %H시")(d.date)}</strong><br/>
-          🌍 평균 기온: ${d.temp}°C`
+          `<strong>📅 ${formattedDate} ${formattedTime}</strong><br/>
+          🌍 평균 기온: ${d.temp.toFixed(1)}°C`
         )
           .style("left", (event.pageX + 10) + "px")
           .style("top", (event.pageY - 28) + "px");
@@ -180,8 +229,8 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .on("mouseout", () => {
         tooltip.transition().duration(200).style("opacity", 0);
       });
-
-  }, [data]);
+    
+  }, [data, dimensions]);
 
   return (
     <div style={{ width: "100%", height: "100%", position: "relative" }}>

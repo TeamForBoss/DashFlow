@@ -6,7 +6,7 @@ import { useEffect , useState } from 'react';
 import { useRecoilValue } from "recoil"; 
 import { hostState } from "../../state/hostAtom.js"; 
 
-const HomeWeather = () => {
+const HomeWeather: React.FC = () => {
     const host = useRecoilValue(hostState);
     const [weatherData , setWeatherData] = useState([]);
     const [currentData, setCurrentData] = useState([]); 
@@ -47,15 +47,15 @@ const HomeWeather = () => {
             <div className="content">
                 <img src={temp} alt="맑음" />
                 <div className="info">
-                <span className="value">{currentData?.main?.temp ?? "--"}℃</span>
                 <span className="text">기온</span>
+                <span className="value">{currentData?.main?.temp ?? "--"}℃</span>
                 </div>
             </div>
             <div className="content">
                 <img src={humadity} alt="습도" />
                 <div className="info">
-                <span className="value">{currentData?.main?.humidity ?? "--"}%</span>
                 <span className="text">습도</span>
+                <span className="value">{currentData?.main?.humidity ?? "--"}%</span>
                 </div>
             </div>
             </div>

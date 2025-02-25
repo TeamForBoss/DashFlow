@@ -12,19 +12,6 @@ const HomeWeather = () => {
     const host = useRecoilValue(hostState);
     const region = useRecoilValue(selectedRegionState);
 
-    // useEffect(()=>{
-    //     fetch(`${host}/weather/city`,{
-    //         method: "POST",
-    //         headers: {"Content-Type" : "application/json"},
-    //         body: JSON.stringify({city: region})
-    //     })
-    //     .then(res=>res.json())
-    //     .then((data)=>{
-    //         console.log(data)
-    //     });
-    // }, [host]);
-
-
     // const [weatherData , setWeatherData] = useState([]);
     // useEffect(()=>{
     //     fetch(`${host}/weather`,{
@@ -39,8 +26,6 @@ const HomeWeather = () => {
     //         setWeatherData(data);
     //     });
     // }, [host]);
-
-
 
 
     return (

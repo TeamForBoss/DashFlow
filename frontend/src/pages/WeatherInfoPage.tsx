@@ -1,44 +1,71 @@
 import { useEffect, useState } from "react";
 import WeatherTrendGraph from "../features/weatherInfo/WeatherTrendGraph";
 import WindRadarChart from "../features/weatherInfo/WindRadarChart";
-import weatherFetchData from "../assets/tempData/weather_data.json";
+
+// == recoil ==
+import {useRecoilValue} from "recoil";
+import {hostState} from "../state/hostAtom.js";
+import {selectedRegionState } from "../state/atom.js";
+
+// == json == 
+import weatherDescription from "../assets/data/weatherData/weather_description.json";
+
+// ==images==
+import temperatureImg from "../assets/images/icons/weather/sun.png";
+import humidityImg from "../assets/images/icons/weather/rain_blue.png";
+import directionImg from "../assets/images/icons/weather/direction.png";
+
 import Header from "../components/Header";
 const WeatherInfoPage = () => {
+
+  // recoil
+  const host = useRecoilValue(hostState);
+  const region = useRecoilValue(selectedRegionState);
+
+  const [weatherFetchData,setWeatherFetchData] = useState<any[]>([]);
   const [weatherData, setWeatherData] = useState<any[]>([]);
   const [weekData, setWeekData] = useState<any[]>([]);
   const [windData, setWindData] = useState({ dt_txt: "", wind: { speed: 0, deg: 0 } });
 
-  useEffect(() => {
-    const now = new Date();
-    const { data: { list } } = weatherFetchData[0];
+  useEffect(()=>{
+    fetch(`${host}/weather/city`,{
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify({city: region})
+    })
+    .then(res=>res.json())
+    .then((data)=>{
+        setWeatherFetchData(data);
+        const now = new Date();
+        const {data : {list}} = data[0];
     
-    // 현재 시각 이후의 데이터 필터링
-    const futureData = list.filter((item: any) => {
-      const itemDate = new Date(item.dt_txt);
-      return itemDate >= now;
+        const futureData = list.filter((item: any) => {
+          const itemDate = new Date(item.dt_txt);
+          return itemDate >= now;
+        });
+            
+        setWeatherData(futureData);
+    
+        if (futureData.length > 0) {
+          const visualDataLength = 20;
+          const weekWeatherData = futureData.map((item: any) => ({
+            dt_txt: item.dt_txt,
+            main: { temp: item.main.temp }
+          }));
+          const weekVisualData = weekWeatherData.slice(0, visualDataLength);
+          setWeekData(weekVisualData);
+          setWindData({
+            dt_txt: futureData[0].dt_txt,
+            wind: futureData[0].wind
+          });
+        }
+        console.log(weatherData)
     });
-    
-    setWeatherData(futureData);
-    
-    if (futureData.length > 0) {
-      // 그래프용 데이터 (최대 20개)
-      const visualDataLength = 20;
-      const weekWeatherData = futureData.map((item: any) => ({
-        dt_txt: item.dt_txt,
-        main: { temp: item.main.temp }
-      }));
-      const weekVisualData = weekWeatherData.slice(0, visualDataLength);
-      setWeekData(weekVisualData);
-      
-      // 풍향/풍속 데이터: 첫 번째 항목 사용
-      setWindData({
-        dt_txt: futureData[0].dt_txt,
-        wind: futureData[0].wind
-      });
-    }
-  }, []);
+  }, [host]);
 
-  // 날짜 라벨: 오늘이면 "오늘", 내일이면 "내일", 그 외에는 기본 형식으로 표시
+
   const getDateLabel = (dt_txt: string) => {
     const itemDate = new Date(dt_txt);
     const today = new Date();
@@ -70,43 +97,68 @@ const WeatherInfoPage = () => {
           <div className="weatherSummaryWrap">
             <div className="weatherStatBox">
               <div className="weatherStat">
-                <p>온도</p>
-                <div className="weatherTemperature">11</div>
-              </div>
-              <div className="weatherStat">
-                <p>습도</p>
-                <div className="weatherHumidity">20%</div>
-              </div>
-              <div className="weatherStat">
-                <p>풍속</p>
-                <div className="weatherWindSpeed">1</div>
+                  <div className="weatherStatTitle">
+                    <p>온도</p>
+                    <img src={temperatureImg} alt="온도 아이콘" />
+                  </div>
+                  <div className="weatherStatValue">
+                    {weatherData[0]?.main?.temp ?? "--"} °C
+                  </div>
+                </div>
+                <div className="weatherStat">
+                  <div className="weatherStatTitle">
+                    <p>습도</p>
+                    <img src={humidityImg} alt="습도 아이콘" />
+                  </div>
+                  <div className="weatherStatValue">
+                    {weatherData[0]?.main?.humidity ?? "--"} %
+                  </div>
+                </div>
+                <div className="weatherStat">
+                  <div className="weatherStatTitle">
+                    <p>풍속</p>
+                    <img src={directionImg} alt="풍향 아이콘" />
+                  </div>
+                  <div className="weatherStatValue">
+                    {weatherData[0]?.wind?.speed ?? "--"} m/s
+                  </div>
               </div>
             </div>
           </div>
 
           <div className="weatherGraphWrap">
-            {/* 상세 날씨 정보를 표 형식으로 표시 */}
             <div className="weatherInfoListBox">
               <p>상세 날씨 정보</p>
-              {/* 테이블 래퍼 추가 (스크롤용) */}
               <div className="weatherInfoTableWrapper">
                 <table className="weatherInfoTable">
                   <thead>
                     <tr>
                       <th>시간</th>
                       <th>기온 (°C)</th>
-                      <th>가시거리</th>
                       <th>습도 (%)</th>
+                      <th>예보</th>
+                      <th>상태</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {weatherData.slice(0, 8).map((item, idx) => (
-                      <tr key={idx} className="weatherInfoItem">
-                        <td>{getDateLabel(item.dt_txt)}</td>
-                        <td>{item.main.temp ?? "--"} °C</td>
-                        <td>{item.visibility ?? "--"}</td>
-                        <td>{item.main.humidity ?? "--"} %</td>
-                      </tr>
+                  {weatherData.slice(0, 8).map((item, idx) => (
+                    <tr key={idx} className="weatherInfoItem">
+                      <td>{getDateLabel(item.dt_txt)}</td>
+                      <td>{item.main.temp ?? "--"} °C</td>
+                      <td>{item.main.humidity ?? "--"} %</td>
+
+                      <td>
+                        {
+                          weatherDescription.find(data => data.code === item.weather[0].id)?.txt_ko
+                          ?? item.weather[0].description
+                          ?? "--"
+                        }
+                      </td>
+                      <td>
+                        <img src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} 
+                          alt="weather_icon" className="weatherDesIcon"/>
+                      </td>
+                    </tr>
                     ))}
                   </tbody>
                 </table>

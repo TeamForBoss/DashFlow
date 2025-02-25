@@ -56,6 +56,31 @@ $weather-backgroundColor: linear-gradient(#fff, #c6f0e4);
           font-size: var(--middleFontSize);
           text-align: center;
           height: calc(33.3333% - 0.6rem);
+          padding: 1rem 1.5rem;
+          display: flex;
+
+          .weatherStatTitle{
+            display: flex;
+            height: 100%;
+            width: 60%;
+
+            img{
+              width: 40%;
+              object-fit: contain;
+              margin-left: 1rem;
+            }
+          }
+
+          .weatherStatValue{
+            width: 50%;
+            height: 100%;
+            @include weatherTitleStyle();
+            border-radius: 1rem;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
         }
       }
     }
@@ -123,10 +148,20 @@ $weather-backgroundColor: linear-gradient(#fff, #c6f0e4);
           padding: 0.5rem;
           text-align: left;
           border-bottom: 1px dashed #ddd;
+          text-indent: 1rem;
         }
 
-        th {
+        th{ 
+          border-radius: .3rem 0 0;
           background: #f9f9f9;
+        }
+
+        .weatherDesIcon{
+          margin: 0;
+          width: 4.3rem;
+          border-radius: 50%;
+          box-shadow: 0px 0px .6rem #80cbc373;
+          padding: 0;
         }
       }
     }

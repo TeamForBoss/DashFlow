@@ -17,6 +17,21 @@
   margin: 0 auto;
 }
 
+/////////////////////// 이거 추가했어요 !!!!!!! 2024 기준 평균 데이터 textInfo! //////////////
+/// //////////////
+.crAvgInfoText {
+  position: absolute;
+  top: 4.5rem;
+  right: 1rem;
+  width: 100%;
+  text-align: right;
+  font-size: var(--smallFontSize);
+  padding: 0.5rem;
+}
+
+///////////////////
+/////////////////////// 이거 추가했어요 !!!!!!! 2024 기준 평균 데이터 textInfo! //////////////
+
 .regionArea {
   position: relative;
   display: flex;
@@ -46,7 +61,7 @@
       box-shadow: inset 2px 2.2px rgba(0, 0, 0, 0.1), inset -1px -1px 0.8px rgba(0, 0, 0, 0.029);
 
       p {
-        font-size:var(--bigFontSize); 
+        font-size: var(--bigFontSize);
         color: #9d9d9d;
         text-shadow: 1px 1px 1px rgba(157, 157, 157, 0.693),
           0px 0px 0.7px rgba(0, 0, 0, 0.826);
@@ -141,9 +156,11 @@
 
   }
 }
+
 .averageArea .item img {
   filter: drop-shadow(1.7px 1.7px 1.2px #3333337e);
 }
+
 .averageArea {
   width: 45%;
   height: 100%;
@@ -216,7 +233,7 @@
         background: linear-gradient(to bottom,
             rgba(0, 0, 0, 0.1) 0%,
             rgba(0, 0, 0, 0) 100%);
-           
+
       }
 
     }
@@ -381,16 +398,19 @@
 
   }
 }
+
 @media (max-width: 800px) {
   .averageArea .item img {
     width: 53px !important;
   }
 }
+
 @media (max-width: 700px) {
   .averageArea .item img {
     width: 50px !important;
   }
 }
+
 @media (max-width: 600px) {
   .averageArea .item img {
     width: 40px !important;
@@ -406,7 +426,8 @@
     width: 100%;
     margin-bottom: 41px;
   }
-  .regionArea .item .city{
+
+  .regionArea .item .city {
     font-size: 2vw !important;
 
   }
@@ -417,7 +438,8 @@
     width: 100%;
     margin-bottom: 41px;
   }
-  .regionArea .item .city{
+
+  .regionArea .item .city {
     gap: 0.05rem !important;
     width: 8.5vw !important;
     font-size: 1.8vw !important;
@@ -433,12 +455,14 @@
     width: 100%;
     margin-bottom: 41px;
   }
-  .regionArea .item .city{
+
+  .regionArea .item .city {
     gap: 0.05rem !important;
     width: 9vw !important;
     font-size: 2vw !important;
 
   }
+
   .regionSubCategory {
     gap: 0.3rem !important;
   }
@@ -449,12 +473,14 @@
     width: 100%;
     margin-bottom: 41px;
   }
-  .regionArea .item .city{
+
+  .regionArea .item .city {
     gap: 0.05rem !important;
     width: 9.2vw !important;
     font-size: 2.2vw !important;
 
   }
+
   .regionSubCategory {
     gap: 0.2rem !important;
   }
@@ -465,16 +491,19 @@
     width: 100%;
     margin-bottom: 41px;
   }
-  .regionArea .item .city{
+
+  .regionArea .item .city {
     gap: 0.05rem !important;
     width: 9vw !important;
     font-size: 2vw !important;
 
   }
+
   .regionSubCategory {
     gap: 0.15rem !important;
   }
 }
+
 ///////////////////////
 ////모바일 500기준 /////
 ///////////////////////
@@ -520,7 +549,8 @@
     gap: 0.5rem !important;
     margin-bottom: 41px;
   }
-  .regionArea .item .city{
+
+  .regionArea .item .city {
     width: 17vw !important;
     font-size: 4vw !important;
 
@@ -565,7 +595,7 @@
     border-radius: 5px;
   }
 
-  p{
+  p {
     font-size: 18.5px !important;
   }
 }

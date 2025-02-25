@@ -28,53 +28,53 @@ $weatherTrend-height: calc(100% - $weatherTopSection-height);
 $weather-backgroundColor: linear-gradient(#fff, #c6f0e4);
 // =====================================================================
 
-body{
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.weatherPageWrapper {
+.weatherPage {
   width: 100vw;
   height: 100vh;
+  overflow: hidden; // 상위 컨테이너 스크롤 제거
   box-sizing: border-box;
   gap: var(--gapSize);
-  overflow-y: auto;
-  // --commonPadding: 120px 40px 40px 40px; // 섹션 패딩
-//   padding: 120px 40px 0 40px;
   padding: var(--commonPadding);
   background: linear-gradient(#fff, #c6f0e4);
 }
 
-.weatherLayOutArea {
+.weatherPage .weatherLayOutArea {
   width: 100%;
   height: 100%;
   max-width: 150rem;
   margin: 0 auto;
 }
 
+
 /* 상단 영역 (요약 + 그래프) */
-.weatherTopSection {
+.weatherPage .weatherTopSection {
   display: flex;
   justify-content: space-between;
   gap: var(--gapSize);
   height: 50%;
 }
-.weatherTopSection .weatherSummaryWrap {
+.weatherPage .weatherTopSection .weatherSummaryWrap {
   width: 20%;
   gap: var(--gapSize);
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-.weatherTopSection .weatherSummaryWrap .weatherStatBox {
+.weatherPage .weatherTopSection .weatherSummaryWrap .weatherStatBox {
   display: flex;
   flex-direction: column;
   flex: 1;
   justify-content: space-between;
   height: 100%;
 }
-.weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat {
+.weatherPage .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat {
   /* titleHead mixin */
   border: 1px solid var(--borderColor);
   border-radius: 10px;
@@ -87,19 +87,18 @@ body{
   padding: 1rem 1.5rem;
   display: flex;
 }
-.weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatTitle {
+.weatherPage .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatTitle {
   display: flex;
   height: 100%;
   width: 60%;
 }
-.weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatTitle img {
+.weatherPage .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatTitle img {
   width: 40%;
-  height: 95%;
   object-fit: contain;
   margin-left: 1rem;
   filter: drop-shadow(1.7px 1.7px 1.2px #3333337e);
 }
-.weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatValue {
+.weatherPage .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatValue {
   width: 50%;
   height: 100%;
   /* weatherTitleStyle mixin */
@@ -115,7 +114,7 @@ body{
 }
 
 /* 그래프 영역 ( 날씨리스트 + 풍향/풍속 레이더) */
-.weatherGraphWrap {
+.weatherPage .weatherGraphWrap {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -123,7 +122,7 @@ body{
   gap: var(--gapSize);
   height: 100%;
 }
-.weatherGraphWrap .weatherInfoListBox {
+.weatherPage .weatherGraphWrap .weatherInfoListBox {
   /* titleHead mixin */
   border: 1px solid var(--borderColor);
   border-radius: 10px;
@@ -134,7 +133,7 @@ body{
   display: flex;
   flex-direction: column;
 }
-.weatherGraphWrap .weatherInfoListBox p {
+.weatherPage .weatherGraphWrap .weatherInfoListBox p {
   text-align: center;
   margin-bottom: 0.8rem;
   /* weatherTitleStyle + pTitleStyle mixins */
@@ -145,59 +144,59 @@ body{
   font-size: var(--middleFontSize);
   padding: 0.5rem 0;
 }
-.weatherGraphWrap .weatherInfoListBox .weatherInfoTableWrapper {
+.weatherPage .weatherGraphWrap .weatherInfoListBox .weatherInfoTableWrapper {
   flex: 1;
   overflow-y: auto;
 }
-.weatherGraphWrap .weatherInfoListBox .weatherInfoTableWrapper::-webkit-scrollbar {
+.weatherPage .weatherGraphWrap .weatherInfoListBox .weatherInfoTableWrapper::-webkit-scrollbar {
   width: 10px;
   background-color: #f1f1f1;
 }
-.weatherGraphWrap .weatherInfoListBox .weatherInfoTableWrapper::-webkit-scrollbar-track {
+.weatherPage .weatherGraphWrap .weatherInfoListBox .weatherInfoTableWrapper::-webkit-scrollbar-track {
   background-color: #f1f1f1;
 }
-.weatherGraphWrap .weatherInfoListBox .weatherInfoTableWrapper::-webkit-scrollbar-thumb {
+.weatherPage .weatherGraphWrap .weatherInfoListBox .weatherInfoTableWrapper::-webkit-scrollbar-thumb {
   background: #b2dfdb;
   border-radius: 10px;
   border: 2px solid #f1f1f1;
 }
-.weatherGraphWrap .weatherInfoListBox .weatherInfoTableWrapper::-webkit-scrollbar-thumb:hover {
+.weatherPage .weatherGraphWrap .weatherInfoListBox .weatherInfoTableWrapper::-webkit-scrollbar-thumb:hover {
   background: #80cbc4;
 }
-.weatherGraphWrap .weatherInfoListBox .weatherInfoTable {
+.weatherPage .weatherGraphWrap .weatherInfoListBox .weatherInfoTable {
   width: 100%;
   border-collapse: collapse;
   font-size: var(--smallFontSize);
   color: #333;
 }
-.weatherGraphWrap .weatherInfoListBox .weatherInfoTable thead {
+.weatherPage .weatherGraphWrap .weatherInfoListBox .weatherInfoTable thead {
   position: sticky;
   top: 0;
   background: #f9f9f9;
   z-index: 1;
 }
-.weatherGraphWrap .weatherInfoListBox .weatherInfoTable th,
-.weatherGraphWrap .weatherInfoListBox .weatherInfoTable td {
+.weatherPage .weatherGraphWrap .weatherInfoListBox .weatherInfoTable th,
+.weatherPage .weatherGraphWrap .weatherInfoListBox .weatherInfoTable td {
   padding: 0.5rem;
   text-align: left;
   border-bottom: 1px dashed #ddd;
 }
-.weatherGraphWrap .weatherInfoListBox .weatherInfoTable th {
+.weatherPage .weatherGraphWrap .weatherInfoListBox .weatherInfoTable th {
   text-indent: 8px;
   border-radius: 0.3rem 0 0;
   background: #f9f9f9;
 }
-.weatherGraphWrap .weatherInfoListBox .weatherInfoTable td {
+.weatherPage .weatherGraphWrap .weatherInfoListBox .weatherInfoTable td {
   text-indent: 1.05rem;
 }
-.weatherGraphWrap .weatherInfoListBox .weatherInfoTable .weatherDesIcon {
+.weatherPage .weatherGraphWrap .weatherInfoListBox .weatherInfoTable .weatherDesIcon {
   margin: 0;
   width: 4.3rem;
   border-radius: 50%;
   box-shadow: 0px 0px 0.6rem #80cbc373;
   padding: 0;
 }
-.weatherGraphWrap .weatherWindRadarSection {
+.weatherPage .weatherGraphWrap .weatherWindRadarSection {
   /* titleHead mixin */
   border: 1px solid var(--borderColor);
   border-radius: 10px;
@@ -206,7 +205,7 @@ body{
   width: 35%;
   height: 100%;
 }
-.weatherGraphWrap .weatherWindRadarSection p {
+.weatherPage .weatherGraphWrap .weatherWindRadarSection p {
   text-align: center;
   /* pTitleStyle + weatherTitleStyle mixins */
   background: #eff5f5;
@@ -216,7 +215,7 @@ body{
   font-size: var(--middleFontSize);
   padding: 0.5rem 0;
 }
-.weatherGraphWrap .weatherWindRadarBox {
+.weatherPage .weatherGraphWrap .weatherWindRadarBox {
   position: relative;
   width: 85%;
   height: 85%;
@@ -228,12 +227,12 @@ body{
 }
 
 /* 하단 기상 추세 영역 */
-.weatherTrendWrap {
+.weatherPage .weatherTrendWrap {
   width: 100%;
   // margin-top: var(--gapSize);
   height: calc(100% - 50% - var(--gapSize));
 }
-.weatherTrendWrap .weatherTrendBox {
+.weatherPage .weatherTrendWrap .weatherTrendBox {
   /* titleHead mixin */
   border: 1px solid var(--borderColor);
   border-radius: 10px;
@@ -243,7 +242,7 @@ body{
   height: 100%;
   padding: 1rem;
 }
-.weatherTrendWrap .weatherTrendBox p {
+.weatherPage .weatherTrendWrap .weatherTrendBox p {
   text-align: center;
   /* pTitleStyle + weatherTitleStyle mixins */
   background: #eff5f5;
@@ -253,7 +252,7 @@ body{
   font-size: var(--middleFontSize);
   padding: 0.5rem 0;
 }
-.weatherTrendWrap .weatherTrendGraph {
+.weatherPage .weatherTrendWrap .weatherTrendGraph {
   height: 80%;
 }
 // =====================================================================
@@ -261,130 +260,99 @@ body{
 
 $mediaTitlePadding : 11rem;
 
+@media (max-width: 1300px) {
+  .weatherPage {
+    overflow-y: auto;
+    height: auto;
+    padding: $mediaTitlePadding 3rem 3rem; // 전체 패딩 조정
+  }
+  .weatherLayOutArea {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+  .weatherTopSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gapSize);
+    height: auto;
+  }
 
-@media (max-width: 1200px) {
-    body{
-        width: 100vw;
-        overflow-y: auto;
-        background: #fff;
-    }
-    .weatherPageWrapper {
-        background: #fff;
-        height: auto;
-        overflow-y: auto;
-        height: auto;
-        padding: $mediaTitlePadding 3rem 3rem; // 전체 패딩 조정
-    }
-    .weatherLayOutArea {
-        max-width: 100%;
-        height: auto;
-        margin: 0 auto;
-    }
-    .weatherTopSection {
-        display: flex;
-        flex-direction: column;
-        gap: var(--gapSize);
-        height: auto;
-    }
+  .weatherPage .weatherTopSection .weatherSummaryWrap {
+    display: flex;
+    width: 100%;
+    height: auto;
+    gap: var(--gapSize);
+  }
 
-    .weatherTopSection .weatherSummaryWrap {
-        display: flex;
-        width: 100%;
-        height: auto;
-        gap: var(--gapSize);
-    }
+  .weatherPage .weatherTopSection .weatherSummaryWrap .weatherStatBox {
+    flex-direction: row; 
+    width: 100%;
+    gap: 20px;
+    justify-content: space-around;
+    height: auto;
+  }
+  .weatherPage .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatValue{
+    height: 3em;
+  }
 
-    .weatherTopSection .weatherSummaryWrap .weatherStatBox {
-        flex-direction: row; 
-        width: 100%;
-        gap: 20px;
-        justify-content: space-around;
-        height: auto;
-    }
+  .weatherPage .weatherGraphWrap .weatherInfoListBox{
+    // border: 1px solid red;
+    width: 100%;
+  }
 
-    .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatValue{
-        height: 3em;
-    }
+  .weatherPage .weatherGraphWrap  {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gapSize);
+    width: 100%;
+    height: auto;
+  }
 
-    .weatherGraphWrap .weatherInfoListBox{
-        width: 100%;
-    }
+  .weatherGraphWrap .weatherInfoListBox,
+  .weatherGraphWrap .weatherWindRadarSection {
+    width: 100%;
+    height: auto;
+  }
 
-    .weatherGraphWrap  {
-        display: flex;
-        flex-direction: column;
-        gap: var(--gapSize);
-        width: 100%;
-        height: auto;
-    }
-
-    .weatherGraphWrap .weatherInfoListBox,
-    .weatherGraphWrap .weatherWindRadarSection {
-        width: 100%;
-        height: auto;
-    }
-
-
-    .weatherGraphWrap .weatherInfoListBox p {
-        font-size: 1.5rem;
-    }
-    .weatherGraphWrap .weatherWindRadarSection{
-        // display: none;
-        width: 100%;
-        height: auto;
-    }
-    .weatherPageWrapper .weatherTrendWrap{
-        margin-top: var(--gapSize);
-        display: inline-block;
-    }
-
-
-    // ========== Box BackGround Color ==========
-    $mint-background-color: #e9f3f1;
-    .weatherGraphWrap .weatherInfoListBox, 
-    .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat,
-    .weatherGraphWrap .weatherWindRadarSection,
-    .weatherTrendWrap .weatherTrendBox{
-        background-color: $mint-background-color;
-    }
-
-    // ========== Title Box Color ==========
-    .weatherGraphWrap .weatherInfoListBox p ,
-    .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatValue,
-    .weatherGraphWrap .weatherWindRadarSection p,
-    .weatherTrendWrap .weatherTrendBox p{
-        background: #fff9f9;
-    }
+  .weatherGraphWrap .weatherInfoListBox p {
+    font-size: 1.5rem;
+  }
+  .weatherPage .weatherGraphWrap .weatherWindRadarSection{
+    // display: none;
+    width: 100%;
+    height: auto;
+  }
+  .weatherPage .weatherTrendWrap{
+    margin-top: var(--gapSize);
+    display: inline-block;
+  }
 }
 
 @media (max-width: 800px){
-    .weatherPageWrapper {
-        overflow-y: scroll;
-        height: auto;
-        padding: 9rem 1rem 1rem;
-    }
+  .weatherPage {
+    overflow-y: scroll;
+    height: auto;
+    padding: 9rem 1rem 1rem;
+  }
 }
 
 @media (max-width: 700px) {
-    .weatherTopSection .weatherSummaryWrap .weatherStatBox .directionStat{
-        display: none;
-    }
-    .weatherGraphWrap .weatherInfoListBox .weatherInfoTable .weatherDesIcon {
-        width: 2rem;
-    }
-    .weatherForecast{
-        display: none !important;
-    }
+  .weatherPage .weatherTopSection .weatherSummaryWrap .weatherStatBox .directionStat{
+    display: none;
+  }
+  .weatherPage .weatherGraphWrap .weatherInfoListBox .weatherInfoTable .weatherDesIcon {
+    width: 2rem;
+  }
+  .weatherForecast{
+    display: none !important;
+  }
 }
 
-@media (max-width: 50px) {
-    .weatherPageWrapper {
-        padding: 8.7rem 1rem 1rem;
-    }
-}
+@media (max-width: 500px) {
 
-@media (max-width: 440px) {
-    .weatherPageWrapper {
-        padding: 11rem 1rem 1rem;
-    }
+  .weatherPage {
+    padding: 7.7rem 1rem 1rem;
+  }
+
 }

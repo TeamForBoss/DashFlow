@@ -7,7 +7,6 @@ import HomePage from "./pages/HomePage";
 import CrimeReportPage from "./pages/CrimeReportPage";
 import AccidentStatusPage from "./pages/AccidentStatusPage";
 import WeatherInfoPage from "./pages/WeatherInfoPage";
-
 const App = () => {
   return (
     <RecoilRoot>

@@ -34,7 +34,7 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
     const { width, height } = dimensions;
     const isMobile = width < 700;
     const margin = isMobile
-      ? { top: 20, right: 20, bottom: 15, left: 18 }
+      ? { top: 20, right: 20, bottom: 15, left: 28 }
       : { top: 25, right: 50, bottom: 25, left: 60 };
 
     const parsedData = data
@@ -44,7 +44,6 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       }))
       .filter(d => d.date !== null) as { date: Date; temp: number }[];
 
-    // SVG 초기화
     d3.select(svgRef.current).selectAll("*").remove();
 
     const svg = d3.select(svgRef.current)
@@ -69,7 +68,6 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .domain([domainMin, domainMax])
       .range([height - margin.bottom, margin.top]);
 
-    // X축 (글씨 가로 배치)
     svg.append("g")
       .attr("transform", `translate(0, ${height - margin.bottom})`)
       .call(
@@ -84,7 +82,6 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .attr("transform", null)
       .style("text-anchor", "middle");
 
-    // Y축
     svg.append("g")
       .attr("transform", `translate(${margin.left}, 0)`)
       .call(d3.axisLeft(yScale).ticks(6))
@@ -103,7 +100,6 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .attr("stroke", "#ccc")
       .attr("opacity", 0.4);
 
-    // 영역(area) 생성 및 애니메이션
     const areaGen = d3.area<{ date: Date; temp: number }>()
       .x(d => xScale(d.date))
       .y0(height - margin.bottom)
@@ -191,7 +187,6 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .duration(500)
       .style("opacity", 1);
 
-    // 툴팁
     const tooltip = d3.select("body")
       .append("div")
       .attr("class", "tooltip")

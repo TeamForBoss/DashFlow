@@ -109,7 +109,7 @@ const WeatherInfoPage: React.FC = () => {
   return (
     <>
       <Header page={"weather"} />
-      <section className="weatherPage">
+      <section className="weatherPageWrapper">
         <section className="weatherLayOutArea">
           <article className="weatherTopSection">
             <div className="weatherSummaryWrap">
@@ -206,7 +206,7 @@ const WeatherInfoPage: React.FC = () => {
             </div>
           </div>
         </section>
-      </section>
+        </section>
     </>
   );
 };

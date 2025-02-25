@@ -30,6 +30,17 @@
     margin: auto;
     background: linear-gradient(var(--accidentbgColor));
     padding: var(--commonPadding);
+    
+    @media(max-width:1200px) {
+        min-height: 100vh;
+        height: auto;
+    }
+    @media(max-width:800px) {
+        padding: 7.7rem 1rem 1rem;
+    }
+    @media(max-width:500px) {
+       padding: 12rem 1rem 1rem; 
+    }
     .accWrap{
         margin: 0 auto;
         height: 100%;
@@ -37,6 +48,11 @@
         display: flex;
         gap: var(--gapSize);
         // overflow: hidden;
+
+        @media(max-width:1200px) {
+            flex-direction: column;
+            align-items: center;
+        }   
         .accGraphWrap {
             width: 70%;
             height: 100%;
@@ -44,6 +60,9 @@
             flex-direction: column;
             gap: var(--gapSize);
             //  min-width: 500px;
+            @media(max-width:1200px) {
+                width: 100%;
+            }
 
             .acYearBox {
                  @include titleHead();
@@ -60,6 +79,8 @@
                 .acYearGraph {
                     border: 1px solid var(--borderColor);
                     height: 83%; 
+                    min-height: 200px;
+                    // height: auto;
                 }
             }
 
@@ -78,7 +99,9 @@
 
                 .TrafficGraph {
                     border: 1px solid var(--borderColor);
+                    min-height: 200px;
                     height: 83%; 
+                    // height: auto;
                 }
             }
 
@@ -90,6 +113,9 @@
             display: flex;
             flex-direction: column;
             gap: var(--gapSize);
+            @media(max-width:1200px) {
+                width: 100%;
+            }
             .acCount {
                 height: 20%;
                 display: flex;
@@ -98,10 +124,15 @@
                 .numOfDeathBox {
                     @include titleHead();
                     flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
 
                     .acDeathTitle {
                         display: flex;
                         align-items: center;
+                        justify-content: center;
+                          margin-bottom: 0.5rem;
                         .deathImg {
                                 width: 3rem;
                                 margin:0 10px;
@@ -111,15 +142,15 @@
                             @include textStyle();
                             font-size: 2rem;
                             @media(max-width:1500px) {
-                                font-size: 1.5rem;
+                                font-size: 1.6rem;
                             }
                             @media(max-width:1400px) {
-                                font-size: 1.1rem;
+                                font-size: 1.4rem;
                             }
-                            @media(max-width:1024px) {
-                                font-size: 2rem;
+                            @media(max-width:1300px) {
+                                font-size: 1.6rem;
                             }
-                             @media(max-width:600px) {
+                            @media(max-width:600px) {
                                 font-size: 1.1em;
                                 padding: 0;
                             }
@@ -140,10 +171,15 @@
                 .numOfAccBox {
                     @include titleHead();
                     flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
 
                     .acAccTitle {
                         display: flex;
                         align-items: center; 
+                        justify-content: center;
+                          margin-bottom: 0.5rem;
                         .accImg {
                                 width: 3rem;
                                 margin:0 10px;
@@ -152,19 +188,19 @@
                         p {
                             @include textStyle();
                             font-size: 2rem;
-                            @media(max-width:1500px) {
-                                font-size: 1.5rem;
+                           @media(max-width:1500px) {
+                                font-size: 1.6rem;
                             }
                             @media(max-width:1400px) {
-                                font-size: 1.1rem;
+                                font-size: 1.4rem;
                             }
-                            @media(max-width:1024px) {
-                                font-size: 2rem;
+                            @media(max-width:1300px) {
+                                font-size: 1.6rem;
                             }
-                             @media(max-width:600px) {
+                            @media(max-width:600px) {
                                 font-size: 1.1em;
                                 padding: 0;
-                            }
+                            } 
                         }
                     }
                     .accCont{
@@ -225,7 +261,8 @@
                     }
                 }
             }
-            
+       
+
         }
     }
 }

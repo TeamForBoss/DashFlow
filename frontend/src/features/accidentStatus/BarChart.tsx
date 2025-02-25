@@ -8,22 +8,26 @@ interface PropsType {
 const BarChart = (accData: PropsType) => {
     const [width, setWidth] = useState<any>(0);
     const [height, setHeight] = useState<any>(0);
-    const [fontSize, setFontSize] = useState<string>("10px");
     const svgRef = useRef(null);
     let { accData: accArr } = accData;
-    // console.log(accArr);
+
+       
+    // const mobData = accArr.filter((obj, idx) => {
+    //     console.log(accArr[idx])
+    //     return (idx % 3 == 1 ? accArr[idx] : null)
+    // });
     const handleResize = () => {
         const width = document.querySelector(".acYearGraph")?.clientWidth;
         const height = document.querySelector(".acYearGraph")?.clientHeight;
         setWidth(width);
         setHeight(height);
-        if (window.innerWidth < 900) {
-            setFontSize("6px");
-        } else {     
-            setFontSize("11px");
-        }
+        // if (window.innerWidth < 800) {
+        //     setFontSize("10px");
+        // } else {     
+        //     setFontSize("11px");
+        // }
     };
-    console.log(width, height);
+    // console.log(width, height);
     useEffect(() => {
         handleResize();
         window.addEventListener("resize", handleResize);
@@ -33,14 +37,24 @@ const BarChart = (accData: PropsType) => {
         };
     }, []);
     // 그래프 크기 및 마진 설정
-    const marginTop = 40;
-    const marginRight = 40;
-    const marginBottom = 40;
-    const marginLeft = 40;
-
+    let marginTop = 40;
+    let marginRight = 40;
+    let marginBottom = 40;
+    let marginLeft = 40;
+    
+    let moveVal = 0;
+    let fontSize = "11px";
+    const mobData = accArr.filter((_, idx) => idx < 5); 
+    if (width < 800) {
+        accArr = mobData;
+        moveVal = width / 25;
+        fontSize = "10px";
+    }
+    // console.log(mobData);
+    
     // x축 (type 스케일) 설정
     const x = d3
-        .scaleBand()
+    .scaleBand()
         .domain(accArr.map(d => d.type))
         .range([marginLeft, width - marginRight]);
 
@@ -65,7 +79,7 @@ const BarChart = (accData: PropsType) => {
         .y(d => y(d.death)) // y축 좌표 설정
     const line1 = d3
         .line<ByAccTypeData>()
-        .x(d => x(d.type)! + width / 22) // x축 좌표 설정
+        .x(d => x(d.type)! + width / 22+moveVal) // x축 좌표 설정
         .y(d => y1(d.acc)) // 두 번째 y축 좌표 설정 (acc)
     // .curve(d3.curveMonotoneX); // 부드러운 곡선 적용
 
@@ -110,7 +124,7 @@ const BarChart = (accData: PropsType) => {
                 .attr("y", 10)
                 .attr("fill", "#333")
                 .attr("text-anchor", "start")
-                .attr("font-size", "1.1rem")
+                .attr("font-size", fontSize)
                 .text("( 단위: 명 )")
             );
         // y1축 추가 (acc 그리드 라인 포함)
@@ -122,7 +136,7 @@ const BarChart = (accData: PropsType) => {
 
         // 그래프 바(bar) 애니메이션
         svg.append("g")
-            .attr("fill", "#fff672")
+            .attr("fill", "#F7E38D")
             .selectAll()
             .data(accArr)
             .join("rect")
@@ -162,7 +176,7 @@ const BarChart = (accData: PropsType) => {
             .data(accArr)
             .enter()
             .append("circle")
-            .attr("cx", (d) => x(d.type)! + width / 22)
+            .attr("cx", (d) => x(d.type)! + width / 22+moveVal)
             .attr("cy", (d) => y1(d.acc))
             .attr("r", 4)
             .attr("fill", "#fff")

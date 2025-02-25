@@ -10,13 +10,26 @@ const LineChart = (yearData: PropsType) => {
     const [height, setHeight] = useState<any>(0);
     const svgRef = useRef(null);
     let { yearData: accArr } = yearData;
-    // console.log(accArr);
+    
+    let moveVal = 0;
+    let padding = 90;
+    let fontSize = "15px";
+    const mobData = accArr.filter((obj) => { 
+        return (Number(obj.year) % 3 == 1 ? obj : null)
+    });
+    if (width < 600) {
+        accArr = mobData; 
+        moveVal = width / 22;
+        padding = 30;
+        fontSize ="10px";
+    }
 
     const handleResize = () => {
-        const width = document.querySelector(".acYearGraph")?.clientWidth;
-        const height = document.querySelector(".acYearGraph")?.clientHeight;
-        setWidth(width);
-        setHeight(height);
+        const width = document.querySelector(".acYearGraph")?.clientWidth ?? 800;
+        const height = document.querySelector(".acYearGraph")?.clientHeight ?? 300;
+            setWidth(width);
+            setHeight(height);
+        // console.log(accArr)
     };
     useEffect(() => {
         handleResize();
@@ -30,49 +43,46 @@ const LineChart = (yearData: PropsType) => {
     // 그래프 크기 및 마진 설정
     // const width = 1000;
     // const height = 300;
-    const marginTop = 20;
-    const marginRight = 40;
-    const marginBottom = 30;
-    const marginLeft = 40;
+    const margin = 30;
 
     // x축 (type 스케일) 설정
     const x = d3
         .scaleBand()
         .domain(accArr.map(d => d.year))
-        .range([marginLeft, width - marginRight]);
+        .range([margin, width - margin]);
 
     // y축 (inj 스케일) 설정
     const y = d3
         .scaleLinear()
         .domain([0, d3.max(accArr, d => d.inj) ?? 0])
         .nice()
-        .range([height - marginBottom, marginTop]);
+        .range([height - margin, margin]);
     // y축 (acc 스케일) 설정
     const y1 = d3
         .scaleLinear()
         .domain([0, d3.max(accArr, d => d.inj) ?? 0])
         .nice()
-        .range([height - marginBottom, marginTop]);
+        .range([height - margin, margin]);
     // y축 (death 스케일) 설정
     const y2 = d3
         .scaleLinear()
         .domain([0, d3.max(accArr, d => d.inj) ?? 0])
         .nice()
-        .range([height - marginBottom, marginTop]);
+        .range([height - margin, margin]);
 
 
     // 선(line) 생성 함수 정의
     const line = d3
         .line<ByYearTypeData>()
-        .x(d => x(d.year)! + width/31) // x축 좌표 설정
+        .x(d => x(d.year)! + width/31+moveVal) // x축 좌표 설정
         .y(d => y(d.inj)) // y축 좌표 설정
     const lineAcc = d3
         .line<ByYearTypeData>()
-        .x(d => x(d.year)! + width/31) // x축 좌표 설정
+        .x(d => x(d.year)! + width/31+moveVal) // x축 좌표 설정
         .y(d => y1(d.acc)) // 두 번째 y축 좌표 설정 (acc)
     const lineDth = d3
         .line<ByYearTypeData>()
-        .x(d => x(d.year)! + width/31) // x축 좌표 설정
+        .x(d => x(d.year)! + width/31+moveVal) // x축 좌표 설정
         .y(d => y2(d.death)) // 두 번째 y축 좌표 설정 (acc)
 
     useEffect(() => {
@@ -86,13 +96,13 @@ const LineChart = (yearData: PropsType) => {
         svg
             .attr("width", width)
             .attr("height", height)
-            .attr("viewBox", [-marginLeft * 2, 0, width + 100, height])
+            .attr("viewBox", [-padding/1.2, 0, width+padding, height])
             .attr("style", "max-width: 100%; height: auto;");
 
         // x축 추가
         svg
             .append("g")
-            .attr("transform", `translate(0,${height - marginBottom})`)
+            .attr("transform", `translate(0,${height - margin})`)
             .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0));
 
         // y축 추가 (death 그리드 라인 포함)
@@ -119,7 +129,7 @@ const LineChart = (yearData: PropsType) => {
         // y1축 추가 (acc 그리드 라인 포함)
         svg
             .append("g")
-            .attr("transform", `translate(${width - marginRight},0)`)
+            .attr("transform", `translate(${width - margin},0)`)
             .call(d3.axisRight(y1).ticks(height / 40))
             .call(g => g.select(".domain").remove());
 
@@ -148,7 +158,7 @@ const LineChart = (yearData: PropsType) => {
             .enter()
             .append("circle")
             .attr("class", `dot-${color}`)
-            .attr("cx", (d) => x(d.year)! + width / 31)
+            .attr("cx", (d) => x(d.year)! + width / 31 +moveVal)
             .attr("cy", (d) => y1(Number(d[key as keyof ByYearTypeData])))
             .attr("r", 8)
             .attr("fill", "#fff")
@@ -163,70 +173,13 @@ const LineChart = (yearData: PropsType) => {
 
         drawLine(line, "#ff9100", "inj");    // 부상자 (inj)
         drawLine(lineAcc, "#ffd900","acc"); // 사고건수 (acc)
-        drawLine(lineDth, "#fff672","death"); // 사망자 (death)
+        drawLine(lineDth, "#F7E38D","death"); // 사망자 (death)
 
-
-        // svg.append("g")
-        //     .selectAll("circle")
-        //     .data(accArr)
-        //     .enter()
-        //     .append("circle")
-        //     .attr("cx", d => x(d.year)! + width/31)
-        //     .attr("cy", d => y1(d.inj))
-        //     .attr("r", 8)
-        //     .attr("fill", "#fff")
-        //     .attr("stroke", "#FFF2A5")
-        //     .attr("stroke-width", 7);
-
-        // svg.append("g")
-        //     .selectAll("circle")
-        //     .data(accArr)
-        //     .enter()
-        //     .append("circle")
-        //     .attr("cx", d => x(d.year)! +width/31)
-        //     .attr("cy", d => y1(d.acc))
-        //     .attr("r", 8)
-        //     .attr("fill", "#fff")
-        //     .attr("stroke", "#FBC02D")
-        //     .attr("stroke-width", 7);
-
-        // svg.append("g")
-        //     .selectAll("circle")
-        //     .data(accArr)
-        //     .enter()
-        //     .append("circle")
-        //     .attr("cx", d => x(d.year)! +width/31)
-        //     .attr("cy", d => y1(d.death))
-        //     .attr("r", 8)
-        //     .attr("fill", "#fff")
-        //     .attr("stroke", "#FAFD8D")
-        //     .attr("stroke-width", 7);
-
-        //     const legend = svg.append("g")
-        //             .attr("transform", `translate(${width / 2 + 20},${-height / 2 + 20})`)
-        //             .attr("text-anchor", "start")
-        //             .selectAll("g")
-        //             .data(nameArr)
-        //             .enter()
-        //             .append("g")
-        //             .attr("transform", (_d, i) => `translate(0, ${i * 20})`);
-
-        //         legend.append("rect")
-        //             .attr("x", -width+marginRight+height)
-        //             .attr("width", 19)
-        //             .attr("height", 19)
-        //             .attr("fill", "#FAFD8D");
-
-        //         legend.append("text")
-        //             .attr("x", -width+marginRight+height+30)
-        //             .attr("y", 9.5)
-        //             .attr("dy", "0.32em")
-        //             .text(d => d);
-        const nameArr = ["부상자", "사고건수", "사망자"];
-        const colorArr = ["#ff9100", "#ffd900", "#fff672"];
+               const nameArr = ["부상자", "사고건수", "사망자"];
+        const colorArr = ["#ff9100", "#ffd900", "#F7E38D "];
 
         const legend = svg.append("g")
-            .attr("transform", `translate(${marginLeft - (width / 10)}, 0)`);
+            .attr("transform", `translate(${margin - (width / 10)}, 0)`);
         // console.log(height)
         legend.selectAll("g")
             .data(nameArr)
@@ -246,7 +199,7 @@ const LineChart = (yearData: PropsType) => {
                     .attr("x", width / 20)
                     .attr("y", height / 6.7)
                     .attr("dy", "0.32em")
-                    .attr("font-size", "15px")
+                    .attr("font-size", fontSize)
                     .attr("fill", "#666")
                     .attr("text-anchor", "middle")
                     .text(d);

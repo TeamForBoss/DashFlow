@@ -45,6 +45,7 @@ interface totalAccident {
 }
 
 export interface ByAccTypeData {
+    [key: string]: number | string;
     type: string;
     death: number;
     acc: number;

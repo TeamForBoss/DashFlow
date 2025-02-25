@@ -218,13 +218,12 @@ body{
 }
 .weatherGraphWrap .weatherWindRadarBox {
   position: relative;
-  width: 85%;
-  height: 85%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  padding: 2rem 0 0;
+  width: 100%;
+  height: 75%;
+  margin: 1.8rem auto;
+  padding: 1rem 0 0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px #bdbdbd;
 }
 
 /* 하단 기상 추세 영역 */
@@ -338,9 +337,10 @@ $mediaTitlePadding : 11rem;
         display: inline-block;
     }
 
+    //
 
     // ========== Box BackGround Color ==========
-    $mint-background-color: #e9f3f1;
+    $mint-background-color: #ecf5f3;
     .weatherGraphWrap .weatherInfoListBox, 
     .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat,
     .weatherGraphWrap .weatherWindRadarSection,
@@ -353,15 +353,21 @@ $mediaTitlePadding : 11rem;
     .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatValue,
     .weatherGraphWrap .weatherWindRadarSection p,
     .weatherTrendWrap .weatherTrendBox p{
-        background: #fff9f9;
+        background: #ffffff !important;
     }
+
+    // ========== 원그래프 영역 ==========
+    .weatherGraphWrap .weatherWindRadarBox {
+      background: #ffffff80;
+    }
+
 }
 
 @media (max-width: 800px){
     .weatherPageWrapper {
         overflow-y: scroll;
         height: auto;
-        padding: 9rem 1rem 1rem;
+        padding: 8rem 1rem 1rem;
     }
 }
 
@@ -377,9 +383,26 @@ $mediaTitlePadding : 11rem;
     }
 }
 
-@media (max-width: 50px) {
+@media (max-width: 500px) {
+
+  .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatTitle {
+    font-size: var(--smallFontSize);
+    width: 60%;
+  }
+  .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatTitle img {
+    height: 100%;
+    margin-left: .3rem;
+  }
+  .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatValue {
+    font-size: var(--smallFontSize);
+  }
+
+    .weatherStatValue{
+      font-size: var(--smallFontSize);
+    }
+
     .weatherPageWrapper {
-        padding: 8.7rem 1rem 1rem;
+        padding: 8.5rem 1rem 1rem;
     }
 }
 

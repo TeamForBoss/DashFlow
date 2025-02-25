@@ -11,12 +11,12 @@ import {selectedRegionState } from "../state/atom.js";
 import weatherDescription from "../assets/data/weatherData/weather_description.json";
 
 // ==images==
-import temperatureImg from "../assets/images/icons/weather/sun.png";
+import temperatureImg from "../assets/images/icons/weather/temp.png";
 import humidityImg from "../assets/images/icons/weather/rain_blue.png";
 import directionImg from "../assets/images/icons/weather/direction.png";
 
 import Header from "../components/Header";
-const WeatherInfoPage = () => {
+const WeatherInfoPage: React.FC = () => {
 
   // recoil
   const host = useRecoilValue(hostState);
@@ -102,7 +102,7 @@ const WeatherInfoPage = () => {
                     <img src={temperatureImg} alt="온도 아이콘" />
                   </div>
                   <div className="weatherStatValue">
-                    {weatherData[0]?.main?.temp ?? "--"} °C
+                    {weatherData[0]?.main?.temp.toFixed(1) ?? "--"} °C
                   </div>
                 </div>
                 <div className="weatherStat">
@@ -144,7 +144,7 @@ const WeatherInfoPage = () => {
                   {weatherData.slice(0, 8).map((item, idx) => (
                     <tr key={idx} className="weatherInfoItem">
                       <td>{getDateLabel(item.dt_txt)}</td>
-                      <td>{item.main.temp ?? "--"} °C</td>
+                      <td>{item.main.temp.toFixed(1) ?? "--"} °C</td>
                       <td>{item.main.humidity ?? "--"} %</td>
 
                       <td>
@@ -156,7 +156,7 @@ const WeatherInfoPage = () => {
                       </td>
                       <td>
                         <img src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} 
-                          alt="weather_icon" className="weatherDesIcon"/>
+                          alt="weather icon" className="weatherDesIcon"/>
                       </td>
                     </tr>
                     ))}

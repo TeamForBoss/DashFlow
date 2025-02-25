@@ -13,6 +13,11 @@
     align-items: center;
     justify-content: space-between;
 }
+@mixin titleStyle() {
+    background: #eff5f5;
+    border-radius: 1rem 1rem 0 0;
+    box-shadow: inset 0px 3px 3px #dadada;
+}
 .accident {
     width: 100vw;
     background: linear-gradient(var(--accidentbgColor));
@@ -28,6 +33,10 @@
         @include flexSet;
         flex-direction: row;
         gap: var(--gapSize);
+
+        @media(max-width:900px) {
+            
+        }
         .accGraphWrap {
             @include flexSet;
             gap: var(--gapSize);
@@ -41,11 +50,9 @@
                 height:50%;
 
                 .acYearTitle {
-                    background-color: rgba(217, 217, 217, 0.14);
                     border: 1px solid var(--borderColor);
-                    border-radius: 10px 10px 0 0;
                     margin-bottom: 10px;
-
+                    @include titleStyle();
                     p {
                         text-align: center;
                         font-size: var(--bigFontSize);
@@ -69,10 +76,9 @@
 
                 // height: 40vh;
                 .TrafficTitle {
-                    background-color: rgba(217, 217, 217, 0.14);
                     border: 1px solid var(--borderColor);
-                    border-radius: 10px 10px 0 0;
                     margin-bottom: 10px;
+                    @include titleStyle();
 
                     p {
                         text-align: center;
@@ -111,11 +117,9 @@
                     flex: 1;
 
                     .acDeathTitle {
-                        background-color: rgba(217, 217, 217, 0.14);
                         border: 1px solid var(--borderColor);
-                        border-radius: 10px 10px 0 0;
                         margin-bottom: 10px;
-
+                        @include titleStyle();
                         p {
                             text-align: center;
                             font-size: var(--middleFontSize);
@@ -136,10 +140,9 @@
                     flex: 1;
 
                     .acAccTitle {
-                        background-color: rgba(217, 217, 217, 0.14);
                         border: 1px solid var(--borderColor);
-                        border-radius: 10px 10px 0 0;
                         margin-bottom: 10px;
+                        @include titleStyle();
 
                         p {
                             text-align: center;
@@ -169,10 +172,9 @@
                     @include titleHead();
 
                     .acTypeTitle {
-                        background-color: rgba(217, 217, 217, 0.14);
                         border: 1px solid var(--borderColor);
-                        border-radius: 10px 10px 0 0;
                         margin-bottom: 10px;
+                        @include titleStyle();
 
                         p {
                             text-align: center;
@@ -204,10 +206,9 @@
                     flex: 1;
 
                     .acLawTitle {
-                        background-color: rgba(217, 217, 217, 0.14);
                         border: 1px solid var(--borderColor);
-                        border-radius: 10px 10px 0 0;
                         margin-bottom: 10px;
+                        @include titleStyle();
 
                         p {
                             text-align: center;

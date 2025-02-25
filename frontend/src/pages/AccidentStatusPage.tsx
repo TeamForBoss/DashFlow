@@ -4,8 +4,10 @@ import LineChart from "../features/accidentStatus/LineChart";
 import DonutChart from "../features/accidentStatus/DonutChart";
 import CircularChart from "../features/accidentStatus/CircularChart";
 import BarChart from "../features/accidentStatus/BarChart";
-
 import Header from "../components/Header";
+
+import { selectedRegionState } from "../state/atom";
+import { useRecoilValue } from "recoil";
 
 interface totalAccident {
     [key: string]: string[] | undefined;
@@ -50,6 +52,7 @@ export interface ByCarTypeData {
 }
 
 export interface ByYearTypeData {
+    [key: string]: number | string;
     year: string;
     acc: number;
     death: number;
@@ -57,26 +60,33 @@ export interface ByYearTypeData {
 }
 
 const AccidentStatusPage = () => {
+    const region = useRecoilValue<string>(selectedRegionState );
+
     // const canvasWrap = useRef<HTMLCanvasElement>(null);
     const [allData, setAllData] = useState<{ year: number; data: totalAccident[] }[]>([]);
     const [acData, setAcData] = useState<totalAccident[]>([]);
-    const [gugun, setGugun] = useState("ansan");
+    const [gugun, setGugun] = useState("");
     const [byAccType, setByAccType] = useState<ByAccTypeData[]>([]);
     const [cntPeople, setCntPeople] = useState<number[]>([]);
     const [carCar, setCarCar] = useState<ByCarTypeData[]>([]);
     const [violOfLaw, setViolOfLaw] = useState<ByCarTypeData[]>([]);
     const [byYearType, setByYearType] = useState<ByYearTypeData[]>([]);
-    // console.log(allData);
+    console.log(region)
+    useEffect(() => { 
+        setGugun(region);
+    },[])
     useEffect(() => {
         fetch('/tempData/accident_data_2023.json')
             .then(response => response.json())
             .then((data: Array<{ [key: string]: { item: [] } }>) => {
-                // console.log(data)
                 data.forEach((obj) => {
                     for (let key in obj) {
+                        // let { item: avgArr } = obj[key];
+                        // console.log(avgArr[0].acc_cnt[0])
                         if (gugun == key) {
                             let { item: dataArr } = obj[key];
                             setAcData(dataArr);
+                            // console.log(dataArr[0].tot_acc_cnt/31, dataArr[0].tot_dth_dnv_cnt/31);
                         }
                     }
                 })
@@ -97,7 +107,7 @@ const AccidentStatusPage = () => {
                     // console.log(obj[key])
                     if (gugun == key) {
                         let { item: dataArr } = obj[key];
-                        console.log(allData)
+                        // console.log(allData)
                         // const allAccData= dataArr;
                         setAllData(prev => [...prev, { year: year, data: dataArr }]);
                     }
@@ -138,12 +148,14 @@ const AccidentStatusPage = () => {
             // 사고종류별 사망, 사고
             const typeData = [];
             for (let obj of acData) {
-                if (obj.acc_cl_nm[0] != "전체사고" && obj.acc_cl_nm[0] != "개인형이동수단(PM)사고" && obj.acc_cl_nm[0] != "스쿨존내어린이사고") {
-                    typeData.push({
-                        type: obj.acc_cl_nm[0],
-                        death: Number(obj.acc_cnt[0]),
-                        acc: Number(obj.dth_dnv_cnt[0])
-                    })
+                if (obj.acc_cl_nm[0] != "전체사고") {
+                    if (obj.acc_cl_nm[0] != "개인형이동수단(PM)사고" && obj.acc_cl_nm[0] != "스쿨존내어린이사고") {
+                        typeData.push({
+                            type: obj.acc_cl_nm[0],
+                            death: Number(obj.acc_cnt[0]),
+                            acc: Number(obj.dth_dnv_cnt[0])
+                        })
+                    }
                 } else {
                     // 사고건수, 사망자수
                     const peoples = [Number(obj.acc_cnt), Number(obj.dth_dnv_cnt)];
@@ -172,7 +184,7 @@ const AccidentStatusPage = () => {
 
     return (
         <>
-        <Header page={"accident"}/>
+    <Header page={"accident"}/>
         <section id="accident" className="accident">
             <div className="accWrap">
                 <div className="accGraphWrap">
@@ -231,7 +243,7 @@ const AccidentStatusPage = () => {
                     </div>
                 </div>
             </div>
-        </section>
+            </section>
         </>
     )
 }

@@ -5,6 +5,7 @@ import handImg from "../../assets/images/icons/crime/boom_hand.png";
 /// 라우팅 걸어가지고 json 가져오자미~
 import { useRecoilValue } from "recoil";
 import { hostState } from "../../state/hostAtom.js";
+
 ///////////////////////////////////////////////////////
 const HomeCrime = () => {
   const host = useRecoilValue(hostState);

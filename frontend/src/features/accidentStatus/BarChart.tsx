@@ -110,37 +110,92 @@ const BarChart = (accData: PropsType) => {
             .call(d3.axisRight(y1).ticks(height / 40))
             .call(g => g.select(".domain").remove()); // 축의 라인 제거
         
-    //graph bar
-    svg.append("g")
-        .attr("fill", "#F3E796")
-        .selectAll()
-        .data(accArr)
-        .join("rect")
-        .attr("x", (d) => x(d.type) ?? 0)
-        .attr("y", (d) => y(d.death))
-        .attr("height", (d) => y(0) - y(d.death))
-        .attr("width", x.bandwidth());  
-            
-    // graph line
-    svg
-      .append("path")
-      .datum(accArr) 
-      .attr("fill", "none")
-      .attr("stroke", "#FBC02D") 
-      .attr("stroke-width", 1.5)
-            .attr("d", line1);
-        
-     svg.append("g")
-            .selectAll("circle")
+        // 그래프 바(bar) 애니메이션
+        svg.append("g")
+            .attr("fill", "#F3E796")
+            .selectAll()
             .data(accArr)
-            .enter()
-            .append("circle")
-            .attr("cx", d => x(d.type)! + width / 22)  
-            .attr("cy", d => y1(d.acc))         
-            .attr("r", 4)                       
-            .attr("fill", "#fff")            
-            .attr("stroke", "#FBC02D")             
-            .attr("stroke-width", 2); 
+            .join("rect")
+            .attr("x", (d) => x(d.type) ?? 0)
+            .attr("y", height-marginBottom) 
+            .attr("height", 0) 
+            .attr("width", x.bandwidth())  
+            .transition() 
+            .duration(1000) 
+            .attr("y", (d) => y(d.death)) 
+            .attr("height", (d) => y(0) - y(d.death));
+
+        // 그래프 라인(line) 애니메이션
+        svg
+        .append("path")
+        .datum(accArr)
+        .attr("fill", "none")
+        .attr("stroke", "#FBC02D")
+        .attr("stroke-width", 1.5)
+        .attr("d", line1)
+        .attr("stroke-dasharray", function () {
+            const length = (this as SVGPathElement).getTotalLength();
+            return length;
+        })
+        .attr("stroke-dashoffset", function () {
+            const length = (this as SVGPathElement).getTotalLength();
+            return length;
+        })
+        .transition()
+        .duration(1500) 
+        .ease(d3.easeLinear) 
+        .attr("stroke-dashoffset", 0);
+
+        // 원(circle) 애니메이션
+    svg.append("g")
+        .selectAll("circle")
+        .data(accArr)
+        .enter()
+        .append("circle")
+        .attr("cx", (d) => x(d.type)! + width / 22)
+        .attr("cy", (d) => y1(d.acc))
+        .attr("r", 4)
+        .attr("fill", "#fff")
+        .attr("stroke", "#FBC02D")
+        .attr("stroke-width", 2)
+        .attr("opacity", 0)
+        .transition()
+        .duration(1000) 
+        .delay((_, i) => i * 100) 
+        .attr("opacity", 1); 
+    
+
+    //graph bar
+    // svg.append("g")
+    //     .attr("fill", "#F3E796")
+    //     .selectAll()
+    //     .data(accArr)
+    //     .join("rect")
+    //     .attr("x", (d) => x(d.type) ?? 0)
+    //     .attr("y", (d) => y(d.death))
+    //     .attr("height", (d) => y(0) - y(d.death))
+    //     .attr("width", x.bandwidth());  
+            
+    // // graph line
+    // svg
+    //   .append("path")
+    //   .datum(accArr) 
+    //   .attr("fill", "none")
+    //   .attr("stroke", "#FBC02D") 
+    //   .attr("stroke-width", 1.5)
+    //         .attr("d", line1);
+        
+    //  svg.append("g")
+    //         .selectAll("circle")
+    //         .data(accArr)
+    //         .enter()
+    //         .append("circle")
+    //         .attr("cx", d => x(d.type)! + width / 22)  
+    //         .attr("cy", d => y1(d.acc))         
+    //         .attr("r", 4)                       
+    //         .attr("fill", "#fff")            
+    //         .attr("stroke", "#FBC02D")             
+    //         .attr("stroke-width", 2); 
   }, [x, y, line, accArr]);
 
   return (<svg ref={svgRef}></svg>);

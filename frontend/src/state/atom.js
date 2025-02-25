@@ -5,6 +5,6 @@ const { persistAtom } = recoilPersist();
 
 export const selectedRegionState = atom({
     key: "selectedRegionState",
-    default: "suwon",
+    default: "",
     effects_UNSTABLE: [persistAtom],
 });

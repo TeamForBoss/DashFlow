@@ -15,7 +15,7 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
-  // ✅ 화면 크기 감지 후 dimensions 상태 업데이트
+  //   화면 크기 감지 후 dimensions 상태 업데이트
   useEffect(() => {
     const updateSize = () => {
       if (containerRef.current) {
@@ -26,23 +26,23 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
       }
     };
 
-    updateSize(); // ✅ 최초 실행
-    window.addEventListener("resize", updateSize); // ✅ 화면 크기 변경 감지
+    updateSize(); //   최초 실행
+    window.addEventListener("resize", updateSize); //   화면 크기 변경 감지
 
-    return () => window.removeEventListener("resize", updateSize); // ✅ 언마운트 시 리스너 제거
+    return () => window.removeEventListener("resize", updateSize); //   언마운트 시 리스너 제거
   }, []);
 
   useEffect(() => {
     if (!data.length || !svgRef.current || !containerRef.current) return;
 
     const { width, height } = dimensions;
-    if (width === 0 || height === 0) return; // ✅ 초기값 방지
+    if (width === 0 || height === 0) return; //   초기값 방지
 
-    const margin = { top: 10, right: 0, bottom: 28, left: 0 };
+    const margin = { top: 0, right: 0, bottom: 20, left: 0 }; //   top 여백 추가
     const chartWidth = width - margin.left - margin.right;
     const chartHeight = height - margin.top - margin.bottom;
 
-    // ✅ 기존 그래프 초기화 후 다시 그리기
+    //   기존 그래프 초기화 후 다시 그리기
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove();
     svg
@@ -59,11 +59,11 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
 
     const yScale = d3
       .scaleLinear()
-      .domain([0, d3.max(data, (d) => d.data) || 0])
+      .domain([0, (d3.max(data, (d) => d.data) || 0) * 1.1]) //   최대값을 10% 증가
       .nice()
       .range([chartHeight, 0]);
 
-    // ✅ 막대 그래프 그리기
+    //   막대 그래프 그리기
     svg
       .selectAll(".bar")
       .data(data)
@@ -80,7 +80,7 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
       .attr("y", (d) => yScale(d.data))
       .attr("height", (d) => chartHeight - yScale(d.data));
 
-    // ✅ 막대 위에 숫자 추가
+    //   막대 위에 숫자 추가 (위쪽 여백 추가)
     svg
       .selectAll(".label")
       .data(data)
@@ -88,10 +88,10 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
       .append("text")
       .attr("class", "label")
       .attr("x", (d) => xScale(d.범죄중분류)! + xScale.bandwidth() / 2)
-      .attr("y", (d) => yScale(d.data) - 5)
+      .attr("y", (d) => yScale(d.data) - 10) //   숫자를 좀 더 아래로 이동
       .attr("text-anchor", "middle")
       .style("font-size", "12px")
-      .style("fill", "#333")
+      .style("fill", "#555")
       .text((d) => d.data)
       .attr("opacity", 0)
       .transition()
@@ -99,7 +99,7 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
       .duration(500)
       .attr("opacity", 1);
 
-    // ✅ X축 추가
+    //   X축 추가
     svg
       .append("g")
       .attr("class", "x-axis")
@@ -107,14 +107,11 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
       .call(d3.axisBottom(xScale).tickSize(0))
       .selectAll("text")
       .style("font-size", "12px")
-      .style("fill", "#333");
-  }, [data, dimensions]); // ✅ dimensions가 변경될 때마다 다시 그리기
+      .style("fill", "#444");
+  }, [data, dimensions]); //   dimensions가 변경될 때마다 다시 그리기
 
   return (
-    <div
-      ref={containerRef}
-      style={{ width: "100%", height: "100%", marginTop: "20px" }}
-    >
+    <div ref={containerRef} style={{ width: "100%", height: "100%" }}>
       <svg ref={svgRef}></svg>
     </div>
   );

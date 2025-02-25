@@ -121,71 +121,85 @@ const LineChart = (yearData: PropsType) => {
             .append("g")
             .attr("transform", `translate(${width - marginRight},0)`)
             .call(d3.axisRight(y1).ticks(height / 40))
-            .call(g => g.select(".domain").remove()); // 축의 라인 제거
+            .call(g => g.select(".domain").remove());
 
         // graph line(inj)
-        svg
-            .append("path")
-            .datum(accArr)
-            .attr("fill", "none")
-            .attr("stroke", "#FFF2A5")
-            .attr("stroke-width", 1.5)
-            .attr("d", line);
-        // graph line(acc)
-        svg
-            .append("path")
-            .datum(accArr)
-            .attr("fill", "none")
-            .attr("stroke", "#FBC02D")
-            .attr("stroke-width", 1.5)
-            .attr("d", lineAcc);
-
-        // graph line(death)
-        svg
-            .append("path")
-            .datum(accArr)
-            .attr("fill", "none")
-            .attr("stroke", "#FAFD8D")
-            .attr("stroke-width", 1.5)
-            .attr("d", lineDth);
-
-        svg.append("g")
-            .selectAll("circle")
+        const drawLine = (line: any, color: string, key: string ) => {
+            const path = svg
+                .append("path")
+                .datum(accArr)
+                .attr("fill", "none")
+                .attr("stroke", color)
+                .attr("stroke-width", 2)
+                .attr("d", line);
+        
+            const totalLength = (path.node() as SVGPathElement).getTotalLength();
+            path
+                .attr("stroke-dasharray", totalLength)
+                .attr("stroke-dashoffset", totalLength)
+                .transition()
+                .duration(1000)
+                .ease(d3.easeLinear)
+                .attr("stroke-dashoffset", 0);
+            
+           svg.append("g")
+            .selectAll(`.dot-${color}`)
             .data(accArr)
             .enter()
             .append("circle")
-            .attr("cx", d => x(d.year)! + width/31)
-            .attr("cy", d => y1(d.inj))
+            .attr("class", `dot-${color}`)
+            .attr("cx", (d) => x(d.year)! + width / 31)
+            .attr("cy", (d) => y1(Number(d[key as keyof ByYearTypeData])))
             .attr("r", 8)
             .attr("fill", "#fff")
-            .attr("stroke", "#FFF2A5")
-            .attr("stroke-width", 7);
+            .attr("stroke", color)
+            .attr("stroke-width", 7)
+            .attr("opacity", 0)
+            .transition()
+            .delay((_, i) => i * 100) 
+            .duration(500)
+            .attr("opacity", 1); 
+        };
 
-        svg.append("g")
-            .selectAll("circle")
-            .data(accArr)
-            .enter()
-            .append("circle")
-            .attr("cx", d => x(d.year)! +width/31)
-            .attr("cy", d => y1(d.acc))
-            .attr("r", 8)
-            .attr("fill", "#fff")
-            .attr("stroke", "#FBC02D")
-            .attr("stroke-width", 7);
+        drawLine(line, "#FFF2A5", "inj");    // 부상자 (inj)
+        drawLine(lineAcc, "#FBC02D","acc"); // 사고건수 (acc)
+        drawLine(lineDth, "#FAFD8D","death"); // 사망자 (death)
 
-        svg.append("g")
-            .selectAll("circle")
-            .data(accArr)
-            .enter()
-            .append("circle")
-            .attr("cx", d => x(d.year)! +width/31)
-            .attr("cy", d => y1(d.death))
-            .attr("r", 8)
-            .attr("fill", "#fff")
-            .attr("stroke", "#FAFD8D")
-            .attr("stroke-width", 7);
+        // svg.append("g")
+        //     .selectAll("circle")
+        //     .data(accArr)
+        //     .enter()
+        //     .append("circle")
+        //     .attr("cx", d => x(d.year)! + width/31)
+        //     .attr("cy", d => y1(d.inj))
+        //     .attr("r", 8)
+        //     .attr("fill", "#fff")
+        //     .attr("stroke", "#FFF2A5")
+        //     .attr("stroke-width", 7);
 
-        //         const nameArr = ["사고건수", "사망자", "부상자"];
+        // svg.append("g")
+        //     .selectAll("circle")
+        //     .data(accArr)
+        //     .enter()
+        //     .append("circle")
+        //     .attr("cx", d => x(d.year)! +width/31)
+        //     .attr("cy", d => y1(d.acc))
+        //     .attr("r", 8)
+        //     .attr("fill", "#fff")
+        //     .attr("stroke", "#FBC02D")
+        //     .attr("stroke-width", 7);
+
+        // svg.append("g")
+        //     .selectAll("circle")
+        //     .data(accArr)
+        //     .enter()
+        //     .append("circle")
+        //     .attr("cx", d => x(d.year)! +width/31)
+        //     .attr("cy", d => y1(d.death))
+        //     .attr("r", 8)
+        //     .attr("fill", "#fff")
+        //     .attr("stroke", "#FAFD8D")
+        //     .attr("stroke-width", 7);
 
         //     const legend = svg.append("g")
         //             .attr("transform", `translate(${width / 2 + 20},${-height / 2 + 20})`)
@@ -212,7 +226,7 @@ const LineChart = (yearData: PropsType) => {
 
         const legend = svg.append("g")
             .attr("transform", `translate(${marginLeft - (width / 10)}, 0)`);
-
+        // console.log(height)
         legend.selectAll("g")
             .data(nameArr)
             .enter()
@@ -223,8 +237,8 @@ const LineChart = (yearData: PropsType) => {
 
                 group.append("rect")
                     .attr("x", 0)
-                    .attr("width", (width / 10))
-                    .attr("height", (height / 3.5))
+                    .attr("width", (width /10))
+                    .attr("height", (height / 3.3))
                     .attr("fill", colorArr[i]);
 
                 group.append("text")
@@ -236,6 +250,8 @@ const LineChart = (yearData: PropsType) => {
                     .attr("text-anchor", "middle")
                     .text(d);
             });
+        
+
 
     }, [x, y, line, accArr]);
 

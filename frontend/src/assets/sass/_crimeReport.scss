@@ -40,208 +40,209 @@
     box-shadow: inset 0px 3px 3px #dadada;
 }
 
+@mixin graphBorder {
+    box-shadow: inset 0 0 3px #d2d1d1;
+    border-radius: var(--boxBorder);
+    -webkit-border-radius: var(--boxBorder);
+    -moz-border-radius: var(--boxBorder);
+    -ms-border-radius: var(--boxBorder);
+    -o-border-radius: var(--boxBorder);
+}
+
 #main {
     background: var(--crimebgColor);
 }
 
 // 제일 큰 박스! 다 감싸는 박스
-.crMainArea {
+
+.crMainWrapper {
+    width: 100vw;
     height: 100vh;
     margin: auto;
-    max-width: 150rem;
-    // border: 1px solid red;
     background: var(--crimebgColor);
-    overflow: hidden;
+    padding: var(--commonPadding);
 
-    //패딩 적용 후 남은 영역(2번째 제일 큰 박스)
-    .crInnerMainArea {
-        width: 100%;
-        height: 83%;
-        position: relative;
-        top: 13%;
+    .crMainArea {
+        margin: 0 auto;
+        height: 100%;
+        max-width: 150rem;
+        overflow: hidden;
 
-        // border: 1px solid red;
-        // 위쪽 부분!! 
-        .crUpsideArea {
-            height: 70%;
+        //패딩 적용 후 남은 영역(2번째 제일 큰 박스)
+        .crInnerMainArea {
             width: 100%;
-            display: flex;
+            height: 100%;
 
-            //위쪽 부분 중에 왼쪽 부분
-            .crUpLeftSideArea {
-                width: 60%;
-                height: 100%;
+            // 위쪽 부분!! 
+            .crUpsideArea {
+                width: 100%;
+                display: flex;
+                height: 50%;
 
-                //위쪽 부분에서 왼쪽의 위 부분. 2개를 감싸는 부분
-                .crUpLeftSide2Area {
-                    height: 20%;
-                    display: flex;
-                    margin-bottom: 1rem;
+                //위쪽 부분 중에 왼쪽 부분
+                .crUpLeftSideArea {
+                    width: 60%;
+                    height: 100%;
 
-                    .crUp2Area1 {
-                        background-color: var(--white);
+                    //위쪽 부분에서 왼쪽의 위 부분. 2개를 감싸는 부분
+                    .crUpLeftSide2Area {
+                        height: 20%;
                         display: flex;
-                        @include crimeBorder();
-                        align-items: center;
+                        margin-bottom: 1rem;
+
+                        .crUp2Area1 {
+                            background-color: var(--white);
+                            display: flex;
+                            @include crimeBorder();
+                            align-items: center;
+                        }
+
+                        .crUp2Area2 {
+                            background-color: var(--white);
+                            margin-left: 1rem;
+                            display: flex;
+                            align-items: center;
+                            @include crimeBorder();
+                        }
+
                     }
 
-                    .crUp2Area2 {
-                        background-color: var(--white);
-                        display: flex;
-                        align-items: center;
+                    // 위쪽 부분 왼쪽에서 아래 부분 . 강력범죄 부분
+                    .crStrongCrimeArea {
                         @include crimeBorder();
-                        margin-left: 1rem;
-                    }
+                        background-color: var(--white);
+                        height: 75.5%;
+                        padding: var(--boxPadding);
+                        border-radius: var(--boxBorder);
+                        -moz-border-radius: var(--boxBorder);
+                        -ms-border-radius: var(--boxBorder);
+                        -o-border-radius: var(--boxBorder);
+                        -webkit-border-radius: var(--boxBorder);
 
+                        p {
+                            // @include textBox();
+                            @include crimeTitleStyle();
+                            text-align: center;
+                            height: 4rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: var(--middleFontSize);
+                            margin: 0;
+                            padding: 0;
+                        }
+
+                        // 강력범죄 차트 그래프 영역 ///
+                        .crStrongCrimeGraph {
+                            @include graphBorder();
+                            // position: relative;
+                            // top: -3%;
+                            margin-top: 1.2rem;
+                            width: 100%;
+                            height: 81%;
+
+                        }
+                    }
                 }
 
-                // 위쪽 부분 왼쪽에서 아래 부분 . 강력범죄 부분
-                .crStrongCrimeArea {
+                // 위쪽 부분 중에서 오른쪽 부분
+                .crUpRightSideArea {
                     @include crimeBorder();
+                    margin-left: 1rem;
+                    width: 40%;
+                    height: 98%;
                     background-color: var(--white);
-                    height: 76%;
                     padding: var(--boxPadding);
                     border-radius: var(--boxBorder);
+                    -webkit-border-radius: var(--boxBorder);
                     -moz-border-radius: var(--boxBorder);
                     -ms-border-radius: var(--boxBorder);
                     -o-border-radius: var(--boxBorder);
-                    -webkit-border-radius: var(--boxBorder);
 
                     p {
-                        @include textBox();
                         @include crimeTitleStyle();
                         text-align: center;
                         height: 4rem;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        font-size: 2rem;
+                        font-size: var(--middleFontSize);
 
                     }
 
-                    // 강력범죄 차트 그래프 영역 ///
-                    .crStrongCrimeGraph {
-                        width: 100%;
-                        height: 87%;
-                        border: 1px solid gray;
-                        margin-top: 1%;
+                    .crUpRightGraph {
+                        margin: 1rem 0;
+                        @include graphBorder();
+                        height: 86.5%;
                     }
                 }
             }
 
-            // 위쪽 부분 중에서 오른쪽 부분
-            .crUpRightSideArea {
+            //아래쪽 부분!!///////////////////
+            .crDownSideArea {
                 @include crimeBorder();
-                margin-left: 1rem;
-                width: 40%;
-                height: 98%;
-                background-color: var(--white);
+                height: 50%;
+                width: 100%;
                 padding: var(--boxPadding);
+                background-color: var(--white);
                 border-radius: var(--boxBorder);
                 -webkit-border-radius: var(--boxBorder);
                 -moz-border-radius: var(--boxBorder);
                 -ms-border-radius: var(--boxBorder);
                 -o-border-radius: var(--boxBorder);
 
-                p {
-                    @include textBox();
-                    @include crimeTitleStyle();
-                    text-align: center;
-                    height: 4rem;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 2rem;
-                }
-
-                .crUpRightGraph {
-                    border-radius: var(--boxBorder);
-                    margin: 1rem 0;
-                    border: 1px solid gray;
-                    height: 90%;
-                    -webkit-border-radius: var(--boxBorder);
-                    -moz-border-radius: var(--boxBorder);
-                    -ms-border-radius: var(--boxBorder);
-                    -o-border-radius: var(--boxBorder);
-                }
-            }
-
-
-
-        }
-
-        //아래쪽 부분!!///////////////////
-        .crDownSideArea {
-            @include crimeBorder();
-            height: 29%;
-            width: 100%;
-            padding: var(--boxPadding);
-            background-color: var(--white);
-            border-radius: var(--boxBorder);
-            -webkit-border-radius: var(--boxBorder);
-            -moz-border-radius: var(--boxBorder);
-            -ms-border-radius: var(--boxBorder);
-            -o-border-radius: var(--boxBorder);
-
-            //real content Area !
-            .crDownSideBox {
-                height: 100%;
-
-                .crDownSideBoxText {
-                    @include textBox();
-                    text-align: center;
-                    height: 4rem;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    @include crimeTitleStyle();
-
-                    span {
-                        font-size: 2rem;
-                    }
-                }
-
-                // 그래프 넣는 박스
-                .crDownSideAreaGraphBox {
-                    display: flex;
-                    margin-top: 1%;
+                //real content Area !
+                .crDownSideBox {
                     height: 100%;
 
-                    // 해당지역 , 경기도 텍스트넣는 박스
-                    .crDownSideBoxTextP {
-                        width: 8rem;
-                        // border: 1px solid red;
-                        height: 100%;
-                        // line-height: 3rem;
+                    .crDownSideBoxText {
+                        text-align: center;
+                        height: 4rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        @include crimeTitleStyle();
 
-                        p {
-                            height: 50%;
-                            // border: 1px dodgerblue solid;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
+                        span {
+                            font-size: var(--middleFontSize);
+
                         }
                     }
 
-                    // 지능범죄 그래프
-                    .crDownSideAreaGraph {
-                        width: 100%;
-                        height: 70%;
-                        border-radius: var(--boxBorder);
-                        border: 1px solid gray;
-                        -webkit-border-radius: var(--boxBorder);
-                        -moz-border-radius: var(--boxBorder);
-                        -ms-border-radius: var(--boxBorder);
-                        -o-border-radius: var(--boxBorder);
+                    // 그래프 넣는 박스
+                    .crDownSideAreaGraphBox {
+                        display: flex;
+                        margin-top: 1%;
+                        height: 100%;
+
+                        // 해당지역 , 경기도 텍스트넣는 박스
+                        .crDownSideBoxTextP {
+                            width: 8rem;
+                            // border: 1px solid red;
+                            height: 100%;
+                            // line-height: 3rem;
+
+                            p {
+                                height: 50%;
+                                // border: 1px dodgerblue solid;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+                        }
+
+                        // 지능범죄 그래프
+                        .crDownSideAreaGraph {
+                            width: 100%;
+                            height: 85%;
+                            @include graphBorder();
+                        }
                     }
                 }
             }
         }
-
     }
 }
-
-
 
 
 
@@ -282,8 +283,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    @include textBox();
+    //@includetextBox():;
     @include crimeTitleStyle();
+    //////////////////////////////////////
 
     p {
         font-size: 2rem;
@@ -300,109 +302,40 @@
 
 
 
-
-
 // 미디어 쿼리 부분
-@media (max-width : 1400px) {
-    .crMainArea {
-        max-width: 120rem;
-        position: relative;
-        top: 4rem;
+@media (max-width : 1500px) {
 
-        //패딩 적용 후 남은 영역(2번째 제일 큰 박스)
-        .crInnerMainArea {
-            width: 100%;
-            height: 75%;
-            position: relative;
-            top: 13%;
+    .crMainWrapper {
+        .crMainArea {
+            max-width: 120rem;
 
-            // border: 1px solid red;
-            // 위쪽 부분!! 
-            .crUpsideArea {
-                height: 70%;
-                width: 100%;
-                display: flex;
-
-                //위쪽 부분 중에 왼쪽 부분
-                .crUpLeftSideArea {
-
-                    //위쪽 부분에서 왼쪽의 위 부분. 2개를 감싸는 부분
-                    .crUpLeftSide2Area {
-                        height: 20%;
-
-                        .crUp2Area2 {
-                            margin-left: 1rem;
-                        }
-
-                    }
-
-                    // 위쪽 부분 왼쪽에서 아래 부분 . 강력범죄 부분
-                    .crStrongCrimeArea {
-                        height: 74.5%;
-
-                        p {
-                            height: 2rem;
-                            font-size: 1.5rem;
-                        }
-
-                        // 강력범죄 차트 그래프 영역 ///
-                        .crStrongCrimeGraph {
-                            width: 100%;
-                            height: 85%;
-                            margin-top: 1%;
-                        }
-                    }
-                }
-
-                // 위쪽 부분 중에서 오른쪽 부분
-                .crUpRightSideArea {
-                    margin-left: 1rem;
-                    height: 98%;
-
-                    p {
-                        height: 2rem;
-                        font-size: 1.5rem;
-                    }
-
-                    .crUpRightGraph {}
-                }
-
-
-
-            }
-
-            //아래쪽 부분!!///////////////////
-            .crDownSideArea {
-                height: 31%;
-
-                //real content Area !
-                .crDownSideBox {
-                    height: 100%;
-
-                    .crDownSideBoxText {
-                        height: 2rem;
-
-                        span {
-                            font-size: 1.5rem;
-                        }
-                    }
-
-                    // 그래프 넣는 박스
-                    .crDownSideAreaGraphBox {
-
-                        // 해당지역 , 경기도 텍스트넣는 박스
-                        .crDownSideBoxTextP {
-                            height: 100%;
-                        }
-
-                        // 지능범죄 그래프
-                        .crDownSideAreaGraph {
-                            width: 100%;
-                            height: 65%;
-                        }
-                    }
-                }
-            }
         }
     }
+
+    .crUp2AreaSmall {
+        p {
+            font-size: var(--smallFontSize);
+        }
+    }
+
+    .crStrongCrimeArea {
+        font-size: var(--smallFontSize);
+
+        p {
+            font-size: var(--smallFontSize);
+        }
+    }
+
+    // 살인, 폭행 P 태그
+    .crUp2AreaP {
+        span {
+            font-size: var(--smallFontSize);
+        }
+    }
+
+    .crChartName {
+        font-size: var(--smallFontSize) !important;
+        height: 3rem !important;
+    }
+
 }

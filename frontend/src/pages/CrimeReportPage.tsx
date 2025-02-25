@@ -41,57 +41,59 @@ const CrimeReportPage = () => {
   return (
     <>
       <Header page={"crime"} />
-      <section id="crMainArea" className="crMainArea crGrayBorder">
-        <div className="crInnerMainArea">
-          <div className="crUpsideArea crGrayBorder">
-            <div className="crUpLeftSideArea crGrayBorder">
-              <div className="crUpLeftSide2Area crGrayBorder">
-                <div className="crUp2Area1 crUp2Area">
-                  <img className="mainImg" src={knifeImg}></img>
-                  <p className="crUp2AreaP">
-                    <span>살인</span>
-                  </p>
-                  <div className="crUp2AreaSmall">
-                    <p>{strongNum}</p>
+      <section className="crMainWrapper">
+        <section id="crMainArea" className="crMainArea crGrayBorder">
+          <div className="crInnerMainArea">
+            <div className="crUpsideArea crGrayBorder">
+              <div className="crUpLeftSideArea crGrayBorder">
+                <div className="crUpLeftSide2Area crGrayBorder">
+                  <div className="crUp2Area1 crUp2Area">
+                    <img className="mainImg" src={knifeImg}></img>
+                    <p className="crUp2AreaP">
+                      <span>살인</span>
+                    </p>
+                    <div className="crUp2AreaSmall">
+                      <p>{strongNum}</p>
+                    </div>
+                  </div>
+                  <div className="crUp2Area2 crUp2Area">
+                    <img className="mainImg" src={handImg}></img>
+                    <p className="crUp2AreaP">
+                      <span>폭행</span>
+                    </p>
+                    <div className="crUp2AreaSmall">
+                      <p>{violenceNum}</p>
+                    </div>
                   </div>
                 </div>
-                <div className="crUp2Area2 crUp2Area">
-                  <img className="mainImg" src={handImg}></img>
-                  <p className="crUp2AreaP">
-                    <span>폭행</span>
-                  </p>
-                  <div className="crUp2AreaSmall">
-                    <p>{violenceNum}</p>
+                <div className="crStrongCrimeArea crGrayBorder">
+                  <p className="crChartName">강력범죄 차트</p>
+                  <div className="crStrongCrimeGraph">
+                    <StrongDataToGraph />
                   </div>
                 </div>
               </div>
-              <div className="crStrongCrimeArea crGrayBorder">
-                <p>강력범죄 차트</p>
-                <div className="crStrongCrimeGraph">
-                  <StrongDataToGraph />
+              <div className="crUpRightSideArea crGrayBorder">
+                <p className="crChartName">폭력범죄 차트</p>
+                <div className="crUpRightGraph">
+                  <ViolenceCrimeDataToGraph />
                 </div>
               </div>
             </div>
-            <div className="crUpRightSideArea crGrayBorder">
-              <p>폭력범죄 차트</p>
-              <div className="crUpRightGraph">
-                <ViolenceCrimeDataToGraph />
+            <div className="crDownSideArea crGrayBorder">
+              <div className="crDownSideBox">
+                <p className="crDownSideBoxText crChartName">
+                  <span className="crChartName">지능범죄 차트</span>
+                </p>
+                <div className="crDownSideAreaGraphBox">
+                  <div className="crDownSideAreaGraph">
+                    <IntelligenceCrimeDataToGraph />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="crDownSideArea crGrayBorder">
-            <div className="crDownSideBox">
-              <p className="crDownSideBoxText">
-                <span>지능범죄 차트</span>
-              </p>
-              <div className="crDownSideAreaGraphBox">
-                <div className="crDownSideAreaGraph">
-                  <IntelligenceCrimeDataToGraph />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </section>
       </section>
     </>
   );

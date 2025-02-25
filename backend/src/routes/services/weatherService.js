@@ -26,7 +26,6 @@ class WeatherServiceRoute extends AbstractRoute {
             .post((req, res) => {
                 const { city } = req.body;
                 //터미널 출력
-                console.log(req.body)
                 console.log(`[Weather_Service] city: ${city} 요청`);
                 this.filterWeatherInfo(city, res);
             });

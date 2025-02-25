@@ -16,8 +16,8 @@ type PageTextConfig = {
 
 const textConfig: Record<HeaderProps["page"], PageTextConfig> = {
   home: { text: "", color: "", nav: "/" },
-  accident: { text: "사고 발생 현황", color: "header-text-accident", nav: "/accident-status" },
-  crime: { text: "범죄 발생 현황", color: "header-text-crime", nav: "/crime-report" },
+  accident: { text: "사고 발생 연평균", color: "header-text-accident", nav: "/accident-status" },
+  crime: { text: "범죄 발생 연평균", color: "header-text-crime", nav: "/crime-report" },
   weather: { text: "날씨 정보", color: "header-text-weather", nav: "/weather-info" },
 };
 

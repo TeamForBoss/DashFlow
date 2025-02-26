@@ -1,6 +1,7 @@
 [
   {
     "city": "gapyeong",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -501,6 +502,7 @@
   },
   {
     "city": "goyang",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -1042,6 +1044,7 @@
   },
   {
     "city": "gwacheon",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -1583,6 +1586,7 @@
   },
   {
     "city": "gwangmyeong",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -2124,6 +2128,7 @@
   },
   {
     "city": "gwangju",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -2665,6 +2670,7 @@
   },
   {
     "city": "guri",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -3165,6 +3171,7 @@
   },
   {
     "city": "gunpo",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -3706,6 +3713,7 @@
   },
   {
     "city": "gimpo",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -4247,6 +4255,7 @@
   },
   {
     "city": "namyangju",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -4788,6 +4797,7 @@
   },
   {
     "city": "dongducheon",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -5288,6 +5298,7 @@
   },
   {
     "city": "bucheon",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -5829,6 +5840,7 @@
   },
   {
     "city": "seongnam",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -6370,6 +6382,7 @@
   },
   {
     "city": "suwon",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -6911,6 +6924,7 @@
   },
   {
     "city": "siheung",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -7452,6 +7466,7 @@
   },
   {
     "city": "ansan",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -7993,6 +8008,7 @@
   },
   {
     "city": "anseong",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -8534,6 +8550,7 @@
   },
   {
     "city": "anyang",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -9075,6 +9092,7 @@
   },
   {
     "city": "yangju",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -9616,6 +9634,7 @@
   },
   {
     "city": "yangpyeong",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -10116,6 +10135,7 @@
   },
   {
     "city": "yeoju",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -10616,6 +10636,7 @@
   },
   {
     "city": "yeoncheon",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -11116,6 +11137,7 @@
   },
   {
     "city": "osan",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -11657,6 +11679,7 @@
   },
   {
     "city": "yongin",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -12198,6 +12221,7 @@
   },
   {
     "city": "uiwang",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -12739,6 +12763,7 @@
   },
   {
     "city": "uijeongbu",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -13280,6 +13305,7 @@
   },
   {
     "city": "icheon",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -13821,6 +13847,7 @@
   },
   {
     "city": "paju",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -14362,6 +14389,7 @@
   },
   {
     "city": "pyeongtaek",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -14903,6 +14931,7 @@
   },
   {
     "city": "pocheon",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -15444,6 +15473,7 @@
   },
   {
     "city": "hanam",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -15985,6 +16015,7 @@
   },
   {
     "city": "hwaseong",
+    "sido": "경기",
     "data": {
       "item": [
         {
@@ -16526,6 +16557,7 @@
   },
   {
     "city": "ganghwa",
+    "sido": "인천",
     "data": {
       "item": [
         {
@@ -17026,6 +17058,7 @@
   },
   {
     "city": "gyeyang",
+    "sido": "인천",
     "data": {
       "item": [
         {
@@ -17567,6 +17600,7 @@
   },
   {
     "city": "michuhol",
+    "sido": "인천",
     "data": {
       "item": [
         {
@@ -18108,6 +18142,7 @@
   },
   {
     "city": "namdong",
+    "sido": "인천",
     "data": {
       "item": [
         {
@@ -18608,6 +18643,7 @@
   },
   {
     "city": "dong",
+    "sido": "인천",
     "data": {
       "item": [
         {
@@ -19067,6 +19103,7 @@
   },
   {
     "city": "bupyeong",
+    "sido": "인천",
     "data": {
       "item": [
         {
@@ -19608,6 +19645,7 @@
   },
   {
     "city": "seo",
+    "sido": "인천",
     "data": {
       "item": [
         {
@@ -20149,6 +20187,7 @@
   },
   {
     "city": "yeonsu",
+    "sido": "인천",
     "data": {
       "item": [
         {
@@ -20690,6 +20729,7 @@
   },
   {
     "city": "ongjin",
+    "sido": "인천",
     "data": {
       "item": [
         {
@@ -21108,6 +21148,7 @@
   },
   {
     "city": "Incheon-jung",
+    "sido": "인천",
     "data": {
       "item": [
         {
@@ -21649,6 +21690,7 @@
   },
   {
     "city": "gangnam",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -22190,6 +22232,7 @@
   },
   {
     "city": "gangdong",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -22731,6 +22774,7 @@
   },
   {
     "city": "gangbuk",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -23272,6 +23316,7 @@
   },
   {
     "city": "gangseo",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -23813,6 +23858,7 @@
   },
   {
     "city": "gwanak",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -24354,6 +24400,7 @@
   },
   {
     "city": "gwangjin",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -24895,6 +24942,7 @@
   },
   {
     "city": "guro",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -25436,6 +25484,7 @@
   },
   {
     "city": "geumcheon",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -25977,6 +26026,7 @@
   },
   {
     "city": "nowon",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -26518,6 +26568,7 @@
   },
   {
     "city": "dobong",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -27059,6 +27110,7 @@
   },
   {
     "city": "dongdaemun",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -27600,6 +27652,7 @@
   },
   {
     "city": "dongjak",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -28141,6 +28194,7 @@
   },
   {
     "city": "mapo",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -28682,6 +28736,7 @@
   },
   {
     "city": "seodaemun",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -29223,6 +29278,7 @@
   },
   {
     "city": "seocho",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -29764,6 +29820,7 @@
   },
   {
     "city": "seongdong",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -30264,6 +30321,7 @@
   },
   {
     "city": "seongbuk",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -30805,6 +30863,7 @@
   },
   {
     "city": "songpa",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -31346,6 +31405,7 @@
   },
   {
     "city": "yangcheon",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -31887,6 +31947,7 @@
   },
   {
     "city": "yeongdeungpo",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -32428,6 +32489,7 @@
   },
   {
     "city": "yongsan",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -32928,6 +32990,7 @@
   },
   {
     "city": "eunpyeong",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -33469,6 +33532,7 @@
   },
   {
     "city": "jongno",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -34010,6 +34074,7 @@
   },
   {
     "city": "seoul-jung",
+    "sido": "서울",
     "data": {
       "item": [
         {
@@ -34510,6 +34575,7 @@
   },
   {
     "city": "jungnang",
+    "sido": "서울",
     "data": {
       "item": [
         {

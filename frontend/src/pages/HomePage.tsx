@@ -5,7 +5,7 @@ import SeoulArea from '../features/home/SeoulArea.tsx';
 import IncheonArea from '../features/home/IncheonArea.tsx';
 import { useState } from 'react';
 const HomePage = (props) => {
-    const [area, setArea] = useState("gyeonggi");
+    const [area, setArea] = useState("seoul");
     
   return (
     <>

@@ -7,7 +7,7 @@ import seoulImg from "../assets/images/icons/selectPage/seoul.png";
 import incheonImg from "../assets/images/icons/selectPage/incheon.png";
 
 const Selection = () => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleClick = (area: string) => {
     navigate("/home", { state: { id: area } });
@@ -17,23 +17,29 @@ const navigate = useNavigate();
       <Header page={"home"} />
       <main className="selLayout">
         <section className="selMainArea">
-          <div className="selBox selGyeonggi">
+          <div
+            className="selBox selGyeonggi"
+            onClick={() => handleClick("gyeonggi")}
+          >
             <img src={gyeonggiImg} className="selImg"></img>
-              <button className={`selInText selInTextG`} onClick={()=>handleClick("gyeonggi")}>
-                경기도 정보 바로가기
-              </button>
+            <button className={`selInText selInTextG`}>
+              경기도 정보 바로가기
+            </button>
           </div>
-          <div className="selBox selSeoul">
+          <div className="selBox selSeoul" onClick={() => handleClick("seoul")}>
             <img src={seoulImg} className="selImg"></img>
-              <button className={`selInText selInTextS`} onClick={()=>handleClick("seoul")}>
-                서울 정보 바로가기
-              </button>
+            <button className={`selInText selInTextS`}>
+              서울 정보 바로가기
+            </button>
           </div>
-          <div className="selBox selIncheon">
+          <div
+            className="selBox selIncheon"
+            onClick={() => handleClick("incheon")}
+          >
             <img src={incheonImg} className="selImg"></img>
-              <button className={`selInText selInTextI`} onClick={()=>handleClick("incheon")}>
-                인천 정보 바로가기
-              </button>
+            <button className={`selInText selInTextI`}>
+              인천 정보 바로가기
+            </button>
           </div>
         </section>
       </main>

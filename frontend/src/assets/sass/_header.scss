@@ -8,6 +8,7 @@ $header-text-weather : #333;
 /* 헤더 전체 컨테이너 */
 .header-container {
     width: 100vw;
+    min-height: 5.5vh;
     position: fixed;
     top: 1.875rem;
     padding: 15px 20px;
@@ -24,11 +25,12 @@ $header-text-weather : #333;
 .header-home {
     width: 100%;
     position: absolute;
+
     .header-logo {
         position: absolute;
         left: 50%;
         top: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
     }
 
 }
@@ -42,6 +44,7 @@ $header-text-weather : #333;
     padding: 5px;
     margin-left: 2rem;
 }
+
 .header-logo-img {
     height: $header-logo-height;
 }
@@ -49,10 +52,11 @@ $header-text-weather : #333;
 //  ==== 홈 제외 =====
 .header-etc {
     .homeNav {
-       width: 33.3333%;
+        width: 33.3333%;
         // display: flex;
         // align-items: center; 
     }
+
     .header-logo {
         width: 33.3333%;
         display: flex;

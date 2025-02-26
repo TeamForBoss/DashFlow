@@ -13,7 +13,7 @@ class WeatherRoute extends AbstractRoute {
         const [ApiKey, dbConfig, queries ] = [
             require("../../config/api.config"),
             require("../../config/db.config"),
-            require("../../sqlTemplate/gyeonggi_info_queries")
+            require("../../sqlTemplate/region_info_queries")
         ];
 
         // == DB_connection ==
@@ -57,7 +57,7 @@ class WeatherRoute extends AbstractRoute {
                     // console.log(rows)
                     const [weatherDataArray, promises] = [[],[]]; // 요청 저장할 배열
                     dbData.forEach((row) => {
-                        const { lat, lon, id, city_en } = row;
+                        const { id, lat, lon, city_en } = row;
 
                         // == axios 요청 ==
                         const promise = axios.get(apiUrl(lat, lon))

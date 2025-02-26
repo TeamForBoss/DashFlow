@@ -12,7 +12,7 @@ class CrimeServiceRoute extends AbstractRoute {
         // == 환경설정_파일 ==
         const [dbConfig, queries] = [
             require("../../config/db.config"),
-            require("../../sqlTemplate/gyeonggi_info_queries")
+            require("../../sqlTemplate/region_info_queries")
         ];
 
         // == File_Path ==
@@ -23,7 +23,7 @@ class CrimeServiceRoute extends AbstractRoute {
         connection.connect();
 
         connection.query(queries["crime"], [city], (err, rows) => {
-            const { id, city_ko } = rows[0];
+            const { id, city_ko, sido_ko } = rows[0];
             // 터미널 출력
             console.log(`[Crime_Service] city: ${city} 요청 / [DB_Row] id: ${id}, city_ko: ${city_ko}`);
 
@@ -36,7 +36,7 @@ class CrimeServiceRoute extends AbstractRoute {
                 AllData.forEach((item) => {
                     const tempObj = {data:0, 범죄대분류:"", 범죄중분류: ""}
                     for (const key in item) {
-                        if (key.match(city_ko)){tempObj["data"] = item[key]}
+                        if (key.match(city_ko) && key.match(sido_ko)){tempObj["data"] = item[key]}
                         if (key === "범죄대분류"){tempObj["범죄대분류"] = item[key]}
                         if (key === "범죄중분류"){tempObj["범죄중분류"] = item[key]}
                     }

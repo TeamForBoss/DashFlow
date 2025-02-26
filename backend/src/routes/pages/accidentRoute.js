@@ -17,14 +17,14 @@ class AccidentRoute extends AbstractRoute {
         const [ApiKey, dbConfig, queries] = [
             require("../../config/api.config"),
             require("../../config/db.config"),
-            require("../../sqlTemplate/gyeonggi_info_queries")
+            require("../../sqlTemplate/region_info_queries")
         ];
 
         const cacheFilePath = path.join(__dirname, "../../data/accident/currentYear_accident.json");
 
         // API URL 생성 함수
-        const apiUrl = (year, code) => {
-            return `https://opendata.koroad.or.kr/data/rest/stt?authKey=${ApiKey["open_accident"]}&searchYearCd=${year}&sido=1300&gugun=${code}`;
+        const apiUrl = (year, sido_code, gugun_code) => {
+            return `https://opendata.koroad.or.kr/data/rest/stt?authKey=${ApiKey["open_accident"]}&searchYearCd=${year}&sido=${sido_code}&gugun=${gugun_code}`;
         };
 
         try {
@@ -64,9 +64,9 @@ class AccidentRoute extends AbstractRoute {
             for (const year of searchYear) {
                 const accidentDataArrForYear = [];
                 for (const row of rows) {
-                    const { city_en, accident_code } = row;
+                    const {city_en, sido_code, gugun_code  } = row;
                     try {
-                        const response = await axios.get(apiUrl(year, accident_code));
+                        const response = await axios.get(apiUrl(year, sido_code, gugun_code));
                         const result = await parser.parseStringPromise(response.data);
                         let {response: { header, body: [{ items: [obj] }] }} = result;
                         accidentDataArrForYear.push({ city: city_en, data: obj });

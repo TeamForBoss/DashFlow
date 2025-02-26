@@ -45,7 +45,7 @@ class CrimeRoute extends AbstractRoute {
                 const parsing = data.map((item) => {
                     const tempObj = {};
                     for (const key in item) {
-                        if ((key === "범죄대분류") || (key === "범죄중분류") || (key.match(/경기도/))) {
+                        if ((key === "범죄대분류") || (key === "범죄중분류") || (key.match(/경기도/)) || (key.match(/인천/)) || (key.match(/서울/))) {
                             if (!tempObj[key]) { tempObj[key] = item[key]; }
                         }
                     }

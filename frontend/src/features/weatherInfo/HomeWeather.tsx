@@ -48,7 +48,7 @@ const HomeWeather: React.FC = () => {
                 <img src={temp} alt="맑음" />
                 <div className="info">
                 <span className="text">기온</span>
-                <span className="value">{currentData?.main?.temp ?? "--"}℃</span>
+                <span className="value">{currentData?.main?.temp.toFixed(1) ?? "--"}℃</span>
                 </div>
             </div>
             <div className="content">

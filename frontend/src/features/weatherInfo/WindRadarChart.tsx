@@ -90,14 +90,14 @@ const WindRadarChart = ({ data }) => {
       .attr("stroke", "#777")
       .attr("stroke-dasharray", "3,3");
 
-    const xOuter = speedScale(windSpeed) * Math.cos(angleScale(windDeg) - Math.PI / 2);
-    const yOuter = speedScale(windSpeed) * Math.sin(angleScale(windDeg) - Math.PI / 2);
+    const xOuter = radius * Math.cos(angleScale(windDeg) - Math.PI / 2);
+    const yOuter = radius * Math.sin(angleScale(windDeg) - Math.PI / 2);
 
     g.append("line")
       .attr("x1", xOuter)
       .attr("y1", yOuter)
-      .attr("x2", 0)
-      .attr("y2", 0)
+      .attr("x2", -xOuter)
+      .attr("y2", -yOuter)
       .attr("stroke", "#2E7D32")
       .attr("stroke-width", 3)
       .attr("marker-end", "url(#arrow)");
@@ -106,7 +106,7 @@ const WindRadarChart = ({ data }) => {
       .append("marker")
       .attr("id", "arrow")
       .attr("viewBox", "0 0 10 10")
-      .attr("refX", 6)
+      .attr("refX", 10)
       .attr("refY", 5)
       .attr("markerWidth", 6)
       .attr("markerHeight", 6)
@@ -122,7 +122,6 @@ const WindRadarChart = ({ data }) => {
       .attr("font-size", "15px")
       .attr("fill", "#222")
       .text(`${windSpeed} m/s, ${windDeg}°`);
-
   }, [data, dimensions]);
 
   return (

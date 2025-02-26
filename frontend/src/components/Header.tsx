@@ -1,11 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import SelectPage from "../pages/SelectPage";
 
 // == logo == 
 import logo from "../assets/images/logo/main_logo.png";
 import seoulLogo from "../assets/images/logo/logo_seoul.png";
 import gyeonggiLogo from "../assets/images/logo/logo_gyeonggi.png";
 import incheonLogo from "../assets/images/logo/logo_incheon.png";
+import goBack from "../assets/images/svg/goBack.png";
 
 // == recoil == 
 import { selectedRegionState } from "../state/atom.js";
@@ -43,8 +45,8 @@ const allButtons: ButtonConfig[] = [
 ];
 
 const Header: React.FC<HeaderProps> = ({ page }) => {
-  const selectedRegion = useRecoilValue(selectedRegionState);
-  const selectedSection = useRecoilValue(selectedSectionState); 
+    const selectedRegion = useRecoilValue<string>(selectedRegionState);
+    const selectedSection = useRecoilValue(selectedSectionState); 
 
   const Gyeonggido: Record<string, string> = {
     gapyeong: "가평군",
@@ -139,11 +141,18 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
 
   return (
     <header className={`header-container ${(page === "home" || page === "select") ? "header-home" : "header-etc"}`}>
-      <div className="header-logo">
-        <NavLink to={textConfig.home.nav}>
-          <img src={sectionLogo } alt="안전신호등 로고" className="header-logo-img" />
-        </NavLink>
-      </div>
+        {page !== "select" && (
+              <div className="homeNav">
+                  <NavLink to="/">
+                      <img className="goHome" src={goBack} alt="home" />
+                  </NavLink>
+              </div>
+         )}
+        <div className="header-logo">
+            <NavLink to={textConfig.home.nav}>
+                <img src={sectionLogo } alt="안전신호등 로고" className="header-logo-img" />
+            </NavLink>
+        </div>
       {page !== "home" && page !== "select" && (
         <>
           <span className={`header-subtitle ${textConfig[page].color}`}>

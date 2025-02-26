@@ -12,7 +12,7 @@ const HomeAccident = () => {
     const host:string = useRecoilValue(hostState);
     const region = useRecoilValue(selectedRegionState);
     const area = useRecoilValue<string>(selectedSectionState);
-    const [data, setData] = useState([0, 0]);
+    const [data, setData] = useState(["0", 0]);
     const [currentSido, setCurrentSido] = useState<string>(area);
     console.log(area)
     const matchingSido: { [key:string] : string } = {
@@ -34,21 +34,24 @@ const HomeAccident = () => {
                 const dataLen = datas.length - 1;
                 const { city, data, sido } = (datas[dataLen]);
                 const { item: dataArr } = data;
-                let acc = 0;
+                let acc:string = "0";
                 let dth = 0;
                 switch (area) {
                     case "gyeonggi":
-                        acc = Math.round(Number(dataArr[0].tot_acc_cnt[0]) / 31);
-                        dth = Math.round(Number(dataArr[0].tot_dth_dnv_cnt[0]) / 31);
+                        acc = (Math.round(Number(dataArr[0].tot_acc_cnt[0]) / 31)).toString()
+  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+                        dth = (Math.round(Number(dataArr[0].tot_dth_dnv_cnt[0]) / 31));
                         setData([acc, dth]);
                         break;
                     case "seoul":
-                        acc = Math.round(Number(dataArr[0].tot_acc_cnt[0]) / 24);
+                        acc = (Math.round(Number(dataArr[0].tot_acc_cnt[0]) / 24)).toString()
+  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
                         dth = Math.round(Number(dataArr[0].tot_dth_dnv_cnt[0]) / 24);
                         setData([acc, dth]);
                         break;
                      case "incheon":
-                        acc = Math.round(Number(dataArr[0].tot_acc_cnt[0]) / 9);
+                        acc = Math.round(Number(dataArr[0].tot_acc_cnt[0]) / 9).toString()
+  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
                         dth = Math.round(Number(dataArr[0].tot_dth_dnv_cnt[0]) / 9);
                         setData([acc, dth]);
                         break;

@@ -414,6 +414,12 @@
   .averageArea .item img {
     width: 53px !important;
   }
+  .crAvgInfoText{
+    display: none;
+  }
+  .acAvgInfoText{
+    display: none;
+  }
 }
 
 @media (max-width: 700px) {

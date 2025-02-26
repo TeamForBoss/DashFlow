@@ -46,17 +46,13 @@ const SeoulArea = () => {
   };
 
   // **강남권** (남부)
-  const gangnamArea: City[] = [
+  const gangNamBukArea: City[] = [
     { ko: "강남구", en: "gangnam" },
     { ko: "서초구", en: "seocho" },
     { ko: "송파구", en: "songpa" },
     { ko: "강동구", en: "gangdong" },
     { ko: "양천구", en: "yangcheon" },
     { ko: "영등포구", en: "yeongdeungpo" },
-  ];
-
-  // **강북권** (북부)
-  const gangbukArea: City[] = [
     { ko: "강북구", en: "gangbuk" },
     { ko: "도봉구", en: "dobong" },
     { ko: "노원구", en: "nowon" },
@@ -65,17 +61,23 @@ const SeoulArea = () => {
     { ko: "중랑구", en: "jungnang" },
   ];
 
+  // // **강북권** (북부)
+  // const gangbukArea: City[] = [
+  //   { ko: "강북구", en: "gangbuk" },
+  //   { ko: "도봉구", en: "dobong" },
+  //   { ko: "노원구", en: "nowon" },
+  //   { ko: "성북구", en: "seongbuk" },
+  //   { ko: "동대문구", en: "dongdaemun" },
+  //   { ko: "중랑구", en: "jungnang" },
+  // ];
+
   // **서북권** (서부)
-  const seobukArea: City[] = [
+  const seobukDongbukArea: City[] = [
     { ko: "마포구", en: "mapo" },
     { ko: "서대문구", en: "seodaemun" },
     { ko: "종로구", en: "jongno" },
     { ko: "구로구", en: "guro" },
     { ko: "성동구", en: "seongdong" },
-  ];
-
-  // **동북권** (동부)
-  const dongbukArea: City[] = [
     { ko: "광진구", en: "gwangjin" },
     { ko: "동작구", en: "dongjak" },
     { ko: "관악구", en: "gwanak" },
@@ -85,12 +87,18 @@ const SeoulArea = () => {
     { ko: "은평구", en: "eunpyeong" },
   ];
 
-  const allCities: City[] = [
-    ...gangnamArea,
-    ...gangbukArea,
-    ...seobukArea,
-    ...dongbukArea,
-  ];
+  // // **동북권** (동부)
+  // const dongbukArea: City[] = [
+  //   { ko: "광진구", en: "gwangjin" },
+  //   { ko: "동작구", en: "dongjak" },
+  //   { ko: "관악구", en: "gwanak" },
+  //   { ko: "금천구", en: "geumcheon" },
+  //   { ko: "중구", en: "jung" },
+  //   { ko: "용산구", en: "yongsan" },
+  //   { ko: "은평구", en: "eunpyeong" },
+  // ];
+
+  const allCities: City[] = [...gangNamBukArea, ...seobukDongbukArea];
   const selectedCityKo = allCities.find((city) => city.en === selectedCity)?.ko;
 
   const handleSelectedRegion = () => {
@@ -107,10 +115,10 @@ const SeoulArea = () => {
     <div className="regionArea">
       <div className="item">
         <div className="regionCategory">
-          <p>강남권</p>
+          <p>서울 강남 강북 지역</p>
         </div>
         <div className="regionSubCategory">
-          {gangnamArea.map((city, index) => (
+          {gangNamBukArea.map((city, index) => (
             <CityCheckbox
               key={index}
               city={city}
@@ -120,7 +128,7 @@ const SeoulArea = () => {
           ))}
         </div>
       </div>
-      <div className="item">
+      {/* <div className="item">
         <div className="regionCategory">
           <p>강북권</p>
         </div>
@@ -134,13 +142,13 @@ const SeoulArea = () => {
             />
           ))}
         </div>
-      </div>
+      </div> */}
       <div className="item">
         <div className="regionCategory">
-          <p>강서권</p>
+          <p>서울 강서 강동 지역</p>
         </div>
         <div className="regionSubCategory">
-          {seobukArea.map((city, index) => (
+          {seobukDongbukArea.map((city, index) => (
             <CityCheckbox
               key={index}
               city={city}
@@ -150,7 +158,7 @@ const SeoulArea = () => {
           ))}
         </div>
       </div>
-      <div className="item">
+      {/* <div className="item">
         <div className="regionCategory">
           <p>강동권</p>
         </div>
@@ -164,7 +172,7 @@ const SeoulArea = () => {
             />
           ))}
         </div>
-      </div>
+      </div> */}
       <div className="item">
         <NavLink to={selectedCity ? `/weather-info` : "#"}>
           <button

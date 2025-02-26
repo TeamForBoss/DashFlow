@@ -78,7 +78,7 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .attr("class", "x-axis")
       .selectAll("text")
       .style("font-size", "12px")
-      .style("fill", "#666")
+      .style("fill", "#111")
       .attr("transform", null)
       .style("text-anchor", "middle");
 
@@ -121,7 +121,7 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
 
     gradient.append("stop")
       .attr("offset", "100%")
-      .attr("stop-color", "#B2DFDB")
+      .attr("stop-color", "#47B092")
       .attr("stop-opacity", 0.8);
 
     svg.append("path")
@@ -141,7 +141,7 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
     const linePath = svg.append("path")
       .datum(parsedData)
       .attr("fill", "none")
-      .attr("stroke", "#AAF0D1")
+      .attr("stroke", "#6FC7A2 ")
       .attr("stroke-width", 3)
       .attr("d", line as any);
 
@@ -163,7 +163,7 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .attr("cy", d => yScale(d.temp))
       .attr("r", 0) // 초기 반지름 0
       .attr("fill", "#AAF0D1")
-      .attr("stroke", "#80cfa9")
+      .attr("stroke", "#44767C")
       .attr("stroke-width", 1)
       .transition()
       .delay((d, i) => i * 100)
@@ -178,8 +178,8 @@ const WeatherTrendGraph = ({ data }: { data: WeatherData[] }) => {
       .attr("x", d => xScale(d.date))
       .attr("y", d => yScale(d.temp) - 10)
       .attr("text-anchor", "middle")
-      .style("font-size", "12px")
-      .style("fill", "#00796B")
+      .style("font-size", "13px")
+      .style("fill", "#002202")
       .style("opacity", 0)
       .text(d => `${d.temp.toFixed(1)}°C`)
       .transition()

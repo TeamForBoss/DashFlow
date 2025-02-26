@@ -29,8 +29,8 @@ type ButtonConfig = {
 
 const allButtons: ButtonConfig[] = [
   { page: "weather", text: "날씨", nav: textConfig.weather.nav },
-  { page: "accident", text: "사고", nav: textConfig.accident.nav },
   { page: "crime", text: "범죄", nav: textConfig.crime.nav },
+  { page: "accident", text: "사고", nav: textConfig.accident.nav },
 ];
 
 const Header: React.FC<HeaderProps> = ({ page }) => {

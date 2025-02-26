@@ -87,7 +87,7 @@ const HomeCrime = () => {
       </div>
       <div className="item homeCrimeItem">
         <div className="title">경기도 범죄 연평균</div>
-        <div className="crAvgInfoText">2024년 기준 평균 데이터</div>
+        <div className="crAvgInfoText">2023년 기준 평균 데이터</div>
         <div className="contents">
           <div className="content">
             <img src={knifeImg} alt="살인" />

@@ -27,7 +27,7 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  //   모바일에서는 데이터 개수만 6개로 제한 (순서 유지)
+  //   모바일에서는 데이터 개수 5개임 . 2번째 데이터 부터 가져옴
   const filteredData1 = windowWidth <= 650 ? data1.slice(1, 6) : data1;
   const filteredData2 = windowWidth <= 650 ? data2.slice(1, 6) : data2;
 

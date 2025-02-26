@@ -141,13 +141,13 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
 
   return (
     <header className={`header-container ${(page === "home" || page === "select") ? "header-home" : "header-etc"}`}>
-        {page !== "select" && (
-              <div className="homeNav">
-                  <NavLink to="/">
-                      <img className="goHome" src={goBack} alt="home" />
-                  </NavLink>
-              </div>
-         )}
+        {page === "home" && (
+          <div className="homeNav">
+            <NavLink to="/">
+              <img className="goHome" src={goBack} alt="home" />
+            </NavLink>
+          </div>
+        )}
         <div className="header-logo">
             <NavLink to={textConfig.home.nav}>
                 <img src={sectionLogo } alt="안전신호등 로고" className="header-logo-img" />

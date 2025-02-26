@@ -31,7 +31,11 @@
     color: var(--black300);
     padding: 5px 20px;
 }
+@mixin graphBorder() {
+    border-radius: var(--boxBorder);
+    box-shadow: inset 0 0 3px #d2d1d1;
 
+}
 .accident {
     width: 100vw;
     height: 100vh;
@@ -92,7 +96,8 @@
                 }
 
                 .acYearGraph {
-                    border: 1px solid var(--borderColor);
+                    // border: 1px solid var(--borderColor);
+                    @include graphBorder();
                     height: 83%;
                     min-height: 200px;
                     // height: auto;
@@ -114,7 +119,8 @@
                 }
 
                 .TrafficGraph {
-                    border: 1px solid var(--borderColor);
+                    // border: 1px solid var(--borderColor);
+                     @include graphBorder();
                     min-height: 200px;
                     height: 83%;
                     // height: auto;
@@ -269,7 +275,8 @@
                     }
 
                     .acTypeGraph {
-                        border: 1px solid var(--borderColor);
+                        // border: 1px solid var(--borderColor);
+                         @include graphBorder();
                         height: 77%;
                     }
                 }
@@ -294,7 +301,8 @@
                     }
 
                     .acLawGraph {
-                        border: 1px solid var(--borderColor);
+                        // border: 1px solid var(--borderColor);
+                         @include graphBorder();
                         height: 77%;
                     }
                 }

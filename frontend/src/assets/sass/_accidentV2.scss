@@ -360,8 +360,8 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 .acYearBox, .acTrafficBox, .numOfAccBox , .numOfDeathBox, .acTypeBox , .acLawBox{
-    border: 0.1rem solid rgba(255, 209, 100, 0.838) !important;
-    background-color: #ffffffa3 !important;
+    border: 0.1rem solid rgba(255, 209, 100, 0.838);
+    background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0.18rem 0.18rem 0.5rem rgba(234, 190, 13, 0.844), inset 0 0 0.4rem rgba(207, 145, 11, 0.89) ;
 }
 .acYearGraph, .acTypeGraph, .acLawGraph, .TrafficGraph{

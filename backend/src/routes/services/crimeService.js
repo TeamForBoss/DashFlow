@@ -42,7 +42,7 @@ class CrimeServiceRoute extends AbstractRoute {
                     }
                     filterObejct["crimeData"].push(tempObj);
                 }); // forEach
-                res.json(filterObejct); // json보내기기
+                res.json(filterObejct); // json보내기
             }); // readFile
         }); // connection
         connection.end();

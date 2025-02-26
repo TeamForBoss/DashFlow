@@ -9,11 +9,13 @@ interface CrimeData {
 interface LineChartProps {
   data1: CrimeData[];
   data2: CrimeData[];
+  data3: string;
 }
 
 const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
   data1,
   data2,
+  data3,
 }) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -173,7 +175,7 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
         style={{
           position: "absolute",
           top: "12px",
-          right: windowWidth <= 650 ? "auto" : "10px",
+          right: windowWidth <= 650 ? "auto" : "15px",
           left: windowWidth <= 650 ? "10px" : "auto",
           fontSize: "12px",
           zIndex: 10,
@@ -204,7 +206,7 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
               marginRight: "5px",
             }}
           ></div>
-          경기도 평균
+          {data3} 평균
         </div>
       </div>
 

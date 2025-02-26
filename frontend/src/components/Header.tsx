@@ -1,11 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+
+// == logo == 
 import logo from "../assets/images/logo/main_logo.png";
+import seoulLogo from "../assets/images/logo/logo_seoul.png";
+import gyeonggiLogo from "../assets/images/logo/logo_gyeonggi.png";
+import incheonLogo from "../assets/images/logo/logo_incheon.png";
+
+// == recoil == 
 import { selectedRegionState } from "../state/atom.js";
+import {selectedSectionState} from "../state/selectAtom.js";
+import { useRecoilValue } from "recoil";
 
 interface HeaderProps {
-  page: "home" | "accident" | "crime" | "weather";
+  page: "select" | "home" | "accident" | "crime" | "weather";
 }
 
 type PageTextConfig = {
@@ -15,7 +23,8 @@ type PageTextConfig = {
 };
 
 const textConfig: Record<HeaderProps["page"], PageTextConfig> = {
-  home: { text: "", color: "", nav: "/" },
+  select: { text: "", color: "", nav: "/" },
+  home: { text: "", color: "", nav: "/home" },
   accident: { text: "사고 발생 연평균", color: "header-text-accident", nav: "/accident-status" },
   crime: { text: "범죄 발생 연평균", color: "header-text-crime", nav: "/crime-report" },
   weather: { text: "날씨 정보", color: "header-text-weather", nav: "/weather-info" },
@@ -35,6 +44,7 @@ const allButtons: ButtonConfig[] = [
 
 const Header: React.FC<HeaderProps> = ({ page }) => {
   const selectedRegion = useRecoilValue(selectedRegionState);
+  const selectedSection = useRecoilValue(selectedSectionState); 
 
   const Gyeonggido: Record<string, string> = {
     gapyeong: "가평군",
@@ -108,7 +118,17 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
     ongjin: "옹진군",
     "incheon-jung": "중구",
   };
-  
+
+  // 🟢 선택된 섹션에 맞는 로고 설정
+  const sectionLogo = page === "select"
+    ? logo
+    : selectedSection === "seoul"
+    ? seoulLogo
+    : selectedSection === "gyeonggi"
+    ? gyeonggiLogo
+    : selectedSection === "incheon"
+    ? incheonLogo
+    : logo;
 
   const displayText =
     page === "home"
@@ -118,13 +138,13 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
       : textConfig[page].text;
 
   return (
-    <header className={`header-container ${page === "home" ? "header-home" : "header-etc"}`}>
+    <header className={`header-container ${(page === "home" || page === "select") ? "header-home" : "header-etc"}`}>
       <div className="header-logo">
         <NavLink to={textConfig.home.nav}>
-          <img src={logo} alt="안전신호등 로고" className="header-logo-img" />
+          <img src={sectionLogo } alt="안전신호등 로고" className="header-logo-img" />
         </NavLink>
       </div>
-      {page !== "home" && (
+      {page !== "home" && page !== "select" && (
         <>
           <span className={`header-subtitle ${textConfig[page].color}`}>
             {displayText}

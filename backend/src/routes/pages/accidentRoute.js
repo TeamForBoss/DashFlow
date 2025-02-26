@@ -64,12 +64,12 @@ class AccidentRoute extends AbstractRoute {
             for (const year of searchYear) {
                 const accidentDataArrForYear = [];
                 for (const row of rows) {
-                    const {city_en, sido_code, gugun_code  } = row;
+                    const {city_en, sido_code, gugun_code, sido_ko  } = row;
                     try {
                         const response = await axios.get(apiUrl(year, sido_code, gugun_code));
                         const result = await parser.parseStringPromise(response.data);
                         let {response: { header, body: [{ items: [obj] }] }} = result;
-                        accidentDataArrForYear.push({ city: city_en, data: obj });
+                        accidentDataArrForYear.push({ city: city_en, sido: sido_ko , data: obj });
                     } catch (error) {
                         console.log(`[Accident] API 요청 실패: ${accident_code} (년도: ${year}), 오류:`, error.message);
                     }

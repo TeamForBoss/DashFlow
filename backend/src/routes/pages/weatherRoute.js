@@ -57,12 +57,12 @@ class WeatherRoute extends AbstractRoute {
                     // console.log(rows)
                     const [weatherDataArray, promises] = [[],[]]; // 요청 저장할 배열
                     dbData.forEach((row) => {
-                        const { id, lat, lon, city_en } = row;
+                        const { id, lat, lon, city_en , sido_ko } = row;
 
                         // == axios 요청 ==
                         const promise = axios.get(apiUrl(lat, lon))
                             .then((response) => {
-                                weatherDataArray.push({ city: city_en, data: response["data"] });
+                                weatherDataArray.push({ id:id, city: city_en, sido: sido_ko , data: response["data"] });
                             })
                             .catch((err) => {
                                 console.log("[Weather] <Fetch_Error> " + err);

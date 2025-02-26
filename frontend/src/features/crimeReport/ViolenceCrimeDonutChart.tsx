@@ -99,7 +99,7 @@ const ViolenceCrimePieChart: React.FC = () => {
       .text((d) => d.data.범죄중분류);
 
     //   범례 위치 수직 중앙 정렬
-    const legendX = windowWidth > 650 ? width * 0.65 : width * 0.57;
+    const legendX = windowWidth > 650 ? width * 0.65 : width * 0.5;
     const legendY = height / 2 - limitedData.length * 10;
 
     const legendContainer = svg
@@ -130,7 +130,7 @@ const ViolenceCrimePieChart: React.FC = () => {
           .attr("y", 14)
           .style("font-size", "12px")
           .style("fill", "#333")
-          .text(`${d.범죄중분류} - ${percent}%`);
+          .text(`${d.범죄중분류} ${d.data} 건 - ${percent}%`);
       });
   }, [violenceCrimeData, dimensions, windowWidth]);
 

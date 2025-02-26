@@ -22,24 +22,18 @@ const Selection = () => {
             onClick={() => handleClick("gyeonggi")}
           >
             <img src={gyeonggiImg} className="selImg"></img>
-            <button className={`selInText selInTextG`}>
-              경기도 정보 바로가기
-            </button>
+            <p className={`selInText selInTextG`}>경기도 정보 바로가기</p>
           </div>
           <div className="selBox selSeoul" onClick={() => handleClick("seoul")}>
             <img src={seoulImg} className="selImg"></img>
-            <button className={`selInText selInTextS`}>
-              서울 정보 바로가기
-            </button>
+            <p className={`selInText selInTextS`}>서울 정보 바로가기</p>
           </div>
           <div
             className="selBox selIncheon"
             onClick={() => handleClick("incheon")}
           >
             <img src={incheonImg} className="selImg"></img>
-            <button className={`selInText selInTextI`}>
-              인천 정보 바로가기
-            </button>
+            <p className={`selInText selInTextI`}>인천 정보 바로가기</p>
           </div>
         </section>
       </main>

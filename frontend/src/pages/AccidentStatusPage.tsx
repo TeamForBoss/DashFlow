@@ -9,6 +9,7 @@ import Header from "../components/Header";
 import car_front_fillcolor from "../assets/images/icons/accident/car_front_fillcolor.png";
 import heartbeat from "../assets/images/icons/accident/heartbeat.png";
 
+import { hostState } from "../state/hostAtom.js";
 import { selectedRegionState } from "../state/atom";
 import { useRecoilValue } from "recoil";
 
@@ -64,10 +65,11 @@ export interface ByYearTypeData {
 }
 
 const AccidentStatusPage = () => {
+    const host = useRecoilValue(hostState);
     const region = useRecoilValue<string>(selectedRegionState );
 
     // const canvasWrap = useRef<HTMLCanvasElement>(null);
-    const [allData, setAllData] = useState<{ year: number; data: totalAccident[] }[]>([]);
+    const [allData, setAllData] = useState<{ data: totalAccident[] }[]>([]);
     const [acData, setAcData] = useState<totalAccident[]>([]);
     const [gugun, setGugun] = useState("");
     const [byAccType, setByAccType] = useState<ByAccTypeData[]>([]);
@@ -75,75 +77,105 @@ const AccidentStatusPage = () => {
     const [carCar, setCarCar] = useState<ByCarTypeData[]>([]);
     const [violOfLaw, setViolOfLaw] = useState<ByCarTypeData[]>([]);
     const [byYearType, setByYearType] = useState<ByYearTypeData[]>([]);
-    console.log(region)
+    // console.log(region)
+    // console.log(allData)
     useEffect(() => { 
         setGugun(region);
     },[])
     useEffect(() => {
-        fetch('/tempData/accident_data_2023.json')
+        // fetch('/tempData/accident_data_2023.json')
+        fetch(`${host}/accident/city`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ city: region }),
+            })
             .then(response => response.json())
-            .then((data: Array<{ [key: string]: { item: [] } }>) => {
-                data.forEach((obj) => {
-                    for (let key in obj) {
-                        // let { item: avgArr } = obj[key];
-                        // console.log(avgArr[0].acc_cnt[0])
-                        if (gugun == key) {
-                            let { item: dataArr } = obj[key];
-                            setAcData(dataArr);
-                            // console.log(dataArr[0].tot_acc_cnt/31, dataArr[0].tot_dth_dnv_cnt/31);
-                        }
-                    }
-                })
+            .then((datas) => {
+                const dataLen = datas.length - 1;
+                const { city, data, sido } = (datas[dataLen]);
+                if (gugun == city) {
+                    const { item: dataArr } = data;
+                    setAcData(dataArr)
+                }
             })
             .catch(err => {
                 console.log(err);
             });
 
-        const yearArr = [];
-        let year = new Date().getFullYear() - 2;
-        for (let i = 0; i < 14; i++) {
-            yearArr.push(year);
-            --year;
-        }
-        const travel = (data: Array<{ [key: string]: { item: [] } }>, year: number) => {
-            data.forEach((obj) => {
-                for (let key in obj) {
-                    // console.log(obj[key])
-                    if (gugun == key) {
-                        let { item: dataArr } = obj[key];
-                        // console.log(allData)
-                        // const allAccData= dataArr;
-                        setAllData(prev => [...prev, { year: year, data: dataArr }]);
+        // const yearArr = [];
+        // let year = new Date().getFullYear() - 2;
+        // for (let i = 0; i < 14; i++) {
+        //     yearArr.push(year);
+        //     --year;
+        // }
+        //  fetch(`${host}/accident/city`, {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //         },
+        //         body: JSON.stringify({ city: region }),
+        //     })
+        //     .then(response => response.json())
+        //     .then((datas: []) => {
+        //           datas.forEach((items) => {
+        //         const { city, sido, data: { item: dataArr} } = items;
+        //         if (gugun == city) {
+        //             // console.log(dataArr[0].std_year[0])
+        //             // console.log(dataArr[0]);
+        //             setAllData(prev => [...prev, dataArr[0]]);
+        //         }
+        //      })  
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     });
+        
+        const travel = (datas: []) => { 
+            if (allData.length == 0) {
+                datas.forEach((items) => {
+                    const { city, sido, data: { item: dataArr } } = items;
+                    if (gugun == city) {
+                        // console.log(dataArr[0].std_year[0])
+                        // console.log(dataArr[0]);
+                        setAllData(prev => [...prev, dataArr[0]]);
                     }
-                }
-            });
+                })
+            }
         }
-        const fetchJson = async (year: number) => {
+        const fetchJson = async () => {
             try {
-                const response = await fetch(`/tempData/accident_data_${year}.json`);
+                // const response = await fetch(`/tempData/accident_data_${year}.json`);
+                const response = await fetch(`${host}/accident/city`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ city: region }),
+                })
                 const json = await response.json();
-                await travel(json, year);
+                await travel(json);
             } catch (err) {
                 console.log(err);
             }
         }
-        yearArr.forEach((year) => {
-            fetchJson(year);
-        })
+        // yearArr.forEach((year) => {
+        fetchJson();
+        // })
     }, [gugun]);
-
+    ///////////////////////////////////////////
     useEffect(() => {
-        const selectedData = allData.map((allAc) => {
-            // console.log(allAc)
+        const selectedData = allData.map((allAc: totalAccident) => {
             return {
-                year: (allAc.year).toString(),
-                acc: Number(allAc.data[0].acc_cnt[0]),
-                death: Number(allAc.data[0].dth_dnv_cnt[0]),
-                inj: Number(allAc.data[0].injpsn_cnt[0]),
+                year: (allAc.std_year[0]), //allAc.data[0].acc_cnt[0]
+                acc: Number(allAc.acc_cnt[0]),
+                death: Number(allAc.dth_dnv_cnt[0]),
+                inj: Number(allAc.injpsn_cnt[0]),
             };
         }); // end of map
+        // console.log(selectedData);
         selectedData.sort((a, b) => a.year < b.year? -1 : a.year > b.year ? 1:0);
-        // console.log(sortArr);
         setByYearType(selectedData);
     }, [allData]);
 

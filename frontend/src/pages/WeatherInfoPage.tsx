@@ -60,7 +60,7 @@ const WeatherInfoPage: React.FC = () => {
         setWeatherData(futureData);
 
         if (futureData.length > 0) {
-          // 모바일일 경우 그래프 데이터 8개, 그 외에는 20개
+          // 모바일일 경우 그래프 데이터 8개, 그 외에는 20개 설정정
           const visualDataLength = isMobile ? 8 : 20;
           const weekWeatherData = futureData.map((item: any) => ({
             dt_txt: item.dt_txt,

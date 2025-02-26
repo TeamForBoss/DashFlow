@@ -115,7 +115,7 @@ const SeoulArea = () => {
     <div className="regionArea">
       <div className="item">
         <div className="regionCategory">
-          <p>서울 강남 강북 지역</p>
+          <p>서울시 강남•강북 지역</p>
         </div>
         <div className="regionSubCategory">
           {gangNamBukArea.map((city, index) => (
@@ -145,7 +145,7 @@ const SeoulArea = () => {
       </div> */}
       <div className="item">
         <div className="regionCategory">
-          <p>서울 강서 강동 지역</p>
+          <p>서울시 강서•강동 지역</p>
         </div>
         <div className="regionSubCategory">
           {seobukDongbukArea.map((city, index) => (

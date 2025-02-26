@@ -79,7 +79,7 @@ const SeoulArea = () => {
     <div className="regionArea">
       <div className="item">
         <div className="regionCategory">
-          <p>도시 지역</p>
+          <p>인천시 도시 지역</p>
         </div>
         <div className="regionSubCategory">
           {incheonDistricts.map((city, index) => (
@@ -94,7 +94,7 @@ const SeoulArea = () => {
       </div>
       <div className="item">
         <div className="regionCategory">
-          <p>군 지역</p>
+          <p>인천시 군 지역</p>
         </div>
         <div className="regionSubCategory">
           {incheonCounty.map((city, index) => (

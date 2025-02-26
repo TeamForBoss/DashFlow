@@ -82,7 +82,7 @@ const SeoulArea = () => {
     { ko: "동작구", en: "dongjak" },
     { ko: "관악구", en: "gwanak" },
     { ko: "금천구", en: "geumcheon" },
-    { ko: "중구", en: "jung" },
+    { ko: "중구", en: "seoul-jung" },
     { ko: "용산구", en: "yongsan" },
     { ko: "은평구", en: "eunpyeong" },
   ];

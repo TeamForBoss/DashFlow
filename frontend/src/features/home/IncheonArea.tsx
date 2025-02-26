@@ -54,6 +54,7 @@ const SeoulArea = () => {
     { ko: "부평구", en: "bupyeong" },
     { ko: "서구", en: "seo" },
     { ko: "연수구", en: "yeonsu" },
+    { ko: "중구", en: "Incheon-jung" },
   ];
 
   // **인천 군 (군 지역)**

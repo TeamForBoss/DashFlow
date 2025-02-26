@@ -66,7 +66,7 @@ const matchingData: object = {
         }
   
         // 강력 범죄 확인
-        if (item["범죄대분류"] === "강력범죄") {
+        if (item["범죄중분류"] === "폭행") {
           for (const key in item) {
             if (key.startsWith(sidoKey)) {
               totalStrong += item[key];
@@ -158,7 +158,7 @@ const matchingData: object = {
             <img src={handImg} alt="폭행" />
             <div className="info">
               <span className="text">폭행</span>
-              <span className="value">{StrongNum.toFixed(0)} 건</span>
+              <span className="value">{StrongNum.toLocaleString(undefined, { maximumFractionDigits: 0 })} 건</span>
             </div>
           </div>
         </div>

@@ -78,7 +78,6 @@
           0px 0px 0.7px rgba(0, 0, 0, 0.826);
       }
     }
-
     .regionSubCategory {
       display: flex;
       justify-content: space-between;
@@ -123,8 +122,27 @@
       }
     }
 
+    // .seoulIncheon {
+
+    // }
+    .seoul, .incheon{
+      font-family: 'GowunDodum-Regular'; //폰트 얘만 적용 안되서 따로로 추가 해줬어요.
+      width: 49%;
+      font-size: 23px;
+      height: 6vh;
+      color: #343434;
+      text-shadow: 1px 1px 2px #C0C0C0;
+      background: #E5E5E5;
+      border: 1px solid #C0C0C0;
+      border-radius: 7px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 -0.5px 4px rgba(0, 0, 0, 0.08);
+      transition: all 0.2s ease-in-out;
+      margin-bottom: 0.7vh;
+    }
+    .seoul{margin-right: 1%;} .incheon{margin-left: 1%;}
+
     /* == 확인버튼 (그레이톤) == */
-    .confirmBtn {
+    .confirmBtn  {
       font-family: 'GowunDodum-Regular'; //폰트 얘만 적용 안되서 따로로 추가 해줬어요.
       width: 100%;
       font-size: 23px;

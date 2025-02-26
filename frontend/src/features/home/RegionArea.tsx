@@ -117,6 +117,10 @@ const RegionArea = () => {
         </div>
       </div>
       <div className="item">
+      <div  className="seoulIncheon">
+        <button className="seoul"></button>
+        <button className="incheon"></button>
+      </div>
       <NavLink to={selectedCity ? `/weather-info` : '#'}>
         <button
           onClick={handleSelectedRegion}

@@ -10,7 +10,7 @@ const BarChart = (accData: PropsType) => {
     const [height, setHeight] = useState<any>(0);
     const svgRef = useRef(null);
     let { accData: accArr } = accData;
-
+    // console.log(accArr)
        
     // const mobData = accArr.filter((obj, idx) => {
     //     console.log(accArr[idx])
@@ -125,22 +125,29 @@ const BarChart = (accData: PropsType) => {
                 .attr("fill", "#333")
                 .attr("text-anchor", "start")
                 .attr("font-size", fontSize)
-                .text("( 단위: 명 )")
+                .text("( 사고건수: 건 )")
             );
         // y1축 추가 (acc 그리드 라인 포함)
         svg
             .append("g")
             .attr("transform", `translate(${width - marginRight},0)`)
             .call(d3.axisRight(y1).ticks(height / 40))
-            .call(g => g.select(".domain").remove()); // 축의 라인 제거
-
+            .call(g => g.select(".domain").remove())
+            .call(g => g.append("text")
+                .attr("x", -marginLeft)
+                .attr("y", 10)
+                .attr("fill", "#333")
+                .attr("text-anchor", "start")
+                .attr("font-size", fontSize)
+                .text("( 사망자수: 명 )")
+            );
         // 그래프 바(bar) 애니메이션
         svg.append("g")
-            .attr("fill", "#F7E38D")
+            .attr("fill", "#FFDC00")
             .selectAll()
             .data(accArr)
             .join("rect")
-            .attr("x", (d) => (x(d.type) ?? 0) + 3) 
+            .attr("x", (d) => (x(d.type) ?? 0) + 3)
             .attr("y", height - marginBottom)
             .attr("height", 0)
             .attr("width", x.bandwidth() - 6)
@@ -149,9 +156,73 @@ const BarChart = (accData: PropsType) => {
             .attr("y", (d) => y(d.death))
             .attr("height", (d) => y(0) - y(d.death));
 
-        // 그래프 라인(line) 애니메이션
-        svg
-            .append("path")
+        // 막대 위에 값 표시
+        svg.append("g")
+            .selectAll()
+            .data(accArr)
+            .join("text")
+            .attr("class", "bar-label")
+            .attr("x", (d) => (x(d.type) ?? 0) + x.bandwidth() / 2)
+            .attr("y", height - marginBottom)
+            .attr("text-anchor", "middle")
+            .style("font-size", fontSize)
+            .style("fill", "#444")
+            .text((d) => d.death)
+            .attr("opacity", 0)
+            .transition()
+            .delay((_, i) => i * 100)
+            .duration(500)
+            .attr("opacity", 1)
+            .attr("y", (d) => y(d.death) - 15);
+        // 막대 그래프 그리기
+        // svg.append("g")
+        //     .attr("fill", "#FFDC00")
+        //     .selectAll()
+        //     .data(accArr)
+        //     .join("rect")
+        //     .attr("x", (d) => (x(d.type) ?? 0) + 3)
+        //     .attr("y", height - marginBottom)
+        //     .attr("height", 0)
+        //     .attr("width", x.bandwidth() - 6)
+        //     .transition()
+        //     .duration(1000)
+        //     .attr("y", (d) => y(d.death))
+        //     .attr("height", (d) => y(0) - y(d.death));
+
+        // // 막대 위에 기본적으로 텍스트를 숨기고 생성
+        // const labels = svg.append("g")
+        //     .selectAll()
+        //     .data(accArr)
+        //     .join("text")
+        //     .attr("class", "bar-label")
+        //     .attr("x", (d) => (x(d.type) ?? 0) + x.bandwidth() / 2)
+        //     .attr("y", height - marginBottom)
+        //     .attr("text-anchor", "middle")
+        //     .style("font-size", fontSize)
+        //     .style("fill", "#444")
+        //     .text((d) => d.death)
+        //     .attr("opacity", 0) // 기본적으로 값 숨기기
+        //     .attr("y", (d) => y(d.death) - 15);
+
+        // // 호버 시 값 표시
+        // svg.selectAll("rect")
+        //     .on("mouseover", function(e, d) {
+        //         d3.select(this).style("cursor", "pointer"); 
+        //         d3.select(labels.nodes()[accArr.indexOf(d as ByAccTypeData)])
+        //             .transition()
+        //             .duration(200)
+        //             .attr("opacity", 1);
+        //     })
+        //     .on("mouseout", (e, d) => {
+        //         d3.select(labels.nodes()[accArr.indexOf(d as ByAccTypeData)])
+        //             .transition()
+        //             .duration(200)
+        //             .attr("opacity", 0);
+        //     });
+
+
+        // 선 그래프 (Line Chart) 애니메이션
+        svg.append("path")
             .datum(accArr)
             .attr("fill", "none")
             .attr("stroke", "#ff9100")
@@ -169,6 +240,40 @@ const BarChart = (accData: PropsType) => {
             .duration(1500)
             .ease(d3.easeLinear)
             .attr("stroke-dashoffset", 0);
+        // 선 그래프 위에 값 표시
+        // const labels =
+            svg.append("g")
+            .selectAll()
+            .data(accArr)
+            .join("text")
+            .attr("class", "line-label")
+            .attr("x", (d) => (x(d.type)?? 0) + x.bandwidth() / 1.5)
+            .attr("y", (d) => y1(d.acc) + 3)
+            .attr("text-anchor", "middle")
+            .style("font-size", fontSize)
+            .style("fill", "#333")
+            .text((d) => d.acc)
+            .attr("opacity", 0)
+            .transition()
+            .delay((_, i) => i * 100)
+            .duration(500)
+            .attr("opacity", 1);
+
+        // // 호버 시 값 표시
+        // svg.selectAll("g")
+        //     .on("mouseover", function(e, d) {
+        //         d3.select(this).style("cursor", "pointer"); 
+        //         d3.select(labels.nodes()[accArr.indexOf(d as ByAccTypeData)])
+        //             .transition()
+        //             .duration(200)
+        //             .attr("opacity", 1);
+        //     })
+        //     .on("mouseout", (e, d) => {
+        //         d3.select(labels.nodes()[accArr.indexOf(d as ByAccTypeData)])
+        //             .transition()
+        //             .duration(200)
+        //             .attr("opacity", 0);
+        //     });
 
         // 원(circle) 애니메이션
         svg.append("g")
@@ -188,7 +293,38 @@ const BarChart = (accData: PropsType) => {
             .delay((_, i) => i * 100)
             .attr("opacity", 1);
 
+        // 막대 그래프 범례
+        const legend = svg.append("g")
+            .attr("transform", `translate(${width / 2 - 100}, 0)`); 
 
+        legend.append("rect")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("fill", "#FFDC00"); 
+
+        legend.append("text")
+            .attr("x", 20)
+            .attr("y", 12)
+            .style("font-size", "14px")
+            .text("사고건수");
+        
+        const legend2 = svg.append("g")
+            .attr("transform", `translate(${width / 2 + 20}, 0)`);
+        legend2.append("rect")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("fill", "#ff9100");
+
+        legend2.append("text")
+            .attr("x", 20)
+            .attr("y", 12)
+            .style("font-size", "14px")
+            .text("사망자수");
+        
         //graph bar
         // svg.append("g")
         //     .attr("fill", "#F3E796")

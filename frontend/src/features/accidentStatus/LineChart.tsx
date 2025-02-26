@@ -103,7 +103,10 @@ const LineChart = (yearData: PropsType) => {
         svg
             .append("g")
             .attr("transform", `translate(0,${height - margin})`)
-            .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0));
+            .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0))
+            .selectAll("text")
+            .attr("font-size", fontSize)
+            .style("fill", "#333");
 
         // y축 추가 (death 그리드 라인 포함)
         // svg
@@ -152,7 +155,7 @@ const LineChart = (yearData: PropsType) => {
                 .ease(d3.easeLinear)
                 .attr("stroke-dashoffset", 0);
             
-           svg.append("g")
+        svg.append("g")
             .selectAll(`.dot-${color}`)
             .data(accArr)
             .enter()
@@ -168,7 +171,24 @@ const LineChart = (yearData: PropsType) => {
             .transition()
             .delay((_, i) => i * 100) 
             .duration(500)
-            .attr("opacity", 1); 
+                .attr("opacity", 1); 
+            
+        svg.append("g")
+            .selectAll()
+            .data(accArr)
+            .join("text")
+            .attr("class", "line-label")
+            .attr("x", (d) => (x(d.year)?? 0) + x.bandwidth() / 2)
+            .attr("y", (d) => y1(Number(d[key as keyof ByYearTypeData])) - 10)
+            .attr("text-anchor", "middle")
+            .style("font-size", "11px")
+            .style("fill", "#333")
+            .text((d) => d[key as keyof ByYearTypeData])
+            .attr("opacity", 0)
+            .transition()
+            .delay((_, i) => i * 100)
+            .duration(500)
+            .attr("opacity", 1);
         };
 
         drawLine(line, "#ff9100", "inj");    // 부상자 (inj)

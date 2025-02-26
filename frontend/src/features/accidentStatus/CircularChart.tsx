@@ -23,7 +23,7 @@ const CircularChart = (lawData: PropsType) => {
     if (width > 600) { 
         moveCenter = 2;
     }
-    console.log(moveCenter,width)
+    // console.log(moveCenter,width)
     useEffect(() => {
         handleResize();
         window.addEventListener("resize", handleResize);
@@ -44,7 +44,10 @@ const CircularChart = (lawData: PropsType) => {
         .sort(null)
         .value(d => d.value);
     
-    const color = d3.scaleOrdinal<string>(["#ff9100", "#ffa51e", "#ffc62a", "#E8C300", "#ffd900", "#F7D400", "#FFE066", "#F7E38D"]
+    const color = d3.scaleOrdinal<string>(
+    ["#FF6F00", "#FF8C1A", "#FFB300", "#FFDC00", "#FFEA00", "#D4C200", "#B8A500", "#8C7F00"]
+
+        // ["#ff9100", "#ffa51e", "#ffc62a", "#E8C300", "#ffd900", "#F7D400", "#FFE066", "#F7E38D"]
 );
     // console.log(width)
     useEffect(() => {

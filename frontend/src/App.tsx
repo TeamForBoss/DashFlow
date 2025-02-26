@@ -8,19 +8,19 @@ import CrimeReportPage from "./pages/CrimeReportPage";
 import AccidentStatusPage from "./pages/AccidentStatusPage";
 import WeatherInfoPage from "./pages/WeatherInfoPage";
 const App = () => {
-  return (
-    <RecoilRoot>
-      <Router>
-        <main id="main">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/crime-report" element={<CrimeReportPage />} />
-            <Route path="/accident-status" element={<AccidentStatusPage />} />
-            <Route path="/weather-info" element={<WeatherInfoPage />} />
-          </Routes>
-        </main>
-      </Router>
-    </RecoilRoot>
+    return (
+        <RecoilRoot>
+        <Router>
+            <main id="main">
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/crime-report" element={<CrimeReportPage />} />
+                <Route path="/accident-status" element={<AccidentStatusPage />} />
+                <Route path="/weather-info" element={<WeatherInfoPage />} />
+            </Routes>
+            </main>
+        </Router>
+        </RecoilRoot>
   );
 };
 

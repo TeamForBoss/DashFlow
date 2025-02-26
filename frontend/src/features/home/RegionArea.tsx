@@ -118,8 +118,8 @@ const RegionArea = () => {
       </div>
       <div className="item">
       <div  className="seoulIncheon">
-        <button className="seoul"></button>
-        <button className="incheon"></button>
+        <button className="seoul">서울특별시</button>
+        <button className="incheon">인천광역시</button>
       </div>
       <NavLink to={selectedCity ? `/weather-info` : '#'}>
         <button

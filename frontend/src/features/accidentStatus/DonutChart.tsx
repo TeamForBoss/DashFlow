@@ -114,7 +114,7 @@ const DonutChart = (carData: PropsType) => {
             .value(d => d.value);
         
         const color = d3.scaleOrdinal<string>([
-            "#F7E38D", "#F7D400", "#ffc62a", "#ff9100"
+            "#ff9100", "#ffc62a", "#F7D400", "#F7E38D"  
         ]);
     // SVG 요소 선택
     const svg = d3.select(svgRef.current);

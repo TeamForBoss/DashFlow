@@ -3,7 +3,6 @@
 // =====================================================================
 // == mixin == 
 @mixin titleHead() {
-  border: 1px solid var(--borderColor);
   border-radius: 10px;
   padding: var(--boxPadding);
   background-color: var(--white);
@@ -43,7 +42,7 @@ body{
   // --commonPadding: 120px 40px 40px 40px; // 섹션 패딩
 //   padding: 120px 40px 0 40px;
   padding: var(--commonPadding);
-  background: linear-gradient(#fff, #bce6db);
+  background: linear-gradient(#e2ffffa4,#b2fffe88, #9bdd8a81,#079c815f);
 }
 
 .weatherLayOutArea {
@@ -76,10 +75,11 @@ body{
 }
 .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat {
   /* titleHead mixin */
-  border: 1px solid var(--borderColor);
+  border: 0.1rem solid rgba(128, 211, 172, 0.616);
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0.18rem 0.18rem 0.5rem rgba(3, 132, 132, 0.89), inset 0 0 0.4rem rgba(20, 171, 103, 0.832) ;
   border-radius: 10px;
   padding: var(--boxPadding);
-  background-color: var(--white);
   /* 추가 스타일 */
   font-size: var(--middleFontSize);
   text-align: center;
@@ -103,9 +103,10 @@ body{
   width: 50%;
   height: 100%;
   /* weatherTitleStyle mixin */
-  background: #eff5f5;
+  background-color: #e8fff8b5 ;
+  box-shadow: inset 0.3rem 0.3rem 0.3rem rgba(13, 171, 139, 0.182);
+  border: 0.2rem solid rgb(255, 255, 255);
   border-radius: 10px;
-  box-shadow: inset 0px 3px 3px #dadada;
   color: var(--black300);
   /* 추가 스타일 */
   text-align: center;
@@ -125,10 +126,13 @@ body{
 }
 .weatherGraphWrap .weatherInfoListBox {
   /* titleHead mixin */
-  border: 1px solid var(--borderColor);
-  border-radius: 10px;
   padding: var(--boxPadding);
-  background-color: var(--white);
+
+  border: 0.1rem solid rgba(128, 211, 172, 0.616);
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0.18rem 0.18rem 0.5rem rgba(3, 132, 132, 0.89), inset 0 0 0.4rem rgba(20, 171, 103, 0.832) ;
+  border-radius: 10px;
+
   width: 65%;
   height: 100%;
   display: flex;
@@ -138,9 +142,12 @@ body{
   text-align: center;
   margin-bottom: 0.8rem;
   /* weatherTitleStyle + pTitleStyle mixins */
-  background: #eff5f5;
   border-radius: 10px 10px 0 0;
-  box-shadow: inset 0px 3px 3px #dadada;
+
+  background-color: #e8fff8b5 ;
+  box-shadow: inset 0.3rem 0.3rem 0.3rem rgba(13, 171, 139, 0.182);
+  border: 0.2rem solid rgb(255, 255, 255);
+
   color: var(--black300);
   font-size: var(--middleFontSize);
   padding: 0.5rem 0;
@@ -199,19 +206,24 @@ body{
 }
 .weatherGraphWrap .weatherWindRadarSection {
   /* titleHead mixin */
-  border: 1px solid var(--borderColor);
+  border: 0.1rem solid rgba(128, 211, 172, 0.616);
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0.18rem 0.18rem 0.5rem rgba(3, 132, 132, 0.89), inset 0 0 0.4rem rgba(20, 171, 103, 0.832) ;
   border-radius: 10px;
+  
   padding: var(--boxPadding);
-  background-color: var(--white);
   width: 35%;
   height: 100%;
 }
 .weatherGraphWrap .weatherWindRadarSection p {
   text-align: center;
   /* pTitleStyle + weatherTitleStyle mixins */
-  background: #eff5f5;
+  
+  background-color: #e8fff8b5 ;
+  box-shadow: inset 0.3rem 0.3rem 0.3rem rgba(13, 171, 139, 0.182) ;
+  border: 0.2rem solid rgb(255, 255, 255);
+
   border-radius: 10px 10px 0 0;
-  box-shadow: inset 0px 3px 3px #dadada;
   color: var(--black300);
   font-size: var(--middleFontSize);
   padding: 0.5rem 0;
@@ -222,8 +234,11 @@ body{
   height: 81.5%;
   margin: 2rem auto;
   padding: 1rem 0 0;
-  border-radius: 10px;
-  box-shadow: 0px 0px 3px #bdbdbd;
+  border-radius: 0 0 10px 10px;
+
+  background-color:  rgba(216, 248, 228, 0.144) !important;
+  box-shadow: inset 0.3rem 0.3rem 0.3rem rgba(13, 171, 84, 0.1) ;
+  border: 0.5px solid rgb(255, 255, 255);
   background: #F9F9F9;
 }
 
@@ -235,10 +250,15 @@ body{
 }
 .weatherTrendWrap .weatherTrendBox {
   /* titleHead mixin */
-  border: 1px solid var(--borderColor);
   border-radius: 10px;
   padding: var(--boxPadding);
-  background-color: var(--white);
+
+  border: 0.1rem solid rgba(128, 211, 172, 0.616);
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0.18rem 0.18rem 0.5rem rgba(3, 132, 132, 0.89), 
+  inset 0 0 0.4rem rgba(20, 171, 103, 0.832) ;
+  border-radius: 10px;
+
   width: 100%;
   height: 100%;
   padding: 1rem;
@@ -246,9 +266,12 @@ body{
 .weatherTrendWrap .weatherTrendBox p {
   text-align: center;
   /* pTitleStyle + weatherTitleStyle mixins */
-  background: #eff5f5;
+
+  background-color: #e8fff8b5 ;
+  box-shadow: inset 0.3rem 0.3rem 0.3rem rgba(13, 171, 139, 0.182) ;
+  border: 0.2rem solid rgb(255, 255, 255);
+
   border-radius: 10px 10px 0 0;
-  box-shadow: inset 0px 3px 3px #dadada;
   color: var(--black300);
   font-size: var(--middleFontSize);
   padding: 0.5rem 0;

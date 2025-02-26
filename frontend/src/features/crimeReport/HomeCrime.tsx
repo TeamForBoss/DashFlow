@@ -92,15 +92,15 @@ const HomeCrime = () => {
           <div className="content">
             <img src={knifeImg} alt="살인" />
             <div className="info">
-              <span className="value">살인</span>
-              <span className="text">{killNum} 건</span>
+              <span className="text">살인</span>
+              <span className="value">{killNum} 건</span>
             </div>
           </div>
           <div className="content">
             <img src={handImg} alt="폭행" />
             <div className="info">
-              <span className="value">폭행</span>
-              <span className="text">{StrongNum} 건</span>
+              <span className="text">폭행</span>
+              <span className="value">{StrongNum} 건</span>
             </div>
           </div>
         </div>

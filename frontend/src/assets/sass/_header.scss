@@ -209,7 +209,7 @@ $header-text-weather : #a7dac6e3;
                 font-size: 16px !important;
                 line-height: 20px ;
                 border-radius: 7px;
-                margin-top: 2.5px;
+                margin-top: 3px;
                 left: 0;
             }
             .header-buttons{
@@ -221,7 +221,7 @@ $header-text-weather : #a7dac6e3;
     .header-buttons{
      position: absolute;     
      transform: translate(-50%, -50%);
-     top:130%;
+     top:120%;
      left: 50%;
      background-color: #ffffffd4;
      box-shadow: -1px -1px 1px rgba(85, 85, 85, 0.2),1px 1px 1px rgba(85, 85, 85, 0.2) ;

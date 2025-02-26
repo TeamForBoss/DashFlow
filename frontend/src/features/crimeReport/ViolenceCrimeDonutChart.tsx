@@ -25,7 +25,7 @@ const ViolenceCrimePieChart: React.FC = () => {
       }
     };
 
-    handleResize(); // ✅ 최초 실행
+    handleResize(); //   최초 실행
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -39,7 +39,9 @@ const ViolenceCrimePieChart: React.FC = () => {
     const total = d3.sum(violenceCrimeData, (d) => d.data);
     const maxData = Math.max(...violenceCrimeData.map((d) => d.data));
 
-    const limitedData = violenceCrimeData.slice(0, 6);
+    //   데이터 내림차순 정렬 후 상위 6개 선택
+    const sortedData = [...violenceCrimeData].sort((a, b) => b.data - a.data);
+    const limitedData = sortedData.slice(0, 6);
 
     const colorScale = d3
       .scaleLinear<string>()
@@ -81,6 +83,7 @@ const ViolenceCrimePieChart: React.FC = () => {
         };
       });
 
+    //   원 안에 들어갈 텍스트 (내림차순 상위 2개)
     const topData = limitedData.slice(0, 2);
 
     arcs
@@ -95,14 +98,15 @@ const ViolenceCrimePieChart: React.FC = () => {
       .style("font-weight", "bold")
       .text((d) => d.data.범죄중분류);
 
-    // ✅ 범례 위치 수직 중앙 정렬
+    //   범례 위치 수직 중앙 정렬
     const legendX = windowWidth > 650 ? width * 0.65 : width * 0.57;
-    const legendY = height / 2 - limitedData.length * 10; // ✅ 데이터 개수에 따라 범례 중앙 정렬
+    const legendY = height / 2 - limitedData.length * 10;
 
     const legendContainer = svg
       .append("g")
       .attr("transform", `translate(${legendX}, ${legendY})`);
 
+    //   범례도 내림차순 정렬된 데이터로 표시
     legendContainer
       .selectAll(".legend-item")
       .data(limitedData)

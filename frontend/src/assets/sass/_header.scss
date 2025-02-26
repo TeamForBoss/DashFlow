@@ -1,9 +1,9 @@
 @import url("./_vars.scss");
 
 $header-logo-height : 4rem;
-$header-text-accident : #fde3a0;
-$header-text-crime :#ffd9e6eb;
-$header-text-weather : #a7dac6e3;
+$header-text-accident : #333;
+$header-text-crime :#333;
+$header-text-weather : #333;
 
 /* 헤더 전체 컨테이너 */
 .header-container {
@@ -150,89 +150,94 @@ $header-text-weather : #a7dac6e3;
 //////////////////////////////////
 
 @media (max-width: 800px) {
-    .header-etc *{
+    .header-etc * {
         height: 6vw;
-        line-height: 6vw ;
+        line-height: 6vw;
         font-size: 3.3vw !important;
 
-            .header-btn{
-                width: 8vw;
-                text-align: center;
-                font-size: 2.2vw !important;
-                line-height: 5vw ;
-            }
+        .header-btn {
+            width: 8vw;
+            text-align: center;
+            font-size: 2.2vw !important;
+            line-height: 5vw;
+        }
 
     }
-  }
+}
 
 
 
 
-  @media (max-width: 700px) {
-    .header-etc *{
+@media (max-width: 700px) {
+    .header-etc * {
         height: 6vw;
-        line-height: 6vw ;
+        line-height: 6vw;
         font-size: 3.3vw !important;
 
-            .header-btn{
-                width: 10vw;
-                text-align: center;
-                font-size: 2.3vw !important;
-                line-height: 4vw ;
-            }
-            .header-buttons{
-                gap: 0.2vw !important;
-               }
+        .header-btn {
+            width: 10vw;
+            text-align: center;
+            font-size: 2.3vw !important;
+            line-height: 4vw;
+        }
+
+        .header-buttons {
+            gap: 0.2vw !important;
+        }
 
     }
-  }
+}
 
 
 
 
 
-  @media (max-width: 500px) {
-    .header-container{
-        top:0;
+@media (max-width: 500px) {
+    .header-container {
+        top: 0;
         gap: 0;
         height: 10vh;
     }
-    .header-etc *{
+
+    .header-etc * {
         height: 6vw;
-        line-height: 6vw ;
+        line-height: 6vw;
         font-size: 4vw !important;
 
-            .header-btn{
-                width: 120px;
-                height: 32px;
-                text-align: center;
-                font-size: 16px !important;
-                line-height: 20px ;
-                border-radius: 7px;
-                margin-top: 3px;
-                left: 0;
-            }
-            .header-buttons{
-                width: 7vw;
-                gap: 0.2vw !important;
-               }
+        .header-btn {
+            width: 120px;
+            height: 32px;
+            text-align: center;
+            font-size: 16px !important;
+            line-height: 20px;
+            border-radius: 7px;
+            margin-top: 3px;
+            left: 0;
+        }
+
+        .header-buttons {
+            width: 7vw;
+            gap: 0.2vw !important;
+        }
 
     }
-    .header-buttons{
-     position: absolute;     
-     transform: translate(-50%, -50%);
-     top:120%;
-     left: 50%;
-     background-color: #ffffffd4;
-     box-shadow: -1px -1px 1px rgba(85, 85, 85, 0.2),1px 1px 1px rgba(85, 85, 85, 0.2) ;
-     width: 100vw !important;
-     height: 40px;
-     justify-content: center !important;    
+
+    .header-buttons {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 120%;
+        left: 50%;
+        background-color: #ffffffd4;
+        box-shadow: -1px -1px 1px rgba(85, 85, 85, 0.2), 1px 1px 1px rgba(85, 85, 85, 0.2);
+        width: 100vw !important;
+        height: 40px;
+        justify-content: center !important;
     }
+
     .header-subtitle {
         position: relative;
         display: flex;
-        width: 200px !important; 
+        width: 200px !important;
         height: 50%;
         top: 0;
         right: 0;
@@ -242,6 +247,5 @@ $header-text-weather : #a7dac6e3;
         padding: 10px 0;
     }
 
-    
-  }
 
+}

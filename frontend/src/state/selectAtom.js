@@ -5,7 +5,7 @@ const { persistAtom } = recoilPersist();
 
 export const selectedSectionState = atom({
     key: "selectedSectionState",
-    default: "seoul",
+    default: "",
     effects_UNSTABLE: [persistAtom],
 });
 
@@ -19,6 +19,6 @@ export const selectedSectionState = atom({
 
 // seoul: "서울시"
 // gyeonggi: "경기도"
-// incheon: "인천시" 
+// incheon: "인천시"
 
 // ===============================

@@ -73,7 +73,10 @@ $selIncheonBackColor :#F8EDED;
 }
 
 .selGyeonggi {
-    background-color: $selGeonggikColor;
+    border: 0.1rem solid rgb(255, 255, 255) !important;
+    background-color: rgba(226, 255, 254, 0.786) !important;
+    box-shadow: 0.18rem 0.18rem 0.5rem rgba(16, 146, 197, 0.844), 
+    inset 0 0 2rem rgba(108, 165, 250, 0.484) !important;
 }
 
 .selGyeonggi:hover {
@@ -82,7 +85,10 @@ $selIncheonBackColor :#F8EDED;
 }
 
 .selSeoul {
-    background-color: $selSeoulBackColor;
+    border: 0.1rem solid rgb(255, 255, 255) !important;
+    background-color: rgba(255, 247, 210, 0.786) !important;
+    box-shadow: 0.18rem 0.18rem 0.5rem rgba(197, 125, 16, 0.844), 
+    inset 0 0 2rem rgba(255, 177, 31, 0.484) !important;
 }
 
 .selSeoul:hover {
@@ -92,7 +98,10 @@ $selIncheonBackColor :#F8EDED;
 
 
 .selIncheon {
-    background-color: $selIncheonBackColor;
+    border: 0.1rem solid rgb(255, 255, 255) !important;
+    background-color: rgba(255, 235, 250, 0.786) !important;
+    box-shadow: 0.18rem 0.18rem 0.5rem rgba(197, 16, 125, 0.844), 
+    inset 0 0 2rem rgba(255, 31, 206, 0.249) !important;
 }
 
 .selIncheon:hover {
@@ -132,3 +141,7 @@ $selIncheonBackColor :#F8EDED;
         }
     }
 }
+
+
+
+

@@ -49,7 +49,7 @@ $selIncheonBackColor :#F8EDED;
             .selInText {
                 color: #333;
                 transition: 0.3s;
-                font-size: var(--middleFontSize);
+                font-size: var(--bigFontSize);
                 text-align: center;
                 //border: 1px solid red;
                 background: none;
@@ -84,7 +84,7 @@ $selIncheonBackColor :#F8EDED;
 }
 
 .selSeoul:hover {
-    background: #f3f8bd !important;
+    background: #ffecc7 !important;
     cursor: pointer;
 }
 
@@ -117,7 +117,7 @@ $selIncheonBackColor :#F8EDED;
                     padding: 0rem 1rem !important;
                     height: 3rem;
                     margin-bottom: 1rem;
-                    font-size: var(--smallFontSize) !important;
+                    // font-size: var(--middleFontSize) !important;
                 }
 
                 .selImg {

@@ -82,7 +82,7 @@ const SeoulArea = () => {
     { ko: "동작구", en: "dongjak" },
     { ko: "관악구", en: "gwanak" },
     { ko: "금천구", en: "geumcheon" },
-    { ko: "중구", en: "jung" },
+    { ko: "중구", en: "seoul-jung" },
     { ko: "용산구", en: "yongsan" },
     { ko: "은평구", en: "eunpyeong" },
   ];
@@ -115,7 +115,7 @@ const SeoulArea = () => {
     <div className="regionArea">
       <div className="item">
         <div className="regionCategory">
-          <p>서울 강남 강북 지역</p>
+          <p>서울시 강남•강북 지역</p>
         </div>
         <div className="regionSubCategory">
           {gangNamBukArea.map((city, index) => (
@@ -145,7 +145,7 @@ const SeoulArea = () => {
       </div> */}
       <div className="item">
         <div className="regionCategory">
-          <p>서울 강서 강동 지역</p>
+          <p>서울시 강서•강동 지역</p>
         </div>
         <div className="regionSubCategory">
           {seobukDongbukArea.map((city, index) => (

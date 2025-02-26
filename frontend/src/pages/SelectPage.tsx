@@ -12,30 +12,18 @@ const Selection = () => {
       <Header page={"home"} />
       <main className="selLayout">
         <section className="selMainArea">
-          <div className="selBox selGyeonggi">
+          <NavLink to={`/home`} className="selBox selGyeonggi">
             <img src={gyeonggiImg} className="selImg"></img>
-            <NavLink to={`/home`}>
-              <button className={`selInText selInTextG`}>
-                경기도 정보 바로가기
-              </button>
-            </NavLink>
-          </div>
-          <div className="selBox selSeoul">
+            <p className={`selInText selInTextG`}>경기도 정보 바로가기</p>
+          </NavLink>
+          <NavLink to={`/home`} className="selBox selSeoul">
             <img src={seoulImg} className="selImg"></img>
-            <NavLink to={`/home`}>
-              <button className={`selInText selInTextS`}>
-                서울 정보 바로가기
-              </button>
-            </NavLink>
-          </div>
-          <div className="selBox selIncheon">
+            <p className={`selInText selInTextS`}>서울 정보 바로가기</p>
+          </NavLink>
+          <NavLink to={`/home`} className="selBox selIncheon">
             <img src={incheonImg} className="selImg"></img>
-            <NavLink to={`/home`}>
-              <button className={`selInText selInTextI`}>
-                인천 정보 바로가기
-              </button>
-            </NavLink>
-          </div>
+            <p className={`selInText selInTextI`}>인천 정보 바로가기</p>
+          </NavLink>
         </section>
       </main>
     </>

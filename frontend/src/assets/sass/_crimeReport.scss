@@ -14,7 +14,10 @@
 }
 
 @mixin crimeBorder {
-    border: 1px solid #e5e5e5;
+    border: 0.1rem solid rgb(246, 179, 255);
+    background-color:  #ffffffc1;
+    box-shadow: 0.18rem 0.18rem 0.5rem rgba(155, 13, 112, 0.625), 
+    inset 0 0 0.4rem rgba(188, 62, 176, 0.589);
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -27,7 +30,6 @@
     padding: var(--boxPadding);
     font-size: var(--smallFontSize);
     color: var(--black300);
-    background-color: var(--white100);
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
@@ -35,18 +37,18 @@
 }
 
 @mixin crimeTitleStyle() {
-    background: #f7e8e8;
+    background-color: #efe1f06e ;
+    box-shadow: inset 0.3rem 0.3rem 0.3rem rgba(171, 13, 171, 0.155) !important;
+    border: 0.2rem solid rgba(255, 255, 255, 0.9);
     border-radius: 1rem 1rem 0 0;
-    box-shadow: inset 0px 3px 3px #dadada;
+    box-shadow: inset 0px 3px 3px #eec3f0;
 }
 
 @mixin graphBorder {
-    box-shadow: inset 0 0 3px #d2d1d1;
-    border-radius: var(--boxBorder);
-    -webkit-border-radius: var(--boxBorder);
-    -moz-border-radius: var(--boxBorder);
-    -ms-border-radius: var(--boxBorder);
-    -o-border-radius: var(--boxBorder);
+    background-color: #fff6f6b5 ;
+    box-shadow: inset 0.3rem 0.3rem 0.3rem rgba(171, 13, 171, 0.155) !important;
+    border: 0.2rem solid rgba(255, 255, 255, 0.9);
+    border-radius: 0 0 10px 10px;
 }
 
 #main {
@@ -92,7 +94,6 @@
                         margin-bottom: 1%;
 
                         .crUp2Area1 {
-                            background-color: var(--white);
                             display: flex;
                             @include crimeBorder();
                             align-items: center;
@@ -111,7 +112,7 @@
                     // 위쪽 부분 왼쪽에서 아래 부분 . 강력범죄 부분
                     .crStrongCrimeArea {
                         @include crimeBorder();
-                        background-color: var(--white);
+                        background-color: rgba(255, 255, 255, 0.8);
                         height: 78%;
                         padding: var(--boxPadding);
                         border-radius: var(--boxBorder);
@@ -152,7 +153,7 @@
                     margin-left: 1rem;
                     width: 40%;
                     height: 100%;
-                    background-color: var(--white);
+                    background-color: rgba(255, 255, 255, 0.8);
                     padding: var(--boxPadding);
                     border-radius: var(--boxBorder);
                     -webkit-border-radius: var(--boxBorder);
@@ -190,7 +191,7 @@
                 height: 48.5%;
                 width: 100%;
                 padding: var(--boxPadding);
-                background-color: var(--white);
+                background-color: rgba(255, 255, 255, 0.8);
                 border-radius: var(--boxBorder);
                 -webkit-border-radius: var(--boxBorder);
                 -moz-border-radius: var(--boxBorder);

@@ -79,7 +79,7 @@ const AccidentStatusPage = () => {
   const [byYearType, setByYearType] = useState<ByYearTypeData[]>([]);
   // console.log(region)
   // console.log(allData)
-  const printRef = useRef<HTMLDivElement>(null);
+  const printRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setGugun(region);
@@ -96,7 +96,7 @@ const AccidentStatusPage = () => {
       .then((response) => response.json())
       .then((datas) => {
         const dataLen = datas.length - 1;
-        const { city, data, sido } = datas[dataLen];
+        const { city, data } = datas[dataLen];
         if (gugun == city) {
           const { item: dataArr } = data;
           setAcData(dataArr);
@@ -139,7 +139,6 @@ const AccidentStatusPage = () => {
         datas.forEach((items) => {
           const {
             city,
-            sido,
             data: { item: dataArr },
           } = items;
           if (gugun == city) {
@@ -173,7 +172,7 @@ const AccidentStatusPage = () => {
   ///////////////////////////////////////////
   useEffect(() => {
     const selectedData = allData.map(
-      (allAc: totalAccident[{ key: string | number }]) => {
+      (allAc: any) => {
         return {
           year: allAc.std_year[0], //allAc.data[0].acc_cnt[0]
           acc: Number(allAc.acc_cnt[0]),

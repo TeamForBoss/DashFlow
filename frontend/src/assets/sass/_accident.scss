@@ -58,7 +58,7 @@
     }
 
     @media(max-width:800px) {
-        padding: 7.7rem 1rem 1rem;
+        padding: 8.7rem 1rem 1rem;
     }
 
     @media(max-width:500px) {
@@ -76,6 +76,9 @@
         @media(max-width:1200px) {
             flex-direction: column;
             align-items: center;
+        }
+        @media(max-width:650px) {
+            padding-top: 2.7rem;
         }
 
         .accGraphWrap {

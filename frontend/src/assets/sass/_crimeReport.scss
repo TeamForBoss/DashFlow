@@ -378,10 +378,27 @@
 }
 
 
+@media (max-width : 850px) {
+    .crMainWrapper {
+        padding-top: 12rem;
+    }
+}
 
+@media (max-width : 830px) {
+    .crMainWrapper {
+        padding-top: 14rem;
+    }
+}
+
+
+@media (max-width : 800px) {
+    .crMainWrapper {
+        padding-top: 10rem;
+    }
+}
 
 // 미디어 쿼리 부분  ---- 스마트폰 
-@media (max-width : 650px) {
+@media (max-width : 655px) {
     $crBackColorMobile: #fff;
     $crBoxColorMobile: #fff2f2;
     $crTextBoxColorMobile: #fff9f9;
@@ -403,7 +420,7 @@
     }
 
     .crMainWrapper {
-        padding: 8.5rem 1rem 1rem;
+        padding: 7rem 1rem 1rem;
 
         .crMainArea {
             overflow: scroll !important;

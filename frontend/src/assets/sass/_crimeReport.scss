@@ -424,7 +424,7 @@
         padding: 7rem 1rem 1rem;
 
         .crMainArea {
-            overflow: scroll !important;
+            // overflow: scroll !important;
             padding-top: 2.7rem;
         }
     }
@@ -436,7 +436,7 @@
     // 강력범죄 차트 그래프 영역
     .crStrongCrimeGraph {
         width: 100% !important;
-        height: 65% !important;
+        height: 75% !important;
     }
 
     // 폭력범죄 차트 그래프 영역
@@ -447,7 +447,7 @@
     // 지능범죄 차트 그래프 영역
     .crDownSideAreaGraph {
         margin-top: 0.5rem;
-        height: 78% !important;
+        height: 77% !important;
     }
 
     // 큼지마한 박스 패딩 조정하자 
@@ -474,8 +474,9 @@
 
     // 아래
     .crDownSideArea {
-        height: 17rem !important;
-
+        // margin-bottom: 1.5rem !important;
+        margin-top: 1.5rem !important;
+        height: 20rem !important;
     }
 
 

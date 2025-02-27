@@ -7,8 +7,9 @@ import useCrimeData from "../features/crimeReport/useCrimeData";
 import knifeImg from "../assets/images/icons/crime/knife_gray.png";
 import handImg from "../assets/images/icons/crime/boom_hand.png";
 import Header from "../components/Header";
-
+import useReloadOnRoute from "./useReloadOnRoute";
 const CrimeReportPage: React.FC = () => {
+  useReloadOnRoute("/crime-report");
   const printRef = useRef<HTMLDivElement>(null); // PrintBtn 할때 필요 한 것!!!
   const { strongCrimeData, violenceCrimeData } = useCrimeData();
   const [strongNum, setStrongNum] = useState<number | null>(null);

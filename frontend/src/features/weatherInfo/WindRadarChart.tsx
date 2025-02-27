@@ -3,16 +3,14 @@ import * as d3 from "d3";
 
 const WindRadarChart = ({ data }) => {
   const svgRef = useRef(null);
+  const containerRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 400, height: 400 });
 
   useEffect(() => {
     const updateDimensions = () => {
-      const parent = d3.select(svgRef.current).node()?.parentElement;
-      if (parent) {
-        setDimensions({
-          width: parent.clientWidth,
-          height: parent.clientHeight,
-        });
+      if (containerRef.current) {
+        const { clientWidth, clientHeight } = containerRef.current;
+        setDimensions({ width: clientWidth, height: clientHeight });
       }
     };
     updateDimensions();
@@ -30,11 +28,12 @@ const WindRadarChart = ({ data }) => {
     const radius = Math.min(width, height) / 2 - 40;
 
     const svg = d3.select(svgRef.current)
-      .attr("width", width)
-      .attr("height", height)
-      .attr("viewBox", `0 0 ${width} ${height}`)
-      .attr("preserveAspectRatio", "xMidYMid meet")
-      .style("overflow", "hidden");
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", `0 0 ${width} ${height}`)
+    .attr("preserveAspectRatio", "none") // 크기를 제한하지 않음
+    .style("overflow", "hidden");
+    // .style("padding","10px");
 
     const g = svg.append("g")
       .attr("transform", `translate(${width / 2}, ${height / 2})`);
@@ -125,8 +124,29 @@ const WindRadarChart = ({ data }) => {
   }, [data, dimensions]);
 
   return (
-    <div style={{ width: "100%", height: "100%"}}>
-      <svg ref={svgRef}></svg>
+    <div
+      ref={containerRef}
+      style={{
+        width: "100%",
+        height: "100%",
+        overflow: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "relative",
+      }}
+    >
+    <svg
+      ref={svgRef}
+      style={{
+        width: "100%",
+        height: "100%",
+        maxWidth: "100%",
+        maxHeight: "100%",
+        overflow: "hidden",
+      }}
+    ></svg>
+
     </div>
   );
 };

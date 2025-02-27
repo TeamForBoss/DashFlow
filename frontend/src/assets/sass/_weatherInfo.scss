@@ -204,6 +204,7 @@ body{
   box-shadow: 0px 0px 0.6rem #80cbc354;
   padding: 0;
   filter: drop-shadow(1.7px 1.7px 1.2px #33333363);
+  pointer-events: none;
 }
 .weatherGraphWrap .weatherWindRadarSection {
   /* titleHead mixin */
@@ -281,7 +282,6 @@ body{
 // =====================================================================
 // == 반응형 (max-width: 1300px) ==
 
-$mediaTitlePadding : 11rem;
 
 
 @media (max-width: 1200px) {
@@ -294,8 +294,6 @@ $mediaTitlePadding : 11rem;
         background: #fff;
         height: auto;
         overflow-y: auto;
-        height: auto;
-        padding: $mediaTitlePadding 3rem 3rem; // 전체 패딩 조정
     }
     .weatherLayOutArea {
         max-width: 100%;
@@ -387,17 +385,17 @@ $mediaTitlePadding : 11rem;
 }
 
 @media (max-width: 800px){
+
+  .weatherTopSection .weatherSummaryWrap .weatherStatBox .directionStat{
+    display: none;
+  }
     .weatherPageWrapper {
         overflow-y: scroll;
         height: auto;
-        padding: 8rem 1rem 1rem;
     }
 }
 
 @media (max-width: 700px) {
-    .weatherTopSection .weatherSummaryWrap .weatherStatBox .directionStat{
-        display: none;
-    }
     .weatherGraphWrap .weatherInfoListBox .weatherInfoTable .weatherDesIcon {
         width: 2rem;
     }
@@ -407,7 +405,6 @@ $mediaTitlePadding : 11rem;
 }
 
 @media (max-width: 500px) {
-
   .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatTitle {
     font-size: var(--smallFontSize);
     width: 60%;
@@ -423,15 +420,28 @@ $mediaTitlePadding : 11rem;
     .weatherStatValue{
       font-size: var(--smallFontSize);
     }
-
-    .weatherPageWrapper {
-        padding: 8.5rem 1rem 1rem;
-    }
 }
 
-@media (max-width: 440px) {
-    .weatherPageWrapper {
-        padding: 11rem 1rem 1rem;
-    }
+
+
+//  [미디어 쿼리 패딩 탑]=====================
+
+@media (max-width : 1200px) {
+  .weatherPageWrapper {
+      padding-top: 10.5rem 1rem 1rem;
+  }
+}
+
+@media (max-width : 860px) {
+  .weatherPageWrapper {
+      padding-top: 13rem;
+  }
+}
+
+
+@media (max-width : 800px) {
+  .weatherPageWrapper {
+      padding-top: 9rem;
+  }
 }
 

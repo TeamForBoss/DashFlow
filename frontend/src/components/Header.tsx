@@ -147,11 +147,17 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
             </NavLink>
           </div>
         )}
-        <div className="header-logo">
-            <NavLink to={textConfig.home.nav}>
-                <img src={sectionLogo } alt="안전신호등 로고" className="header-logo-img" />
-            </NavLink>
-        </div>
+      <div className="header-logo">
+        {page === "select" ? (
+          <div>
+            <img src={sectionLogo} alt="안전신호등 로고" className="header-logo-img" />
+          </div>
+        ) : (
+          <NavLink to={textConfig.home.nav}>
+            <img src={sectionLogo} alt="안전신호등 로고" className="header-logo-img" />
+          </NavLink>
+        )}
+      </div>
       {page !== "home" && page !== "select" && (
         <>
           <span className={`header-subtitle ${textConfig[page].color}`}>

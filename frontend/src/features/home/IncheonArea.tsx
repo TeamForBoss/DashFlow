@@ -109,7 +109,7 @@ const SeoulArea = () => {
         </div>
       </div>
       <div className="item">
-        <NavLink to={selectedCity ? `/weather-info` : "#"}>
+        <NavLink to={selectedCity ? `/crime-report` : "#"}>
           <button
             onClick={handleSelectedRegion}
             className={`confirmBtn ${selectedCity ? "active" : "disabled"}`}

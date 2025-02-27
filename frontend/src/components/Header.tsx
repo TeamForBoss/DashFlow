@@ -39,9 +39,9 @@ type ButtonConfig = {
 };
 
 const allButtons: ButtonConfig[] = [
-  { page: "weather", text: "날씨", nav: textConfig.weather.nav },
   { page: "crime", text: "범죄", nav: textConfig.crime.nav },
   { page: "accident", text: "사고", nav: textConfig.accident.nav },
+  { page: "weather", text: "날씨", nav: textConfig.weather.nav },
 ];
 
 const Header: React.FC<HeaderProps> = ({ page }) => {
@@ -121,7 +121,6 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
     "incheon-jung": "중구",
   };
 
-  // 🟢 선택된 섹션에 맞는 로고 설정
   const sectionLogo = page === "select"
     ? logo
     : selectedSection === "seoul"

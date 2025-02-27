@@ -31,6 +31,7 @@ $header-text-weather : #333;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+       
     }
 
 }
@@ -39,16 +40,24 @@ $header-text-weather : #333;
 .goHome {
     position: absolute;
     transform: translate(-50%, -50%);
-    left: 7%;
+    left: 4.2%;
     height: $header-logo-height;
     width:  $header-logo-height;
-    background-color: #9e9e9e;
+    background-color:rgba(219, 219, 219, 0.526);
+    box-shadow: inset 2px 2.2px rgba(0, 0, 0, 0.064), inset -1px -1px 0.8px rgba(0, 0, 0, 0);
     border-radius: 5px;
     padding: 5px;
-} //반응형일떄만 왼쪽에 마진 주면 될것같아요.
+} 
+.goHome:hover{
+    background-color:rgba(206, 206, 206, 0.855);
+}
+
+
+//반응형일떄만 왼쪽에 마진 주면 될것같아요.
 
 .header-logo-img {
     height: $header-logo-height;
+   
 }
 
 //  ==== 홈 제외 =====

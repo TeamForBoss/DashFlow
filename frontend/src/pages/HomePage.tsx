@@ -8,13 +8,12 @@ import AverageArea from '../features/home/AverageArea.tsx';
 import Header from '../components/Header.tsx';
 import { useLocation } from 'react-router-dom';
 
+import { selectedSectionState } from "../state/selectAtom";
+import { useRecoilValue } from 'recoil';
+
 const HomePage = () => {
-    const [area, setArea] = useState("gyeonggi");
-    const location = useLocation();
-    useEffect(() => { 
-        const regoin = location.state?.id;
-        setArea(regoin)
-    })
+    const area = useRecoilValue<string>(selectedSectionState);
+   
   return (
     <>
     <Header page={"home"}/>

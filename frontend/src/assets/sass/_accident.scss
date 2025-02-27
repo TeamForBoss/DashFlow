@@ -42,7 +42,7 @@
     border: 0.2rem solid rgb(255, 255, 255);
     box-shadow: inset 0.3rem 0.3rem 0.3rem rgba(171, 118, 13, 0.305);
     background-color: #fffaca75;
-
+    padding-top: 8px;
 }
 .accident {
     width: 100vw;
@@ -50,6 +50,7 @@
     margin: auto;
     background: linear-gradient(var(--accidentbgColor));
     padding: var(--commonPadding);
+    position: relative;
 
     @media(max-width:1200px) {
         min-height: 100vh;
@@ -317,6 +318,28 @@
             }
 
 
+        }
+    }
+    .acPrintBtn {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        transform: translate(-50%,-80%);
+        display: inline-block;
+        background: linear-gradient(135deg, #e0e0e0, #c7c7c7);
+        padding: 5px 13px;
+        border-radius: 12px;
+        font-size: 1.8rem;
+        text-decoration: none;
+        color: rgba(51, 51, 51, 0.6588235294);
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        &:hover {
+        background: linear-gradient(135deg, #8c8c8c, #a9a9a9);
+        color: rgba(255, 255, 255, 0.9803921569);
+        text-shadow: 0 0 3px white;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
         }
     }
 }

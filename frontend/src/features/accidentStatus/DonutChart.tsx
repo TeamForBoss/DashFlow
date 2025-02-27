@@ -30,8 +30,10 @@ const DonutChart = (carData: PropsType) => {
     }, []);
 
     let moveCenter = 1.2;
+    let fontSize = "1.1rem";
     if (width > 600) { 
         moveCenter = 2;
+        fontSize = "0.8rem";
     }
     useEffect(() => {
     
@@ -201,7 +203,7 @@ const DonutChart = (carData: PropsType) => {
             .attr("y", height/15)
             .attr("dy", "0.32em")
             .text(d => d.name)
-            .attr("font-size", "0.8rem")
+            .attr("font-size", fontSize)
     
   }, [carArr, width, height]);
 

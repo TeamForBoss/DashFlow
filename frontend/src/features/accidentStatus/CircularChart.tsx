@@ -20,8 +20,10 @@ const CircularChart = (lawData: PropsType) => {
         setHeight(minVal);
     };
     let moveCenter = 1.2;
+    let fontSize = "1.1rem";
     if (width > 600) { 
         moveCenter = 2;
+        fontSize = "0.8rem";
     }
     // console.log(moveCenter,width)
     useEffect(() => {
@@ -204,7 +206,7 @@ const CircularChart = (lawData: PropsType) => {
         .attr("y", height/15)
         .attr("dy", "0.32em")
         .text(d => d.name)
-        .attr("font-size", "0.8rem")
+        .attr("font-size", fontSize)
 
     //     const legend = svg.append("g")
     //         .attr("transform", `translate(${width/2},${-height / 2 + (height/10)})`)

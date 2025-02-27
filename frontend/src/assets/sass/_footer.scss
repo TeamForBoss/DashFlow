@@ -1,0 +1,32 @@
+.footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border: 1px solid #111;
+    .footerWrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 20px;
+    font-size: 13px;
+        p {
+            font-weight: bold;
+        }
+        .fooLeft {
+            display: flex;
+            gap: 10px;
+            color: #222;
+            a{
+                text-decoration: underline;
+            }
+            p{
+                text-decoration: none;
+            }
+        }
+        .fooRight {
+            color: #555;
+        }
+    }
+}

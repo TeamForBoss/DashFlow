@@ -9,6 +9,7 @@ import incheonImg from "../assets/images/icons/selectPage/incheon.png";
 //  ==== recoil ===
 import { useSetRecoilState } from "recoil";
 import { selectedSectionState } from "../state/selectAtom.js";
+import Footer from "../components/Footer.js";
 
 const Selection = () => {
   const navigate = useNavigate();
@@ -37,7 +38,8 @@ const Selection = () => {
             <p className={`selInText selInTextI`}>인천 정보 바로가기</p>
           </div>
         </section>
-      </main>
+          </main>
+          <Footer />
     </>
   );
 };

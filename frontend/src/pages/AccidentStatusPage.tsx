@@ -309,7 +309,7 @@ const AccidentStatusPage = () => {
             </div>
           </div>
         </div>
-        <PrintBtn />
+        <PrintBtn printRef={printRef} />
       </section>
     </>
   );

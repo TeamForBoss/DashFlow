@@ -1,0 +1,15 @@
+.acAndcrPrintBtn {
+    // border: 1px solid red;
+    background: khaki;
+    position: absolute;
+    right: 5%;
+    bottom: 4%;
+    height: 4rem;
+    width: 7rem;
+}
+
+@media (max-width:800px) {
+    .acAndcrPrintBtn {
+        display: none;
+    }
+}

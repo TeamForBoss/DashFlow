@@ -2,18 +2,18 @@ import React from "react";
 import html2canvas from "html2canvas";
 
 interface PrintBtnProps {
-  printRef: React.RefObject<HTMLDivElement>; // ✅ 부모에서 받아온 printRef
+  printRef: React.RefObject<HTMLDivElement>; // 부모에서 받아온 printRef
 }
 
 const PrintBtn: React.FC<PrintBtnProps> = ({ printRef }) => {
   const onClickPrint = async () => {
-    if (!printRef.current) return; // ✅ printRef가 null인지 확인
+    if (!printRef.current) return;
 
     try {
       const canvas = await html2canvas(printRef.current, {
-        scale: 2, // ✅ 캡처 해상도 높이기
-        useCORS: true, // ✅ 외부 이미지 캡처 허용
-        logging: false, // ✅ 콘솔 로그 안 뜨게
+        scale: 2,
+        useCORS: true,
+        logging: false,
       });
 
       const imgData = canvas.toDataURL("image/png");
@@ -50,7 +50,7 @@ const PrintBtn: React.FC<PrintBtnProps> = ({ printRef }) => {
   };
 
   return (
-    <button className="acPrintBtn" onClick={onClickPrint}>
+    <button className="acAndcrPrintBtn" onClick={onClickPrint}>
       인쇄
     </button>
   );

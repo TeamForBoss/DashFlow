@@ -52,7 +52,8 @@ $header-text-weather : #333;
     background-color:rgba(206, 206, 206, 0.855);
 }
 
-//반응형일떄만 왼쪽에 따로 마진 주면 될것같아요.
+
+//반응형일떄만 왼쪽에 마진 주면 될것같아요.
 
 .header-logo-img {
     height: $header-logo-height;
@@ -176,6 +177,10 @@ $header-text-weather : #333;
 //////////////////////////////////
 
 @media (max-width: 800px) {
+    .header-container {
+        top: 0;
+        gap: 0;
+    }
     .header-etc * {
         height: 6vw;
         line-height: 6vw;

@@ -11,6 +11,10 @@
     box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.904), inset 0 0 15px white;
 }
 
+.acAndcrPrintBtn:hover {
+    cursor: pointer;
+}
+
 @media (max-width:1600px) {
     .acAndcrPrintBtn {
         display: none;

@@ -201,7 +201,7 @@ const DonutChart = (carData: PropsType) => {
             .attr("y", height/15)
             .attr("dy", "0.32em")
             .text(d => d.name)
-            .attr("font-size", "1rem")
+            .attr("font-size", "0.8rem")
     
   }, [carArr, width, height]);
 

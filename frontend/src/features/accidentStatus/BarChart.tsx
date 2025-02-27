@@ -322,7 +322,7 @@ const BarChart = (accData: PropsType) => {
         legend2.append("text")
             .attr("x", 20)
             .attr("y", 12)
-            .style("font-size", "14px")
+            .style("font-size", "13px")
             .text("사망자수");
         
         //graph bar

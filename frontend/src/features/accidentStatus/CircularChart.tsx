@@ -204,7 +204,7 @@ const CircularChart = (lawData: PropsType) => {
         .attr("y", height/15)
         .attr("dy", "0.32em")
         .text(d => d.name)
-        .attr("font-size", "1rem")
+        .attr("font-size", "0.8rem")
 
     //     const legend = svg.append("g")
     //         .attr("transform", `translate(${width/2},${-height / 2 + (height/10)})`)

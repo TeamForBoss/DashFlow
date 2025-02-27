@@ -98,11 +98,14 @@
         background: #FFFFFF;
         border: 1px solid #E0E0E0;
         border-radius: 7px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1),
-          inset 0 0 2px rgba(115, 115, 115, 0.255);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), inset 0 0 2px rgba(115, 115, 115, 0.255);
         height: 5.5vh;
         cursor: pointer;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        -webkit-transition: transform 0.2s ease, box-shadow 0.2s ease;
+        -moz-transition: transform 0.2s ease, box-shadow 0.2s ease;
+        -ms-transition: transform 0.2s ease, box-shadow 0.2s ease;
+        -o-transition: transform 0.2s ease, box-shadow 0.2s ease;
 
         &:hover {
           transform: translateY(-1.3px);
@@ -609,8 +612,8 @@
 
   .regionArea .item .city {
     width: 17vw !important;
-    font-size: 4vw !important;
-
+    font-size: 3vw !important;
+    // border: 1px solid red !important;
   }
 
   .regionArea .regionCategory {

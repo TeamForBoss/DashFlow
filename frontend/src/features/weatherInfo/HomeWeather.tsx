@@ -56,9 +56,9 @@ const HomeWeather: React.FC = () => {
             const itemDate = new Date(item.dt_txt);
                 return itemDate > currentTime;
             });
-            console.log(currentDataList)
+            // console.log(currentDataList)
             setCurrentData(currentDataList[0]);
-            console.log(currentData);
+            // console.log(currentData);
         });
     }, [host]);
 

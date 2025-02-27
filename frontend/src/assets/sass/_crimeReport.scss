@@ -422,6 +422,8 @@
 
     .crMainWrapper {
         padding: 7rem 1rem 1rem;
+        margin-bottom: 1rem;
+        height: 130vh;
 
         .crMainArea {
             // overflow: scroll !important;
@@ -492,6 +494,7 @@
     .crUpLeftSide2Area {
         padding: 0;
         width: 92.7vw;
+        margin-bottom: 0.7rem !important;
 
         .crUp2Area1 {
             width: 50% !important;

@@ -25,7 +25,7 @@ $header-text-weather : #333;
 .header-home {
     width: 100%;
     position: absolute;
-
+    height: 8vh;
     .header-logo {
         position: absolute;
         left: 50%;
@@ -37,13 +37,15 @@ $header-text-weather : #333;
 
 // == 공통 사항 (로고 크기) ==
 .goHome {
-    width: 4rem;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 7%;
     height: $header-logo-height;
+    width:  $header-logo-height;
     background-color: #9e9e9e;
     border-radius: 5px;
     padding: 5px;
-    margin-left: 2rem;
-}
+} //반응형일떄만 왼쪽에 마진 주면 될것같아요.
 
 .header-logo-img {
     height: $header-logo-height;

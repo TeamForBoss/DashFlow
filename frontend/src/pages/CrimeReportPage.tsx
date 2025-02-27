@@ -32,8 +32,8 @@ const CrimeReportPage: React.FC = () => {
 
   return (
     <>
-      <Header page={"crime"} />
       <section className="crMainWrapper" ref={printRef}>
+        <Header page={"crime"} />
         <section id="crMainArea" className="crMainArea crGrayBorder">
           <div className="crInnerMainArea">
             <div className="crUpsideArea crGrayBorder">

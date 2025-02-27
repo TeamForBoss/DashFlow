@@ -248,8 +248,8 @@ const AccidentStatusPage = () => {
 
   return (
     <>
-      <Header page={"accident"} />
       <section id="accident" className="accident" ref={printRef}>
+        <Header page={"accident"} />
         <div className="accWrap">
           <div className="accGraphWrap">
             <div className="acYearBox">

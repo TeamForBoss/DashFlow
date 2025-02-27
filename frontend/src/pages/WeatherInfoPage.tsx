@@ -25,7 +25,10 @@ const WeatherInfoPage: React.FC = () => {
   const [weatherFetchData, setWeatherFetchData] = useState<any[]>([]);
   const [weatherData, setWeatherData] = useState<any[]>([]);
   const [weekData, setWeekData] = useState<any[]>([]);
-  const [windData, setWindData] = useState({ dt_txt: "", wind: { speed: 0, deg: 0 } });
+  const [windData, setWindData] = useState({
+    dt_txt: "",
+    wind: { speed: 0, deg: 0 },
+  });
   const [isMobile, setIsMobile] = useState(window.innerWidth < 700);
 
   useEffect(() => {
@@ -108,8 +111,8 @@ const WeatherInfoPage: React.FC = () => {
 
   return (
     <>
-      <Header page={"weather"} />
       <section className="weatherPageWrapper">
+        <Header page={"weather"} />
         <section className="weatherLayOutArea">
           <article className="weatherTopSection">
             <div className="weatherSummaryWrap">
@@ -159,28 +162,29 @@ const WeatherInfoPage: React.FC = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {weatherData.slice(0, isMobile ? 6 : 8).map((item, idx) => (
-                        <tr key={idx} className="weatherInfoItem">
-                          <td>{getDateLabel(item.dt_txt)}</td>
-                          <td>{item.main.temp.toFixed(1) ?? "--"} °C</td>
-                          <td >{item.main.humidity ?? "--"} %</td>
-                          <td className="weatherForecast">
-                            {
-                              weatherDescription.find(data => data.code === item.weather[0].id)
-                                ?.txt_ko ??
-                              item.weather[0].description ??
-                              "--"
-                            }
-                          </td>
-                          <td>
-                            <img
-                              src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
-                              alt="weather icon"
-                              className="weatherDesIcon"
-                            />
-                          </td>
-                        </tr>
-                      ))}
+                      {weatherData
+                        .slice(0, isMobile ? 6 : 8)
+                        .map((item, idx) => (
+                          <tr key={idx} className="weatherInfoItem">
+                            <td>{getDateLabel(item.dt_txt)}</td>
+                            <td>{item.main.temp.toFixed(1) ?? "--"} °C</td>
+                            <td>{item.main.humidity ?? "--"} %</td>
+                            <td className="weatherForecast">
+                              {weatherDescription.find(
+                                (data) => data.code === item.weather[0].id
+                              )?.txt_ko ??
+                                item.weather[0].description ??
+                                "--"}
+                            </td>
+                            <td>
+                              <img
+                                src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
+                                alt="weather icon"
+                                className="weatherDesIcon"
+                              />
+                            </td>
+                          </tr>
+                        ))}
                     </tbody>
                   </table>
                 </div>
@@ -206,7 +210,7 @@ const WeatherInfoPage: React.FC = () => {
             </div>
           </div>
         </section>
-        </section>
+      </section>
     </>
   );
 };

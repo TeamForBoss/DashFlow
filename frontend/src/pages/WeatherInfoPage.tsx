@@ -195,7 +195,6 @@ const WeatherInfoPage: React.FC = () => {
             </div>
           </article>
 
-          {/* <div className="weatherTrendWrap" style={{ marginTop: "var(--gapSize)" }}> */}
           <div className="weatherTrendWrap">
             <div className="weatherTrendBox">
               <div className="weatherTrendTitle">

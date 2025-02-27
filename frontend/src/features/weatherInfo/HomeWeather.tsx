@@ -28,7 +28,7 @@ const HomeWeather: React.FC = () => {
         .then(res=>res.json())
         .then((data)=>{
             let currentDataAll = data;
-            console.log(data)
+            // console.log(data)
             switch(currentSido){
                 case "seoul":
                     currentDataAll = data.filter((item: any)=>{

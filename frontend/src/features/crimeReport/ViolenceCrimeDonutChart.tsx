@@ -144,7 +144,7 @@ const ViolenceCrimePieChart: React.FC = () => {
           .attr("y", 14)
           .style("font-size", "13px")
           .style("fill", "#333")
-          .text(`${d.범죄중분류} ${d.data}건 - ${percent}%`);
+          .text(`${d.범죄중분류} ${d.data.toLocaleString()}건 - ${percent}%`);
       });
   }, [violenceCrimeData, dimensions, windowWidth]);
 

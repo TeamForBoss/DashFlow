@@ -57,7 +57,7 @@ const CrimeReportPage: React.FC = () => {
                       <span>폭행</span>
                     </p>
                     <div className="crUp2AreaSmall">
-                      <p>{violenceNum}</p>
+                      <p>{violenceNum?.toLocaleString()}</p>
                     </div>
                   </div>
                 </div>

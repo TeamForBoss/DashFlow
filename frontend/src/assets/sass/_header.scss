@@ -26,12 +26,13 @@ $header-text-weather : #333;
     width: 100%;
     position: absolute;
     height: 8vh;
+
     .header-logo {
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-       
+
     }
 
 }
@@ -42,14 +43,15 @@ $header-text-weather : #333;
     transform: translate(-50%, -50%);
     left: 4.2%;
     height: $header-logo-height;
-    width:  $header-logo-height;
-    background-color:rgba(219, 219, 219, 0.526);
+    width: $header-logo-height;
+    background-color: rgba(219, 219, 219, 0.526);
     box-shadow: inset 2px 2.2px rgba(0, 0, 0, 0.064), inset -1px -1px 0.8px rgba(0, 0, 0, 0);
     border-radius: 5px;
     padding: 5px;
-} 
-.goHome:hover{
-    background-color:rgba(206, 206, 206, 0.855);
+}
+
+.goHome:hover {
+    background-color: rgba(206, 206, 206, 0.855);
 }
 
 
@@ -57,7 +59,7 @@ $header-text-weather : #333;
 
 .header-logo-img {
     height: $header-logo-height;
-   
+
 }
 
 //  ==== 홈 제외 =====
@@ -176,64 +178,26 @@ $header-text-weather : #333;
 /////////// 모바일 대응////////////
 //////////////////////////////////
 
-@media (max-width: 800px) {
-    .header-container {
-        top: 0;
-        gap: 0;
-    }
-    .header-etc * {
-        height: 6vw;
-        line-height: 6vw;
-        font-size: 3.3vw !important;
-
-        .header-btn {
-            width: 8vw;
-            text-align: center;
-            font-size: 2.2vw !important;
-            line-height: 5vw;
-        }
-
-    }
-}
-
-
-
-
-@media (max-width: 700px) {
-    .header-etc * {
-        height: 6vw;
-        line-height: 6vw;
-        font-size: 3.3vw !important;
-
-        .header-btn {
-            width: 10vw;
-            text-align: center;
-            font-size: 2.3vw !important;
-            line-height: 4vw;
-        }
-
-        .header-buttons {
-            gap: 0.2vw !important;
-        }
-
-    }
-}
-
-
-
-
-
-@media (max-width: 500px) {
+@media (max-width: 830px) {
     .header-container {
         top: 0;
         gap: 0;
         height: 10vh;
     }
 
+    .header-logo {
+        width: 50% !important;
+
+        a {
+            width: 100% !important;
+        }
+    }
+
     .header-etc * {
         height: 6vw;
         line-height: 6vw;
         font-size: 4vw !important;
+        width: 50%;
 
         .header-btn {
             width: 120px;
@@ -268,7 +232,7 @@ $header-text-weather : #333;
     .header-subtitle {
         position: relative;
         display: flex;
-        width: 200px !important;
+        width: 50% !important;
         height: 50%;
         top: 0;
         right: 0;
@@ -280,3 +244,88 @@ $header-text-weather : #333;
 
 
 }
+
+
+
+
+// @media (max-width: 700px) {
+//     .header-etc * {
+//         height: 6vw;
+//         line-height: 6vw;
+//         font-size: 3.3vw !important;
+
+//         .header-btn {
+//             width: 10vw;
+//             text-align: center;
+//             font-size: 2.3vw !important;
+//             line-height: 4vw;
+//         }
+
+//         .header-buttons {
+//             gap: 0.2vw !important;
+//         }
+
+//     }
+// }
+
+
+
+
+
+// @media (max-width: 500px) {
+//     .header-container {
+//         top: 0;
+//         gap: 0;
+//         height: 10vh;
+//     }
+
+//     .header-etc * {
+//         height: 6vw;
+//         line-height: 6vw;
+//         font-size: 4vw !important;
+
+//         .header-btn {
+//             width: 120px;
+//             height: 32px;
+//             text-align: center;
+//             font-size: 16px !important;
+//             line-height: 20px;
+//             border-radius: 7px;
+//             margin-top: 3px;
+//             left: 0;
+//         }
+
+//         .header-buttons {
+//             width: 7vw;
+//             gap: 0.2vw !important;
+//         }
+
+//     }
+
+//     .header-buttons {
+//         position: absolute;
+//         transform: translate(-50%, -50%);
+//         top: 120%;
+//         left: 50%;
+//         background-color: #ffffffd4;
+//         box-shadow: -1px -1px 1px rgba(85, 85, 85, 0.2), 1px 1px 1px rgba(85, 85, 85, 0.2);
+//         width: 100vw !important;
+//         height: 40px;
+//         justify-content: center !important;
+//     }
+
+//     .header-subtitle {
+//         position: relative;
+//         display: flex;
+//         width: 50% !important;
+//         height: 50%;
+//         top: 0;
+//         right: 0;
+//         background: rgba(255, 255, 255, 0.8);
+//         align-items: center;
+//         justify-content: right;
+//         padding: 10px 0;
+//     }
+
+
+// }

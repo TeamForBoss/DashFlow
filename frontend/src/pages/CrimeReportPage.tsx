@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-// import { crimeData } from "../tempData/crime_data.json";
-// import * as d3 from "d3";
+import React, { useEffect, useRef, useState } from "react";
+import PrintBtn from "../components/PrintBtn"; // PrintBtn
 import StrongDataToGraph from "../features/crimeReport/StrongDataToGraph";
 import ViolenceCrimeDataToGraph from "../features/crimeReport/ViolenceCrimeDataToGraph";
 import IntelligenceCrimeDataToGraph from "../features/crimeReport/IntelligenceCrimeDataToGraph";
@@ -9,40 +8,36 @@ import knifeImg from "../assets/images/icons/crime/knife_gray.png";
 import handImg from "../assets/images/icons/crime/boom_hand.png";
 import Header from "../components/Header";
 
-const CrimeReportPage = () => {
+const CrimeReportPage: React.FC = () => {
+  const printRef = useRef<HTMLDivElement>(null); // PrintBtn 할때 필요 한 것!!!
   const { strongCrimeData, violenceCrimeData } = useCrimeData();
   const [strongNum, setStrongNum] = useState<number | null>(null);
   const [violenceNum, setViolenceNum] = useState<number | null>(null);
 
   useEffect(() => {
     if (!strongCrimeData || strongCrimeData.length === 0) return;
-    const killPersonData = strongCrimeData.filter((value: any) => {
-      for (let key in value) {
-        if (typeof value[key] === "string" && value[key].includes("살인기수")) {
-          return true;
-        }
-      }
-      return false;
-    });
-    const violencePersonData = violenceCrimeData.filter((value: any) => {
-      for (let key in value) {
-        if (typeof value[key] === "string" && value[key].includes("폭행")) {
-          return true;
-        }
-      }
-      return false;
-    });
+    const killPersonData = strongCrimeData.filter((value: any) =>
+      value.범죄중분류.includes("살인기수")
+    );
+    const violencePersonData = violenceCrimeData.filter((value: any) =>
+      value.범죄중분류.includes("폭행")
+    );
 
     if (killPersonData.length > 0) {
       setStrongNum(killPersonData[0].data);
       setViolenceNum(violencePersonData[0].data);
     }
-  }, [strongCrimeData]);
+  }, [strongCrimeData, violenceCrimeData]);
+
   return (
     <>
       <Header page={"crime"} />
       <section className="crMainWrapper">
-        <section id="crMainArea" className="crMainArea crGrayBorder">
+        <section
+          id="crMainArea"
+          className="crMainArea crGrayBorder"
+          ref={printRef}
+        >
           <div className="crInnerMainArea">
             <div className="crUpsideArea crGrayBorder">
               <div className="crUpLeftSideArea crGrayBorder">
@@ -90,6 +85,7 @@ const CrimeReportPage = () => {
             </div>
           </div>
         </section>
+        <PrintBtn printRef={printRef} /> {/* PrintBtn 할 때 필요 한 것!!!*/}
       </section>
     </>
   );

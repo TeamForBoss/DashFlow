@@ -129,7 +129,7 @@ const useCrimeData = () => {
       }
 
       if (value["범죄대분류"] === "지능범죄" && count > 0) {
-        console.log(newCrimeData);
+        // console.log(newCrimeData);
 
         tem.push({
           data: Math.round(total / count),
@@ -139,7 +139,7 @@ const useCrimeData = () => {
       }
     });
 
-    console.log(tem);
+    // console.log(tem);
     setAllCrimeData(tem);
 
     // let avgData = allAvgData.map((value) => {

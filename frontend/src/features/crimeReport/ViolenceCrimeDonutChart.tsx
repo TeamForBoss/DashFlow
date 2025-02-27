@@ -47,7 +47,7 @@ const ViolenceCrimePieChart: React.FC = () => {
       .scaleOrdinal<string>()
       .domain(limitedData.map((d) => d.범죄중분류))
       .range([
-        "#FF99CC",
+        "#F7A8C4",
         "#FF66B2",
         "#FF3385",
         "#CC66FF",

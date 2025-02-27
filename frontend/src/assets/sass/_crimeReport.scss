@@ -15,9 +15,9 @@
 
 @mixin crimeBorder {
     border: 0.1rem solid rgb(246, 179, 255);
-    background-color:  #ffffffc1;
-    box-shadow: 0.18rem 0.18rem 0.5rem rgba(155, 13, 112, 0.625), 
-    inset 0 0 0.4rem rgba(188, 62, 176, 0.589);
+    background-color: #ffffffc1;
+    box-shadow: 0.18rem 0.18rem 0.5rem rgba(155, 13, 112, 0.625),
+        inset 0 0 0.4rem rgba(188, 62, 176, 0.589);
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -37,7 +37,7 @@
 }
 
 @mixin crimeTitleStyle() {
-    background-color: #efe1f06e ;
+    background-color: #efe1f06e;
     box-shadow: inset 0.3rem 0.3rem 0.3rem rgba(171, 13, 171, 0.155) !important;
     border: 0.2rem solid rgba(255, 255, 255, 0.9);
     border-radius: 1rem 1rem 0 0;
@@ -45,7 +45,7 @@
 }
 
 @mixin graphBorder {
-    background-color: #fff6f6b5 ;
+    background-color: #fff6f6b5;
     box-shadow: inset 0.3rem 0.3rem 0.3rem rgba(171, 13, 171, 0.155) !important;
     border: 0.2rem solid rgba(255, 255, 255, 0.9);
     border-radius: 0 0 10px 10px;
@@ -65,15 +65,16 @@
     padding: var(--commonPadding);
 
     .crMainArea {
-        margin: 0 auto;
+        margin: auto;
         height: 100%;
         max-width: 150rem;
-        overflow: hidden;
+        // overflow: hidden;
 
         //패딩 적용 후 남은 영역(2번째 제일 큰 박스)
         .crInnerMainArea {
             width: 100%;
             height: 100%;
+            // padding: 0.1rem;
 
             // 위쪽 부분!! 
             .crUpsideArea {
@@ -293,7 +294,6 @@
     .crMainWrapper {
         .crMainArea {
             max-width: 120rem;
-
         }
     }
 

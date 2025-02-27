@@ -2,7 +2,7 @@ import React from "react";
 import html2canvas from "html2canvas";
 
 interface PrintBtnProps {
-  printRef: React.RefObject<HTMLDivElement>; // 부모에서 받아온 printRef
+  printRef: React.RefObject<HTMLDivElement | null>;
 }
 
 const PrintBtn: React.FC<PrintBtnProps> = ({ printRef }) => {

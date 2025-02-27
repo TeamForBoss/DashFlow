@@ -3,11 +3,16 @@
 $selSeoulBackColor : #fafacf;
 $selGeonggikColor :#ebf3ff;
 $selIncheonBackColor :#F8EDED;
+#main{
+    background:none;
+}
+
 
 .selLayout {
     width: 100vw;
     height: 100vh;
     padding: var(--commonPadding);
+    background: linear-gradient(#fff, #d0d0d0a2);
     display: flex;
     align-items: center;
 

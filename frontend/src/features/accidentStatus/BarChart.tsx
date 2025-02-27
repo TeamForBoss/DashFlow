@@ -120,7 +120,7 @@ const BarChart = (accData: PropsType) => {
 
             )
             .call(g => g.append("text")
-                .attr("x", -marginLeft)
+                .attr("x", -marginLeft+10)
                 .attr("y", 10)
                 .attr("fill", "#333")
                 .attr("text-anchor", "start")

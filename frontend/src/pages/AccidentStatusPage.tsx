@@ -1,5 +1,5 @@
 // import LineChart from "../features/accidentStatus/LineChart";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import LineChart from "../features/accidentStatus/LineChart";
 import DonutChart from "../features/accidentStatus/DonutChart";
 import CircularChart from "../features/accidentStatus/CircularChart";
@@ -79,6 +79,27 @@ const AccidentStatusPage = () => {
     const [byYearType, setByYearType] = useState<ByYearTypeData[]>([]);
     // console.log(region)
     // console.log(allData)
+    const printRef = useRef<HTMLDivElement>(null);
+
+    const onClickPrint = () => {
+        if (printRef.current) {
+            const printContent = printRef.current as HTMLElement;
+            const printContents = printContent.innerHTML;
+            const windowObject = window.open(
+                '',
+                'PrintWindow',
+                'width=1350, height=800, top=100, left=300, toolbars=no, scrollbars=no, status=no, resizale=no',
+            );
+            if (printContents && windowObject !== null) {
+                windowObject.document.writeln(printContents);
+                windowObject.document.close();
+                windowObject.focus();
+                windowObject.print();
+                windowObject.close();
+            }
+        }
+    };
+    
     useEffect(() => { 
         setGugun(region);
     },[])
@@ -166,9 +187,9 @@ const AccidentStatusPage = () => {
     }, [gugun]);
     ///////////////////////////////////////////
     useEffect(() => {
-        const selectedData = allData.map((allAc: totalAccident) => {
+        const selectedData = allData.map((allAc: totalAccident[{ key:string|number }]) => {
             return {
-                year: (allAc.std_year[0]), //allAc.data[0].acc_cnt[0]
+                year: allAc.std_year[0], //allAc.data[0].acc_cnt[0]
                 acc: Number(allAc.acc_cnt[0]),
                 death: Number(allAc.dth_dnv_cnt[0]),
                 inj: Number(allAc.injpsn_cnt[0]),
@@ -221,12 +242,12 @@ const AccidentStatusPage = () => {
     return (
         <>
     <Header page={"accident"}/>
-        <section id="accident" className="accident">
-            <div className="accWrap">
+            <section id="accident" className="accident">
+            <div className="accWrap" ref={ printRef }>
                 <div className="accGraphWrap">
                     <div className="acYearBox">
                         <div className="acYearTitle">
-                            <p>조회년도별 사망, 사고</p>
+                            <p>연도별 사망, 사고</p>
                         </div>
                         <div className="acYearGraph">
                             <LineChart yearData={byYearType} />
@@ -285,7 +306,8 @@ const AccidentStatusPage = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
+                <button className="acPrintBtn" onClick={onClickPrint}>인쇄</button>
             </section>
         </>
     )

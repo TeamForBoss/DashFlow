@@ -1,43 +1,114 @@
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+.footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #5555554f;
+
+    .footerWrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: 5px 20px;
+        font-size: 13px;
+
+        .foImg {
+            transition: 0.2s;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 2rem;
+            -webkit-border-radius: 2rem;
+            -moz-border-radius: 2rem;
+            -ms-border-radius: 2rem;
+            -o-border-radius: 2rem;
+            -webkit-transition: 0.2s;
+            -moz-transition: 0.2s;
+            -ms-transition: 0.2s;
+            -o-transition: 0.2s;
+        }
+
+        .foImg:hover {
+            // width: 2.2rem;
+            // height: 2.2rem;
+            box-shadow: inset 0 0 3px #484444;
+        }
+
+        p {
+            font-weight: bold;
+        }
+
+        .fooLeft {
+            display: flex;
+            gap: 10px;
+            color: #222;
+
+            a {
+                text-decoration: underline;
+            }
+
+            p {
+                text-decoration: none;
+            }
+        }
+
+        .fooRight {
+            color: #555;
+        }
+    }
 }
 
-@font-face {
-    src: url("https://fonts.googleapis.com/css2?family=Gloock&display=swap");
-    font-family: "Gloock", serif;
-    font-weight: 400;
-    font-style: normal;
+@media (max-width: 860px) {
+    .footer {
+        width: 100vw;
+        height: 15vh;
+
+
+    }
+
+    .footerWrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 10px !important;
+        font-size: 10px !important;
+
+        .foImg {
+            transition: 0.2s;
+            width: 1rem !important;
+            height: 1rem !important;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+            -webkit-transition: 0.2s;
+            -moz-transition: 0.2s;
+            -ms-transition: 0.2s;
+            -o-transition: 0.2s;
+        }
+
+        .foImg:hover {
+            // width: 2.2rem;
+            // height: 2.2rem;
+            box-shadow: inset 0 0 3px #484444;
+        }
+
+        p {
+            font-weight: bold;
+        }
+
+        .fooLeft {
+            display: flex;
+            gap: 10px;
+            color: #222;
+
+            a {
+                text-decoration: underline;
+            }
+        }
+    }
+
+
 }
-
-// header, normal, num, eng font 
-@font-face {
-    font-family: 'GowunDodum-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-//// 투표!!!!! 
-
-
-@font-face {
-    font-family: 'GowunBatang-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-/// 투표 !!!
-
-
-@font-face {
-    font-family: 'NanumSquareRound';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-/// 투표 !!!

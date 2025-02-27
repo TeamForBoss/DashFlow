@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footerWrap">
-        <p>© {new Date().getFullYear()} Safety Traffic Light. Team.ForBoss </p>
+        <p>© {new Date().getFullYear()} Safety Traffic Light Portfolio.</p>
         <div className="fooLeft">
           <a
             href="https://github.com/TeamForBoss/DashFlow"
@@ -39,9 +39,7 @@ const Footer = () => {
             Jinah
           </a>
         </div>
-        <div className="fooRight">
-          <p>All rights reserved.</p>
-        </div>
+        <div className="fooRight"></div>
       </div>
     </footer>
   );

@@ -195,7 +195,8 @@ const WeatherInfoPage: React.FC = () => {
             </div>
           </article>
 
-          <div className="weatherTrendWrap" style={{ marginTop: "var(--gapSize)" }}>
+          {/* <div className="weatherTrendWrap" style={{ marginTop: "var(--gapSize)" }}> */}
+          <div className="weatherTrendWrap">
             <div className="weatherTrendBox">
               <div className="weatherTrendTitle">
                 <p>단기 기상 추세</p>

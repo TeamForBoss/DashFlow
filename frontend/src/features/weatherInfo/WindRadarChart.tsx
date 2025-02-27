@@ -125,7 +125,7 @@ const WindRadarChart = ({ data }) => {
   }, [data, dimensions]);
 
   return (
-    <div style={{ width: "100%", height: "98%" }}>
+    <div style={{ width: "100%", height: "90%"}}>
       <svg ref={svgRef}></svg>
     </div>
   );

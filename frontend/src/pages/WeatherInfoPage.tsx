@@ -73,7 +73,7 @@ const WeatherInfoPage: React.FC = () => {
             wind: futureData[0].wind,
           });
         }
-        console.log(weatherData);
+        // console.log(weatherData);
       });
   }, [host, isMobile]);
 

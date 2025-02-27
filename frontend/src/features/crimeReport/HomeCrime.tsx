@@ -38,7 +38,7 @@ const HomeCrime = () => {
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-        // console.log(data, "crime");
+        console.log(data, "crime");
       })
       .catch((error) => console.error("API 요청 오류!!!:", error));
   }, [host]);

@@ -7,7 +7,7 @@ interface PrintBtnProps {
 }
 
 const PrintBtn: React.FC<PrintBtnProps> = ({ printRef }) => {
-  const isPrinting = useRef(false); // ✅ 중복 실행 방지
+  const isPrinting = useRef(false); //
 
   const onClickPrint = async () => {
     if (!printRef.current || isPrinting.current) return;
@@ -32,7 +32,7 @@ const PrintBtn: React.FC<PrintBtnProps> = ({ printRef }) => {
             <head>
               <title>Print</title>
               <style>
-                body { text-align: center; margin: 0; padding: 0; }
+                body { text-align: center; margin: 10; padding: 10; }
                 img { width: 100%; max-width: 100%; height: auto; }
               </style>
             </head>

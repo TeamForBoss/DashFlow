@@ -204,12 +204,14 @@ const AccidentStatusPage = () => {
           }
         } else {
           // 사고건수, 사망자수
-            const peoples = [
-                Number(obj.acc_cnt).toString()
-  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
-                Number(obj.dth_dnv_cnt).toString()
-  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
-            ];
+          const peoples = [
+            Number(obj.acc_cnt)
+              .toString()
+              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
+            Number(obj.dth_dnv_cnt)
+              .toString()
+              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
+          ];
           setCntPeople(peoples);
           // 사고유형별 사고건수
           const names = ["차대사람", "차대차", "차량단독", "철길건널목"];
@@ -247,8 +249,8 @@ const AccidentStatusPage = () => {
   return (
     <>
       <Header page={"accident"} />
-      <section id="accident" className="accident">
-        <div className="accWrap" ref={printRef}>
+      <section id="accident" className="accident" ref={printRef}>
+        <div className="accWrap">
           <div className="accGraphWrap">
             <div className="acYearBox">
               <div className="acYearTitle">

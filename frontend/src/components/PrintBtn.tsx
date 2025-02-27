@@ -1,6 +1,6 @@
 import React from "react";
 import html2canvas from "html2canvas";
-
+import printImg from "../assets/images/svg/printImg.png";
 interface PrintBtnProps {
   printRef: React.RefObject<HTMLDivElement | null>;
 }
@@ -51,7 +51,7 @@ const PrintBtn: React.FC<PrintBtnProps> = ({ printRef }) => {
 
   return (
     <button className="acAndcrPrintBtn" onClick={onClickPrint}>
-      인쇄
+      <img src={printImg}></img>
     </button>
   );
 };

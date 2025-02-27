@@ -84,8 +84,8 @@ const CrimeReportPage: React.FC = () => {
               </div>
             </div>
           </div>
-          <PrintBtn printRef={printRef} /> {/* PrintBtn 할 때 필요 한 것!!!*/}
         </section>
+        <PrintBtn printRef={printRef} /> {/* PrintBtn 할 때 필요 한 것!!!*/}
       </section>
     </>
   );

@@ -171,16 +171,14 @@ const AccidentStatusPage = () => {
   }, [gugun]);
   ///////////////////////////////////////////
   useEffect(() => {
-    const selectedData = allData.map(
-      (allAc: any) => {
-        return {
-          year: allAc.std_year[0], //allAc.data[0].acc_cnt[0]
-          acc: Number(allAc.acc_cnt[0]),
-          death: Number(allAc.dth_dnv_cnt[0]),
-          inj: Number(allAc.injpsn_cnt[0]),
-        };
-      }
-    ); // end of map
+    const selectedData = allData.map((allAc: any) => {
+      return {
+        year: allAc.std_year[0], //allAc.data[0].acc_cnt[0]
+        acc: Number(allAc.acc_cnt[0]),
+        death: Number(allAc.dth_dnv_cnt[0]),
+        inj: Number(allAc.injpsn_cnt[0]),
+      };
+    }); // end of map
     // console.log(selectedData);
     selectedData.sort((a, b) =>
       a.year < b.year ? -1 : a.year > b.year ? 1 : 0

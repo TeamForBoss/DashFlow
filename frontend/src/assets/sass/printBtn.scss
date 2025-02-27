@@ -1,6 +1,17 @@
-.acAndcrPrintBtn {}
+.acAndcrPrintBtn {
+    position: absolute;
+    bottom: 5rem;
+    right: 8rem;
+    padding: 1rem;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.199);
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.904), inset 0 0 15px white;
+}
 
-@media (max-width:1200px) {
+@media (max-width:1600px) {
     .acAndcrPrintBtn {
         display: none;
     }

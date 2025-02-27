@@ -46,7 +46,7 @@ const ViolenceCrimePieChart: React.FC = () => {
     const colorScale = d3
       .scaleLinear<string>()
       .domain([0, maxData])
-      .range(["#FFC0CB", "#FF1493"]);
+      .range(["#FFE1FF", "#FF1499"]);
 
     const pie = d3.pie<CrimeData>().value((d) => d.data);
     const arc = d3

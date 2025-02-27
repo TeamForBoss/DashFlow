@@ -101,9 +101,11 @@
       }
 
       .city {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        text-align: center;
+        line-height: 2.5;
         width: calc(20% - 1rem);
         font-size: var(--middleFontSize);
         color: #585858;
@@ -122,6 +124,7 @@
 
         @media(max-width:900px) {
             font-size: 16px;
+            line-height: 2.8;
         }
         @media(max-width:450px) {
             font-size: 13px;

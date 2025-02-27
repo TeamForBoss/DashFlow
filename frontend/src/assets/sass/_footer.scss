@@ -116,12 +116,10 @@
 }
 
 @media (max-width : 500px) {
-    body {
-        overflow: hidden;
-    }
 
     .footerWrap {
         margin: 1rem 0 0 0 !important;
+         overflow: hidden;
     }
 
     .footer {

@@ -73,7 +73,7 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        margin: 10px 10px !important;
+        // margin: 10px 10px !important;
         font-size: 10px !important;
 
         .foImg {
@@ -121,10 +121,17 @@
     }
 
     .footerWrap {
-        margin: 0 !important;
+        margin: 1rem 0 0 0 !important;
     }
 
     .footer {
         width: 100% !important;
+        height: 6rem;
+
+        p {
+            font-size: var(--smallFontSize) !important;
+        }
     }
+
+
 }

@@ -73,7 +73,7 @@ const AccidentStatusPage = () => {
   const [acData, setAcData] = useState<totalAccident[]>([]);
   const [gugun, setGugun] = useState("");
   const [byAccType, setByAccType] = useState<ByAccTypeData[]>([]);
-  const [cntPeople, setCntPeople] = useState<number[]>([]);
+  const [cntPeople, setCntPeople] = useState<string[]>([]);
   const [carCar, setCarCar] = useState<ByCarTypeData[]>([]);
   const [violOfLaw, setViolOfLaw] = useState<ByCarTypeData[]>([]);
   const [byYearType, setByYearType] = useState<ByYearTypeData[]>([]);
@@ -204,7 +204,12 @@ const AccidentStatusPage = () => {
           }
         } else {
           // 사고건수, 사망자수
-          const peoples = [Number(obj.acc_cnt), Number(obj.dth_dnv_cnt)];
+            const peoples = [
+                Number(obj.acc_cnt).toString()
+  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
+                Number(obj.dth_dnv_cnt).toString()
+  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+            ];
           setCntPeople(peoples);
           // 사고유형별 사고건수
           const names = ["차대사람", "차대차", "차량단독", "철길건널목"];

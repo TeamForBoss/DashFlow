@@ -125,7 +125,7 @@ const BarChart = (accData: PropsType) => {
                 .attr("fill", "#333")
                 .attr("text-anchor", "start")
                 .attr("font-size", fontSize)
-                .text("( 사고건수: 건 )")
+                .text("(사고건수: 건)")
             );
         // y1축 추가 (acc 그리드 라인 포함)
         svg
@@ -139,7 +139,7 @@ const BarChart = (accData: PropsType) => {
                 .attr("fill", "#333")
                 .attr("text-anchor", "start")
                 .attr("font-size", fontSize)
-                .text("( 사망자수: 명 )")
+                .text("(사망자수: 명)")
             );
         // 그래프 바(bar) 애니메이션
         svg.append("g")

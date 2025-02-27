@@ -277,10 +277,10 @@ body{
 .weatherTrendWrap .weatherTrendGraph {
   height: 80%;
 }
+
 // =====================================================================
-// == 반응형 (max-width: 1300px) ==
-
-
+// =====================================================================
+// =====================================================================
 
 @media (max-width: 1200px) {
     body{
@@ -292,6 +292,8 @@ body{
         background: #fff;
         height: auto;
         overflow-y: auto;
+
+        // padding: 1rem;
     }
     .weatherLayOutArea {
         max-width: 100%;
@@ -383,10 +385,22 @@ body{
 }
 
 @media (max-width: 800px){
-
-  .weatherTopSection .weatherSummaryWrap .weatherStatBox .directionStat{
-    display: none;
+  .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatTitle {
+    font-size: var(--smallFontSize);
   }
+
+  .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatValue {
+    font-size: var(--smallFontSize);
+  }
+
+
+  .weatherGraphWrap .weatherInfoListBox .weatherInfoTable th {
+    text-indent: 0;
+  }
+  .weatherGraphWrap .weatherInfoListBox .weatherInfoTable td {
+    text-indent: 0;
+  }
+
     .weatherPageWrapper {
         overflow-y: scroll;
         height: auto;
@@ -402,31 +416,49 @@ body{
     }
 }
 
+
+@media (max-width: 600px) {
+  .weatherTopSection .weatherSummaryWrap .weatherStatBox .directionStat{
+    display: none;
+  }
+}
+
 @media (max-width: 500px) {
   .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatTitle {
-    font-size: var(--smallFontSize);
     width: 60%;
   }
   .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatTitle img {
     height: 100%;
     margin-left: .3rem;
   }
-  .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatValue {
-    font-size: var(--smallFontSize);
-  }
 
-    .weatherStatValue{
-      font-size: var(--smallFontSize);
-    }
+}
+
+//  [미디어 쿼리 패딩 탑]=====================
+@media (max-width : 1200px) {
+  .weatherPageWrapper {
+      padding-top: 12rem;
+  }
+}
+
+@media (max-width : 860px) {
+  .weatherPageWrapper {
+      padding-top: 13rem;
+  }
 }
 
 
-
-//  [미디어 쿼리 패딩 탑]=====================
+@media (max-width : 800px) {
+  .weatherPageWrapper {
+      padding-top: 9rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+  }
+}
 
 @media (max-width : 1200px) {
   .weatherPageWrapper {
-      padding-top: 10.5rem 1rem 1rem;
+      padding-top: 12rem;
   }
 }
 

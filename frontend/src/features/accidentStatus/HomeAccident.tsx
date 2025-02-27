@@ -14,7 +14,7 @@ const HomeAccident = () => {
     const area = useRecoilValue<string>(selectedSectionState);
     const [data, setData] = useState(["0", 0]);
     const [currentSido, setCurrentSido] = useState<string>(area);
-    console.log(area)
+    // console.log(area)
     const matchingSido: { [key:string] : string } = {
 		seoul : "서울시",
 		gyeonggi : "경기도",
@@ -30,7 +30,7 @@ const HomeAccident = () => {
         })
         .then(res=>res.json())
             .then((datas) => {
-                console.log(datas)
+                // console.log(datas)
                 const dataLen = datas.length - 1;
                 const { city, data, sido } = (datas[dataLen]);
                 const { item: dataArr } = data;

@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useRef } from "react";
 import html2canvas from "html2canvas";
 import printImg from "../assets/images/svg/printImg.png";
+
 interface PrintBtnProps {
   printRef: React.RefObject<HTMLDivElement | null>;
 }
 
 const PrintBtn: React.FC<PrintBtnProps> = ({ printRef }) => {
+  const isPrinting = useRef(false); // ✅ 중복 실행 방지
+
   const onClickPrint = async () => {
-    if (!printRef.current) return;
+    if (!printRef.current || isPrinting.current) return;
+
+    isPrinting.current = true;
 
     try {
       const canvas = await html2canvas(printRef.current, {
         scale: 2,
         useCORS: true,
         logging: false,
+        windowWidth: printRef.current.scrollWidth,
+        windowHeight: printRef.current.scrollHeight,
       });
 
       const imgData = canvas.toDataURL("image/png");
@@ -30,28 +37,30 @@ const PrintBtn: React.FC<PrintBtnProps> = ({ printRef }) => {
               </style>
             </head>
             <body>
+              <img id="printImage" src="${imgData}" style="width: 100%;" />
             </body>
           </html>
         `);
         printWindow.document.close();
 
-        const img = new Image();
-        img.src = imgData;
-        img.style.width = "100%";
+        const img = printWindow.document.getElementById(
+          "printImage"
+        ) as HTMLImageElement;
         img.onload = () => {
-          printWindow.document.body.appendChild(img);
           printWindow.focus();
           printWindow.print();
+          isPrinting.current = false;
         };
       }
     } catch (error) {
       console.error("Print error:", error);
+      isPrinting.current = false;
     }
   };
 
   return (
     <button className="acAndcrPrintBtn" onClick={onClickPrint}>
-      <img src={printImg}></img>
+      <img src={printImg} alt="Print" />
     </button>
   );
 };

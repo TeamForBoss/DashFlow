@@ -118,7 +118,7 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
     seo: "서구",
     yeonsu: "연수구",
     ongjin: "옹진군",
-    "incheon-jung": "중구",
+    "Incheon-jung": "중구",
   };
 
   const sectionLogo = page === "select"

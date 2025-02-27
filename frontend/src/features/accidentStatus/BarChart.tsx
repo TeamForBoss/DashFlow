@@ -307,7 +307,7 @@ const BarChart = (accData: PropsType) => {
         legend.append("text")
             .attr("x", 20)
             .attr("y", 12)
-            .style("font-size", "14px")
+            .style("font-size", fontSize)
             .text("사고건수");
         
         const legend2 = svg.append("g")
@@ -322,7 +322,7 @@ const BarChart = (accData: PropsType) => {
         legend2.append("text")
             .attr("x", 20)
             .attr("y", 12)
-            .style("font-size", "13px")
+            .style("font-size", fontSize)
             .text("사망자수");
         
         //graph bar

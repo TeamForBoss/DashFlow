@@ -21,8 +21,9 @@ const CircularChart = (lawData: PropsType) => {
     };
     let moveCenter = 1.2;
     let fontSize = "1.1rem";
-    if (width > 600) { 
+    if (width > 600) {
         moveCenter = 2;
+    } else if (width < 600) { 
         fontSize = "0.8rem";
     }
     // console.log(moveCenter,width)

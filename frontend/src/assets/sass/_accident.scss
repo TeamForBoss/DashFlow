@@ -72,7 +72,7 @@
     }
 
     @media(max-width:500px) {
-        padding: 12rem 1rem 1rem;
+        padding: 7rem 1rem 1rem;
     }
 
     .accWrap {
@@ -89,7 +89,7 @@
         }
 
         @media(max-width:650px) {
-            padding-top: 0rem;
+            padding-top: 2.7rem;
         }
 
         .accGraphWrap {
@@ -392,13 +392,5 @@
     .accident .accWrap .accChartWrap .acCount .numOfDeathBox .deathCont {
         @include titleStyle();
         background: #fffff9;
-    }
-}
-
-@media (max-width: 500px) {
-
-    // 왜 해당 값을 해야 맞을까요 .. ??  여튼 되었으니 마무리 (유진 메모)
-    .accident {
-        padding: 11rem 1rem 1rem !important;
     }
 }

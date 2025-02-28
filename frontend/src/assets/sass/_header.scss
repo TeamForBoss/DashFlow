@@ -60,7 +60,7 @@ $header-text-weather : #333;
 
 .header-logo-img {
     height: $header-logo-height;
-
+    object-fit: contain;
 }
 
 //  ==== 홈 제외 =====

@@ -177,7 +177,7 @@ const DonutChart = (carData: PropsType) => {
       .attr("transform", (d) => `translate(${arc.centroid(d)})`)
       .attr("fill", "#333")
       .style("font-weight", "bold")
-      .text((d) => d.data.value != 0 ? d.data.value : "")
+      .text((d) => d.data.value > 1 ? d.data.value : "")
       .attr("opacity", 0) 
       .transition() 
       .duration(1000)

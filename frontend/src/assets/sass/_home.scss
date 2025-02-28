@@ -91,11 +91,12 @@
     .regionSubCategory {
       display: flex;
       justify-content: space-between;
-    //   justify-content: flex-start;
+      //   justify-content: flex-start;
       flex-wrap: wrap;
       flex: 1;
       gap: 1.2rem;
       width: 100%;
+
       @media(max-width:800px) {
         gap: 0.8rem;
       }
@@ -123,13 +124,14 @@
         -o-transition: transform 0.2s ease, box-shadow 0.2s ease;
 
         @media(max-width:900px) {
-            font-size: 16px;
-            line-height: 2.8;
+          font-size: 16px;
+          line-height: 2.8;
         }
+
         @media(max-width:450px) {
-            font-size: 13px;
-            height: 4vh; 
-            width: calc(20% - 0.7rem);
+          font-size: 13px;
+          height: 4vh;
+          width: calc(20% - 0.7rem);
         }
 
         &:hover {
@@ -462,6 +464,10 @@
   }
 }
 
+label {
+  text-align: center;
+  border: 1px solid red !important;
+}
 
 
 

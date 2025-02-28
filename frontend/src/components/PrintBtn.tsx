@@ -32,8 +32,8 @@ const PrintBtn: React.FC<PrintBtnProps> = ({ printRef }) => {
             <head>
               <title>Print</title>
               <style>
-                body { text-align: center; margin-left: -8rem; padding: 0; }
-                img { width: 60%; max-width: 110%; height: auto; }
+                body { text-align: center; margin-left: -10.5rem; padding: 0; }
+                img { width: 60%; max-width: 114%; height: auto; }
               </style>
             </head>
             <body>

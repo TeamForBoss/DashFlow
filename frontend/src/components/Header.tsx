@@ -46,7 +46,7 @@ const allButtons: ButtonConfig[] = [
 
 const scrollToTop = () => {
   
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  // window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 const Header: React.FC<HeaderProps> = ({ page }) => {

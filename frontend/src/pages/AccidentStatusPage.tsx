@@ -81,6 +81,14 @@ const AccidentStatusPage = () => {
   // console.log(allData)
   const printRef = useRef<HTMLDivElement | null>(null);
 
+
+  // ==============
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  // ==============
+
+  
   useEffect(() => {
     setGugun(region);
   }, []);

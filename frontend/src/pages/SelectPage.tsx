@@ -1,6 +1,7 @@
 import React from "react";
 import "../assets/sass/selectPage.scss"; // 기존 CSS 적용
 import Header from "../components/Header";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import gyeonggiImg from "../assets/images/icons/selectPage/gyeongggi.png";
 import seoulImg from "../assets/images/icons/selectPage/seoul.png";
@@ -15,6 +16,13 @@ const Selection = () => {
   const navigate = useNavigate();
   const setSelectedSection = useSetRecoilState(selectedSectionState); // 상태 업데이트 함수
 
+
+    // ==============
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  // ==============
+  
   const handleClick = (area: string) => {
     setSelectedSection(area); 
     navigate("/home", { state: { id: area } }); 

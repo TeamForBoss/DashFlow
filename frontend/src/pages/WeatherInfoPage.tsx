@@ -22,6 +22,14 @@ const WeatherInfoPage: React.FC = () => {
   const host = useRecoilValue(hostState);
   const region = useRecoilValue(selectedRegionState);
 
+      // ==============
+      useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+    // ==============
+  
+    
+
   const [weatherFetchData, setWeatherFetchData] = useState<any[]>([]);
   const [weatherData, setWeatherData] = useState<any[]>([]);
   const [weekData, setWeekData] = useState<any[]>([]);

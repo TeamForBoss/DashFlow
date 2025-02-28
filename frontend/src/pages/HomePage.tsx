@@ -10,10 +10,19 @@ import Header from "../components/Header.tsx";
 
 import { selectedSectionState } from "../state/selectAtom.js";
 
+
+
 const HomePage = () => {
     const currentSido = useRecoilValue(selectedSectionState);
     const location = useLocation();
     
+    
+  // ==============
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+// ==============
+
     // 추가: 지역 상태 관리
     const [area, setArea] = useState(null);
 

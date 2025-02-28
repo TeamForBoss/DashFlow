@@ -428,11 +428,11 @@
     .crMainWrapper {
         padding: 7rem 1rem 1rem;
         margin-bottom: 1rem;
-        height: 90rem;
+        height: 1240px;
 
         .crMainArea {
             // overflow: scroll !important;
-            padding-top: 2.7rem;
+            padding-top: 38px;
         }
     }
 
@@ -441,7 +441,8 @@
     }
 
     .crUpLeftSideArea {
-        height: 20rem;
+        height: 200px;
+        width: 100%;
     }
 
     // 강력범죄 차트 그래프 영역
@@ -465,17 +466,17 @@
     // 위 오른쪽
     .crUpRightSideArea {
         margin-left: 0 !important;
-        height: 23rem !important;
+        height: 350px !important;
         width: 100% !important;
-        margin-top: 1rem !important;
-        margin-bottom: 1rem !important;
+        margin-top: 20px !important;
+        margin-bottom: 15px !important;
     }
 
 
     .crStrongCrimeArea {
         font-size: var(--smallFontSize);
         width: 92.8vw !important;
-        height: 24rem !important;
+        height: 340px !important;
         margin-top: 0.5rem;
 
         p {
@@ -485,8 +486,9 @@
 
     // 아래
     .crDownSideArea {
-        margin-bottom: 1.5rem !important;
-        height: 22rem !important;
+        margin-top: 63px !important;
+        margin-bottom: 50px !important;
+        height: 300px !important;
     }
 
 

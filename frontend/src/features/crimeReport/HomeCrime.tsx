@@ -80,59 +80,6 @@ const HomeCrime = () => {
     setStrongNum(countStrong > 0 ? totalStrong / countStrong : 0);
   }, [data, currentSido]);
 
-  // useEffect(() => {
-  // const killData = data.filter((value: any) => {
-  //   for (let key in value) {
-  //     if (typeof value[key] === "string" && value[key].includes("살인기수")) {
-  //       //   console.log(value);
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // });
-  // const strongData = data.filter((value: any) => {
-  //   for (let key in value) {
-  //     if (typeof value[key] === "string" && value[key].includes("폭행")) {
-  //       //   console.log(value);
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // });
-  // console.log(killData);
-  ////////// 경기도 평균 살인 /////////////////
-  // killData.forEach((value: any) => {
-  //   let sum = 0;
-  //   let avg = 0;
-  //   //   console.log(value);
-  //   for (let key in value) {
-  //     // console.log(value[key]);
-  //     if (typeof value[key] == "number") {
-  //       avg++;
-  //       sum += Number(value[key]);
-  //     }
-  //   }
-  //   setKillNum(Math.round(sum / avg));
-  //   //   console.log(killNum);
-  // });
-
-  // ////////// 경기도 평균 폭행사건 /////////////////
-  // strongData.forEach((value: any) => {
-  //   let sum = 0;
-  //   let avg = 0;
-  //   //   console.log(value);
-  //   for (let key in value) {
-  //     // console.log(value[key]);
-  //     if (typeof value[key] === "number") {
-  //       avg++;
-  //       sum += Number(value[key]);
-  //     }
-  //   }
-  //   setStrongNum(Math.round(sum / avg));
-  //   //   console.log(StrongNum);
-  // });
-  // }, [data]);
-
   return (
     <div className="averageWrap">
       <div className="waveContainer waveCrime">

@@ -16,8 +16,7 @@ const Selection = () => {
   const navigate = useNavigate();
   const setSelectedSection = useSetRecoilState(selectedSectionState); // 상태 업데이트 함수
 
-
-    // ==============
+  // ==============
     useEffect(() => {
       window.scrollTo(0, 0);
     }, []);

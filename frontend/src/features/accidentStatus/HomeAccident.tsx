@@ -20,9 +20,7 @@ const HomeAccident = () => {
 		gyeonggi : "경기도",
 		incheon: "인천시",
     }
-    // console.log(data)
     useEffect(() => {
-        // setCurrentSido(area);
         fetch(`${host}/accident/city`,{
             method: "POST",
             headers: {"Content-Type" : "application/json"},
@@ -58,7 +56,6 @@ const HomeAccident = () => {
                 }
             });
     }, [host]);
-    // console.log(data)
 
     return (
     <div className="averageWrap">

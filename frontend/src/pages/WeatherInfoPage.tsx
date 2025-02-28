@@ -27,8 +27,6 @@ const WeatherInfoPage: React.FC = () => {
         window.scrollTo(0, 0);
       }, []);
     // ==============
-  
-    
 
   const [weatherFetchData, setWeatherFetchData] = useState<any[]>([]);
   const [weatherData, setWeatherData] = useState<any[]>([]);

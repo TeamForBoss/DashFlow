@@ -108,27 +108,6 @@ const LineChart = (yearData: PropsType) => {
             .attr("font-size", fontSize)
             .style("fill", "#333");
 
-        // y축 추가 (death 그리드 라인 포함)
-        // svg
-        //   .append("g")
-        //   .attr("transform", `translate(${marginLeft},0)`)
-        //   .call(d3.axisLeft(y).ticks(height / 80))
-        //   .call(g => g.select(".domain").remove()) // 축의 라인 제거
-        //   .call(g =>
-        //     g
-        //       .selectAll(".tick line")
-        //       .clone()
-        //       .attr("x2", width - marginLeft - marginRight)
-        //           .attr("stroke-opacity", 0.1)
-
-        //   )
-        //   .call(g => g.append("text")
-        //       .attr("x", -marginLeft)
-        //       .attr("y", 10)
-        //       .attr("fill", "currentColor")
-        //       .attr("text-anchor", "start")
-        //       .text("( 단위: 명 )")
-        //     );
         // y1축 추가 (acc 그리드 라인 포함)
         svg
             .append("g")

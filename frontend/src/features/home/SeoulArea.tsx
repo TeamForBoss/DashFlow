@@ -87,17 +87,6 @@ const SeoulArea = () => {
     { ko: "은평구", en: "eunpyeong" },
   ];
 
-  // // **동북권** (동부)
-  // const dongbukArea: City[] = [
-  //   { ko: "광진구", en: "gwangjin" },
-  //   { ko: "동작구", en: "dongjak" },
-  //   { ko: "관악구", en: "gwanak" },
-  //   { ko: "금천구", en: "geumcheon" },
-  //   { ko: "중구", en: "jung" },
-  //   { ko: "용산구", en: "yongsan" },
-  //   { ko: "은평구", en: "eunpyeong" },
-  // ];
-
   const allCities: City[] = [...gangNamBukArea, ...seobukDongbukArea];
   const selectedCityKo = allCities.find((city) => city.en === selectedCity)?.ko;
 
@@ -128,21 +117,7 @@ const SeoulArea = () => {
           ))}
         </div>
       </div>
-      {/* <div className="item">
-        <div className="regionCategory">
-          <p>강북권</p>
-        </div>
-        <div className="regionSubCategory">
-          {gangbukArea.map((city, index) => (
-            <CityCheckbox
-              key={index}
-              city={city}
-              selectedCity={selectedCity}
-              toggleCheckedEvt={toggleCheckedEvt}
-            />
-          ))}
-        </div>
-      </div> */}
+
       <div className="item">
         <div className="regionCategory">
           <p>서울시 강서•강동 지역</p>
@@ -158,21 +133,7 @@ const SeoulArea = () => {
           ))}
         </div>
       </div>
-      {/* <div className="item">
-        <div className="regionCategory">
-          <p>강동권</p>
-        </div>
-        <div className="regionSubCategory">
-          {dongbukArea.map((city, index) => (
-            <CityCheckbox
-              key={index}
-              city={city}
-              selectedCity={selectedCity}
-              toggleCheckedEvt={toggleCheckedEvt}
-            />
-          ))}
-        </div>
-      </div> */}
+
       <div className="item">
         <NavLink to={selectedCity ? `/crime-report` : "#"}>
           <button

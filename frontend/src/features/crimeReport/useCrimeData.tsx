@@ -44,15 +44,6 @@ const useCrimeData = () => {
         setSelected("");
         break;
     }
-    // if(sectionV  === "seoul"){
-    //   sel = "서울";
-    // }
-    // if(sectionV  === "seoul"){
-    //   sel = "서울";
-    // }
-    // if(sectionV  === "seoul"){
-    //   sel = "서울";
-    // }
   }, [host, region, sectionV]);
 
   useEffect(() => {
@@ -82,10 +73,6 @@ const useCrimeData = () => {
   >([]);
 
   useEffect(() => {
-    // console.log(sectionV);
-    // console.log(crimeData);
-    // console.log(selected);
-
     if (!crimeData || !crimeData["crimeData"]) return;
     const crimeArray = crimeData["crimeData"];
     const strongData = crimeArray.filter((value: any) => {
@@ -141,31 +128,6 @@ const useCrimeData = () => {
 
     // console.log(tem);
     setAllCrimeData(tem);
-
-    // let avgData = allAvgData.map((value) => {
-    //   let total = 0;
-    //   let count = 0;
-    //   for (let key in value) {
-    //     if (key.includes(selected)) {
-    //       total += value[key];
-    //       count++;
-    //     }
-    //   }
-    //   return {
-    //     data: count > 0 ? Math.round(total / count) : 0,
-    //     범죄대분류: value["범죄대분류"],
-    //     범죄중분류: value["범죄중분류"],
-    //   };
-    // });
-    // setAllCrimeData(avgData);
-
-    // console.log(allAvgData);
-    // console.log(avgData);
-    // console.log(intelligenceData);
-    // 경기도 전체 지역 지능 범죄~~~
-    // console.log(avgData);
-    // console.log(intelligenceData);
-
     setStrongCrimeData(strongData);
     setViolenceCrimeData(violenceData);
     setIntelligenceCrimeData(intelligenceData);

@@ -10,9 +10,8 @@ const DonutChart = (carData: PropsType) => {
     const [height, setHeight] = useState<any>(0);
     const svgRef = useRef(null);
     let { carData: carArr } = carData;
-    // console.log(carArr)
+
     carArr.sort((a, b) => b.value- a.value);
-    // console.log(carArr);
     const handleResize = () => {
         const width = document.querySelector(".acTypeGraph")?.clientWidth ?? 300;
         const height = document.querySelector(".acTypeGraph")?.clientHeight ?? 300;
@@ -34,81 +33,7 @@ const DonutChart = (carData: PropsType) => {
     if (allWidth < 600) {
         fontSize = "0.8rem";
     }
-    // let moveCenter = 1.4;
-    // let fontSize = "0.9rem";
-    // if (width > 600) {
-    //     moveCenter = 2;
-    // } else if (width < 600) {
-    //     fontSize = "0.8rem"
-    // }
     useEffect(() => {
-    
-    // const pieWidth = width * 0.5; 
-    // const radius = Math.min(pieWidth, height) / 2 - 20;
-
-    // //   데이터 내림차순 정렬
-    // const sortedData = [...carArr].sort((a, b) => a.data - b.data);
-
-    // //   색상 설정
-    // const color = d3.scaleOrdinal<string>([
-    //         "#fffbbc", "#ffee00", "#ffc62a", "#ff9100"
-    //     ]);
-
-    // const pie = d3.pie<ByCarTypeData>().value((d) => d.value);
-    // const arc = d3
-    //   .arc<d3.PieArcDatum<ByCarTypeData>>()
-    //   .innerRadius(0)
-    //   .outerRadius(radius);
-
-    // //   기존 SVG 내용 삭제 후 새로 그리기
-    // const svg = d3.select(svgRef.current);
-    // svg.selectAll("*").remove();
-    // svg.attr("width", width).attr("height", height);
-
-    // //   파이 차트 그룹 (왼쪽 배치)
-    // const g = svg.append("g").attr(
-    //   "transform",
-    //   `translate(${width / 3}, ${height / 2})` 
-    // );
-
-    // const arcs = g
-    //   .selectAll(".arc")
-    //   .data(pie(sortedData))
-    //   .enter()
-    //   .append("g")
-    //   .attr("class", "arc");
-
-    // //   차트 조각 애니메이션 적용
-    // arcs
-    //   .append("path")
-    //   .attr("fill", (_d, i) => color(String(i)))
-    //   .style("stroke", "#fff")
-    //   .style("stroke-width", "2px")
-    //   .transition()
-    //   .duration(1000)
-    //   .attrTween("d", function (d) {
-    //     const i = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
-    //     return function (t) {
-    //       return arc(i(t)) as string;
-    //     };
-    //   });
-        
-    // arcs
-    //     .attr("font-size", "1.2rem")
-    //     .attr("text-anchor", "middle")
-    //     .selectAll()
-    //     .data(pie(carArr))
-    //     .join("text")
-    //     .text(d => d.value.toLocaleString("en-US"))
-    //     .attr("transform", (d) => `translate(${arc.centroid(d)})`)
-    //     .attr("fill", "#333")
-    //     .text((d) => d.data.value != 0 ? d.data.value : "")
-    //     .attr("opacity", 0)
-    //     .transition()
-    //     .duration(1000)
-    //     .delay(1000)
-    //     .attr("opacity", 1)
-
         //     console.log(width,height)
         const radius = Math.min(width, height) / 2;
         // console.log(radius)

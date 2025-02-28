@@ -87,13 +87,11 @@ const AccidentStatusPage = () => {
       window.scrollTo(0, 0);
     }, []);
   // ==============
-
   
   useEffect(() => {
     setGugun(region);
   }, []);
   useEffect(() => {
-    // fetch('/tempData/accident_data_2023.json')
     fetch(`${host}/accident/city`, {
       method: "POST",
       headers: {
@@ -114,34 +112,6 @@ const AccidentStatusPage = () => {
         console.log(err);
       });
 
-    // const yearArr = [];
-    // let year = new Date().getFullYear() - 2;
-    // for (let i = 0; i < 14; i++) {
-    //     yearArr.push(year);
-    //     --year;
-    // }
-    //  fetch(`${host}/accident/city`, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({ city: region }),
-    //     })
-    //     .then(response => response.json())
-    //     .then((datas: []) => {
-    //           datas.forEach((items) => {
-    //         const { city, sido, data: { item: dataArr} } = items;
-    //         if (gugun == city) {
-    //             // console.log(dataArr[0].std_year[0])
-    //             // console.log(dataArr[0]);
-    //             setAllData(prev => [...prev, dataArr[0]]);
-    //         }
-    //      })
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //     });
-
     const travel = (datas: []) => {
       if (allData.length == 0) {
         datas.forEach((items) => {
@@ -159,7 +129,6 @@ const AccidentStatusPage = () => {
     };
     const fetchJson = async () => {
       try {
-        // const response = await fetch(`/tempData/accident_data_${year}.json`);
         const response = await fetch(`${host}/accident/city`, {
           method: "POST",
           headers: {
@@ -173,9 +142,7 @@ const AccidentStatusPage = () => {
         console.log(err);
       }
     };
-    // yearArr.forEach((year) => {
     fetchJson();
-    // })
   }, [gugun]);
   ///////////////////////////////////////////
   useEffect(() => {

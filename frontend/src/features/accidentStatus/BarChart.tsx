@@ -10,22 +10,12 @@ const BarChart = (accData: PropsType) => {
     const [height, setHeight] = useState<any>(0);
     const svgRef = useRef(null);
     let { accData: accArr } = accData;
-    // console.log(accArr)
-       
-    // const mobData = accArr.filter((obj, idx) => {
-    //     console.log(accArr[idx])
-    //     return (idx % 3 == 1 ? accArr[idx] : null)
-    // });
+
     const handleResize = () => {
         const width = document.querySelector(".acYearGraph")?.clientWidth;
         const height = document.querySelector(".acYearGraph")?.clientHeight;
         setWidth(width);
         setHeight(height);
-        // if (window.innerWidth < 800) {
-        //     setFontSize("10px");
-        // } else {     
-        //     setFontSize("11px");
-        // }
     };
     // console.log(width, height);
     useEffect(() => {
@@ -174,52 +164,6 @@ const BarChart = (accData: PropsType) => {
             .duration(500)
             .attr("opacity", 1)
             .attr("y", (d) => y(d.death) - 15);
-        // 막대 그래프 그리기
-        // svg.append("g")
-        //     .attr("fill", "#FFDC00")
-        //     .selectAll()
-        //     .data(accArr)
-        //     .join("rect")
-        //     .attr("x", (d) => (x(d.type) ?? 0) + 3)
-        //     .attr("y", height - marginBottom)
-        //     .attr("height", 0)
-        //     .attr("width", x.bandwidth() - 6)
-        //     .transition()
-        //     .duration(1000)
-        //     .attr("y", (d) => y(d.death))
-        //     .attr("height", (d) => y(0) - y(d.death));
-
-        // // 막대 위에 기본적으로 텍스트를 숨기고 생성
-        // const labels = svg.append("g")
-        //     .selectAll()
-        //     .data(accArr)
-        //     .join("text")
-        //     .attr("class", "bar-label")
-        //     .attr("x", (d) => (x(d.type) ?? 0) + x.bandwidth() / 2)
-        //     .attr("y", height - marginBottom)
-        //     .attr("text-anchor", "middle")
-        //     .style("font-size", fontSize)
-        //     .style("fill", "#444")
-        //     .text((d) => d.death)
-        //     .attr("opacity", 0) // 기본적으로 값 숨기기
-        //     .attr("y", (d) => y(d.death) - 15);
-
-        // // 호버 시 값 표시
-        // svg.selectAll("rect")
-        //     .on("mouseover", function(e, d) {
-        //         d3.select(this).style("cursor", "pointer"); 
-        //         d3.select(labels.nodes()[accArr.indexOf(d as ByAccTypeData)])
-        //             .transition()
-        //             .duration(200)
-        //             .attr("opacity", 1);
-        //     })
-        //     .on("mouseout", (e, d) => {
-        //         d3.select(labels.nodes()[accArr.indexOf(d as ByAccTypeData)])
-        //             .transition()
-        //             .duration(200)
-        //             .attr("opacity", 0);
-        //     });
-
 
         // 선 그래프 (Line Chart) 애니메이션
         svg.append("path")
@@ -241,7 +185,6 @@ const BarChart = (accData: PropsType) => {
             .ease(d3.easeLinear)
             .attr("stroke-dashoffset", 0);
         // 선 그래프 위에 값 표시
-        // const labels =
             svg.append("g")
             .selectAll()
             .data(accArr)
@@ -258,22 +201,6 @@ const BarChart = (accData: PropsType) => {
             .delay((_, i) => i * 100)
             .duration(500)
             .attr("opacity", 1);
-
-        // // 호버 시 값 표시
-        // svg.selectAll("g")
-        //     .on("mouseover", function(e, d) {
-        //         d3.select(this).style("cursor", "pointer"); 
-        //         d3.select(labels.nodes()[accArr.indexOf(d as ByAccTypeData)])
-        //             .transition()
-        //             .duration(200)
-        //             .attr("opacity", 1);
-        //     })
-        //     .on("mouseout", (e, d) => {
-        //         d3.select(labels.nodes()[accArr.indexOf(d as ByAccTypeData)])
-        //             .transition()
-        //             .duration(200)
-        //             .attr("opacity", 0);
-        //     });
 
         // 원(circle) 애니메이션
         svg.append("g")
@@ -325,37 +252,6 @@ const BarChart = (accData: PropsType) => {
             .style("font-size", fontSize)
             .text("사망자수");
         
-        //graph bar
-        // svg.append("g")
-        //     .attr("fill", "#F3E796")
-        //     .selectAll()
-        //     .data(accArr)
-        //     .join("rect")
-        //     .attr("x", (d) => x(d.type) ?? 0)
-        //     .attr("y", (d) => y(d.death))
-        //     .attr("height", (d) => y(0) - y(d.death))
-        //     .attr("width", x.bandwidth());  
-
-        // // graph line
-        // svg
-        //   .append("path")
-        //   .datum(accArr) 
-        //   .attr("fill", "none")
-        //   .attr("stroke", "#FBC02D") 
-        //   .attr("stroke-width", 1.5)
-        //         .attr("d", line1);
-
-        //  svg.append("g")
-        //         .selectAll("circle")
-        //         .data(accArr)
-        //         .enter()
-        //         .append("circle")
-        //         .attr("cx", d => x(d.type)! + width / 22)  
-        //         .attr("cy", d => y1(d.acc))         
-        //         .attr("r", 4)                       
-        //         .attr("fill", "#fff")            
-        //         .attr("stroke", "#FBC02D")             
-        //         .attr("stroke-width", 2); 
     }, [x, y, line, accArr]);
 
     return (<svg ref={svgRef}></svg>);

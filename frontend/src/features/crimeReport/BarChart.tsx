@@ -27,8 +27,8 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
       setWindowWidth(window.innerWidth);
     };
 
-    updateSize(); // ✅ 최초 실행
-    window.addEventListener("resize", updateSize); // ✅ 화면 크기 변경 감지
+    updateSize();
+    window.addEventListener("resize", updateSize);
 
     return () => window.removeEventListener("resize", updateSize);
   }, []);
@@ -59,7 +59,7 @@ const BarChart: React.FC<BarChartProps> = ({ data }) => {
       .append("g")
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-    // ✅ 모든 환경에서 글자 5개로 제한
+    // 글자 5개로 제한
     const xDomain = filteredData.map((d) => d.범죄중분류.slice(0, 5));
 
     const xScale = d3

@@ -9,13 +9,11 @@ import handImg from "../assets/images/icons/crime/boom_hand.png";
 import Header from "../components/Header";
 import useReloadOnRoute from "./useReloadOnRoute";
 const CrimeReportPage: React.FC = () => {
-
   // ==============
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   // ==============
-
 
   useReloadOnRoute("/crime-report");
   const printRef = useRef<HTMLDivElement>(null); // PrintBtn 할때 필요 한 것!!!

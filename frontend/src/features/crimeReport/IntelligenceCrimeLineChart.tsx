@@ -107,7 +107,7 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
         .ease(d3.easeLinear)
         .attr("stroke-dashoffset", 0);
 
-      //   동글맹이 (circle) 유지
+      //   동글맹이
       chartGroup
         .selectAll(`.dot-${color}`)
         .data(data)
@@ -170,7 +170,6 @@ const IntelligenceCrimeLineChart: React.FC<LineChartProps> = ({
       ref={containerRef}
       style={{ width: "100%", height: "100%", position: "relative" }}
     >
-      {/*   범례 위치를 PC에서는 오른쪽 위, 모바일에서는 왼쪽 위로 변경 */}
       <div
         style={{
           position: "absolute",

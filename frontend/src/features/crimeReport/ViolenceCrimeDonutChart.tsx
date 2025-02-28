@@ -65,7 +65,6 @@ const ViolenceCrimePieChart: React.FC = () => {
     svg.selectAll("*").remove();
     svg.attr("width", width).attr("height", height);
 
-    //  모바일과 컴퓨터에서 위치 다르게 설정
     const g = svg
       .append("g")
       .attr(
@@ -96,7 +95,6 @@ const ViolenceCrimePieChart: React.FC = () => {
         };
       });
 
-    // 원 안에 들어갈 텍스트 (내림차순 상위 2개)
     const topData = limitedData.slice(0, 3);
 
     arcs
@@ -111,7 +109,6 @@ const ViolenceCrimePieChart: React.FC = () => {
       .style("font-weight", "bold")
       .text((d) => d.data.범죄중분류);
 
-    // 범례 위치 수직 중앙 정렬
     const legendX = windowWidth > 650 ? width * 0.65 : width * 0.5;
     const legendY = height / 2 - limitedData.length * 10;
 
@@ -119,7 +116,6 @@ const ViolenceCrimePieChart: React.FC = () => {
       .append("g")
       .attr("transform", `translate(${legendX}, ${legendY})`);
 
-    //  범례 색상을 도넛 차트 색상과 정확히 일치하도록 수정
     legendContainer
       .selectAll(".legend-item")
       .data(limitedData)

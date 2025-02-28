@@ -408,6 +408,48 @@
         background: var(--white);
     }
 
+    // 아이폰에서 적용하기...
+    @supports (-webkit-touch-callout: none) {
+
+        .crMainWrapper {
+            padding: 7rem 1rem 1rem;
+            margin-bottom: 1rem;
+            height: 1240px;
+
+            .crMainArea {
+                // overflow: scroll !important;
+                padding-top: 38px;
+            }
+
+            // 아래
+            .crDownSideArea {
+                margin-top: 63px !important;
+                margin-bottom: 50px !important;
+                height: 300px !important;
+            }
+        }
+
+    }
+
+    .crMainWrapper {
+        padding: 7rem 1rem 1rem;
+        margin-bottom: 1rem;
+        height: 1220px;
+
+        .crMainArea {
+            // overflow: scroll !important;
+            padding-top: 38px;
+        }
+
+        // 아래
+        .crDownSideArea {
+            margin-top: -5px !important;
+            margin-bottom: 15px !important;
+            height: 300px !important;
+        }
+
+    }
+
     .crUp2Area,
     .crStrongCrimeArea,
     .crUpRightSideArea,
@@ -425,16 +467,6 @@
         margin-left: 0rem;
     }
 
-    .crMainWrapper {
-        padding: 7rem 1rem 1rem;
-        margin-bottom: 1rem;
-        height: 1240px;
-
-        .crMainArea {
-            // overflow: scroll !important;
-            padding-top: 38px;
-        }
-    }
 
     ::-webkit-scrollbar {
         display: none;
@@ -484,12 +516,6 @@
         }
     }
 
-    // 아래
-    .crDownSideArea {
-        margin-top: 63px !important;
-        margin-bottom: 50px !important;
-        height: 300px !important;
-    }
 
 
 

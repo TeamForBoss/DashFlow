@@ -102,14 +102,15 @@
       }
 
       .city {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
         text-align: center;
         line-height: 2.5;
         width: calc(20% - 1rem);
         font-size: var(--middleFontSize);
         color: #585858;
+        position: relative;
         text-shadow: 1px 1px 1px rgba(163, 163, 163, 0.564);
         background: #FFFFFF;
         border: 1px solid #E0E0E0;
@@ -122,7 +123,13 @@
         -moz-transition: transform 0.2s ease, box-shadow 0.2s ease;
         -ms-transition: transform 0.2s ease, box-shadow 0.2s ease;
         -o-transition: transform 0.2s ease, box-shadow 0.2s ease;
-
+        .citySpan {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
         @media(max-width:900px) {
           font-size: 16px;
           line-height: 2.8;
@@ -464,10 +471,10 @@
   }
 }
 
-label {
-  text-align: center;
-  border: 1px solid red !important
-}
+// label {
+//   text-align: center;
+//   border: 1px solid red !important
+// }
 
 
 

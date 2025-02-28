@@ -31,7 +31,7 @@ const CityCheckbox = ({
         checked={isChecked}
         onChange={() => toggleCheckedEvt(city.en)}
       />
-      {city.ko}
+      <span className="citySpan">{city.ko}</span>
     </label>
   );
 };

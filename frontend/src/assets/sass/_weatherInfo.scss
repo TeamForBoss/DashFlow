@@ -380,6 +380,13 @@ body{
 }
 
 
+@media (max-width : 830px) {
+  .weatherPageWrapper {
+      padding-top: 14rem;
+  }
+}
+
+
 
 @media (max-width: 800px) {
   .weatherPageWrapper {
@@ -420,7 +427,6 @@ body{
 @media (max-width: 500px) {
   .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatTitle {
       width: 60%;
-      font-size: 10px;
   }
 
   .weatherTopSection .weatherSummaryWrap .weatherStatBox .weatherStat .weatherStatTitle img {

@@ -102,9 +102,9 @@
       }
 
       .city {
-        // display: flex;
-        // justify-content: center;
-        // align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         text-align: center;
         line-height: 2.5;
         width: calc(20% - 1rem);
@@ -466,7 +466,7 @@
 
 label {
   text-align: center;
-  border: 1px solid red !important;
+  border: 1px solid red !important
 }
 
 

@@ -30,7 +30,7 @@ $weather-backgroundColor: linear-gradient(#fff, #c6f0e4);
 body{
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .weatherPageWrapper {
@@ -38,7 +38,7 @@ body{
   height: 100vh;
   box-sizing: border-box;
   gap: var(--gapSize);
-  overflow-y: auto;
+  // overflow-y: auto;
   // --commonPadding: 120px 40px 40px 40px; // 섹션 패딩
 //   padding: 120px 40px 0 40px;
   padding: var(--commonPadding);
@@ -393,7 +393,6 @@ body{
       padding-top: 10rem;
       padding-left: 1rem;
       padding-right: 1rem;
-      overflow-y: scroll;
       height: auto;
   }
 

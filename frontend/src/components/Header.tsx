@@ -44,8 +44,8 @@ const allButtons: ButtonConfig[] = [
   { page: "weather", text: "날씨", nav: textConfig.weather.nav },
 ];
 
-// 스크롤 최상단으로 이동시키는 함수
 const scrollToTop = () => {
+  
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
@@ -143,13 +143,8 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
       ? `${Gyeonggido[selectedRegion]} ${textConfig[page].text}`
       : textConfig[page].text;
 
-  // 현재 활성화된 버튼의 클릭 핸들러
-  const handleActiveButtonClick = () => {
-    scrollToTop();
-  };
-
   return (
-    <header className={`header-container ${(page === "home" || page === "select") ? "header-home" : "header-etc"}`} onClick={scrollToTop}>
+    <header className={`header-container ${(page === "home" || page === "select") ? "header-home" : "header-etc"}`}>
         {page === "home" && (
           <div className="homeNav">
             <NavLink to="/" onClick={scrollToTop}>
@@ -170,13 +165,13 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
       </div>
       {page !== "home" && page !== "select" && (
         <>
-          <span className={`header-subtitle ${textConfig[page].color}`} onClick={scrollToTop}>
+          <span className={`header-subtitle ${textConfig[page].color}`}>
             {displayText}
           </span>
           <div className="header-buttons">
             {allButtons.map((btn, index) =>
               btn.page === page ? (
-                <span key={index} className="header-btn active" onClick={handleActiveButtonClick}>
+                <span key={index} className="header-btn active" >
                   {btn.text}
                 </span>
               ) : (

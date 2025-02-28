@@ -232,6 +232,11 @@
                             padding: 5px 0;
                             text-align: center;
                             font-size: 2rem;
+
+                            @media(max-width:800px) {
+                                font-size: var(--smallFontSize);
+                                padding: 5px 0;
+                            }
                         }
                     }
                 }
@@ -287,6 +292,11 @@
                         .numOfAcc {
                             text-align: center;
                             font-size: 2rem;
+
+                             @media(max-width:800px) {
+                                font-size: var(--smallFontSize);
+                                padding: 5px 0;
+                            }
                         }
                     }
                 }

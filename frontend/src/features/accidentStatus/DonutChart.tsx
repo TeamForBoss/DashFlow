@@ -28,14 +28,19 @@ const DonutChart = (carData: PropsType) => {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
-
+    const allWidth = window.innerWidth;
     let moveCenter = 1.2;
-    let fontSize = "1.1rem";
-    if (width > 600) {
-        moveCenter = 2;
-    } else if (width < 600) {
-        fontSize = "0.8rem"
+    let fontSize = "1.2rem";
+    if (allWidth < 600) {
+        fontSize = "0.8rem";
     }
+    // let moveCenter = 1.4;
+    // let fontSize = "0.9rem";
+    // if (width > 600) {
+    //     moveCenter = 2;
+    // } else if (width < 600) {
+    //     fontSize = "0.8rem"
+    // }
     useEffect(() => {
     
     // const pieWidth = width * 0.5; 

@@ -323,6 +323,7 @@
                         // border: 1px solid var(--borderColor);
                         @include graphBorder();
                         height: 75%;
+                        padding-top: 10px;
                         @media(max-width:1200px) {
                             height: 300px;
                         }
@@ -357,6 +358,7 @@
                         // border: 1px solid var(--borderColor);
                         @include graphBorder();
                         height: 75%;
+                        padding-top: 10px;
                         @media(max-width:1200px) {
                             height: 300px;
                         }

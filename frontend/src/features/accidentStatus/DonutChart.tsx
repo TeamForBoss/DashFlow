@@ -16,7 +16,7 @@ const DonutChart = (carData: PropsType) => {
     const handleResize = () => {
         const width = document.querySelector(".acTypeGraph")?.clientWidth ?? 300;
         const height = document.querySelector(".acTypeGraph")?.clientHeight ?? 300;
-        const minVal = Math.min(width, height-10);
+        const minVal = Math.min(width, height-20);
         setWidth(width);
         setHeight(minVal);
     };

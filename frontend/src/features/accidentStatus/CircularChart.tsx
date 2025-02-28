@@ -15,7 +15,7 @@ const CircularChart = (lawData: PropsType) => {
     const handleResize = () => {
         const width = document.querySelector(".acLawGraph")?.clientWidth ?? 300;
         const height = document.querySelector(".acLawGraph")?.clientHeight ?? 300;
-        const minVal = Math.min(width, height-10);
+        const minVal = Math.min(width, height-20);
         setWidth(width);
         setHeight(minVal);
     };

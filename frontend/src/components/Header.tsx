@@ -143,8 +143,13 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
       ? `${Gyeonggido[selectedRegion]} ${textConfig[page].text}`
       : textConfig[page].text;
 
+  // 현재 활성화된 버튼의 클릭 핸들러
+  const handleActiveButtonClick = () => {
+    scrollToTop();
+  };
+
   return (
-    <header className={`header-container ${(page === "home" || page === "select") ? "header-home" : "header-etc"}`}>
+    <header className={`header-container ${(page === "home" || page === "select") ? "header-home" : "header-etc"}`} onClick={scrollToTop}>
         {page === "home" && (
           <div className="homeNav">
             <NavLink to="/" onClick={scrollToTop}>
@@ -154,7 +159,7 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
         )}
       <div className="header-logo">
         {page === "select" ? (
-          <div>
+          <div onClick={scrollToTop}>
             <img src={sectionLogo} alt="안전신호등 로고" className="header-logo-img" />
           </div>
         ) : (
@@ -165,13 +170,13 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
       </div>
       {page !== "home" && page !== "select" && (
         <>
-          <span className={`header-subtitle ${textConfig[page].color}`}>
+          <span className={`header-subtitle ${textConfig[page].color}`} onClick={scrollToTop}>
             {displayText}
           </span>
           <div className="header-buttons">
             {allButtons.map((btn, index) =>
               btn.page === page ? (
-                <span key={index} className="header-btn active">
+                <span key={index} className="header-btn active" onClick={handleActiveButtonClick}>
                   {btn.text}
                 </span>
               ) : (

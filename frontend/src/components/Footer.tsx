@@ -7,35 +7,36 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footerWrap">
-        <p>© {new Date().getFullYear()} Safety Traffic Light Portfolio.</p>
+        <p>© {new Date().getFullYear()} Safety Traffic Lights Portfolio.</p>
         <div className="fooLeft">
           <a
             href="https://github.com/TeamForBoss/DashFlow"
             className="viewCode"
+            target="_blank"
           >
             <img src={githubImg} className="foImg"></img>
           </a>{" "}
           |
-          <a href={pdfFile} className="viewPdf">
+          <a href={pdfFile} className="viewPdf" target="_blank">
             <img src={pdfImg} className="foImg"></img>
           </a>{" "}
           |
           <p>
             Contact : <img src={kakaoImg} className="foImg"></img>
           </p>
-          <a href="https://open.kakao.com/o/sXZSHZZg" className="contactY">
+          <a href="https://open.kakao.com/o/sXZSHZZg" className="contactY" target="_blank">
             Yujin
           </a>{" "}
           |
-          <a href="https://open.kakao.com/o/snoCRGfh" className="contactJ">
+          <a href="https://open.kakao.com/o/snoCRGfh" className="contactJ" target="_blank">
             Jeongim
           </a>{" "}
           |
-          <a href="https://open.kakao.com/o/sbLUmxih" className="contactS">
+          <a href="https://open.kakao.com/o/sbLUmxih" className="contactS" target="_blank">
             Sujin
           </a>{" "}
           |
-          <a href="https://open.kakao.com/o/sdONyxih" className="contactA">
+          <a href="https://open.kakao.com/o/sdONyxih" className="contactA" target="_blank">
             Jinah
           </a>
         </div>

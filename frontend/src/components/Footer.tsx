@@ -1,7 +1,7 @@
 import githubImg from "../assets/images/icons/footer/githubImg.png";
 import kakaoImg from "../assets/images/icons/footer/kakaoImg.png";
 import pdfImg from "../assets/images/icons/footer/pdfImg.png";
-import pdfFile from "../assets/pdf/SafetyTrafficLight.pdf";
+import pdfFile from "../assets/pdf/SafetyTrafficLights.pdf";
 
 const Footer = () => {
   return (

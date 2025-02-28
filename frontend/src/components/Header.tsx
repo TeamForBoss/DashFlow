@@ -44,6 +44,11 @@ const allButtons: ButtonConfig[] = [
   { page: "weather", text: "날씨", nav: textConfig.weather.nav },
 ];
 
+// 스크롤 최상단으로 이동시키는 함수
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
 const Header: React.FC<HeaderProps> = ({ page }) => {
     const selectedRegion = useRecoilValue<string>(selectedRegionState);
     const selectedSection = useRecoilValue(selectedSectionState); 
@@ -142,7 +147,7 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
     <header className={`header-container ${(page === "home" || page === "select") ? "header-home" : "header-etc"}`}>
         {page === "home" && (
           <div className="homeNav">
-            <NavLink to="/">
+            <NavLink to="/" onClick={scrollToTop}>
               <img className="goHome" src={goBack} alt="home" />
             </NavLink>
           </div>
@@ -153,7 +158,7 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
             <img src={sectionLogo} alt="안전신호등 로고" className="header-logo-img" />
           </div>
         ) : (
-          <NavLink to={textConfig.home.nav}>
+          <NavLink to={textConfig.home.nav} onClick={scrollToTop}>
             <img src={sectionLogo} alt="안전신호등 로고" className="header-logo-img" />
           </NavLink>
         )}
@@ -170,9 +175,14 @@ const Header: React.FC<HeaderProps> = ({ page }) => {
                   {btn.text}
                 </span>
               ) : (
-                <NavLink key={index} to={btn.nav} className="header-btn">
-                  {btn.text}
-                </NavLink>
+              <NavLink 
+                key={index} 
+                to={btn.nav} 
+                className="header-btn"
+                onClick={scrollToTop}
+              >
+                {btn.text}
+              </NavLink>
               )
             )}
           </div>

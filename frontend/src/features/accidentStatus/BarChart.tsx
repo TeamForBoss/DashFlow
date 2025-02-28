@@ -298,14 +298,14 @@ const BarChart = (accData: PropsType) => {
             .attr("transform", `translate(${width / 2 - 100}, 0)`); 
 
         legend.append("rect")
-            .attr("x", 0)
+            .attr("x", 0+(moveVal*2))
             .attr("y", 0)
             .attr("width", 15)
             .attr("height", 15)
             .attr("fill", "#FFDC00"); 
 
         legend.append("text")
-            .attr("x", 20)
+            .attr("x", 20+(moveVal*2))
             .attr("y", 12)
             .style("font-size", fontSize)
             .text("사고건수");
@@ -313,14 +313,14 @@ const BarChart = (accData: PropsType) => {
         const legend2 = svg.append("g")
             .attr("transform", `translate(${width / 2 + 20}, 0)`);
         legend2.append("rect")
-            .attr("x", 0)
+            .attr("x", 0-moveVal)
             .attr("y", 0)
             .attr("width", 15)
             .attr("height", 15)
             .attr("fill", "#ff9100");
 
         legend2.append("text")
-            .attr("x", 20)
+            .attr("x", 20-moveVal)
             .attr("y", 12)
             .style("font-size", fontSize)
             .text("사망자수");

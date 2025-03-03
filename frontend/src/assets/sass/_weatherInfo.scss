@@ -30,7 +30,7 @@ $weather-backgroundColor: linear-gradient(#fff, #c6f0e4);
 body{
     width: 100vw;
     height: 100vh;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 .weatherPageWrapper {
@@ -284,7 +284,7 @@ body{
 @media (max-width: 1200px) {
   body {
       width: 100vw;
-      // overflow-y: auto;
+      overflow-y: auto;
       background: #fff;
   }
 

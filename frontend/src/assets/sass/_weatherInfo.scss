@@ -154,7 +154,7 @@ body{
 }
 .weatherGraphWrap .weatherInfoListBox .weatherInfoTableWrapper {
   flex: 1;
-  // overflow-y: auto;
+  overflow-y: auto;
 }
 .weatherGraphWrap .weatherInfoListBox .weatherInfoTableWrapper::-webkit-scrollbar {
   width: 10px;
